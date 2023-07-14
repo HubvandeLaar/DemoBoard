@@ -4,9 +4,7 @@
 	Export; Nieuw diagram of memo gooit andere entries weg...
 	Save diagram als JPG; zijn de randen grijs; beter om die wit te maken...
 	Export; Diagram komt er zonder Markers op te staan !!
-	Groene pijl staat op plek van Geel, Geel op plek van Rood en Rood valt er af....
 
-	Stockfish Engine toevoegen
 	Documentatie en Helpteksten aanpassen !!
 	Feedback op de Stelling (met Niveau)
 	Analyse van de Partij
