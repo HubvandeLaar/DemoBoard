@@ -1,0 +1,15 @@
+[Event "QUIZVRAAG 06 / quiz 34"]
+[Site "Havana"]
+[Date "1968.??.??"]
+[Round "?"]
+[White "Cobo, E."]
+[Black "Suetin, A."]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2qk2r/pp2bpp1/2n5/2p4p/3pPpb1/3P1BP1/PPP4P/R1BQK1NR w KQkq - 0 13"]
+[PlyCount "1"]
+[EventDate "1968.??.??"]
+
+{In deze stelling kwam wit met een strategische fout. Waarom was het fout en
+hoe kan zwart daarvan profiteren? Geef een plausibel zetverloop.} 13. Bxf4 $2 *
+

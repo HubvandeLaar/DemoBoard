@@ -1,0 +1,80 @@
+﻿[Event "QUIZ 02"]
+[Site "Plymouth"]
+[Date "1992.??.??"]
+[Round "6"]
+[White "Hodgson, Julian M"]
+[Black "Martin, Andrew D"]
+[Result "1-0"]
+[ECO "D00"]
+[WhiteElo "2535"]
+[BlackElo "2420"]
+[Annotator "Bulletin"]
+[PlyCount "43"]
+[EventDate "1992.08.??"]
+[EventType "swiss"]
+[EventRounds "11"]
+[EventCountry "ENG"]
+[SourceTitle "CBM 030 ext"]
+[Source "ChessBase"]
+[SourceDate "2004.01.01"]
+[SourceVersion "1"]
+[SourceVersionDate "2004.01.01"]
+[SourceQuality "1"]
+
+1. d4 Nf6 2. Bg5 d5 (2... Ne4 3. Bf4 c5 4. d5 Qb6 5. Nd2 Qxb2 6. Nxe4 Qb4+ 7.
+c3 Qxe4 8. e3 {[%cal Gg1f3,Gc3c4,Gf1d3]}) 3. Bxf6 gxf6 {[ A challenging move
+that Karpov played against Julian in a blitz game recently, 3..exf6 4.e3 and 5.
+c4 gives White a slight edge. ]} 4. c4 c6 5. e3 e6 $6 {[ Karpov played 5..Bf5
+first and then ..Bd6 and this seems like a better scheme of development. ]} 6.
+Nc3 {[%cal Ge3e4]} f5 7. Nf3 (7. Qh5 Nd7) 7... Bg7 8. Qc2 {[%cal Ge1c1]} Nd7 {
+QUIZVRAAG 1} 9. h3 $5 {[%cal Gg2g4,Rf5f4] [ Very aggressive, 9.cxd5 was good
+for a clear edge since Black must recapture with the c6 pawn. Now White can
+play g4 with strong kingside play ]} (9. cxd5 cxd5 10. Nb5 Qa5+ 11. Nd2 O-O 12.
+Qc7 Qxc7 13. Nxc7 Rb8 14. Rc1) 9... dxc4 {[ 9..Qa5 to anticipate 0-0-0 looks
+better or even 9..a6 ]} 10. Bxc4 Qc7 $6 {[%cal Gc2c7] [ With the idea of ..f4
+but this is never practical. The Qc7 now becomes one of many tactical
+weaknesses in the black position. ]} 11. O-O-O {[%csl Ra8,Gc2,Gc3,Gc4,Yc7,Rc8,
+Gd1,Gd7,Re8,Gf3,Rf7,Gg7,Yh1,Rh8][%cal Gc4f7,Gf3g5,Gg5f7]} b5 $2 {[ Andrew is
+unrecognisable in this game and this move is almost the losing one since after
+the bishop retreat Nxb5 is a threat and one more tempo lost is enough to make
+the White initiative too strong. ]} (11... Nb6 12. Bb3 Bd7 13. g4 f4 14. e4)
+12. Bb3 Ba6 $2 {[ 12..Qb6 [] ]} (12... b4 13. Nb5 Qb8 (13... Qb6 14. Nd6+) 14.
+Qxc6) {[%tqu "En","QUIZVRAAG 2: Hoe gaat wit consequent verder?","","","g2g4",
+"",10,"Nl","QUIZVRAAG 2: Hoe gaat wit consequent verder?","","","g2g4","",10]
+QUIZVRAAG 2} 13. g4 $16 (13. e4) 13... f4 (13... fxg4 14. hxg4 {[%cal Gh1h7]}
+h6 15. Rh5 {[%cal Gh5b5]}) {[%tqu "En","QUIZVRAAG 3: En met welke zet geeft
+wit het sein tot de aanval?","","","f3g5","( White had now seen the coming
+sacrifice )",10,"Nl","QUIZVRAAG 3: En met welke zet geeft wit het sein tot de
+aanval?","","","f3g5","( White had now seen the coming sacrifice )",10]
+QUIZVRAAG 3} 14. Ng5 $1 {[ White had now seen the coming sacrifice ]} Nf8 {
+[ Forced to prevent 15.Bxe6 ]} 15. Nce4 h6 {[%tqu "En","QUIZVRAAG 4: Wie A
+zegt moet ook B zeggen? Hoe dan?","","","g5f7","",20,"d4d5","",0,"Nl",
+"QUIZVRAAG 4: Wie A zegt moet ook B zeggen? Hoe dan?","","","g5f7","",20,
+"d4d5","",0] QUIZVRAAG 4 =} 16. Nxf7 $1 (16. d5 hxg5 17. Nd6+ (17. dxc6 Be5 18.
+Rd7 (18. Nxg5) 18... Nxd7 19. cxd7+ Qxd7 20. Rd1 Qc7 21. Nf6+ Ke7) 17... Qxd6 (
+17... Ke7 18. Nf5+ (18. dxe6 Qxd6 19. Rxd6 Kxd6 20. Rd1+ Kc7 21. Qc5 Bf6) 18...
+exf5 19. d6+ Qxd6 20. Rxd6) 18. dxe6 Qc7 19. exf7+ Ke7 20. Qc5+ Kf6 21. Rd6+
+Ke7 22. Re6+ Kd7 23. Rd1+) 16... Kxf7 {[%tqu "En","QUIZVRAAG 5: Wat is dan de
+pointe na het slaan van het paard?","","","d4d5","[#]",10,"Nl","QUIZVRAAG 5:
+Wat is dan de pointe na het slaan van het paard?","","","d4d5","[#]",10]
+QUIZVRAAG 5} 17. d5 $1 {[#]} Be5 (17... Bc8 18. d6 (18. Nd6+ Qxd6 19. dxe6+
+Qxe6 20. Qxc6 Rb8 21. Qc7+) 18... Qd8 19. exf4 {[ With a completely
+overwhelming position ]}) (17... exd5 18. Rxd5 $18 Ne6 19. Rf5+ Ke7 20. Bxe6)
+18. dxe6+ {[%cal Gb3f7,Gd1d7]} (18. d6 Qb6 19. Nc5 Kg7 20. Bxe6) 18... Kg7 (
+18... Nxe6 19. Bxe6+ (19. Nc5 Bc8 20. Qf5+) 19... Kxe6 20. Nc5+) {QUIZVRAAG 6}
+19. Qc5 $5 {[ Threatening 20.Rd7+ followed by 21.Qe7+ and 22.Qf7 mate but this
+might have allowed Black to resist albeit with a horrible position. 20.Nc5 was
+being analysed in the commentary room as completely overwhelming ]} (19. Nc5
+Bc8 20. Qf5 Bf6 21. exf4 $18 {[%csl Ra8,Gb3,Gc5,Gc7,Rc8,Gd1,Gf5,Gf6,Rf8,Yh1,
+Rh8]}) 19... Bc8 $2 (19... Rh7 20. Rd6 $3 (20. Rd7+ Nxd7 21. Qe7+ Kh8) 20...
+Bxd6 21. Nxd6 {[ /\ Qe5+ ]} Kh8 (21... Rd8 22. Qe5+ Kg8 (22... Kg6 23. Bc2#)
+23. e7+) 22. exf4 $1 $18 (22. Qe5+ Qg7 (22... Rg7 23. Nf7+ {[ Wins the queen ]}
+) 23. Nf7+ Kg8 24. e7 Qxe5 25. Nxe5+ Kg7 26. Rd1 Re8 27. exf8=Q+ Rxf8 28. Rd7+
+Kh8 29. Ng6#) 22... Rd8 (22... Bc8 23. f5 $18 {[#]}) (22... Rg7 23. Rd1 Qe7 24.
+Qe3) (22... Rg7 23. g5 hxg5 24. h4 g4 25. h5 Qe7 26. h6 Rh7 27. Qe5+ Kg8 28.
+Nf5) 23. Qe5+ Qg7 24. Nf7+ $18) {[%tqu "En","Wat is nu de briljante
+ontknoping?","","","d1d7","",10,"Nl","Wat is nu de briljante ontknoping?","",
+"","d1d7","",10]} 20. Rd7+ $3 {Een onderbreek!} Bxd7 21. Qe7+ Kg6 {[%tqu "En",
+"QUIZVRAAG 8: En tot slot?","","","e7f7","",10,"Nl","QUIZVRAAG 8: En tot
+slot?","","","e7f7","",10] QUIZVRAAG 7} 22. Qf7# 1-0
+

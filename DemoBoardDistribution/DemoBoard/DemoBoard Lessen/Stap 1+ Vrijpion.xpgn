@@ -1,0 +1,270 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "Wit kan het paard slaan en wint dan 2 punten.
+Wit kan ook...
+
+
+The Passed Pawn
+White can capture the knight and then wins 2 points.
+White can also ... "]
+[FEN "8/1n1k4/P7/8/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "De zwarte pion gaat verloren.
+Wat is het slimste voor zwart ?
+
+
+The Passed Pawn
+The black pawn is lost.
+What's the smartest thing for black? "]
+[FEN "8/8/8/8/8/8/2r1pKR1/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "Dankzij ondersteuning van de loper kan wit promoveren met winst.
+
+
+The Passed Pawn
+Thanks to the support of the bishop, white can promote with profit. "]
+[FEN "3r4/P7/8/1B6/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "Het paard kan de invloed van de toren afschermen.
+
+
+The Passed Pawn
+The knigh can shield the influence of the rook."]
+[FEN "8/8/8/8/8/4n3/4p3/R7 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "Soms moet een helper met schaak ingrijpen.
+
+
+The Passed Pawn
+Sometimes a helper has to intervene with chess. "]
+[FEN "7k/P3R1p1/8/r7/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "De dame slaan is verleidelijk, maar dan gaat de vrijpion verloren.
+
+
+The Passed Pawn
+Capturing the queen is tempting, but then the passed pawn is lost. "]
+[FEN "8/8/8/8/8/1p4P1/8/2rQK3 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "Wit heeft een probleem. De witte vrijpion wordt 2x aangevallen en maar 1x verdedigd.
+Wat vind je van schaak ?
+
+
+The Passed Pawn
+White has a problem. The white passed pawn is attacked twice and defended only once.
+What do you think about check ? "]
+[FEN "3Q4/3P1pk1/3qb3/8/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Vrijpion"]
+[Memo "Zwart kan niet promoveren omdat de toren in de weg staat.
+En de toren is nodig om de pion te verdedigen.
+Misschien iets met schaak ?
+
+
+The Passed Pawn
+Black cannot promote because the rook is in the way.
+And the rook is needed to defend the pawn.
+Maybe something with check ? "]
+[FEN "8/8/8/8/8/8/pR4KP/r7 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Vrijpion"]
+[Memo "Als wit promoveert, verliest zwart zijn toren.
+Hoe kan zwart dit voorkomen ?
+
+
+Defend against Passed Pawn
+If white promotes, black loses his rook.
+How can black prevent this ? "]
+[FEN "r7/2P5/8/8/8/8/8/2R5 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Vrijpion"]
+[Memo "Als zwart promoveert verlies wit zijn loper.
+Hoe kan wit het promoveren voorkomen ?
+
+
+Defend against Passed Pawn
+If black promotes, white loses his bishop.
+How can white prevent promotion ? "]
+[FEN "8/8/8/8/8/4B1b1/6p1/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Vrijpion"]
+[Memo "Het stoppen van de vrijpion moet vanaf de juiste plek.
+Na Lb1 gaat de loper verloren en promoveert Zwart.
+Wat is de betere zet ?
+
+
+Defend against Passed Pawn
+The passed pawn must be stopped from the right place.
+After Bb1 the bishop is lost and Black promotes.
+Which is the better move ? "]
+[FEN "8/8/8/8/4B3/p1k5/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Vrijpion"]
+[Memo "Na 1. ... Th2-h8 volgt 2. Tg7-g8 en promoveert wit.
+Waar kan de zwarte toren beter gaan staan ?
+
+
+Defend against Passed Pawn
+After 1. ... Rh2-h8 follows 2. Rg7-g8 and White promotes.
+What is a better place for the black rook ? "]
+[FEN "8/5PR1/8/8/8/8/7r/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Vrijpion"]
+[Memo "De zwarte koning wil de witte pion slaan.
+Na 1. ... Kc7-d6 volgt 2. f6-f7 en kan de koning er niet meer bij.
+Beter is 1. ... e6-e5, en de witte pion kan niet meer verder.
+
+
+Defend against Passed Pawn
+The black king wants to capture the white pawn.
+After 1. ... Kc7-d6, 2.f6-f7 follows and the king can no longer get to it.
+Better is 1. ... e6-e5, and the white pawn cannot continue. "]
+[FEN "8/2k5/4pP2/2Bb4/8/8/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Vrijpion"]
+[Memo "Zwart kan de witte toren niet slaan.
+Zwart kan die toren nog wel dekken met een röntgen-dekking 1. ... Te6-Te8.
+1. ... Te6xh6 kan ook nog. Na 2. Tf8xg8 volgt Th6-g6 en bewaakt het promotie-veld.
+
+
+Defend against Passed Pawn
+Black cannot capture the white rook.
+Black can still cover that rook with X-ray defend 1. ... Re6-Re8.
+1. ... Re6xh6 is also possible. After 2. Rf8xg8 comes Th6-g6 and guards the promotion field. "]
+[FEN "5Rr1/k5Pp/4r2P/8/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Vrijpion"]
+[Memo "De witte loper bewaakt het promotieveld, maar gaat bij promotie verloren omdat de witte loper hier ook naar kijkt.
+Hoe kunnen we zorgen dat de zwarte loper niet meer naar het promotieveld kijkt ?
+
+
+Defend against Passed Pawn
+The white bishop guards the promotion field, but is lost after promotion because the white bishop also watches it.
+How can we stop the black bishop from looking at the promotion field ?"]
+[FEN "8/8/8/8/b7/8/PP1pB3/8 w KQkq - 0 0"]
+
+

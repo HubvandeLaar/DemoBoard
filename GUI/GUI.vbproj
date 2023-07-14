@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{248F14F3-07CC-4E7E-981C-E5344452F4BE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>DemoBoard.My.MyApplication</StartupObject>
+    <RootNamespace>DemoBoard</RootNamespace>
+    <AssemblyName>DemoBoard</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Users\Hub\Desktop\Setup\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>DemoBoard</ProductName>
+    <PublisherName>Frisselstein BV</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>DemoBoard.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>DemoBoard.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>Off</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Frisselstein.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Frisselstein.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ctlAnswerList.Designer.vb">
+      <DependentUpon>ctlAnswerList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlAnswerList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlAnswerListRow.Designer.vb">
+      <DependentUpon>ctlAnswerListRow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlAnswerListRow.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlBoard.Designer.vb">
+      <DependentUpon>ctlBoard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlBoard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlSplitContainer.Designer.vb">
+      <DependentUpon>ctlSplitContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlSplitContainer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlTabControl.Designer.vb">
+      <DependentUpon>ctlTabControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlTabControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlMoveList.designer.vb">
+      <DependentUpon>ctlMoveList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlMoveList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlMoveListRow.designer.vb">
+      <DependentUpon>ctlMoveListRow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlMoveListRow.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.vb">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddText.Designer.vb">
+      <DependentUpon>frmAddText.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddText.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDockCross.Designer.vb">
+      <DependentUpon>frmDockCross.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDockCross.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditArrows.Designer.vb">
+      <DependentUpon>frmEditArrows.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditArrows.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditGame.Designer.vb">
+      <DependentUpon>frmEditGame.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditGame.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditHalfMove.Designer.vb">
+      <DependentUpon>frmEditHalfMove.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditHalfMove.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditMarkers.Designer.vb">
+      <DependentUpon>frmEditMarkers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditMarkers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditNAGs.Designer.vb">
+      <DependentUpon>frmEditNAGs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditNAGs.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditTexts.Designer.vb">
+      <DependentUpon>frmEditTexts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditTexts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditTrainingQuestion.Designer.vb">
+      <DependentUpon>frmEditTrainingQuestion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditTrainingQuestion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExport.Designer.vb">
+      <DependentUpon>frmExport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImages.Designer.vb">
+      <DependentUpon>frmImages.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImages.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainForm.Designer.vb">
+      <DependentUpon>frmMainForm.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBoard.Designer.vb">
+      <DependentUpon>frmBoard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBoard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGameDetails.Designer.vb">
+      <DependentUpon>frmGameDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGameDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMoveList.Designer.vb">
+      <DependentUpon>frmMoveList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMoveList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPromotion.Designer.vb">
+      <DependentUpon>frmPromotion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPromotion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditTitleAndMemo.Designer.vb">
+      <DependentUpon>frmEditTitleAndMemo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditTitleAndMemo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockfish.Designer.vb">
+      <DependentUpon>frmStockfish.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockfish.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrainingQuestion.Designer.vb">
+      <DependentUpon>frmTrainingQuestion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrainingQuestion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectGame.Designer.vb">
+      <DependentUpon>frmSelectGame.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectGame.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectVariant.Designer.vb">
+      <DependentUpon>frmSelectVariant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectVariant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTitleAndMemo.Designer.vb">
+      <DependentUpon>frmTitleAndMemo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTitleAndMemo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmValidMoves.Designer.vb">
+      <DependentUpon>frmValidMoves.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmValidMoves.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SetupToolbar.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ctlAnswerList.resx">
+      <DependentUpon>ctlAnswerList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlAnswerListRow.resx">
+      <DependentUpon>ctlAnswerListRow.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlBoard.resx">
+      <DependentUpon>ctlBoard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlSplitContainer.resx">
+      <DependentUpon>ctlSplitContainer.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlTabControl.resx">
+      <DependentUpon>ctlTabControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlMoveList.resx">
+      <DependentUpon>ctlMoveList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlMoveListRow.resx">
+      <DependentUpon>ctlMoveListRow.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.nl.resx">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddText.nl.resx">
+      <DependentUpon>frmAddText.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddText.resx">
+      <DependentUpon>frmAddText.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBoard.nl.resx">
+      <DependentUpon>frmBoard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBoard.resx">
+      <DependentUpon>frmBoard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDockCross.resx">
+      <DependentUpon>frmDockCross.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditArrows.resx">
+      <DependentUpon>frmEditArrows.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditGame.nl.resx">
+      <DependentUpon>frmEditGame.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditGame.resx">
+      <DependentUpon>frmEditGame.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditHalfMove.nl.resx">
+      <DependentUpon>frmEditHalfMove.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditHalfMove.resx">
+      <DependentUpon>frmEditHalfMove.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditMarkers.resx">
+      <DependentUpon>frmEditMarkers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditNAGs.resx">
+      <DependentUpon>frmEditNAGs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTexts.resx">
+      <DependentUpon>frmEditTexts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTrainingQuestion.resx">
+      <DependentUpon>frmEditTrainingQuestion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExport.nl.resx">
+      <DependentUpon>frmExport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExport.resx">
+      <DependentUpon>frmExport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGameDetails.nl.resx">
+      <DependentUpon>frmGameDetails.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGameDetails.resx">
+      <DependentUpon>frmGameDetails.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImages.resx">
+      <DependentUpon>frmImages.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainForm.nl.resx">
+      <DependentUpon>frmMainForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainForm.resx">
+      <DependentUpon>frmMainForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMoveList.nl.resx">
+      <DependentUpon>frmMoveList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMoveList.resx">
+      <DependentUpon>frmMoveList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPromotion.nl.resx">
+      <DependentUpon>frmPromotion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPromotion.resx">
+      <DependentUpon>frmPromotion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTitleAndMemo.nl.resx">
+      <DependentUpon>frmEditTitleAndMemo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTitleAndMemo.resx">
+      <DependentUpon>frmEditTitleAndMemo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStockfish.resx">
+      <DependentUpon>frmStockfish.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrainingQuestion.nl.resx">
+      <DependentUpon>frmTrainingQuestion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrainingQuestion.resx">
+      <DependentUpon>frmTrainingQuestion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectGame.nl.resx">
+      <DependentUpon>frmSelectGame.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectGame.resx">
+      <DependentUpon>frmSelectGame.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectVariant.nl.resx">
+      <DependentUpon>frmSelectVariant.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectVariant.resx">
+      <DependentUpon>frmSelectVariant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTitleAndMemo.nl.resx">
+      <DependentUpon>frmTitleAndMemo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTitleAndMemo.resx">
+      <DependentUpon>frmTitleAndMemo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmValidMoves.nl.resx">
+      <DependentUpon>frmValidMoves.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmValidMoves.resx">
+      <DependentUpon>frmValidMoves.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DemoBoard Help.txt" />
+    <Content Include="Read Me.txt" />
+    <Content Include="Settings\Default.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\cambria.ttc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\cambriab.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\cambriai.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\cambriaz.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\KNSB figurine.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\KNSB.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\SpTmFgBd.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\SpTmFgBI.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\SpTmFgIt.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\SpTmFgRg.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Styles.css" />
+    <Content Include="DemoBoard.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard.chw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="DemoBoard.hhp" />
+    <None Include="Frisselstein.pfx" />
+    <None Include="GUI_TemporaryKey.pfx" />
+    <Content Include="DemoBoard Lessen\Opstapje 1 Slaan, aanvallen en veilig aanvallen.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Opstapje 2 Rokade.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Shinkman.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Spelletjes.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1 Gaan en Slaan en de Pion.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1 Schaak en Mat.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1 Tweevoudige aanval.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1+ Mat bedenken.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1+ Pat Vermijden.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1+ Verdedigen tegen Mat.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1+ Vrijpion.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1, 1 en 2 Bord en Stukken.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1, 3 en 4 Pion, Aanval en Slaan.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1, 5 Verdedigen.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1, Pion.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Activiteit van de Stukken.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Aftrekaanval.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 De Tussenzet.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval Dame.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval TLPpK.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Gouden Regels.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Matvoering met de Toren.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Penning Oplossen.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Penning.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2 Uitschakelen Verdediging.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2+ De Opening.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2+ Mat Bedenken.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2+ Mat en Dubbelschaak.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2+ Materiaal winnen.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2+ Pionneneindspel.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 2+ Spelregels.xpgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graphics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Frisselstein.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChessEngine\ChessEngine.vbproj">
+      <Project>{b05245e5-25ce-4502-9ddb-058cf261c4c8}</Project>
+      <Name>ChessEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChessGlobals\ChessGlobals.vbproj">
+      <Project>{c5ca876b-ee3e-42de-a45a-c3948289b3b8}</Project>
+      <Name>ChessGlobals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChessMaterials\ChessMaterials.vbproj">
+      <Project>{125547ef-ad43-4039-b2da-c673ee249202}</Project>
+      <Name>ChessMaterials</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CPSLibrary\CPSLibrary.vbproj">
+      <Project>{70d2dd08-40de-4648-bd48-3029cbd8c72d}</Project>
+      <Name>CPSLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PDFLibrary\PDFLibrary.vbproj">
+      <Project>{41f203dd-778b-433f-8d0a-b1ec21565557}</Project>
+      <Name>PDFLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGNLibrary\PGNLibrary.vbproj">
+      <Project>{e5a1534f-f344-447c-8245-70e44327c5a0}</Project>
+      <Name>PGNLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".cps">
+      <Visible>False</Visible>
+      <Description>Chesser file</Description>
+      <Progid>.cps</Progid>
+      <DefaultIcon>Frisselstein.ico</DefaultIcon>
+    </FileAssociation>
+    <FileAssociation Include=".xpgn">
+      <Visible>False</Visible>
+      <Description>DemoBoard file</Description>
+      <Progid>.xpgn</Progid>
+      <DefaultIcon>Frisselstein.ico</DefaultIcon>
+    </FileAssociation>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(SolutionDir)ChessEngine\$(OutDir)\stockfish_12_32bit.exe" "$(TargetDir)stockfish_12_32bit.exe"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

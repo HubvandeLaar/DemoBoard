@@ -1,0 +1,95 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat zetten"]
+[Memo "Mat in één !"]
+[FEN "k7/8/1K6/8/8/8/8/2R5 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat zetten"]
+[Memo "Mat in één !"]
+[FEN "5K2/8/5k2/8/8/8/8/7r w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in twee"]
+[Memo "Hoe krijg je de zwarte koning in de hoek en dat hij niet ontsnapt ?"]
+[FEN "6k1/5R2/6K1/8/8/8/8/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Samenwerking"]
+[Memo "Door samenwerking van toren en koning kan de zwarte koning niet meer de gevangenis uit."]
+[FEN "8/8/8/4k3/3R4/4K3/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%cal Yd4d8, Yd4h4]"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Geen samenwerking"]
+[Memo "Er is nog geen samenwerking. De koning loopt eerst naar de toren toe, maar het kan ook sneller !"]
+[FEN "8/8/3k4/8/R7/8/8/4K3 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Samenwerking"]
+[Memo "1. Kf5 Kd6  2. Te1 Kd5  3. Te4
+en er is samenwerking !"]
+[FEN "8/2k5/8/8/6K1/8/8/6R1 w KQkq - 0 0"]
+[FENGraphicals "[%cal Gg4f5]"]
+
+{[%cal Yc7d6]} 1. Kf5 {[%cal Gg1e1]} Kd6 {[%cal Yd6d5]} 2. Re1 {[%cal Ge1e4]} Kd5 3. Re4 {En er is samenwerking}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Strategie"]
+[Memo "1. Samenwerking tussen koning ern toren
+2. Vijandelijk koning de hoek in drijven
+3. Matzetten !"]
+[FEN "8/8/3k4/8/R7/8/8/4K3 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+

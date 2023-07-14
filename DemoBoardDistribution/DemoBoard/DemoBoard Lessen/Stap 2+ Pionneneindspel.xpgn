@@ -1,0 +1,132 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pionneneindspel"]
+[Memo "Zwart aan zet zou pat zijn.
+Hoe kan Wit hier winnen ? "]
+[FEN "5k2/5P2/5K2/8/8/8/7P/8 w KQkq - 0 0"]
+
+1. Kg6
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pionneneindspel"]
+[Memo "Zwart wil graag pat.
+1. h4 is natuurlijk pat.
+1. h3 h4 Kg6 kan natuurlijk wel"]
+[FEN "5k2/5P2/5K2/7p/8/8/7P/8 w KQkq - 0 0"]
+
+1. h3 h4 2. Kg6 Ke7
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pionneneindspel"]
+[Memo "Zwart moet natuurlijk de g-pion slaan.
+Natuurlijk niet met de h-pion.
+Maar slaan met de f-pion is pat.
+Wat kan zwart nog meer doen ?"]
+[FEN "8/1p6/2p2p1p/K1k3PP/P7/8/8/8 w KQkq - 0 0"]
+
+1... b6 2. Ka6 fxg5
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pionneneindspel"]
+[Memo "Moeilijke situatie.
+"]
+[FEN "8/8/1k6/2p2K2/PP6/8/8/8 w KQkq - 0 0"]
+
+1. bxc5 {Loopt fout af} (1. a5 {Loopt ook fout af} 1... Kb5 2. bxc5 Kxc5 3. a6
+Kb6 4. a7+ Kxa7) (1. b5 Ka5 2. Ke5 {2. ... Kxa4 kan niet, omdat dan de b-pion
+gewoon door loopt.} 2... Kb6 3. Kd5) 1... Kxc5 2. a5 Kb5 3. a6+ Kxa6 ( (2...
+Ka5xa4 2... Ka5xa4 2... Ka5xa4 3. b4xb6))
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pionneneindspel"]
+[Memo "De witte koning wil graag doorgang naar de zwarte pionnen.
+We kunnen natuurlijk de zwarte koning verder weglokken.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. f5-f6"]
+[FEN "8/8/8/1p2kP2/2p5/2P1K3/1P6/8 w KQkq - 0 0"]
+
+1. f6+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pionneneindspel Plakken"]
+[Memo "Ook een verdedigende koning moet actief zijn.
+Na 1. ... Kg6 2. Kxe6 krijgt wit de pion wel aan de overkant.
+Na 1. ... Kg4 2.Kxe6 Kf3 valt de witte e-pion"]
+[FEN "8/8/4p3/4K1k1/8/4P3/8/8 b KQkq - 0 0"]
+
+1... Kg6 (1... Kg4 2. Kxe6 Kf3) 2. Kxe6
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Oefenen"]
+[Memo ""]
+[FEN "8/5pk1/6p1/8/8/6P1/5K2/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Oefenen"]
+[Memo "Alternatie; als Zwart te snel wint."]
+[FEN "8/6pk/7p/8/8/7P/6K1/8 b KQkq - 0 0"]
+
+

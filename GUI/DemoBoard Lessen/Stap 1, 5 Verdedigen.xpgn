@@ -1,0 +1,162 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Weggaan / Going-Away"]
+[Memo "Het paard kan zich verdedigen door weg te gaan.
+Dit heet WEGGAAN"]
+[FEN "8/8/8/2n5/8/4Q3/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl +a4, +a6, +b7, +d7][%cal Yc5d7, Yc5a4, Yc5b7, Yc5a6]"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dekken / Covering"]
+[Memo "De toren kan het paard dekken.
+Wordt het paard geslagen, dan slaat de toren terug
+Dit heet DEKKEN"]
+[FEN "6r1/8/8/2n5/8/4Q3/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%cal Yg8c8]"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dekken / Covering"]
+[Memo "Als het paard naar d4 gaat, staat het paard zelf gevaarlijk aangevallen.
+Het paard kan beter naar a3"]
+[FEN "8/8/8/1b1R4/8/8/2n5/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl #c2, +a3, -d4]"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dekken / Covering"]
+[Memo "Ook een pion kan het paard dekken"]
+[FEN "8/8/8/3q3N/8/6P1/8/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan / Capturing"]
+[Memo "Wit kan de toren verdedigen door de aanvaller te slaan
+Dit heet SLAAN"]
+[FEN "8/6p1/5n2/8/4R2B/8/8/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verschillende manieren / Several options"]
+[Memo "Zwart kan het paard verdedigen door
++ Weggaan / Going-Away
++ Dekken    / Covering
++ Slaan       / Capturing
+
+Slaan van de aanvaller lost de aanval ook op"]
+[FEN "8/1p6/8/2n5/8/1N6/P7/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Tussenplaatsen / Put in between"]
+[Memo "Wit kan met de dame weggaan, 
+maar kan ook de pion er tussen plaatsen.
+Dit heet TUSSENPLAATSEN"]
+[FEN "8/8/2p5/3b4/8/4P3/6Q1/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Ruimen / Clearing"]
+[Memo "Het paard wordt aangevallen en kan niet weggaan.
+Door de pion weg te spelen, kan de loper het paard dekken. 
+Dit heet RUIMEN "]
+[FEN "8/8/4q2N/8/4pP2/4B3/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl -g4, -f5, #h6, -f7, -g8]"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Ruimen / Clearing"]
+[Memo "Het witte paard wordt aangevallen door de zwarte dame. Wit heeft de volgende keuzes:
++ Weggaan
++ Slaan
++ Dekken door met de dame naar b2 te gaan
++ Dekken door de pion weg te spelen 
+    zodat de dame het paard verdedigd"]
+[FEN "8/8/1p6/q7/8/NPQ5/3P4/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Opgave / Exercise"]
+[Memo "Schrijf alle manieren op waarop de witte toren verdedigd kan worden."]
+[FEN "6k1/5r2/6p1/2B3P1/3P4/6P1/3K1R2/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelletje / Game"]
+[Memo "Wie slaat als eerst alle onverdedigde pionnen van de tegenstander"]
+[FEN "1n6/ppp5/8/8/8/8/PPP5/1N6 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+

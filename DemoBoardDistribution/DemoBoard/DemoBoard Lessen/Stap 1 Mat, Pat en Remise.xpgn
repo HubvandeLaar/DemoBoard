@@ -1,0 +1,181 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Schaak"]
+[Memo "Een aanval op de koning heet Schaak"]
+[FEN "8/3k4/8/8/3R4/8/8/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Schaak opheffen"]
+[Memo "Schaak opheffen kan door
+- Weggaan
+- Slaan
+- Tussenplaatsen"]
+[FEN "8/1n1k2b1/8/8/3R4/8/8/8 b - - 0 0"]
+
+{[%cal Gd7e8, Gb7d6, Gg7d4]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat"]
+[Memo "Kun je niet Weggaan, Slaan of Tussenplaatsen ?
+Dan is het Mat.
+In dit geval Stikmat."]
+[FEN "kr6/ppN5/8/8/8/8/8/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Ondersteunend Mat"]
+[Memo "De dame kan alleen niet zo dicht bij de koning komen.
+Met hulp van de loper kan dat wel.
+Dit heet Ondersteunend Mat.
+Het veld waar de dame staat heet Steunveld."]
+[FEN "4k3/4Q3/8/8/1B6/8/8/8 b - - 0 0"]
+
+{[%csl Ye7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvullend Mat"]
+[Memo "De toren op h7 zorgt dat de koning niet kan ontsnappen: hij is Bewaker.
+De toren op a8 kijkt naar de andere velden en geeft schaak: hij is de Jager.
+Dit heet Aanvullend Mat
+"]
+[FEN "R3k3/7R/8/8/8/8/8/8 b - - 0 0"]
+
+{[%cal Ya8h8, Yh7a7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pat"]
+[Memo "De zwarte koning staat niet schaak.
+Zwart kan geen geldige zet doen.
+Dan is het Pat.
+Het is dan Remise; ieder een half punt 1/2 - 1/2."]
+[FEN "k7/8/1Q6/8/8/8/8/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Geen Pat"]
+[Memo "De stelling lijkt veel op de vorige.
+Zwart staat niet schaak, maar kan wel een geldige zet doen.
+Het is geen Pat, maar gewoon doorspelen."]
+[FEN "k7/8/1Q6/7p/8/8/8/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Remise"]
+[Memo "Wit kan onmogelijk mat zetten.
+Zwart kan dat ook niet.
+Het is remise."]
+[FEN "8/5k2/8/3K4/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Remise"]
+[Memo "Wit heeft onvoldoende materiaal om zwart mat te zetten.
+Zwart kan zich hooguit in de hoek laten drijven en Pat laten zetten.
+Het is Remise."]
+[FEN "8/5k2/8/2BK4/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Remise"]
+[Memo "Wit heeft onvoldoende materiaal om zwart mat te zetten.
+Zwart kan zich hooguit in de hoek laten drijven en Pat laten zetten.
+Het is Remise."]
+[FEN "8/5k2/8/2NK4/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Geen Remise"]
+[Memo "Wit heeft voldoende materiaal om zwart mat te zetten !"]
+[FEN "8/5k2/8/2RK4/8/8/8/8 w - - 0 0"]
+
+) (1. Rc6 {[%cal Yc6h6, Yc6c8]} 1... Ke7 2. Rd6 {[%cal Yd6h6, Yd6d8]} 2... Kf7
+3. Re6 {[%cal Ye6h6, Ye6e8]} 3... Kg7 {De toren kan de koning niet verder
+opdrijven.
+Hij heeft assistentie van zijn koning nodig.} 4. Ke5 Kf7 5. Kf5 Kg7
+6. Rf6 Kh7 7. Rg6 {Nu kan de zwarte koning nog naar twee velden.
+Oppassen;
+anders wordt het Pat.
+Nu kijken waar de witte koning naar toe moet om mat te
+zetten} 7... Kh8 8. Kf6 Kh7 9. Kf7 Kh8 10. Rh6+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Wachtzet"]
+[Memo "Zojuist zagen we dat de koning in de hoek mat komt te staan.
+Nu is wit aan zet, en wil het liefst niets doen.
+Maar de zwarte koning mag niet ontsnappen !
+En we moeten dadelijk Th6# kunnen spelen."]
+[FEN "8/5K1k/6R1/8/8/8/8/8 w - - 0 0"]
+
+

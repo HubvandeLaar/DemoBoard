@@ -1,0 +1,319 @@
+﻿[Event "QUIZVRAAG 01"]
+[Site "Leningrad URS ch"]
+[Date "1947.02.??"]
+[Round "?"]
+[White "Keres, P..."]
+[Black "Smyslov, V..."]
+[Result "1-0"]
+[ECO "A34"]
+[Annotator "Grooten,Herman"]
+[PlyCount "53"]
+[EventDate "1947.??.??"]
+
+1. c4 Nf6 2. Nc3 c5 3. Nf3 e6 4. g3 d5 5. cxd5 Nxd5 6. Bg2 Nc6 7. O-O Nc7 8. b3
+Be7 9. Bb2 e5 10. Rc1 f6 11. Na4 b6 12. Nh4 Bd7 {[#] Het zwarte spel is nogal
+provocerend. Hoe kan wit zijn tegenstander uit het zadel lichten?} 13. e3 {
+[%cal Gd1h5,Gd2d4] Oplossing Het is interessant dat dit kleine pionzetje zwart
+al bijna voor onoplosbare problemen stelt. Het zit hem er niet zozeer in de
+directe dreiging Dh5+ gevolgd door Pg6 met kwaliteitswinst. Deze dreiging laat
+zich gemakkelijk pareren, maar de problemen voor zwart doemen vooral op door
+de positionele dreiging d2-d4. Niet alleen dreigt wit het zwarte centrum te
+ondermijnen, maar in combinatie met de tactische dreigingen die er direct
+ontstaan heeft zwart ook nog te kampen met het feit dat de zwarte stukken
+enigszins onbeholpen staan opgesteld. Deze factoren te samen kunnen snel tot
+een catastrofe voor zwart leiden. Een aantal mogelijke varianten:} ({In
+aanmerking komt ook maar dan is het kwaliteitsoffer na} 13. b4 Nxb4 $1 14. Bxa8
+Qxa8 {interessant. Zwart is zeker niet zonder tegenspel.}) ({Ook geen gek idee
+is} 13. f4 exf4 14. gxf4 {[%cal Ga4c3,Gc3e4,Gf4f5] En wit krijgt een soort
+stelling die we in een andere opgave zien.}) 13... O-O 14. d4 {De directe
+dreiging is d4-d5-d6 met stukwinst.} exd4 15. exd4 Rc8 {Zwart besluit zich
+tevreden te stellen met pionverlies na} 16. dxc5 (16. d5 Nd4 17. Bxd4 cxd4 18.
+Qxd4 Nb5 {gevolgd door ... Pd6 en hij heeft een verdedigbare stelling
+verkregen.}) 16... b5 17. Nc3 f5 {[#]} (17... Bxc5 {zou zeer slecht aflopen na}
+18. Nxb5 $1) 18. Rc2 $1 {[%cal Gc2d2] Deze torenzet, waarmee de onafwendbare
+dreiging Td2 in de stelling wordt gebracht, is veel beter dan de terugtrekking
+van het paard met 18. Pf3 omdat zwart met 18. ... Lf6 nog volop meedoet.} Bxh4
+19. Rd2 Rf7 20. gxh4 $1 {Dit eenvoudige terugnemen van het stuk is veel
+sterker dan de mogelijke damewinst na} (20. Bxc6 Bxc6 21. Rxd8+ Rxd8 {en zwart
+heeft relatief gezien nog kansen op redding.}) 20... Ne6 21. Nxb5 {Met twee
+minuspionnen bij hopeloze stelling had Smyslov ook wel meteen mogen opgeven.
+Hij deed nog:} Nxc5 22. Nd6 Re7 23. Nxc8 Qxc8 24. Ba3 Ne4 25. Bxe4 fxe4 26.
+Bxe7 Nxe7 27. Rxd7 {om hier pas de wapens neer te leggen.} 1-0
+
+[Event "QUIZVRAAG 02 / quiz 29"]
+[Site "Vrnjacka Banja"]
+[Date "1977.03.??"]
+[Round "?"]
+[White "Taimanov, M.."]
+[Black "Martinovic, S.."]
+[Result "1-0"]
+[ECO "A06"]
+[Annotator "Grooten, Herman"]
+[PlyCount "81"]
+[EventDate "1977.??.??"]
+
+1. Nf3 d5 2. b3 Nf6 3. Bb2 c6 4. e3 Bg4 5. h3 Bxf3 6. Qxf3 Nbd7 7. Be2 e5 8. g3
+Bd6 9. O-O e4 10. Qg2 Qe7 11. d4 O-O 12. c4 Rfe8 13. Nc3 Ba3 14. Bxa3 Qxa3 15.
+Rfc1 a6 16. c5 b6 17. cxb6 Nxb6 18. Rc2 Rec8 19. Rac1 a5 20. Qf1 Qb4 21. Nb1
+Qd6 22. Qe1 Nfd7 23. Kg2 g6 24. Qd2 h5 25. h4 f6 26. Rc3 Ra7 27. Qc2 Rac7 {
+[#] Hoe bouwt wit zijn voordeel uit?} 28. Rc5 $1 {Met dit schijnoffer, dat hem
+op strategische gebied van dienst is, komt wit daadwerkelijk verder. De pion
+op a5 wordt op de korrel genomen en zwart is niet in staat hem te dekken. De
+toren kan uiteraard niet genomen worden wegens materiaalverlies.} (28. Ba6 Ra8
+29. Bb5) 28... a4 29. bxa4 Qe6 30. a5 $1 {Een sterke tussenzet waardoor wit
+zijn behaald voordeel behoudt. Na het zwakkere} (30. Rc3 $1 c5 31. dxc5 Rxc5
+32. Rxc5 Rxc5 {heeft zwart het ergste achter de rug.}) 30... Na8 (30... Nxc5 $2
+{was uit den boze wegens} 31. axb6 {en er hangen twee stukken bij zwart.}) 31.
+Rc3 c5 {Ook nu lijkt zwart zich met deze actie te kunnen bevrijden maar de
+sterke witte a-pion blijft een 'handenbindertje'.} 32. dxc5 Rxc5 33. Qb3 Rxc3
+34. Rxc3 Rxc3 35. Nxc3 {Door alle torens te ruilen hoopt zwart de druk op zijn
+stelling te verlichten. Hij komt bedrogen uit, want met een nieuwe tactische
+wending trekt wit de partij definitief naar zich toe.} Nc7 36. Nxd5 $1 {
+Deze wending moet zwart overzien hebben.} Nxd5 37. Bc4 {Hier blijkt de witte
+a-pion niet onbelangrijk te zijn! Zwart kan zijn paard op d5 niet dekken.} Kg7
+38. Bxd5 Qe5 39. Qb7 $1 {De meest nauwkeurige. Niet alleen wordt het paard
+gepend, maar tegelijkertijd valt wit de pion op e4 aan en ondersteunt hij de
+opmars van zijn a-pion.} Qf5 40. Bxe4 Qe6 41. Bc6 1-0
+
+[Event "QUIZVRAAG 03 / quiz 31"]
+[Site "Sverdlovsk tt"]
+[Date "1987.??.??"]
+[Round "?"]
+[White "Ivanchuk"]
+[Black "Dreev"]
+[Result "1-0"]
+[ECO "C06"]
+[Annotator "Grooten,Herman"]
+[PlyCount "63"]
+[EventDate "1987.??.??"]
+
+1. e4 e6 2. d4 d5 3. Nd2 Nf6 4. e5 Nfd7 5. c3 c5 6. Bd3 Nc6 7. Ne2 cxd4 8. cxd4
+f6 9. exf6 Nxf6 10. Nf3 Bd6 11. O-O Qc7 {[#] Hoe pakt wit de
+stellingsproblemen aan?} 12. g3 $1 {Een sterk plan van de witspeler. Wit heeft
+in principe de betere pionnenstructuur (zwarte pion op e6 is achtergebleven op
+een open lijn en dus zwak). Als compensatie voor dit manco beschikt zwart over
+een grote activiteit van stukken. Vooral zijn loper op d6 is een sterk stuk en
+na de korte rochade kan hij met een toren op de half open f-lijn eventueel
+aanvalskansen ontwikkelen. Met de tekstzet beoogt wit om de zwartveldige
+lopers te ruilen. Tevens hoopt hij via veld zo zijn passieve paard op e2 te
+activeren om tegelijkertijd de pion op e6 onder druk te zetten.} O-O 13. Bf4
+Bd7 (13... e5) (13... Ng4 14. Bxd6 Qxd6 15. Nc3 e5) 14. Rc1 Rac8 15. Re1 Kh8
+16. Qd2 Qb8 {Zwart ziet geen kans om iets te ondernemen tegen de dreigende
+omklemming.} 17. Bb5 $1 {Een sterke actie. Alle stukken die veld e5 verdedigen
+dienen afgeruild te worden.} a6 18. Bxc6 {Een gunstige ruil voor wit. Weldra
+komt zwart met een slechte loper te zitten.} bxc6 19. Bxd6 Qxd6 {[%csl Rc6,Rd5,
+Re6]} 20. Ne5 {Wit bezet nu direct het sterke veld e5. Minder in aanmerking
+kwam het thematische 20. Df4 omdat zwart met 20. ... Db4! plotseling twee
+dreigingen heeft gecreerd: 21. ... Dxb2 en 21. ... Pe4.} (20. Nf4) 20... c5 {
+Zo denkt zwart zijn spel te kunnen bevrijden.} (20... Ne4 21. Qe3 Nxf2 $2 {
+faalt op} (21... c5 22. f3 cxd4 23. Qxd4 Ng5 24. Kg2 Rce8 25. Nf4) (21... Rxf2
+22. Qxf2 Nxf2 23. Nf7+) 22. Rf1 Ne4 23. Nf7+ Rxf7 24. Rxf7) 21. f3 Bb5 22. Nf4
+{Uiteraard laat wit zijn paard niet ruilen door zwarts slechte loper.} Nd7 $2 {
+Dit laat een elegante combinatie toe. Beter was 22. ... Kg8.} 23. Neg6+ $1 hxg6
+24. Rxe6 Qc7 (24... Qb8 25. Nxg6+ Kg8 26. Ne7+ Kf7 27. Rce1 {en er valt niets
+te bedenken tegen de dreiging 27. Dg5.}) 25. Nxg6+ Kg8 26. Ne7+ Kf7 27. Qg5 $1
+{Een fraaie combinatie tot slot.} Bd3 (27... Kxe6 28. Re1+ {en mat of
+materiaalwinst volgt.} Ne5 29. Rxe5+ Kd7 30. Rxd5+ Ke6 31. Qe3+ Kf7 32. Rf5+
+Ke8 33. Nxc8+ Kd7 34. Rxf8) 28. Nxd5 Kxe6 {Zwart geeft de dame om niet direct
+mat te gaan; droog houdt hij het sowieso niet.} 29. Nxc7+ Kd6 30. dxc5+ Kxc7
+31. c6 Nf6 32. Qe5+ 1-0
+
+[Event "QUIZVRAAG 04 / quiz 32"]
+[Site "Ljubljana YUG ch"]
+[Date "1960.??.??"]
+[Round "?"]
+[White "Matulovic, M.."]
+[Black "Janosevic, D.."]
+[Result "1-0"]
+[ECO "A34"]
+[Annotator "Grooten, Herman"]
+[PlyCount "79"]
+[EventDate "1960.??.??"]
+
+1. c4 Nf6 2. Nc3 c5 3. g3 d5 4. cxd5 Nxd5 5. Bg2 Nc7 6. Nf3 Nc6 7. Qa4 Qd7 8.
+d3 e5 9. O-O Be7 10. Nd2 O-O 11. Nc4 f6 12. f4 Qe6 {[#] Waar speelt wit op in
+deze stelling?} 13. f5 $1 {Een sterke zet die veld e4 permanent vastlegt voor
+een wit stuk.} Qd7 14. Be3 Rb8 15. Bxc6 $1 {Dit kon al eerder maar na zwarts
+laatste zet is dit het meest ideale moment om de zwarte pionformatie te
+versplinteren.} bxc6 16. Ne4 {Hier staat het paard als een reus. Niet alleen
+wordt de pion op c5 onder schot genomen, ook ondersteunt het paard een
+pionnenwals op de koningsvleugel.} Na6 17. a3 Rb5 18. Qc2 Qc7 19. Rf3 Bd7 20.
+g4 $1 {Wit maakt zich op voor de acties tegen de zwarte koning.} Be8 21. Raf1
+Qd8 22. Qc1 Rb7 23. g5 {Het is niet goed om nog meer voorbereidingen te
+treffen. Zwart stond klaar om met ... Lxf7 het paard op c4 eventueel
+onschadelijk te maken in het geval de witte dame zich naar de koningsvleugel
+zou begeven.} Bh5 (23... fxg5 $1 24. Bxg5 Bxg5 25. Qxg5 {is goed voor wit.})
+24. R3f2 Kh8 25. Rg2 Rd7 26. Qe1 Qe8 27. Qh4 fxg5 28. Bxg5 g6 {Trieste
+noodzaak daar de aftocht van de loper gepaard zou gaan met} (28... Bf7 {
+een regelrechte mataanval ingeleid door} 29. f6 $1) 29. f6 Bd8 30. Bh6 {
+Zwart kan materiaalverlies niet meer vermijden.} Rff7 31. Ned6 Qe6 32. Nxf7+
+Rxf7 33. Bg7+ Kg8 34. Qe4 Bc7 35. Rg5 h6 36. Bxh6 (36. Rxg6 $1 {was iets
+sterker.}) 36... Rxf6 37. Rxf6 Qxf6 38. Nxe5 Kh7 {Een blunder in verloren
+stelling.} 39. Rxh5 Bxe5 40. Bg5+ 1-0
+
+[Event "QUIZVRAAG 05 / quiz 66"]
+[Site "Oekraine"]
+[Date "1993.??.??"]
+[Round "?"]
+[White "Vasiliev"]
+[Black "Zilberstein"]
+[Result "0-1"]
+[Annotator "Grooten,Herman"]
+[SetUp "1"]
+[FEN "r4rk1/p2qb2p/4p1p1/1p1pPp2/1PpNnP2/2P1P3/P1QB2PP/R4RK1 b - - 0 1"]
+[PlyCount "29"]
+[EventDate "1993.??.??"]
+
+1... a5 $1 {Zeer juist. Zwart wil graag de a-lijn gebruik om zijn stukken te
+verbeteren.} 2. a3 {Wit probeert nog even alles gedekt te houden.} Ra6 $1 {
+Het juiste vervolg. Direct ruilen op b4 is te vroeg. Zwart plant om eerst te
+verdubbelen (zelfs tripleren is mogelijk) alvorens hij de a-lijn opent.} 3. Ne2
+{Wit doet een poging om het sterke paard op e4 af te ruilen. Tegen de nu
+volgende invasie over de a-lijn heeft hij geen verweer.} Rfa8 4. Rab1 {Geeft
+toe dat het hem niet lukt om te opponeren. 4. Db2 faalde op 4. ... axb4 5.
+axb4 gevolgd door een algehele ruil op a1 waarna de loper op d2 blijft hangen.}
+axb4 5. axb4 Ra3 {Het eerste succesje, de enige open lijn is in handen van
+zwart. De tekstzet is beter dan 5. ... Ta2 6. Tb2 en zwart dreigt het bezit
+van de open lijn weer te moeten prijsgeven.} 6. Ng3 {[#]} (6. Bc1 Ra2 7. Rb2
+Ra1 8. Rb1 Rxb1 9. Qxb1 Qa7) 6... R8a4 $1 {Weer een sterke zet, de dame kan
+meestal het beste 'achterop' staan bij een verdubbeling of triplering.} 7. Nxe4
+dxe4 {Uiteraard neemt zwart met zijn pion. Veld d3 kan nu ook benut worden.} 8.
+Rf2 Qd3 $1 {En dat gebeurt dan ook.} 9. Qc1 Ra2 {Het tweede succesje: de
+tweede rij begint interessant te worden voor zwart.} 10. Qe1 Rc2 11. Rd1 Raa2 {
+Het derde succes: de tweede toren is ook geinfiltreerd.} 12. g3 {î@ White= Kg1,
+De1,Td1,Tf2,Ld2,b4,c3,e3,e5,f4,g3,h2. Black= *Kg8,Dd3,Ta2,Tc2,Le7,b5,c4,e4,e6,
+f5,g6,h7.} (12. Bc1 Rxf2 13. Rxd3 Rxg2+ 14. Kh1 Rxh2+ 15. Kg1 Rag2+ 16. Kf1
+cxd3) 12... Bd8 $1 {Hiermee geeft zwart zichzelf het beslissende zetje. De
+loper streeft naar de diagonaal a7-g1 waarmee hij de zwakke pion op e3 aanvalt
+en combinaties met ... Txd2 actueel beginnen te worden.} 13. Bc1 {Dat kost
+groot materieel maar er was geen adequaat antwoord meer.} (13. Kg2 {Het is
+interessant om te zien hoe zwart het hierna kan beslissen.} Bb6 14. Kh3 Kf7 {
+Ik geef een voorbeeld.} 15. Kg2 h6 16. Kh3 g5 17. Kg2 g4 {Zwart vergroot zijn
+ruimtevoordeel en zet eerst de koning op een veilig plekje.} 18. Kh1 h5 19. Kg2
+Kg6 20. Kh1 Ra7 {De toren gaat dan de druk via de d-lijn opvoeren en kan
+mogelijk ook naar de h-lijn.} 21. Re2 (21. Bc1 {faalt nu op het fraaie} Ra1 $1
+22. Rxd3 Rcxc1 {met winst.}) 21... Rd7 22. Kg2 Rxc3 {en na verlies van deze
+pion is het echt voorbij.}) 13... Rxf2 14. Rxd3 Rg2+ 15. Kf1 exd3 0-1
+
+[Event "QUIZVRAAG 06 / quiz 34"]
+[Site "Havana"]
+[Date "1968.??.??"]
+[Round "?"]
+[White "Cobo, E.."]
+[Black "Suetin, A.."]
+[Result "0-1"]
+[ECO "B24"]
+[Annotator "Grooten,Herman"]
+[PlyCount "50"]
+[EventDate "1968.??.??"]
+
+1. e4 c5 2. Nc3 e6 3. g3 Nc6 4. Bg2 Nf6 5. d3 Be7 6. f4 d5 7. Nh3 d4 8. Ne2 e5
+9. Nf2 h5 $2 10. Ng1 Ng4 11. Nxg4 Bxg4 12. Bf3 $5 {Om te proberen de slechte
+loper af te ruilen.} exf4 13. Bxf4 $4 {[#] Een vreselijke positionele fout die
+zwart in het voordeel brengt. Ziet u hoe hij moet spelen?} (13. gxf4 {was
+noodzakelijk en wit houdt na} Bh4+ 14. Kf1 {goed spel.}) 13... g5 $1 {Een zeer
+sterk antwoord op wits strategische misser. Met de tekstzet verovert zwart het
+essentiele veld e5 waardoor hij groot positioneel voordeel krijgt.} 14. Bd2 Ne5
+15. Qe2 (15. h3 Be6 $1 {[%csl Rf3][%cal Gc5c4]} 16. Bxh5 g4 $1 17. hxg4 Bxg4
+$19) 15... Qb6 16. O-O-O $1 {Wit laat zich verleiden tot deze gevaarlijke zet.
+Beter was 16. b3.} Rc8 {Dreigt sterk 17. ... c4.} 17. b3 $2 {Maar dit stopt de
+dreiging geenszins.} c4 $1 18. dxc4 (18. bxc4 $4 Ba3#) 18... Rxc4 19. Kb1 {[#]}
+Rxc2 $1 {Zwart gaat op volle kracht verder. Dit schijnoffer toont de kracht
+van het sterke paard op e5.} 20. Bxg4 (20. Kxc2 $2 d3+) 20... hxg4 21. Ba5 {
+Een wanhoopspoging om er nog iets van te maken maar zwart heeft een pasklaar
+antwoord geprepareerd.} d3 $1 22. Bxb6 dxe2 23. Re1 Nd3 {Het paard deelt de
+genadeklap uit.} 24. Nxe2 (24. Rxe2 Rc1#) (24. Kxc2 Nxe1+ 25. Kd2 Bb4+ 26. Kxe2
+axb6) 24... Rb2+ 25. Ka1 axb6 0-1
+
+[Event "QUIZVRAAG 07 / quiz 35"]
+[Site "Brighton"]
+[Date "1979.12.??"]
+[Round "?"]
+[White "Fedorowicz, J.."]
+[Black "Goodman, D.."]
+[Result "0-1"]
+[ECO "A42"]
+[Annotator "Grooten,Herman"]
+[PlyCount "88"]
+[EventDate "1979.??.??"]
+
+1. d4 g6 2. c4 Bg7 3. e4 Nc6 4. Be3 e5 5. Nf3 exd4 6. Nxd4 Nge7 7. Nc3 d6 8.
+Be2 O-O 9. O-O f5 10. exf5 {[#] Wat komt er na 10. exf5?} Bxd4 $1 {Een
+opmerkelijke beslissing. Zwart geeft zijn mooie loper voor een paard en lijkt
+daarmee ook vrijwillig zijn koningsstelling te verzwakken. De voordelen zijn
+echter groter. Na} 11. Bxd4 Nxf5 {verkeert de loper op d4 in grote problemen.
+Zo faalt} 12. Be3 (12. Nb5 a6 13. Bc3 axb5 14. cxb5 Nce7 {wit niet voldoende
+compensatie voor het geofferde stuk zoals bleek uit meerdere partijen:}) 12...
+Nxe3 13. fxe3 {Zwart heeft de zwartveldige witte loper weer teruggekregen en
+mag nu bogen op een zeer prettig positievoordeel. Niet alleen speelt de zwakke
+pion op e3 wit parten, vooral het bezit van veld e5 is van groot belang.} Be6
+14. Qd2 Qe7 15. Rxf8+ Rxf8 16. Rf1 Rxf1+ 17. Bxf1 {Wit heeft alle torens
+geruild in de hoop minder problemen met de zwakte van pion e3 te ondervinden.
+De zwakte van veld e5 laat zich echter vooral in het eindspel voelen.} Ne5 18.
+Nd5 {Het is de vraag of wit hierop vooruit gaat. Weldra mag zwart afwikkelen
+naar het eindspel van goed paard tegen de slechte loper.} Qf7 19. b3 Bxd5 20.
+Qxd5 $2 {[#] Wit werkt goed mee. Het is beter om de dames op het bord te laten,
+nu kan zwart op zijn gemak het verworven voordeel proberen uit te buiten.} Ng4
+$1 {Zwart besluit onder nog gunstigere omstandigheden de dames te ruilen. Door
+de pion van e3 naar e4 te lokken (=lees dwingen) worden twee belangrijke
+velden (d4 en f4 verzwakt waarop de zwarte koning straks kan proberen binnen
+te komen.} 21. e4 (21. Qd2 {kost een pion na} Qe6) 21... Kg7 22. Qxf7+ Kxf7 23.
+h3 Nf6 24. Bd3 Ke6 25. Kf2 Ke5 26. Ke3 c6 27. Bc2 d5 $1 {Een zeer opmerkelijke
+beslissing. Zwart lijkt in een klap het zo moeizaam verworven positionele
+voordeel weg te geven. Hij ruilt twee pionnen van wit, die op de verkeerde
+kleur staan, zomaar af. De tekstzet dient een hoger doel. Door de ruil wordt
+de witte koning uit het centrum verdreven en kan zwart via de velden d4 en c3
+proberen zijn koning op de zwakke witte damevleugel binnen te laten komen.} 28.
+exd5 cxd5 29. cxd5 Nxd5+ 30. Kf3 (30. Kd3 {faalt op} Nf4+) (30. Kd2 Kf4 {
+en zwart gaat op de zwakke witte koningsvleugel af.}) 30... b5 {Weer sterk
+gespeeld. Het oprukken met de koning kan altijd nog. Eerst dient zwart zijn
+damevleugelpionnen (die straks het werk moeten doen!) naar voren te spelen.}
+31. a3 Kd4 32. h4 Kc3 33. Bd1 Kd2 {Het lijkt wel een ware zegetocht die de
+zwarte koning aan het maken is.} 34. Be2 Nc3 35. Bf1 Kc2 36. Kf4 Kxb3 37. Kg5
+Kxa3 38. Kh6 Kb4 $2 {Het is nu op een wedloop aangekomen en zwart grijpt mis.
+Hij had direct moeten oprukken met zijn a-pion.} (38... a5 $1) 39. Kxh7 a5 40.
+Kxg6 Nd5 $2 {Weer een aarzeling die de winst zelfs weggeeft! Winnend was 40. ..
+. a4.} (40... a4) 41. h5 Nf4+ 42. Kg5 a4 43. h6 Ne6+ 44. Kf6 $4 {Toch nog
+gerechtigheid. Wit gaat ook de fout in. Hij had remise kunnen maken met 44.
+Kf5.} a3 0-1
+
+[Event "QUIZVRAAG 08 / quiz 37"]
+[Site "Portoroz izt"]
+[Date "1958.08.??"]
+[Round "?"]
+[White "Petrosian, T.."]
+[Black "Rossetto, H.."]
+[Result "1-0"]
+[ECO "D35"]
+[Annotator "Grooten,Herman"]
+[PlyCount "77"]
+[EventDate "1958.??.??"]
+
+1. d4 Nf6 2. Nf3 d5 3. c4 e6 4. Nc3 Be7 5. cxd5 exd5 6. Bf4 c6 7. Qc2 Na6 8. a3
+O-O 9. e3 Nc7 10. Bd3 Ne6 11. Be5 g6 12. O-O Ng7 13. b4 a6 14. Bxf6 Bxf6 15. a4
+Bf5 16. Bxf5 Nxf5 17. b5 axb5 18. axb5 Qd6 19. bxc6 bxc6 20. Na4 Rfb8 21. Nc5
+Qe7 22. Nd3 Qb7 23. Nfe5 Bxe5 24. Nxe5 Rxa1 25. Rxa1 Ne7 26. g3 Qb2 27. Qd1 h5
+28. Rc1 Rb6 29. h3 Kg7 30. Kg2 Qa3 31. Ra1 Qb2 32. g4 hxg4 33. hxg4 Rb7 34. Rc1
+Qb5 {[#] Beoordeel de stelling. A) Wit staat iets beter, maar het is niet
+genoeg om te winnen. B) Zwart staat beter. C) Wit staat duidelijk beter en
+heeft uitstekende winstkansen. D) Het is gelijk, remise lijkt de meest
+waarschijnlijke uitslag. Motiveer ja antwoord.} 35. Qf3 $1 {Wit staat
+duidelijk beter en het ziet er naar uit dat zwart na deze zet de nederlaag
+nauwelijks meer zal ontlopen. Om te beginnen zit zwart met handen en voeten
+gebonden aan zijn zwakke pion op c6. Daarnaast heeft hij problemen met zijn
+koningsstelling, f7 is een kwetsbaar punt, zeker omdat zijn stukken niet of
+nauwelijks aan die kant het bord kunnen ingrijpen.} (35. g5 Rc7 36. Qf3 Nf5 37.
+Rh1 Kf8 (37... Qb8 38. Qh3 Qg8 39. Ng4 Kf8 40. Nh6 Nxh6 41. gxh6) 38. Ng4 Qb4 (
+38... Ke7) 39. Nf6 Ke7 40. Rh8 Rc8) 35... f6 (35... f5 36. gxf5 gxf5 37. Qh5 $1
+{en de zwarte koning wordt in een matnet gedreven.} Ng8 38. Qg6+ Kf8 39. Rxc6 {
+en zwart kan het gevoeglijk vergeten.}) 36. g5 $3 {Deze wending zal de
+zwartspeler rauw op zijn dak zijn komen vallen. Had u deze zet zien aankomen?}
+Nf5 {Dit staat min of meer gelijk met kapitulatie, maar de alternatieven waren
+evenmin hoopgevend voor zwart.} (36... fxe5 37. Qf6+ Kg8 38. Rh1) (36... fxg5
+37. Qf7+ Kh8 38. Rh1#) (36... Ng8 37. gxf6+ Nxf6 38. Rxc6) 37. gxf6+ Kxf6 38.
+Rxc6+ {Niet alleen maakt wit nu een pion buit, belangrijker is dat de zwarte
+koning het vrije veld in moet.} Ke7 39. Qf4 {Petrosian speelt het er
+positioneel. Een aanvalsspeler had hier ongetwijfeld het sterkere Overigens
+hield de zwartspeler het nu ook voor gezien.} (39. Qh3 $1 {gevonden, waarna
+het snel bekeken is.}) 1-0
+

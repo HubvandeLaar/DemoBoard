@@ -1,0 +1,32 @@
+<MainForm Left="442" Top="37" Width="1071" Height="409" WindowState="0">
+   <ctlSplitContainer Level="1" Orientation="1" SplitterDistance="249">
+      <Panel1 Width="249">
+         <ctlTabControl Level="3">
+            <TabPage Index="0" Form="frmGameDetails"></TabPage>
+         </ctlTabControl>
+      </Panel1>
+      <Panel2 Width="497">
+         <ctlSplitContainer Level="3" Orientation="0" SplitterDistance="211">
+            <Panel1 Width="497">
+               <ctlSplitContainer Level="5" Orientation="1" SplitterDistance="237">
+                  <Panel1 Width="237">
+                     <ctlTabControl Level="7">
+                        <TabPage Index="0" Form="frmMoveList"></TabPage>
+                     </ctlTabControl>
+                  </Panel1>
+                  <Panel2 Width="257">
+                     <ctlTabControl Level="7">
+                        <TabPage Index="0" Form="frmQuiz"></TabPage>
+                     </ctlTabControl>
+                  </Panel2>
+               </ctlSplitContainer>
+            </Panel1>
+            <Panel2 Width="497">
+               <ctlTabControl Level="5">
+                  <TabPage Index="0" Form="frmTextAndMemo"></TabPage>
+               </ctlTabControl>
+            </Panel2>
+         </ctlSplitContainer>
+      </Panel2>
+   </ctlSplitContainer>
+</MainForm>

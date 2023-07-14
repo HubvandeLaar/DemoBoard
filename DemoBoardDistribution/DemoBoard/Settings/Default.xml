@@ -1,0 +1,16 @@
+<MainForm Width="1059" Height="589" WindowState="0" StatusBar="False">
+   <ctlSplitContainer Level="1" Orientation="1" SplitterDistance="587">
+      <Panel1 Width="587">
+         <ctlTabControl Level="3">
+            <TabPage Index="0" Form="frmBoard"></TabPage>
+         </ctlTabControl>
+      </Panel1>
+      <Panel2 Width="346">
+         <ctlTabControl Level="3">
+            <TabPage Index="0" Form="frmTitleAndMemo"></TabPage>
+            <TabPage Index="1" Form="frmMoveList"></TabPage>
+            <TabPage Index="2" Form="frmGameDetails"></TabPage>
+         </ctlTabControl>
+      </Panel2>
+   </ctlSplitContainer>
+</MainForm>

@@ -1,0 +1,29 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Loop van de Pion"]
+[Memo "Eerste keer mag de pion 1 of 2 stapjes
+Anders alleen maar 1 stapje"]
+[FEN "8/3p4/8/8/7P/5P2/1P6/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl +b3, +b4, +f4, +h5]"]
+
+{[%csl +b3, +b4, +f4, +h5]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan met de Pion"]
+[Memo "De pion mag alleen schuin slaan"]
+[FEN "8/8/3p1p2/4P3/8/1r1n4/2P5/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl #c2, Ob3, +c3, Od3, +c4, #e5, Od6, +e6, Of6]"]
+
+{[%csl #c2, Ob3, +c3, Od3, +c4, #e5, Od6, +e6, Of6]}
+

@@ -1,0 +1,8 @@
+<MainForm Left="130" Top="130" Width="1071" Height="409" WindowState="0">
+   <ctlTabControl Level="1">
+      <TabPage Index="0" Form="frmMoveList"></TabPage>
+      <TabPage Index="1" Form="frmTextAndMemo"></TabPage>
+      <TabPage Index="2" Form="frmGameDetails"></TabPage>
+      <TabPage Index="3" Form="frmQuiz"></TabPage>
+   </ctlTabControl>
+</MainForm>

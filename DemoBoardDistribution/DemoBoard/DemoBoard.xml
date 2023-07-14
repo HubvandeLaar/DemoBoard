@@ -1,0 +1,88 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+DemoBoard
+</name>
+</assembly>
+<members>
+<member name="T:DemoBoard.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:DemoBoard.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:DemoBoard.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:DemoBoard.My.Resources.Resources.LessonsFolder">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:DemoBoard.My.Resources.Resources.PasteGame">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="E:DemoBoard.ctlBoard.NewChessPiece">
+ <summary>When a piece has been moved from the SetupToolBar on to the board</summary>
+</member>
+<member name="E:DemoBoard.ctlBoard.ChessPieceStartMoving">
+ <summary>When a piece has been moved on the board</summary>
+ <param name="pChessBoard">NB board contains position after the move !!!</param>
+</member>
+<member name="P:DemoBoard.ctlBoard.FENBeforeDragging">
+ <summary>FEN as it was before the move registered</summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.TabControl_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+ <summary>
+ MousUp event is forwarded to frmMainForm to Raise an ForwardedMousUp event to ALL ctlTabControls
+ </summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.gParentForm_ForwardedMouseUp(System.Windows.Forms.Panel,System.Windows.Forms.DockStyle,System.Drawing.Point)">
+ <summary>
+ A MouseUp event is only detected by the control with the previous MouseDown.
+ To solve this, The control with the previous MouseDown fires a MouseUp event.
+ The frmMainForm catches this event and raises a ForwardedMouseUp to all ctlTabControls.
+ Each ctlTabControl checks to see if this event was intended for him.
+ </summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.gParentForm_ForwardedMousePanelLeave(System.Drawing.Point)">
+ <summary>
+ A MouseUp event is only detected by to control with the previous MouseDown.
+ To solve this, The control with the previous MouseDown fires a MouseLeave event
+ when the MousePointer leaves the rectangle of the gDockingCrossTabControl.
+ Each ctlTabControl checks to see if this event was intended for him.
+ </summary>
+</member>
+<member name="P:DemoBoard.ctlMoveListRow.Perceptable">
+ <summary> Perceptable replaces Visible.  
+ Because Visible is set to False when Form is hidden.
+ To determine what was originally Visible is difficult </summary>
+</member>
+<member name="M:DemoBoard.frmBoard.ctlBoard_NewChessPiece(ChessMaterials.ChessPiece,System.String,ChessMaterials.ChessBoard)">
+ <summary>When a piece has been moved from the SetupToolBar on to the board</summary>
+</member>
+<member name="M:DemoBoard.frmBoard.ctlBoard_ChessPieceMoved(ChessMaterials.ChessPiece,System.String,System.String,ChessMaterials.ChessBoard,System.Boolean,ChessMaterials.ChessPiece,System.String,System.String)">
+ <summary>When a piece has been moved on the board</summary>
+ <param name="pChessBoard">NB board contains position after the move !!!</param>
+</member>
+<member name="M:DemoBoard.frmBoard.PerformMove(ChessMaterials.BoardMove)">
+ <summary>Is Called by frmValidMoves after selecting one of the moves</summary>
+</member>
+<member name="M:DemoBoard.frmBoard.mnuFieldMenuUpdate(System.Object,System.Windows.Forms.MouseEventArgs,System.String)">
+ <summary>Called from CtlBoard_MouseRightClickOnField</summary>
+</member>
+<member name="M:DemoBoard.frmBoard.AddPieceMenuItem(System.Windows.Forms.ContextMenuStrip,ChessMaterials.ChessPiece,System.String)">
+ <summary>Called from mnuFieldMenuUpdate</summary>
+</member>
+</members>
+</doc>

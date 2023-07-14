@@ -1,0 +1,203 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mobiliteit van stukken"]
+[Memo "Een paard kan vanuit de beginpositie maar naar 3 velden.
+
+Mobility of pieces
+From start position a knight can jump to 3 possible fields."]
+[FEN "8/8/8/8/8/8/8/6N1 w KQkq - 0 0"]
+
+{[%csl Ge2, Gf3, Gh3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mobiliteit van stukken"]
+[Memo "Dit paard kan naar 6 velden springen.
+
+Mobility of pieces
+This knight can jump to 6 possible fields."]
+[FEN "8/8/8/8/8/8/2N5/8 w KQkq - 0 0"]
+
+{[%csl Ga1, Ge1, Ga3, Ge3, Gb4, Gd4]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mobiliteit van stukken"]
+[Memo "Dit paard staat heel actief. Het kan naar acht velden springen.
+
+Mobility of pieces
+This knight is very active. He can go to eight fields"]
+[FEN "8/8/8/8/4N3/8/8/8 w KQkq - 0 0"]
+
+{[%csl Gd2, Gf2, Gc3, Gg3, Gc5, Gg5, Gd6, Gf6]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mobiliteit van stukken"]
+[Memo "Ook voor een loper is het aantal velden waar hij naar toe kan, afhankelijk van zijn plaats. Een loper in de hoek kan naar zeven velden.
+
+Mobility of pieces
+For a bishop the number of possible fields to go to, is also depending on his position. A bishop in the corner can go to seven possible fields."]
+[FEN "7B/8/8/8/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl Ga1, Gb2, Gc3, Gd4, Ge5, Gf6, Gg7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mobiliteit van stukken"]
+[Memo " Een loper in het centrum kan naar dertien velden.
+
+Mobility of pieces
+A bishop at the centre, can go to thirteen fields."]
+[FEN "8/8/8/4B3/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl Ga1, Gb2, Gh2, Gc3, Gg3, Gd4, Gf4, Gd6, Gf6, Gc7, Gg7, Gb8, Gh8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Het Centrum"]
+[Memo "We zetten onze stukken graag in of rond het centrum.
+Daar zijn onze stukken het meeste waard.
+Bovendien vallen de stukken daar meer vijandelijke velden aan.
+
+The Centre
+We prefer to put our pieces in or around the centre.
+Piece have a higher value there.
+Pieces at the centre also attach more hostile fields."]
+[FEN "8/8/8/8/8/8/8/8 w KQkq - 0 1"]
+
+{[%csl Oc3, Od3, Oe3, Of3, Oc4, .d4, .e4, Of4, Oc5, .d5, .e5, Of5, Oc6, Od6,
+Oe6, Of6]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Het beperken van mobiliteit"]
+[Memo "De witte loper beperkt de mobiliteit van het zwarte paard.
+Het zwarte paard kan nergens heen.
+
+Restrict mobility
+The white bishop restricts mobility of the knight.
+The black knight has no place to go to."]
+[FEN "8/8/n2B4/8/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Het beperken van mobiliteit"]
+[Memo "Nu gaat het paard zeker verloren.
+
+Restrict mobility
+Now the knight will be lost."]
+[FEN "8/8/n2B4/8/1P6/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Het beperken van mobiliteit"]
+[Memo "Hier zijn de rollen omgekeerd.
+Stukken die weinig zetten kunnen spelen zijn kwetsbaar.
+
+Restrict mobility
+Now the roles are reversed.
+Pieces with limited moves are vulnerable."]
+[FEN "8/8/8/2p5/2P2n2/8/8/5B2 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Activiteit van de stukken"]
+[Memo "Wit staat hier duidelijk actiever dan zwart.
+Wit kan zijn stukken makkelijker bewegen.
+Wit gaat iets doen als.. Kd4...Pc6...Pb8 de pionnen lastig vallen...
+
+Activity of pieces
+White is clearly more active than black.
+White can easily move pieces.
+White will do something like.. Kd4...Nc6...Nb8 and attach the pawns..n"]
+[FEN "2n1k3/5p2/p3bP2/1pBpN3/8/2P1K3/PP6/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Activiteit van de stukken"]
+[Memo "Welke stukken zijn niet of minder mobiel ?
+
+
+Activity of pieces
+What pieces are no or less mobile ?"]
+[FEN "6nr/p3k1p1/2p2p1p/2p5/2P5/P1P3P1/1B3P1P/6KR w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Activiteit van de stukken"]
+[Memo "Welke stukken staan inactief ?
+En welke zetten zouden dat verbeteren ?
+
+
+Activity of pieces
+What pieces are inactive ?
+What moves would inprove this ?"]
+[FEN "1n3k1r/1p1b2pp/p1p2p2/8/8/2PP2PP/1PB2PK1/1N5R w KQkq - 0 0"]
+
+

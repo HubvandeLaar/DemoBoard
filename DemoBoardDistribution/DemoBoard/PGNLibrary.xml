@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PGNLibrary
+</name>
+</assembly>
+<members>
+<member name="T:PGNLibrary.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:PGNLibrary.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:PGNLibrary.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:PGNLibrary.PGNGames.Remove(PGNLibrary.PGNGame)">
+ <summary>Returns New Current PGNGame</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.FindNextHalfMove(PGNLibrary.PGNHalfMove,System.Int64,System.Int64)">
+ <summary>Returns next HalfMove matching pVariantLevel and pVariantNumber</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.FindPreviousHalfMove(PGNLibrary.PGNHalfMove,System.Int64,System.Int64)">
+ <summary>Returns the index of the next move matching these criteria</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.FirstMoveInVariant(PGNLibrary.PGNHalfMove)">
+ <summary>Determine FirstMove within a specific Variant</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.Insert(PGNLibrary.PGNHalfMove@,PGNLibrary.PGNHalfMove)">
+ <summary>Insert a new move into the MoveList</summary>
+ <returns>Returns True when move was added</returns>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.ReNumber">
+ <summary>Update indexes stored at Halfmove</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.DeleteVariantFrom(PGNLibrary.PGNHalfMove)">
+ <summary> Delete this and remaining moves in Variant starting with pHalfMove </summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.DeleteVariantAfter(PGNLibrary.PGNHalfMove)">
+ <summary>Remove remaining moves from current (sub-) variant</summary>
+</member>
+<member name="P:PGNLibrary.PGNNAG.PGNString">
+ <summary>First position contains "$"</summary>
+</member>
+</members>
+</doc>
