@@ -535,7 +535,6 @@
     </Content>
     <None Include="DemoBoard.hhp" />
     <None Include="Frisselstein.pfx" />
-    <None Include="GUI_TemporaryKey.pfx" />
     <Content Include="DemoBoard Lessen\Opstapje 1 Slaan, aanvallen en veilig aanvallen.xpgn">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
