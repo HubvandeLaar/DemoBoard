@@ -492,7 +492,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DemoBoard Help.txt" />
-    <Content Include="Read Me.txt" />
+    <Content Include="ReadMe.txt" />
     <Content Include="Settings\Default.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
