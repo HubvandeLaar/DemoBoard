@@ -15,8 +15,8 @@ V	Menubalk onder of boven plaatsen als optie in Settings
 V	Taalgebruik van context-menu in MoveList werd niet aangepast bij kiezen andere taal
 V	Variant promoveren en degraderen ?
 X	Variant in een variant aanmaken ging niet goed
-X	Bij mnuView de statusen van de Subwindows bepalen.....sub.Parent..? 
-       Werkt niet; SubForm buiten MainForm droppen blijft Parent houden
+X	Bij mnuView de statusen van de Subwindows bepalen.....sub.Parent..?  
+      Werkt niet; SubForm buiten MainForm droppen blijft Parent houden
 	  Visible is geen goede optie; bij meerdere tabbladen is degen die niet actief is, ook InVisible
 V	Tijdens Setup kan andere locatie worden aangegeven voor de Lessen
 V	Als de PGN-File veranderd is, wvolgt er een waarschuwing bij het openen van een ander bestand, etc..
