@@ -239,7 +239,7 @@ V	Serialize TAGs, HalfMove, PGNGame en PGNFile werkt
 V	SaveImage After EditGame
 V	          After MoveList Position Change 
 V	          After Changes in PGNHalfMoves
-V			  After PGNGame Index change
+V	          After PGNGame Index change
 V	Na Delete Game blijf Game Index op 5/11 staan
 V	Na UnDeleteGame blijft Index op Current game staan
 V	Na UndeleteGame Zijn er teveel Tags aangemaakt (door de Serialize)
