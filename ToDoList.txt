@@ -16,7 +16,7 @@ V	Taalgebruik van context-menu in MoveList werd niet aangepast bij kiezen andere
 V	Variant promoveren en degraderen ?
 X	Variant in een variant aanmaken ging niet goed
 X	Bij mnuView de statusen van de Subwindows bepalen.....sub.Parent..?  
-      Werkt niet; SubForm buiten MainForm droppen blijft Parent houden
+	  Werkt niet; SubForm buiten MainForm droppen blijft Parent houden
 	  Visible is geen goede optie; bij meerdere tabbladen is degen die niet actief is, ook InVisible
 V	Tijdens Setup kan andere locatie worden aangegeven voor de Lessen
 V	Als de PGN-File veranderd is, wvolgt er een waarschuwing bij het openen van een ander bestand, etc..
@@ -237,8 +237,8 @@ V	Edithalfmove uitbreiden met editMarker, Arrows, Text en TrainingQuestion
 V	Collections replaced by Lists
 V	Serialize TAGs, HalfMove, PGNGame en PGNFile werkt
 V	SaveImage After EditGame
-V             After MoveList Position Change 
-V             After Changes in PGNHalfMoves
+V	          After MoveList Position Change 
+V	          After Changes in PGNHalfMoves
 V			  After PGNGame Index change
 V	Na Delete Game blijf Game Index op 5/11 staan
 V	Na UnDeleteGame blijft Index op Current game staan
