@@ -238,9 +238,9 @@ Public Class ctlBoard
         Dim Bitmap As Bitmap = New Bitmap(picBoard.Image)
         Dim Rect As Rectangle
         If pIncludeBorderLabels Then
-            Rect = New Rectangle(0, 0, CInt(LeftPos(10)), Bitmap.Height) 'Cut the right Toolbar
+            Rect = New Rectangle(0, 0, CInt(LeftPos(10)), (9 * gFieldSize) + (2 * gBorderSize)) 'Cut the right Toolbar
         Else
-            Rect = New Rectangle(gFieldSize, 0, CInt(LeftPos(9)), (Bitmap.Height - gFieldSize + gBorderSize)) 'Cut right Toolbar and BorderLabels
+            Rect = New Rectangle(gFieldSize, 0, CInt(LeftPos(9)), (8 * FieldSize) + (2 * gBorderSize)) 'Cut right Toolbar and BorderLabels
         End If
         'Return Bitmap
         Return Bitmap.Clone(Rect, Imaging.PixelFormat.Format24bppRgb)

@@ -1,15 +1,15 @@
 To Do Lijstje
 	Testen of nieuwe installatie van hogere versie de gewijzigde XPGN's in myDocuments\DemoBoard lessen\ overschrijft
-	Inlezen *.cps gaat niet goed....
-	Export; Nieuw diagram of memo gooit andere entries weg...
-	Save diagram als JPG; zijn de randen grijs; beter om die wit te maken...
-	Export; Diagram komt er zonder Markers op te staan !!
 
 	Documentatie en Helpteksten aanpassen !!
 	Feedback op de Stelling (met Niveau)
 	Analyse van de Partij
 
 Aanpassingen
+V	Export; Nieuw diagram of memo gooit andere entries weg...
+V	Export; Diagram komt er zonder Markers op te staan !!
+V	Save diagram als JPG; zijn de randen grijs; beter om die wit te maken...
+X	Inlezen *.cps gaat niet goed.... Getest met alle *.cps die ik had; geen fouten, markers en arrows op de goeie plek
 V	Export naar PDF formaat ipv MS-Word
 V	Menubalk onder of boven plaatsen als optie in Settings
 V	Taalgebruik van context-menu in MoveList werd niet aangepast bij kiezen andere taal
