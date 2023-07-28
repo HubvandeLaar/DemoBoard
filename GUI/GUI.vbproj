@@ -495,9 +495,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DemoBoard Help.txt" />
-    <Content Include="ReadMe.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Settings\Default.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
