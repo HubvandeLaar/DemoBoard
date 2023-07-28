@@ -1,5 +1,4 @@
 ﻿Option Explicit On
-
 Imports ChessGlobals
 Imports ChessMaterials
 Imports ChessGlobals.ChessColor
