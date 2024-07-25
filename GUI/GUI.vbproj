@@ -496,7 +496,7 @@
   <ItemGroup>
     <Content Include="DemoBoard Help.txt" />
     <Content Include="Settings\Default.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Fonts\cambria.ttc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -530,108 +530,122 @@
     </Content>
     <Content Include="Styles.css" />
     <Content Include="DemoBoard.chm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard.chw">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="DemoBoard.hhp" />
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="DemoBoard Lessen\Opstapje 1, Verdedigen.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="DemoBoard Lessen\Stap 1 Opgaven Ondersteunend Mat.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1 Opgaven Ondersteunend Mat.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="DemoBoard.hhp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Frisselstein.pfx" />
     <Content Include="DemoBoard Lessen\Opstapje 1 Slaan, aanvallen en veilig aanvallen.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Opstapje 2 Rokade.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Shinkman.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Spelletjes.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1 Gaan en Slaan en de Pion.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1 Schaak en Mat.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1 Tweevoudige aanval.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1+ Mat bedenken.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1+ Pat Vermijden.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1+ Verdedigen tegen Mat.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1+ Vrijpion.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1, 1 en 2 Bord en Stukken.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1, 3 en 4 Pion, Aanval en Slaan.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1, 5 Verdedigen.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 1, Pion.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Activiteit van de Stukken.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Aftrekaanval.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 De Tussenzet.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval Dame.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval TLPpK.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Gouden Regels.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Matvoering met de Toren.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Penning Oplossen.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Penning.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2 Uitschakelen Verdediging.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2+ De Opening.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2+ Mat Bedenken.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2+ Mat en Dubbelschaak.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2+ Materiaal winnen.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2+ Pionneneindspel.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard Lessen\Stap 2+ Spelregels.xpgn">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">

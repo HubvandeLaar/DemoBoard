@@ -125,4 +125,12 @@ Public Class frmStockfish
         End If
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.gfrmMainForm = Nothing
+        Me.gfrmBoard = Nothing
+        Me.Engine = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

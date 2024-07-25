@@ -95,4 +95,12 @@ Public Class frmValidMoves
     Private Sub frmValidMoves__Disposed(pSender As Object, pArgs As EventArgs) Handles Me.Disposed
         gfrmMainForm = Nothing
     End Sub
+
+    Protected Overrides Sub Finalize()
+        Me.gMoves = Nothing
+        Me.gfrmMainForm = Nothing
+        Me.gfrmBoard = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

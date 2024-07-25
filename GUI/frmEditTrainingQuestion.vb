@@ -43,7 +43,7 @@ Public Class frmEditTrainingQuestion
                             For Each Answer As PGNTrainingAnswer In LocalizedQuestion.Answers
                                 Dim Cells(2) As String
                                 Cells(0) = Answer.Move.MoveText(CurrentLanguage)
-                                Cells(1) = Format(Answer.Points)
+                                Cells(1) = String.Format(Answer.Points)
                                 Cells(2) = Answer.FeedBack
                                 grdAnswersEn.Rows.Add(Cells)
                             Next Answer
@@ -57,7 +57,7 @@ Public Class frmEditTrainingQuestion
                             For Each Answer As PGNTrainingAnswer In LocalizedQuestion.Answers
                                 Dim Cells(2) As String
                                 Cells(0) = Answer.Move.MoveText(CurrentLanguage)
-                                Cells(1) = Format(Answer.Points)
+                                Cells(1) = String.Format(Answer.Points)
                                 Cells(2) = Answer.FeedBack
                                 grdAnswersNl.Rows.Add(Cells)
                             Next Answer
@@ -274,5 +274,11 @@ Public Class frmEditTrainingQuestion
                 End If
         End Select
 
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        Me.TrainingQuestion = Nothing
+
+        MyBase.Finalize()
     End Sub
 End Class

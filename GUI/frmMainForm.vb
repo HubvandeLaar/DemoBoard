@@ -752,14 +752,12 @@ Public Class frmMainForm
     End Sub
 
 
-
     Private Sub mnuLessonsFolder_Click(pSender As Object, pArgs As EventArgs) Handles mnuLessonsFolder.Click
         Try
             Dim OldFolder As String = CurrentLessonsFolder
             Dim NewFolder As String = ""
             With dlgLessonsFolder
-                .Description = "Select folder for Lesson-files"
-                .RootFolder = Environment.SpecialFolder.MyComputer
+                .RootFolder = Environment.SpecialFolder.Desktop
                 .SelectedPath = OldFolder
                 .ShowNewFolderButton = True
                 If .ShowDialog() <> DialogResult.OK Then
@@ -986,7 +984,6 @@ Public Class frmMainForm
     End Function
 
     Private Sub frmMainForm_KeyDown(pSender As Object, pArgs As KeyEventArgs) Handles Me.KeyDown
-
         pArgs.Handled = False 'To forward the event also to other controls
     End Sub
 
@@ -1587,6 +1584,13 @@ Public Class frmMainForm
         Dim Reader As New IO.StreamReader(pFileName)
         Dim XMLText As String = Reader.ReadToEnd()
 
+        mnuBoard.Checked = False
+        mnuStockfish.Checked = False
+        mnuMoveList.Checked = False
+        mnuValidMoves.Checked = False
+        mnuTitleAndMemo.Checked = False
+        mnuGameDetails.Checked = False
+
         DeSerializeLayout(XDocument.Parse(XMLText))
 
         Reader.Close()
@@ -1869,9 +1873,24 @@ Public Class frmMainForm
 
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.gfrmBoard = Nothing
+        Me.gfrmStockfish = Nothing
+        Me.gfrmMoveList = Nothing
+        Me.gfrmValidMoves = Nothing
+        Me.gfrmGameDetails = Nothing
+        Me.gfrmTitleAndMemo = Nothing
+        Me.gfrmDockCross = Nothing
+        Me.gfrmEditGame = Nothing
+        Me.gfrmEditTitleAndMemo = Nothing
+        Me.gfrmTrainingQuestion = Nothing
+        Me.gJournaling = Nothing
+        Me.gPGNFile = Nothing
+        Me.gPGNGame = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 #End Region
-
-
-
 
 End Class

@@ -79,4 +79,11 @@ Public Class frmSelectVariant
         Return MyBase.ProcessCmdKey(pMsg, pKeyData)
     End Function
 
+    Protected Overrides Sub Finalize()
+        Me.Variants = Nothing
+        Me.ChoosenVariant = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

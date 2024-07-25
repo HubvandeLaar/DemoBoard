@@ -1,4 +1,8 @@
-﻿Public Class PGNVariants
+﻿Option Explicit On
+
+Imports ChessGlobals
+
+Public Class PGNVariants
     Inherits List(Of PGNVariant)
 
     Public CurrentMoveIndex As Long
@@ -37,7 +41,7 @@
         End If
 
         If FirstMoveOfParentVariant = -1 Then
-            MsgBox(ChessGlobals.MessageText("InvalidMove"))
+            MsgBox(MessageText("InvalidMove"))
             Exit Sub
         End If
 

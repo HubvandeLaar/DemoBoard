@@ -15,6 +15,7 @@ Public Class CPSPosition
     Protected Overrides Sub Finalize()
         Me.Arrows = Nothing
         Me.Fields = Nothing
+
         MyBase.Finalize()
     End Sub
 End Class

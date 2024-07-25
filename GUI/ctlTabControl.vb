@@ -187,22 +187,22 @@ Public Class ctlTabControl
                     Select Case Element.Attribute("Form").Value
                         Case "frmBoard"
                             Me.AddTabPage(gfrmMainForm.gfrmBoard)
-                            'gfrmMainForm.mnuBoard.Checked = True
+                            gfrmMainForm.mnuBoard.Checked = True
                         Case "frmStockfish"
                             Me.AddTabPage(gfrmMainForm.gfrmStockfish)
-                            'gfrmMainForm.mnuStockfish.Checked = True
+                            gfrmMainForm.mnuStockfish.Checked = True
                         Case "frmMoveList"
                             Me.AddTabPage(gfrmMainForm.gfrmMoveList)
-                            'gfrmMainForm.mnuMoveList.Checked = True
+                            gfrmMainForm.mnuMoveList.Checked = True
                         Case "frmValidMoves"
                             Me.AddTabPage(gfrmMainForm.gfrmValidMoves)
-                            'gfrmMainForm.mnuValidMoves.Checked = True
+                            gfrmMainForm.mnuValidMoves.Checked = True
                         Case "frmTitleAndMemo"
                             Me.AddTabPage(gfrmMainForm.gfrmTitleAndMemo)
-                            'gfrmMainForm.mnuTitleAndMemo.Checked = True
+                            gfrmMainForm.mnuTitleAndMemo.Checked = True
                         Case "frmGameDetails"
                             Me.AddTabPage(gfrmMainForm.gfrmGameDetails)
-                            'gfrmMainForm.mnuGameDetails.Checked = True
+                            gfrmMainForm.mnuGameDetails.Checked = True
                     End Select
             End Select
         Next Element

@@ -7,10 +7,10 @@ Imports ChessMaterials.ChessPiece
 
 Public Class ChessBoard
 
-    Public Fields As ChessFields           'Fields 1 to 64 
+    Public Fields As ChessFields                  'Fields 1 to 64 
 
     'FEN Variables
-    Public ActiveColor As ChessColor       'The side to move
+    Public ActiveColor As ChessColor              'The side to move
     Public WhiteLongCastlingAllowed As Boolean    'True if castling is allowed 
     Public WhiteShortCastlingAllowed As Boolean
     Public BlackLongCastlingAllowed As Boolean
@@ -519,6 +519,7 @@ Public Class ChessBoard
 
     Protected Overrides Sub Finalize()
         Me.Fields = Nothing
+        Me.ActiveColor = Nothing
 
         MyBase.Finalize()
     End Sub

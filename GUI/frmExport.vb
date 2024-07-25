@@ -159,6 +159,7 @@ Public Class frmExport
 
             Me.UseWaitCursor = False
             Me.Hide()
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
@@ -278,5 +279,12 @@ Public Class frmExport
     Private Function PixelsToCentimeters(pPixels As Integer) As Double
         Return pPixels * 2.54 / 96
     End Function
+
+    Protected Overrides Sub Finalize()
+        Me.PGNFile = Nothing
+        Me.PreviewDocument = Nothing
+
+        MyBase.Finalize()
+    End Sub
 
 End Class

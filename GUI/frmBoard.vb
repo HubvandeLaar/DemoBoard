@@ -385,4 +385,10 @@ Public Class frmBoard
         gfrmMainForm = Nothing
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.gfrmMainForm = Nothing
+        Me.gCurrentHalfMove = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

@@ -7,7 +7,7 @@
 
     Public Sub CenterForm(pctlTabControl As ctlTabControl)
         With pctlTabControl.Parent.ClientRectangle
-            Dim DockingLocation As Point = New Point(.Left + (.Width - Me.Width) / 2,
+            Dim DockingLocation = New Point(.Left + (.Width - Me.Width) / 2,
                                                          .Top + (.Height - Me.Height) / 2)
             Me.Location = pctlTabControl.Parent.PointToScreen(DockingLocation)
         End With

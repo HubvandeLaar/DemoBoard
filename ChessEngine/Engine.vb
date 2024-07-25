@@ -71,10 +71,11 @@ Public Class Engine
     End Sub
 
     Private Sub SendCommand(pCommand As String)
-        If strmWriter IsNot Nothing Then
-            'Debug.Print(">" & pCommand)
-            strmWriter.WriteLine(pCommand)
+        If strmWriter Is Nothing Then
+            Return
         End If
+        'Debug.Print(">" & pCommand)
+        strmWriter.WriteLine(pCommand)
     End Sub
 
     Private Sub Process_OutputDataReceived(pSender As Object, pArgs As DataReceivedEventArgs) Handles Process.OutputDataReceived
@@ -108,4 +109,10 @@ Public Class Engine
         RaiseEvent Message("Error: " & pArgs.Data)
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.Process = Nothing
+        Me.strmWriter = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

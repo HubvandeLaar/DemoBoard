@@ -66,12 +66,4 @@ Public Class PGNNAGs
     Public Sub New()
     End Sub
 
-    Protected Overrides Sub Finalize()
-        For Each PGNNag As PGNNAG In Me
-            PGNNag = Nothing
-        Next PGNNag
-
-        MyBase.Finalize()
-    End Sub
-
 End Class

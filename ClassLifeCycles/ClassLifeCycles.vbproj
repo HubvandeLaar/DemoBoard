@@ -1,33 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DFD1D4F2-F902-4B72-9639-FB6A175EF3CC}</ProjectGuid>
+    <ProjectGuid>{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <StartupObject>Sub Main</StartupObject>
-    <RootNamespace>InnerReflection</RootNamespace>
-    <AssemblyName>InnerReflection</AssemblyName>
+    <RootNamespace>ClassLifeCycles</RootNamespace>
+    <AssemblyName>ClassLifeCycles</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,7 +23,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>InnerReflection.xml</DocumentationFile>
+    <DocumentationFile>ClassLifeCycles.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -46,7 +33,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>InnerReflection.xml</DocumentationFile>
+    <DocumentationFile>ClassLifeCycles.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -60,15 +47,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Frisselstein.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Frisselstein.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -92,11 +70,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Reflection.vb" />
+    <Compile Include="LifeCycle.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -118,7 +97,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Frisselstein.pfx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -131,6 +109,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChessEngine\ChessEngine.vbproj">
+      <Project>{b05245e5-25ce-4502-9ddb-058cf261c4c8}</Project>
+      <Name>ChessEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChessGlobals\ChessGlobals.vbproj">
       <Project>{c5ca876b-ee3e-42de-a45a-c3948289b3b8}</Project>
       <Name>ChessGlobals</Name>
@@ -147,32 +129,14 @@
       <Project>{248f14f3-07cc-4e7e-981c-e5344452f4be}</Project>
       <Name>GUI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PDFLibrary\PDFLibrary.vbproj">
+      <Project>{41f203dd-778b-433f-8d0a-b1ec21565557}</Project>
+      <Name>PDFLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PGNLibrary\PGNLibrary.vbproj">
       <Project>{e5a1534f-f344-447c-8245-70e44327c5a0}</Project>
       <Name>PGNLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Frisselstein.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

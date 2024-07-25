@@ -457,7 +457,7 @@ Public Class King
     End Function
 
     Public Shared Function InCheckAfterMove(pMove As BoardMove, pColor As ChessColor, pChessBoard As ChessBoard) As Boolean
-        Dim Board As ChessBoard = New ChessBoard(pChessBoard.FEN)
+        Dim Board = New ChessBoard(pChessBoard.FEN)
         Board.PerformMove(pMove)
         Return King.InCheck(pColor, Board)
     End Function

@@ -39,9 +39,7 @@ Public Class PGNGame
                 MoveList = Replace(MoveList, vbCrLf, " ") 'Remove all kind of linefeeds
                 MoveList = Replace(MoveList, vbCr, " ")
                 MoveList = Replace(MoveList, vbLf, " ")
-                Do While MoveList.First = " "
-                    MoveList = Mid(MoveList, 2)
-                Loop
+                MoveList = MoveList.TrimStart()
                 Me.HalfMoves.XPGNString = MoveList
             End If
         End Set

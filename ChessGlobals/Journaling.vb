@@ -106,5 +106,10 @@ Public Class Journaling
         End If
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.Journal = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class
 

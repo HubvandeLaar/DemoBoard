@@ -122,29 +122,22 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 36</value>
-  </data>
-  <data name="mnuGraphicals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 36</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>65, 29</value>
   </data>
   <data name="&gt;&gt;mnuNew.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pnlMainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 54</value>
-  </data>
   <data name="&gt;&gt;pnlMainPanel.Name" xml:space="preserve">
     <value>pnlMainPanel</value>
+  </data>
+  <data name="dlgLessonsFolder.Description" xml:space="preserve">
+    <value>Select folder for Lesson-files</value>
   </data>
   <data name="mnuView.Text" xml:space="preserve">
     <value>&amp;View</value>
   </data>
   <data name="pnlMainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1415, 375</value>
+    <value>1061, 305</value>
   </data>
   <data name="mnuSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -156,6 +149,9 @@
         KpmvAAVQWaUN9S09Qv+tkvkKUACVVdpQ39Ij9N8qma8ABVBZpQ31LT1C/62S+QpQAJVVjg7dUCXzFfAJ
         PahwdOiGCpm9hh7NTGb/hh7OSOZuhz6agcwza5blBTVU5pbz8sgjAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="pnlDragPanel.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mnuUndo.Enabled" type="System.Boolean, mscorlib">
@@ -221,9 +217,6 @@
         DElG/XEx5/NhmVFf7phXX6M74UnS78nT3rgpfS2j0MoJlhkNNZOMfMm3CONmyuPDPKVugZ7/RvLR04j/
         r7E/dJDpDzdkpTf+4AUxvsr+4YWW1v8BrMehmXmFtw0AAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="&gt;&gt;mnuNewGame.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuStockfish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -318,31 +311,25 @@
     <value>6</value>
   </data>
   <data name="mnuAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 38</value>
+    <value>220, 38</value>
   </data>
   <data name="mnuCopyGamePGN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 36</value>
+    <value>133, 30</value>
   </data>
-  <data name="ctlTabControl.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;mnuStatusBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuPasteGame.Text" xml:space="preserve">
     <value>Paste Game</value>
   </data>
   <data name="mnuOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 38</value>
-  </data>
-  <data name="mnuMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 36</value>
-  </data>
-  <data name="mnuDiagramSaveAsJPG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 38</value>
+    <value>215, 38</value>
   </data>
   <data name="mnuLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 38</value>
+    <value>223, 38</value>
   </data>
   <data name="ctlTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+    <value>3, 3</value>
   </data>
   <data name="&gt;&gt;mnuCopyGameXPGN.Name" xml:space="preserve">
     <value>mnuCopyGameXPGN</value>
@@ -353,17 +340,18 @@
   <data name="mnuCopyGame.Text" xml:space="preserve">
     <value>Copy Game</value>
   </data>
-  <data name="&gt;&gt;mnuPasteDiagram.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="mnuSwitchSides.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 38</value>
+    <value>211, 38</value>
   </data>
+  <data name="&gt;&gt;mnuEditTitleAndMemo.Name" xml:space="preserve">
+    <value>mnuEditTitleAndMemo</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mnuSave.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
-  <data name="mnuBoardStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 38</value>
+  <data name="mnuCopyDiagram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 38</value>
   </data>
   <data name="mnuSetupToolbar.Text" xml:space="preserve">
     <value>Setup Toolbar</value>
@@ -380,14 +368,17 @@
   <data name="mnuMenuStrip.Text" xml:space="preserve">
     <value>MenuStrip</value>
   </data>
-  <data name="mnuPreviousGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
+  <data name="&gt;&gt;mnuLanguage.Name" xml:space="preserve">
+    <value>mnuLanguage</value>
   </data>
   <data name="&gt;&gt;mnuExit.Name" xml:space="preserve">
     <value>mnuExit</value>
   </data>
-  <data name="mnuEditGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 38</value>
+  <data name="mnuDiagramSaveAsJPG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 38</value>
+  </data>
+  <data name="&gt;&gt;mnuStockfish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuSwitchSides.Name" xml:space="preserve">
     <value>mnuSwitchSides</value>
@@ -395,29 +386,17 @@
   <data name="mnuBlackAndWhiteBoard.Text" xml:space="preserve">
     <value>Black and White</value>
   </data>
-  <data name="pnlMainPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="mnuExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 38</value>
+    <value>215, 38</value>
   </data>
   <data name="&gt;&gt;mnuFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuNewGame.Name" xml:space="preserve">
-    <value>mnuNewGame</value>
-  </data>
-  <data name="&gt;&gt;mnuEditTitleAndMemo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuHelpIndex.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mnuEditTitleAndMemo.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+T</value>
-  </data>
   <data name="mnuMenuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+    <value>3, 3</value>
   </data>
   <data name="pnlDragPanel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -428,7 +407,7 @@
   <data name="&gt;&gt;mnuLessonsFolder.Name" xml:space="preserve">
     <value>mnuLessonsFolder</value>
   </data>
-  <data name="&gt;&gt;mnuSetupToolbar.Type" xml:space="preserve">
+  <data name="&gt;&gt;mnuGraphicals.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuPasteDiagram.Name" xml:space="preserve">
@@ -441,16 +420,21 @@
     <value>Chess Board</value>
   </data>
   <data name="mnuMenuLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 38</value>
+    <value>223, 38</value>
+  </data>
+  <data name="mnuSaveLayout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAIdJREFUWEftkksKgDAMBXMIz+PZek1Poxtjg7y0GPqJJQMDRV9lFhJROucKH470
+        PrSm9l1+HwHd/wGNvBHjHmrkTWXYC78BtO3NRfwggI7HL8h7ERABEbBOgNn1AvgdsrBHmAOY91nby53E
+        HCBlanuEOQBR2qt3/Ac0FOE3YBT+AuYJH44ynRfSY1GMyW8t/AAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="&gt;&gt;mnuStockfish.Name" xml:space="preserve">
     <value>mnuStockfish</value>
   </data>
   <data name="mnuMenuLocation.Text" xml:space="preserve">
     <value>Menu Position</value>
-  </data>
-  <data name="mnuGameDetails.Text" xml:space="preserve">
-    <value>Game Details</value>
   </data>
   <data name="mnuHelpContents.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -680,14 +664,25 @@
   <data name="mnuEditGame.Text" xml:space="preserve">
     <value>Edit Game</value>
   </data>
+  <data name="mnuAbout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAStJREFUeF7t
+        1mEKgzAMhuHebH93LI/mAXYnR6QZUSa0YFJp3g++QdEZ8jC2ldf7s2VtKWUD4HBI0kuALBkKsA89NTpD
+        AHRZnWer16JymGsPXrla/NwoBDvPHaB1ea3cv65rfbdP7KxHAizL4opgZ7kC9C6vlfelB/D8FNg5ANjD
+        3UkPIOlF0OXTA0zxJahpRdDlpwOQ7MMuIPRaxPKSw1x78I4sp8va6uIRy0uGAWjswpGLa4YDjA4AAAAA
+        QBjAPqSz3gkH0BktlfvlZ9EzdtZjAab5KwwAAAD8BrYUAAAAAAAAAAAAAAAAAKhPuD92FgD24BEAAADg
+        N7ClAAAAAAAAAAAAAAAAAEB9wv2xs0IAejsVgEQW6u1UABJZqLde+QuQsQAIQH1J2rJ9Aeswf7OwTsJt
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="mnuDiagramClear.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Alt+C</value>
   </data>
   <data name="mnuHelpIndex.Text" xml:space="preserve">
     <value>&amp;Index</value>
   </data>
-  <data name="mnuDiagramInitial.Text" xml:space="preserve">
-    <value>Initial</value>
+  <data name="ctlTabControl.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;mnuBlackAndWhiteBoard.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -695,8 +690,8 @@
   <data name="&gt;&gt;mnuHelp.Name" xml:space="preserve">
     <value>mnuHelp</value>
   </data>
-  <data name="&gt;&gt;mnuPreviousGame.Name" xml:space="preserve">
-    <value>mnuPreviousGame</value>
+  <data name="mnuDiagramInitial.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+I</value>
   </data>
   <data name="mnuCopyDiagram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -725,34 +720,61 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuMenuTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 38</value>
+    <value>161, 38</value>
   </data>
   <data name="&gt;&gt;mnuRedo.Name" xml:space="preserve">
     <value>mnuRedo</value>
   </data>
   <data name="pnlDragPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="mnuSave.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuBoardStyle.Text" xml:space="preserve">
+    <value>Board Style</value>
   </data>
   <data name="mnuNewGame.Text" xml:space="preserve">
     <value>New Game</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1415, 455</value>
+  <data name="mnuPasteDiagram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 38</value>
   </data>
   <data name="mnuNew.Text" xml:space="preserve">
     <value>&amp;New</value>
   </data>
   <data name="mnuLoadLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 38</value>
+    <value>223, 38</value>
+  </data>
+  <data name="&gt;&gt;mnuMenuBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuEnglish.Text" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="mnuPasteDiagram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAABBdJREFUeF7tkAGO20gMBO/BeeS+4L7ksL2evSan+iLD0CoOUkAhkbYpsv3PC9xe
+        8I+Aih31LaDDv8tLoYP+1yPQ3AG/HTrilx6B5g76bdDyQx6B5p7wdGjp7fbvj2jLHaDl4XtLzw1PZVtI
+        x7kte4CWh++5njVPY1tGR01p7qj0vSnNlafQltAx5Jx7RvoeCbOn0JbQIeSce0b6Hgmzp9CW0CFXOW8r
+        T6EtoUOuct5WnkJbQodc5bytPIW2hA65ynlbeQptCR1ylfO28hTaEjokOWff1P6Ciibn7JvaX1DR5Jx9
+        U/sLKpqcs29qf0FFk9ts4OPjA01QViYoKxOeqbtHCSia3GYLevdY1FwHzvfim/MjAEWT2+yD+ayFvnQ9
+        Ly7Of/5xSUWT2+yD+TwWfj0vLs5//nFJRZPbbEHvxsK7fqBYWTHz63mx3i88v/6/8is78/b+v4Ckoslt
+        NuBHuQnKygRlZcIzdfcoAUWTc9Y/7CYoKxOUlQnKSqfu7iWoaHLO6uP07rGoKX6TfA9Q0eSc1cd96Xpe
+        rPeL3yT/+cclFU3O2YMLH09/8A8wTVBWJigrE5SVTt3dS1DR5JylZTJBWZmgrExQVjp1dy9BRZPbbICO
+        kAnKygRlZcIzdfcoAUWT22zAF7oJysoEZWXCM3X3KAFFk9tswBe6CcrKBGVlwjN19ygBRZPbbMAXugnK
+        ygRlZcIzdfcoAUWT22zAF7oJysoEZWXCM3X3KAFFk9tswBe6CcrKBGVlwjN19ygBRZNz1j/sJigrE5SV
+        CcpKp+7uJahocs7SMpmgrExQViYoK526u5egosk5S8tkgrIyQVmZoKx06u5egoom5ywtkwnKygRlZYKy
+        0qm7ewkqmpyztEwmKCsTlJUJykqn7u4lqGhyztIymaCsTFBWJigrnbq7l6CiyW02QEfIBGVlgrIy4Zm6
+        e5SAosltNuAL3QRlZYKyMuGZunuUgKLJbTbgC90EZWWCsjLhmbp7lICiyW024AvdBGVlgrIy4Zm6e5SA
+        osltNuAL3QRlZYKyMuGZuruXkFSW3OYCvtBNUFYmKCsTnqm77+xloPB0zviH3QRlZYKyMkFZ6dTdd7Yy
+        kkq7M0/LZIKyMkFZmaCsdOruL7ZCz0rLZIKyMkFZmaCsdOruxlbqGWmZTFBWJigrE5SVTt29sRU7Ki2T
+        CcrKBGVlgrLSqbsjW8FfSctkgrIyQVmZoKx06u6XaD9Ago6QCcrKBGVlwjMq8Qp/fwDX8Wc/SO/9eXFh
+        /iXuH146/jwWtufFhfmXuH94+fjg9k7L5ns7oCm+Of8S/qH7xwktJBOUlQnKyoRnVOIV2g/gH3YTlJUJ
+        ysoEZaWjEq+w/QD69/Hhr3fOei/8qJWl/ML/TnnPCv1tvZv5z/e3209mfEQofCDMugAAAABJRU5ErkJg
+        gg==
+</value>
   </data>
   <data name="&gt;&gt;mnuGameDetails.Name" xml:space="preserve">
     <value>mnuGameDetails</value>
@@ -760,14 +782,11 @@
   <data name="mnuPreviousGame.ToolTipText" xml:space="preserve">
     <value>Previous Game</value>
   </data>
-  <data name="mnuMenuStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 14pt</value>
-  </data>
   <data name="mnuHelpContents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 38</value>
+    <value>220, 38</value>
   </data>
   <data name="pnlDragPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 123</value>
+    <value>200, 100</value>
   </data>
   <data name="&gt;&gt;mnuHelpContents.Name" xml:space="preserve">
     <value>mnuHelpContents</value>
@@ -775,17 +794,14 @@
   <data name="&gt;&gt;dlgSaveFile.Name" xml:space="preserve">
     <value>dlgSaveFile</value>
   </data>
-  <data name="pnlDragPanel.ToolTip" xml:space="preserve">
-    <value />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1061, 370</value>
   </data>
   <data name="&gt;&gt;mnuDiagramInitial.Name" xml:space="preserve">
     <value>mnuDiagramInitial</value>
   </data>
   <data name="mnuColorBoard.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Alt+C</value>
-  </data>
-  <data name="mnuMode.Text" xml:space="preserve">
-    <value>Setup</value>
   </data>
   <data name="mnuFile.Text" xml:space="preserve">
     <value>&amp;File</value>
@@ -799,6 +815,9 @@
   <data name="&gt;&gt;mnuEditGame.Name" xml:space="preserve">
     <value>mnuEditGame</value>
   </data>
+  <data name="&gt;&gt;mnuColorBoard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;mnuMenuTop.Name" xml:space="preserve">
     <value>mnuMenuTop</value>
   </data>
@@ -809,7 +828,7 @@
     <value>StatusStrip</value>
   </data>
   <data name="mnuEditTitleAndMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 38</value>
+    <value>334, 38</value>
   </data>
   <data name="&gt;&gt;mnuSaveLayout.Name" xml:space="preserve">
     <value>mnuSaveLayout</value>
@@ -827,7 +846,7 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuCopyGameXPGN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 36</value>
+    <value>133, 30</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -841,17 +860,20 @@
   <data name="mnuRedo.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Y</value>
   </data>
+  <data name="mnuEditGame.Size" type="System.Drawing.Size, System.Drawing">
+    <value>334, 38</value>
+  </data>
   <data name="mnuFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>ActiveBorder</value>
   </data>
   <data name="mnuLessonsFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 38</value>
+    <value>223, 38</value>
   </data>
   <data name="mnuMenuTop.Text" xml:space="preserve">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;mnuGraphicals.Name" xml:space="preserve">
-    <value>mnuGraphicals</value>
+  <data name="mnuDiagramInitial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 38</value>
   </data>
   <data name="&gt;&gt;mnuMoveList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -863,18 +885,21 @@
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 6</value>
+    <value>212, 6</value>
   </data>
   <data name="mnuTitleAndMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
+    <value>232, 38</value>
   </data>
   <data name="mnuGameNumber.Text" xml:space="preserve">
     <value>1/1</value>
   </data>
+  <data name="&gt;&gt;ToolStripSeparator8.Name" xml:space="preserve">
+    <value>ToolStripSeparator8</value>
+  </data>
   <data name="mnuHelpIndex.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cQAAEnEB89x6jgAAJcFJREFUeF7tnbGLZcl1xt9fIJRuILBBtgcGKdBoBe5AKwWGCSZSZBgMg7HayeDA
+        iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAJcFJREFUeF7tnbGLZcl1xt9fIJRuILBBtgcGKdBoBe5AKwWGCSZSZBgMg7HayeDA
         khUJu61gYS0ELWdGyTJoFKwDYTCdCS/IxsKYTY0ZJUZghBMrd3B9z5uu3vO+8717qu69dW/dd88HvxXa
         qjp1btX5Tr9+/br30IVCod0qGkAotGNFAwiFdqxoAKHQjhUNIBTasaIBhEI7VjSAUGjHigYQCu1Y0QBC
         oR0rGkAotGNFAwiFdqxoAKEQ0dd+62sPXLKiAYRC99KmRy5V0QBCuxczPHKpigYQ2qWYyT0uUdEAQrsS
@@ -1038,26 +1063,32 @@
         DUDEzFxCKLQ37b4BhEL7Vdf9P5RZIRIXbUL1AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="&gt;&gt;mnuFile.Name" xml:space="preserve">
-    <value>mnuFile</value>
-  </data>
   <data name="&gt;&gt;ctlTabControl.Name" xml:space="preserve">
     <value>ctlTabControl</value>
   </data>
+  <data name="&gt;&gt;mnuLessonsFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="mnuBoard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
+    <value>232, 38</value>
   </data>
   <data name="&gt;&gt;mnuMenuStrip.Name" xml:space="preserve">
     <value>mnuMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;mnuSettings.Name" xml:space="preserve">
+    <value>mnuSettings</value>
   </data>
   <data name="&gt;&gt;ctlTabControl.Type" xml:space="preserve">
     <value>DemoBoard.ctlTabControl, DemoBoard, Version=1.1.0.0, Culture=neutral, PublicKeyToken=1cb0c78da27b6a77</value>
   </data>
   <data name="mnuCopyGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 38</value>
+    <value>334, 38</value>
   </data>
   <data name="mnuGameNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 32</value>
+    <value>39, 25</value>
+  </data>
+  <data name="&gt;&gt;mnuSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuNewGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1082,16 +1113,19 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pnlDragPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 178</value>
+    <value>0, 145</value>
   </data>
   <data name="mnuHelpIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 38</value>
+    <value>220, 38</value>
   </data>
-  <data name="&gt;&gt;mnuLanguage.Name" xml:space="preserve">
-    <value>mnuLanguage</value>
+  <data name="pnlMainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 44</value>
   </data>
   <data name="stsStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 528</value>
+    <value>4, 429</value>
+  </data>
+  <data name="&gt;&gt;mnuAbout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1113,15 +1147,8 @@
         jRC6vY2u3JoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="mnuTitleAndMemo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAN9JREFUeF7tlEEKxDAMxPr0/ryLNoYsTlu2R7sSmMAwl9Ehm4j8crzkLjm6w8Z9
-        3y8lRK0vbFSAAh4IIKt8GTIFKEABvKdEbUJW+TJkCngioBtsVIACFPC/ALLKlyFTgAL8AxQw5q5ErS9s
-        VICfoAJ4T4nahKzyZcj8AxSgAAWMuStRm5BVvgyZAhTgH6CAMXclan1howL8BBXAe0rUJmSVL0PmH6AA
-        BShgzF2J2oSs8mXIFKAA/wAFjLkrUesLGxWgAAUoYMxdiVpf2KgABdwIeMPdCfhCofvFVJF3s20fuz4p
-        GLsNBSUAAAAASUVORK5CYII=
-</value>
+  <data name="&gt;&gt;mnuPreviousGame.Name" xml:space="preserve">
+    <value>mnuPreviousGame</value>
   </data>
   <data name="&gt;&gt;stsStatusStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1129,20 +1156,20 @@
   <data name="mnuHelp.Text" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
+  <data name="&gt;&gt;mnuGameDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="mnuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 36</value>
+    <value>53, 29</value>
   </data>
   <data name="&gt;&gt;mnuDiagramInitial.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mnuNextGame.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuHelpIndex.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+F1</value>
   </data>
   <data name="mnuHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 36</value>
-  </data>
-  <data name="stsStatusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 19, 0</value>
+    <value>63, 29</value>
   </data>
   <data name="mnuRedo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1205,9 +1232,6 @@
         d4ODxoZscnZcXEr/ialPFkGw7GvbobT63C7QC8vC4v+qfaGZnW/jAAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="&gt;&gt;mnuBoardStyle.Name" xml:space="preserve">
-    <value>mnuBoardStyle</value>
-  </data>
   <data name="stsStatusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
@@ -1223,85 +1247,8 @@
   <data name="&gt;&gt;mnuUndo.Name" xml:space="preserve">
     <value>mnuUndo</value>
   </data>
-  <data name="mnuExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        rk98fvnlfyiUp+XB0np/AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="ctlTabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="pnlDragPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="mnuLanguage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1445,23 +1392,17 @@
   <data name="mnuLanguage.Text" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="&gt;&gt;mnuValidMoves.Name" xml:space="preserve">
-    <value>mnuValidMoves</value>
+  <data name="stsStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1055, 24</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;mnuView.Name" xml:space="preserve">
     <value>mnuView</value>
   </data>
-  <data name="mnuEditGame.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+E</value>
-  </data>
-  <data name="stsStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1407, 29</value>
-  </data>
-  <data name="mnuDiagramInitial.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Alt+I</value>
+  <data name="&gt;&gt;mnuNewGame.Name" xml:space="preserve">
+    <value>mnuNewGame</value>
   </data>
   <data name="stsStatusStrip.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1488,8 +1429,8 @@
   <data name="mnuEditTitleAndMemo.Text" xml:space="preserve">
     <value>Edit Title and Memo</value>
   </data>
-  <data name="&gt;&gt;mnuMoveList.Name" xml:space="preserve">
-    <value>mnuMoveList</value>
+  <data name="mnuDiagramInitial.Text" xml:space="preserve">
+    <value>Initial</value>
   </data>
   <data name="mnuOpen.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
@@ -1498,7 +1439,7 @@
     <value>mnuColorBoard</value>
   </data>
   <data name="mnuStatusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
+    <value>232, 38</value>
   </data>
   <data name="mnuRedo.ToolTipText" xml:space="preserve">
     <value>Redo</value>
@@ -1506,28 +1447,8 @@
   <data name="mnuBlackAndWhiteBoard.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Alt+B</value>
   </data>
-  <data name="mnuBoard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAOJJREFUaEPtljEKAzEMBO//r/IX0qbJU5xT0tkTsAKWkNmFhWBGOk8VX3d68eJh
-        pX5/UF790VtrUynRrATGSMDJlhHoz0UBW0q1BXROjWQnAbK0QQqxnw9BdrFLAtGX8rASyGbPE6DYMC2l
-        RLMSGCMBJ1tGwP5MiZ0EbGmlTgJkqafEnV2sBLLZ8wQoNkxLKdGsBMZIwMmWEdBTgkKsLaXsYpcEoi/l
-        YSWQzZ4nQLFhWkqJZiUwRgJOtozA308JGxzPfjWDnQTI0hZQiLWllF3skkD0pTysBLLZ8wQKFw+L9Opv
-        2Svcpd7ubrIAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="&gt;&gt;dlgLessonsFolder.Name" xml:space="preserve">
     <value>dlgLessonsFolder</value>
-  </data>
-  <data name="mnuMoveList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAQlJREFUeF7tlEEOgkAUQzk6S4/FzdBObDLKjwkRprN4TV5AMLa+xSyEkH+zh4mn
-        GjWSeNqQbduG4t51XeMSPgRokOjHfn8+Q/97r6KG7t2rdxqRTBvyPbgfXj37Rf+9/l5/XujevXqnEcm0
-        IR4/CvdOIyAFAmYRsO+PobgXAQiYUICfXU3VgQAEcAYgQCOSQYCoRt6JezkEEYAAXaM5jBuBexGAAATM
-        J8DPrqbqQAACOAMQoBHJIEBUI+/EvRyCCECArtEcxo3AvQhAAALmE+BnV1N1IAABnAEI0IhkECCqkXfi
-        Xg5BBCBA12gO40bgXgQgAAEI0IhkEJAEARMIaNGQFO8JhJCzWZYnt5/sVgOJUmQAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="mnuMenuTop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1839,58 +1760,97 @@
   <data name="&gt;&gt;pnlMainPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="mnuUndo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 28</value>
-  </data>
-  <data name="mnuEnglish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAABgNJREFUWEftlnlMVFcUxqGALApC1aLSilEqWKtGjaLSUjW2SqWJcWERQQkiBarC
-        WC1xwYoLAtWCVVIpKtYFRQO2pSKLxkKRRtlmBhkVBhBklXUsi8Dw9d4zDwfURu0f9B+/5Jf75pxzz/l4
-        b+Y+NN7ojZi0GAYMwwGGz+SzNUwaTsehR6kEl0xWjXXrTmLRohBG+DMcpJVLvtgJJfYuhNzOiWKqmjBh
-        7UsIPHxjUZBdjPo9oSj+fAUaz1wEn80NjH1g54jGc5fQ1dhMjdraOpGYmI+QkN8ZSYxkgSu0ctWGHkHd
-        wUiiNuwoxVQ1fE9vPd+bhMRUGRT3y9AcfRKPIqPxpLSc6vlsbsCyIjMPihOnULUtCG25Ekpy5eQ8QGBg
-        AvxFZyHyj2NrLESiOMpVigJRuTUIlVt2o3LzLor5sxqR/zmqEbE9O4MSkZNdhvZrN1C9eRvqT5yBUvGY
-        ausbWrkBSzKw0vU4CsTlaEv4BQ99/Olu9DzppMLaOgUOH06Fj89JxinGWYpX+H6Dhxu3ExW+ARTjOR+f
-        GCLiWAaqC+RQhB9l+a+huP4n1XAVFlbB0zNGbcDGZj/8ROdxPiEfiqxs1G7agsode9BxX04blD09SEjI
-        hbt7FCOGYuXum1DhKSLKPTZRjOfcPaIRnyhFa0YWar4SoWp3CLvlFZTv7FbiwoVb8PM7B3v7CLUBa+tg
-        9sWLgYPDD9ixLwmVBaVoDgpGqYMbmn9TPXOu7OxSVhNF12WO61Hm4q3CaT3FeC4rswitMadR5uCChuNn
-        gK5uytXUKLBzZwKrOUyzFi/uY2DGjG/h6BiJJUsOMYKxYlU00lKk9MzkS5ajZu936Kqpo0a9KlmyCiVL
-        3VSwXwJX96N61PoHoGSZCx6nplOsS9mDa9dkbDDvf4Bm8FkLFgSrDUydugt2dt/D1jakH4lXpOhkj6Hl
-        SjI6iuRQtndQU67iT5ZCvnAFUTx/KcU6ikvQkpyCrrp6+szFe9jahvXDzi4Cc+aEqA0Ita+lezM/w/3Z
-        dgS//i96akBmOQd3py2AbKKNig8+6n/dFyF2d+p8FVPm0Sqb9PHztc/Su5fNuvuhbR8DE+ZCZjUXheNn
-        vjoWs/rzopp/gc/ihp8aKBw/CwWmkyB9e8KAwGfJJsxWG5CMtIJkiDnEemavyBhIjS0E3id47MW1z8Nn
-        SUdNUhtQCi+i15FY7z1IDMcRYv0xQvTVxWc+NWA8dAMMDDZAW9u7HydiMoVyoKezC21iKeMOfRbrjIZk
-        8FhCPMiMYlzKv1vRXd+I1tw8KNm5wHs825fPMjbeqDYweLAXC3pDS8uTsQb6+l4ID09Fe0cXNVWwQ0Vq
-        PhnyydZQVldTTKw9ChKDMZCwv148aDTFevVEXopieyeWN0VV2BFEHkuH4TA/1tuNZvBZhoZfqg3o6nID
-        vtDUXA0rq+24datEaMWO0H2HkKc5GA1Obrge/xer8aJ4/lsj6TFw8pkZLp5LSyuka3aPURUYjFxNfTxa
-        5oSctDxMmRtKMwwMfKCnt15tQFvbnQU94Ox8jL39VK9L/s4u/sIJd3RM0BIWjh9/yoCBiS/bpDr38zVN
-        IdZ9l8jXGkkxntPVXYuIiDT6zNV8OQlSMyuUWkxGZXwy1m6IY7O8oKPjrjZgZOSJqKg/hC1A08VfITYx
-        x4OJ01ARnwJX7/OseC1j9UsNqGpcsXJlJKqrWyjOj+aS5W4o0DJGy/4wxPychWFmfqxOMHDzpnDb2Flf
-        7rsFYo0haPLbgrTLt2E5fa/Q1JPBTbzMwBphXY1x47bi6tUCynE9OhKN/EHDUbfcCTdik1mNYKCpqQlt
-        kkLcs1mEIvOJaIiNR+CBFBiP8Kcvi6HhRgHVNZfEaDykw60ICTsPuFQ1XsLK8cbQob4ICLiEtnbVPzht
-        +QW4a70Qt03GPjVgUXTwKDKMzJBnPQ83L6ZhzqehLOnIcGXwv6iXVbQ2NjYiXXMEMnRHE+la71BMVeMs
-        rL3wHg6YPn0bMjPvUF39w0pIPehnaMENmDIWMpwHGD6Tz9bQZQxnmA0wfCaf/Ub/pzQ0/gE1EAkR96WM
-        FAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="mnuNextGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cQAAEnEB89x6jgAAAKdJREFUWEftjlEKxDAIBXP03Ly7lrpIfE0aY/RjOzCEUnhjeXkZcFxvGnQAm4I8
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAKdJREFUWEftjlEKxDAIBXP03Ly7lrpIfE0aY/RjOzCEUnhjeXkZcFxvGnQAm4I8
         IOWI9gA2DBRnQ0Dh1q2gIHIbKNbTHRQZ6QoKPNUFNDzjMmjUohk0ZrLWSu80asgixdnv9xRqbEYZtsQJ
         NfrU1TCjhkfK8GqcUIGenmFGRZAy7BknVKx1V5hRQVaGd8UJFSYjwsxtOCJOwPj5J4gzlhX/kRb+A0r5
         AIQdYW56MHqCAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="&gt;&gt;mnuMenuBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuGameDetails.Text" xml:space="preserve">
+    <value>Game Details</value>
+  </data>
+  <data name="mnuExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAD/5JREFUeF7t
+        3b2SY0nVBdB5GN7f5FVwcDCwICYYg58AAyrV6qLr9iqVru5f5smtiGV93VLuzLOP8TEMv6z5/Pf3v/tv
+        RPTtXtd9P/qhiOjTvbb7fPQDEdG3e323ffTFETGGe41f++gLI2Is9zqv++iLImJM91o/99EXRMTY7vV+
+        /NFfjIga7jX3R38hImq51/3jR38wImq61/7bR38gImo7r/z//ltErKUu7ez4BaBgEfEcdWpHxy4ABYqI
+        ddStnRy3ABQkIl6jju3gmAWgAD9o/6+HNfQdET3THH9F3/OBurbR/gtAB3+jwGv95+//5HdH9EAzu9Y/
+        /vIrv/udOrfBvgsAB/7Xr78x6Bb6nYgraU63aL3R79yoey/abwHgoAq2l7/+4Y/8zYgzaTb3pN+8UQdf
+        sM8CwAEV5gj67YgzaB6PoN++URdX2r4AcDCFOJLOEHEkzeGRdIYbdXKFbQsAB9Lhz6CzRBxB83cGneVG
+        3XzS6wsAB9Ghz6QzRexJc3cmnelGHX3CawsAB9Bhr6CzRexB83YFne1GXf3C+gWAH27/+bwOehWdMWIL
+        zdlVHv7zMOrsA+sWgH7wjQ55NZ0z4hWar6vpnO/U3U9sXgDtn1zSAXug80asobnqwcN/UKhRf2HzAtDh
+        eqIzRzxD89QTnfmd+gvlF0Cjc0c8ojnqjc79Tv2FTQtAh+rV8uwRn9H89Oi3P/2Z579Rf2GaBdAszx+x
+        pLnpmTLcqL8w1QJolhkivtO89E45btRfmG4BNMscEZqTESjLjfoLUy6AZpkl5qX5GIXy3Ki/MO0CaJZ5
+        Yj6ai5Eo0436C1MvgGaZKeaheRiNct2ovzD9AmiWuaI+zcGIlO1G/YUsgLtltqhL7z8q5btRfyEL4AfL
+        fFGP3n1kynij/kIWwMIyY9Sh9x6dct6ov5AFAMucMT698+ge/m8IqL+waQE0OlgFyhpj0vtWoKzv1F/I
+        AnhAeWMsetcqlPed+gubF0Bv/zqwvSlzjEHvWYXyfqD+wuYF0OiAlShz9E3vWIkyf6D+wi4LoNEhK1Hm
+        6JPerxJl/on6C1kAKyh39EXvVsnDfwnIj9Rf2G0BNDpwNcodfdB7VaPcpP7Crgug0aGrUe64lt6pGuX+
+        lPoLuy+ARoevRrnjGnqfapT7IfUXDlkAjUJUo9xxLr1LNcr9JfUXDlsAjcJUo9xxDr1HNcr9FPUXDl0A
+        jUJVo9xxLL1DNcr9NPUXDl8AjcJVo9xxDN1/Ncq9ivoLpyyARiGrUe7Yl+69GuVeTf2F0xZAo7DVKHfs
+        Q/ddjXK/RP2FUxdAo9DVKHdso3uuRrlfpv7C6QugUfhqlDteo/utRrk3UX/hkgXQ6BKqUe5YR/dajXJv
+        pv7CZQug0WVUo9zxHN1nNcq9C/UXLl0AjS6lGuWOx3SP1Sj3btRfuHwBNLqcapQ7TPdXjXLvSv2FLhZA
+        o0uqRrnjI91bNcq9O/UXulkAjS6rGuWOb3Rf1Sj3IdRf6GoBNLq0apR7drqnapT7MOovdLcAGl1eNco9
+        K91PNcp9KPUXulwAjS6xGuWeje6lGuU+nPoL3S6ARpdZjXLPQvdRjXKfQv2FrhdAo0utRrmr0z1Uo9yn
+        UX+h+wXQ6HKrUe6qlL8a5T6V+gtDLIBGl1yNclej3NUo9+nUXxhmATS67GqUuwrlrUa5L6H+wlALoNGl
+        V6Pco1POapT7MuovDLcAGl1+Nco9KuWrRrkvpf7CkAug0SNUo9yjUa5qlPty6i8MuwAaPUY1yj0K5alG
+        ubug/sLQC6DRo1Sj3L1TjmqUuxvqLwy/ABo9TjXK3Sudvxrl7or6CyUWQKNHqka5e6NzV6Pc3VF/ocwC
+        aPRY1Sh3L3TeapS7S+ovlFoAjR6tGuW+ms5ZjXJ3S/2Fcgug0eNVo9xX0fmqUe6uqb9QcgE0esRqlPts
+        Olc1yt099RfKLoBGj1mNcp9F56lGuYeg/kLpBdDoUatR7qPpHNUo9zDUXyi/ABo9bjXKfRT9fjXKPRT1
+        F6ZYAI0euRrl3pt+txrlHo76C9MsgEaPXY1y70W/V41yD0n9hakWQKNHr0a5t9LvVKPcw1J/YboF0Ojx
+        q1HuV+n7q1Huoam/MOUCaDQE1Sj3WvreapR7eOovTLsAGg1DNcr9LH1fNcpdgvoLUy+ARkNRjXJ/Rd9T
+        jXKXof7C9Aug0XBUo9yf0d+vRrlLUX8hC+BOQ1KNci/p71Wj3OWov5AF8AMNSzXK/Z3+fDXKXZL6C1kA
+        CxqaapJ7AuovZAGAhqeamfNOQf2FLIBPaIiqmSnndNRfyAJ4QMMUY9G7TkH9hSyAL2ioYgx6z2mov5AF
+        8AQNV/RN7zgV9ReyAJ6kIYs+6f2mo/5CFsAKGrboi95tSuovZAGspKGLPui9pqX+QhbACzR8cS2909TU
+        X8gCeJGGMK6h95me+gtZABtoGONcepd4o/5CFsBGGso4h94j7tRfyALYgYYzjqV3iB+ov5AFsBMNaRxD
+        9x8L6i9kAexIwxr70r0HqL+QBbAzDW3sQ/cdn1B/IQvgABre2Eb3HA+ov5AFcBANcbxG9xtfUH8hC+BA
+        GuZYR/caT1B/IQvgYBrqeI7uM56k/kIWwAk03PGY7jFWUH8hC+AkGvIw3V+spP5CFsCJNOzxke4tXqD+
+        QhbAyTT08Y3uK16k/kIWwAU0/LPTPcUG6i9kAVxEJZiV7ic2Un8hC+BCKsNsdC+xA/UXsgAuplLMQvcR
+        O1F/IQugAypHdbqH2JH6C1kAnVBJqlL+2Jn6C1kAHVFZqlHuOID6C1kAnVBZqlL+2Jn6C1kAHVBJqtM9
+        xI7UX8gCuJjKMQvdR+xE/YUsgAupFLPRvcQO1F/IAriIyjAr3U9spP5CFsAFVILZ6Z5iA/UXsgBOpuGP
+        b3Rf8SL1F7IATqShj490b/EC9ReyAE6iYQ/T/cVK6i9kAZxAQx6P6R5jBfUXsgAOpuGO5+g+40nqL2QB
+        HEhDHevoXuMJ6i9kARxEwxyv0f3GF9RfyAI4gIY4ttE9xwPqL2QB7EzDG/vQfccn1F/IAtiRhjb2pXsP
+        UH8hC2AnGtY4hu4/FtRfyALYgYY0jqV3iB+ov5AFsJGGM86h94g79ReyADbQUMa59C7xRv2FLIAXaRjj
+        Gnqf6am/kAXwAg1hXEvvNDX1F7IAVtLwRR/0XtNSfyELYAUNXfRF7zYl9ReyAJ6kYYs+6f2mo/5CFsAT
+        NGTRN73jVNRfyAL4goYrxqD3nIb6C1kAD2ioYix61ymov5AF8AkNUzUz5ZyO+gtZAKAhqmbmvFNQfyEL
+        YEHDU01yT0D9hSyAH2hoqlHu7/Tnq1HuktRfyAK407BUo9xL+nvVKHc56i9kAbzRkFSj3J/R369GuUtR
+        f2H6BaDhqEa5v6LvqUa5y1B/YeoFoKGoRrmfpe+rRrlLUH9h2gWgYahGudfS91aj3MNTf2HKBaAhqEa5
+        X6Xvr0a5h6b+wnQLQI9fjXJvpd+pRrmHpf7CVAtAj16Ncu9Fv1eNcg9J/YVpFoAeuxrl3pt+txrlHo76
+        C1MsAD1yNcp9FP1+Nco9FPUXyi8APW41yn00naMa5R6G+gulF4AetRrlPovOU41yD0H9hbILQI9ZjXKf
+        TeeqRrm7p/5CyQWgR6xGua+i81Wj3F1Tf6HcAtDjVaPcV9M5q1Hubqm/UGoB6NGqUe5e6LzVKHeX1F8o
+        swD0WNUod2907mqUuzvqL5RYAHqkapS7Vzp/NcrdFfUXhl8AepxqlLt3ylGNcndD/YWhF4AepRrlHoXy
+        VKPcXVB/YdgFoMeoRrlHo1zVKPfl1F8YcgHoEapR7lEpXzXKfSn1F4ZbALr8apR7dMpZjXJfRv2FoRaA
+        Lr0a5a5CeatR7kuovzDMAtBlV6Pc1Sh3Ncp9OvUXhlgAuuRqlLsq5a9GuU+l/kL3C0CXW41yV6d7qEa5
+        T6P+QtcLQJdajXLPQvdRjXKfQv2FbheALrMa5Z6N7qUa5T6c+gtdLgBdYjXKPSvdTzXKfSj1F7pbALq8
+        apR7drqnapT7MOovdLUAdGnVKHd8o/uqRrkPof5CNwtAl1WNcsdHurdqlHt36i90sQB0SdUod5jurxrl
+        3pX6C5cvAF1ONcodj+keq1Hu3ai/cOkC0KVUo9zxHN1nNcq9C/UXLlsAuoxqlDvW0b1Wo9ybqb9wyQLQ
+        JVSj3PEa3W81yr2J+gunLwCFr0a5YxvdczXK/TL1F05dAApdjXLHPnTf1Sj3S9RfOG0BKGw1yh370r1X
+        o9yrqb9wygJQyGqUO46h+69GuVdRf+HwBaBw1Sh3HEvvUI1yP039hUMXgEJVo9xxDr1HNcr9FPUXDlsA
+        ClONcse59C7VKPeX1F84ZAEoRDXKHdfQ+1Sj3A+pv7D7AtDhq1HuuJbeqRrl/pT6C7suAB26GuWOPui9
+        qlFuUn9htwWgw1aj3NEXvVs1yv0T9ReyAJ6kzNEnvV8lyvwT9Rd2WQA6ZCXKHH3TO1aizB+ov7B5Aehw
+        lShzjEHvWcV//v5PZn6n/kIWwAPKG2PRu1ahvO/UX8gC+ISyxpj0vhUo6zv1FzYtgN/+9GcebHTLnDE+
+        vfPoWv+U9Ub9hU0LQIca3TJj1KH3Hp1y3qi/kAXwg2W+qEfvPjJlvFF/IQvgbpkt6tL7j0r5btRfyAJ4
+        s8wV9WkORqRsN+ovTL8AlpliHpqH0SjXjfoLUy+AZZ6Yj+ZiJMp0o/7CtAtgmSXmpfkYhfLcqL8w5QJY
+        5ojQnIxAWW7UX5huASwzRHyneemdctyovzDVAlieP2JJc9MzZbhRf2HTAvjrH/7IQ/VoefaIz2h+eqXz
+        36i/sGkBNDpUb3TuiEc0Rz3S2W/UXyi/AHTmiGdonnqiM79Tf2HzAvjHX37l4Xqg80asobnqQeudznuj
+        7n5i8wJodMCr6ZwRr9B8XU3nvFFvH1i3ABr8aPvXE+mQV9EZI7bQnF3l038dmPr6hfULoMGP66BX0Nki
+        9qB5u4LOxp4+4bUF0OAQOuyZdKaIPWnuzqQzsZ9Pen0BNDiMDn0GnSXiCJq/M+gs7OUK2xZAg0Pp8EfS
+        GSKOpDk82k/nUB9X2r4AmuXB3ijAEfTbEWfQPB7lp99XD1+wzwJolgd8oyB7efhvRI04iWZzbz/9rvr3
+        ov0WQLM86BsF2kq/E3ElzekWe/5HfY/suwAaHfqNQq6l743ohWZ2rX/9+hu/+0Z922j/BdDo8D9Q8M88
+        /EceIzq15n80p/23avUdH6hnOzhmATQKERHrqV87OW4BNAoTEc9Tr3Z07AJoFCoivqY+7ez4BdAoXER8
+        Tj06wDkLoFHIiPiZ+nOQX9pH/4dDKGxE/J96c5Bb+b9/9AcioqZ77T9+9AcjopZ73f3RX4iIGu41f/zR
+        X4yIsd3r/dxHXxARY7rXet1HXxQRY7nX+bWPvjAixnCv8baPvjgi+nav7z4f/UBE9Ole230/+qGI6Mu9
+        rk98fvnlfyiUp+XB0np/AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="mnuMoveList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
+    <value>232, 38</value>
   </data>
   <data name="mnuValidMoves.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
+    <value>232, 38</value>
   </data>
   <data name="mnuDiagramInitial.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1914,44 +1874,50 @@
   <data name="&gt;&gt;pnlMainPanel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;stsStatusStrip.Name" xml:space="preserve">
+    <value>stsStatusStrip</value>
+  </data>
   <data name="&gt;&gt;pnlDragPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuRedo.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;mnuUndo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1407, 44</value>
+    <value>1055, 37</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuDiagramClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 38</value>
+    <value>211, 38</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator4.Name" xml:space="preserve">
     <value>ToolStripSeparator4</value>
   </data>
   <data name="mnuSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 36</value>
+    <value>91, 29</value>
   </data>
-  <data name="pnlDragPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="mnuMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 29</value>
   </data>
   <data name="&gt;&gt;mnuBoard.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;mnuGraphicals.Name" xml:space="preserve">
+    <value>mnuGraphicals</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripSeparator5.Name" xml:space="preserve">
     <value>ToolStripSeparator5</value>
   </data>
-  <data name="mnuNextGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
   <data name="&gt;&gt;mnuView.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stsStatusStrip.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;mnuCopyDiagram.Name" xml:space="preserve">
     <value>mnuCopyDiagram</value>
@@ -1962,11 +1928,8 @@
   <data name="&gt;&gt;mnuMode.Name" xml:space="preserve">
     <value>mnuMode</value>
   </data>
-  <data name="&gt;&gt;mnuTitleAndMemo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="mnuSelectGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 38</value>
+    <value>334, 38</value>
   </data>
   <data name="mnuUndo.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Z</value>
@@ -1980,11 +1943,14 @@
   <data name="&gt;&gt;mnuSelectGame.Name" xml:space="preserve">
     <value>mnuSelectGame</value>
   </data>
+  <data name="&gt;&gt;mnuBoardStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;mnuNew.Name" xml:space="preserve">
     <value>mnuNew</value>
   </data>
   <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 6</value>
+    <value>217, 6</value>
   </data>
   <data name="&gt;&gt;mnuDiagram.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1998,6 +1964,9 @@
   <data name="mnuHelpIndex.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Black</value>
   </data>
+  <data name="&gt;&gt;mnuLanguage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="mnuUndo.ToolTipText" xml:space="preserve">
     <value>Undo</value>
   </data>
@@ -2010,11 +1979,8 @@
   <data name="mnuDeleteGame.Text" xml:space="preserve">
     <value>Delete Game</value>
   </data>
-  <data name="&gt;&gt;mnuStatusBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuPasteDiagram.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+V</value>
+  <data name="mnuMenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 2, 0, 2</value>
   </data>
   <data name="&gt;&gt;mnuEditGame.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2028,6 +1994,9 @@
   <data name="&gt;&gt;mnuCopyGame.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="mnuBoardStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 38</value>
+  </data>
   <data name="mnuMoveList.Text" xml:space="preserve">
     <value>Move List</value>
   </data>
@@ -2038,7 +2007,7 @@
     <value>mnuDiagramSaveAsJPG</value>
   </data>
   <data name="mnuSaveLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 38</value>
+    <value>223, 38</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMainForm</value>
@@ -2050,28 +2019,22 @@
     <value>&amp;Game</value>
   </data>
   <data name="mnuNewGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 38</value>
+    <value>334, 38</value>
   </data>
   <data name="mnuBlackAndWhiteBoard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 36</value>
+    <value>279, 30</value>
   </data>
   <data name="mnuExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 38</value>
+    <value>215, 38</value>
   </data>
-  <data name="&gt;&gt;lblStatusText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuNederlands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 38</value>
   </data>
-  <data name="pnlMainPanel.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;mnuMoveList.Name" xml:space="preserve">
+    <value>mnuMoveList</value>
   </data>
-  <data name="mnuDiagramClear.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="&gt;&gt;mnuGameNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuTitleAndMemo.Name" xml:space="preserve">
-    <value>mnuTitleAndMemo</value>
+  <data name="mnuEditGame.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+E</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2123,8 +2086,15 @@
         lsJQzNsVcMdOB+/Ew+EPlgpu0AdZzHYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;mnuSettings.Name" xml:space="preserve">
-    <value>mnuSettings</value>
+  <data name="mnuTitleAndMemo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAN9JREFUeF7tlEEKxDAMxPr0/ryLNoYsTlu2R7sSmMAwl9Ehm4j8crzkLjm6w8Z9
+        3y8lRK0vbFSAAh4IIKt8GTIFKEABvKdEbUJW+TJkCngioBtsVIACFPC/ALLKlyFTgAL8AxQw5q5ErS9s
+        VICfoAJ4T4nahKzyZcj8AxSgAAWMuStRm5BVvgyZAhTgH6CAMXclan1howL8BBXAe0rUJmSVL0PmH6AA
+        BShgzF2J2oSs8mXIFKAA/wAFjLkrUesLGxWgAAUoYMxdiVpf2KgABdwIeMPdCfhCofvFVJF3s20fuz4p
+        GLsNBSUAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="mnuMenuBottom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2133,6 +2103,9 @@
         wmjcd/eq/5s88oTRuO/uVS/JLkJsShDwfFs8AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="&gt;&gt;lblStatusText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="mnuLessonsFolder.Text" xml:space="preserve">
     <value>Lessons Folder</value>
   </data>
@@ -2140,10 +2113,28 @@
     <value>mnuLoadLayout</value>
   </data>
   <data name="pnlMainPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="mnuColorBoard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 36</value>
+  <data name="mnuValidMoves.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAA25JREFUeF7tnNt12zAQRF2KS3EpKkWl+COFqJAUkf98KLuMgIzAkSySC2IZzz3n
+        HloOCGEx4tNU3oQQQgghhBBCCCGEEEIIIYQYzvX3r+sr3pr/T3hN+eo6nc5lYA/9+PjwZeXy8zJr86pt
+        X875/PUY3t/n620E+8/D6TQV+tRvEEh03+tRIHeOR4HMHMsrgfhk+KShrN0rsr5uIT11x0DccbwSSAZ3
+        DsQdgwKx3ejl4S54fxTI30DShKJA/gWSIhQFch/I8FAUyDyQoaEoEB6Ii23AvmAgn58/rhcbSCbLNcqI
+        QFxsB/YDA5nu7CajuWiMpPbLgkCxLdgHvOr2WyLZKIGwWy4bqXWzEFqxPRiPh4BFn5Lp47rtrrrJAmCy
+        dc14MJTvKJv8R7L1zXj8ANr7k5hVNvHPZH2Y8WQLZboT3ExGFtl4zXj81NcWw/U/LbOJyCQbtxkPnnmN
+        0E/F2QRklI3fjMWvRzAU3435617iCcWRwiiWsTfGgqH4hPUE34cVfAR9/MRY/CBvi2kLKbcyeljuFkxb
+        i70+ql4DMQ6fLFvs5tEDcVldZgwKZJ2sNnM7CmS9rD5zGwpkm6xGcz0KZLusTnMdCiRGVqu5HAUSJ6vX
+        XIYCiZXUvAwFEm9T8zIUSB+h5mUokHibmpehQGIlNS9DgcTJ6jWXoUBiZLWay1Eg22V1mutQINtkNZrr
+        USDrZfWZ21Ag62S1mdtRIMtldZnb8Ycc8Mn46QGETpaH83zJijyKZa4at9M+BuST1pP2vVix2S3jb4yh
+        fXpxCsS/O9JJDMQ9wlOLKI4djCHLo6RHOZ6wsZsx+EE808PW/uFgk5BFNmYzhqzfEckaChurGQf+R2a+
+        lYwWx1J+7iWb8GeyPsxY8BR3+HcN7UBfttZsgbD1zXhwC8nw5c+MgbB1zT7cBWJv7qGMtAmkB7VeNvmt
+        2B7sBwaSyQyBYFuwLwqEi+3A/iiQRGE4CmRQGH6h5bclWjNeFBbZeF0/PbZ/X0vtf1gYzlcT71vKdJY1
+        2FfuqfUIBH8P9uOrQPyTx05Dd/fx5FSjA8HfgX3JvGtaamQg+BrsjwKpzPpr3AcFUpn1B+6HAqnM+ru5
+        LwqkMuvP3B8FUmn7G4MCqWBf41AgldLPWPAvg0fW73EFBCKEEEIIIYQQQgghhBBH4+3tDx16m8Qfm3Mi
+        AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="&gt;&gt;lblStatusText.Name" xml:space="preserve">
     <value>lblStatusText</value>
@@ -2157,6 +2148,9 @@
   <data name="$this.ToolTip" xml:space="preserve">
     <value>dsadsadsa</value>
   </data>
+  <data name="mnuDiagramClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
   <data name="mnuColorBoard.Text" xml:space="preserve">
     <value>Color</value>
   </data>
@@ -2166,23 +2160,26 @@
   <data name="&gt;&gt;mnuSave.Name" xml:space="preserve">
     <value>mnuSave</value>
   </data>
-  <data name="&gt;&gt;mnuLessonsFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuPreviousGame.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
   </data>
   <data name="mnuSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 38</value>
+    <value>215, 38</value>
   </data>
-  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 6</value>
+  <data name="&gt;&gt;pnlDragPanel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="mnuDeleteGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 38</value>
+    <value>334, 38</value>
   </data>
   <data name="&gt;&gt;mnuNextGame.Name" xml:space="preserve">
     <value>mnuNextGame</value>
   </data>
   <data name="&gt;&gt;mnuExit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mnuPasteDiagram.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+V</value>
   </data>
   <data name="&gt;&gt;ctlTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2306,8 +2303,40 @@
   <data name="mnuGraphicals.Text" xml:space="preserve">
     <value>Gra&amp;phicals</value>
   </data>
-  <data name="&gt;&gt;mnuDiagram.Name" xml:space="preserve">
-    <value>mnuDiagram</value>
+  <data name="mnuColorBoard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 30</value>
+  </data>
+  <data name="mnuEnglish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        FAAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="mnuOpen.Text" xml:space="preserve">
     <value>&amp;Open</value>
@@ -2323,12 +2352,15 @@
   </data>
   <data name="mnuPreviousGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cQAAEnEB89x6jgAAAKlJREFUWEftl8EKhDAMBfvp/XOXyD7YdaRq0yQXBwYPQt5c215egti+33RsWO70
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAKlJREFUWEftl8EKhDAMBfvp/XOXyD7YdaRq0yQXBwYPQt5c215egti+33RsWO70
         3tNifsc3G5b2M5K/YZkVgGEZHYDBo5EBGDszIgAjI1cHYODKVQE4fFdvAA4+1ROAYzPOBOCIx5kAgWMz
         egIMHHyqN0Dg8F1XBQgMXLk6wMDIyIgAgbEzIwMMDB6NDhAYllkBBsbNzABRHmCUB4jygP09UBogygPG
         tPYBt2SxzNewb5QAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="&gt;&gt;pnlDragPanel.Name" xml:space="preserve">
+    <value>pnlDragPanel</value>
   </data>
   <data name="mnuHelpContents.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>F1</value>
@@ -2339,8 +2371,8 @@
   <data name="mnuUndo.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="mnuStockfish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
+  <data name="&gt;&gt;mnuValidMoves.Name" xml:space="preserve">
+    <value>mnuValidMoves</value>
   </data>
   <data name="&gt;&gt;mnuSelectGame.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2364,22 +2396,22 @@
 </value>
   </data>
   <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 6</value>
+    <value>212, 6</value>
   </data>
   <data name="ctlTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1407, 367</value>
+    <value>1055, 299</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Demo Board</value>
   </data>
   <data name="mnuGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 36</value>
+    <value>73, 29</value>
   </data>
   <data name="mnuEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 38</value>
+    <value>197, 38</value>
   </data>
-  <data name="&gt;&gt;mnuSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;mnuGameNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuDiagramClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2420,8 +2452,8 @@
   <data name="mnuNew.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
   </data>
-  <data name="mnuCopyDiagram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 38</value>
+  <data name="lblStatusText.Text" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="mnuTitleAndMemo.Text" xml:space="preserve">
     <value>Title and Memo</value>
@@ -2429,25 +2461,24 @@
   <data name="&gt;&gt;mnuExport.Name" xml:space="preserve">
     <value>mnuExport</value>
   </data>
-  <data name="lblStatusText.Text" xml:space="preserve">
-    <value>Status</value>
+  <data name="&gt;&gt;mnuDiagram.Name" xml:space="preserve">
+    <value>mnuDiagram</value>
   </data>
-  <data name="&gt;&gt;mnuGraphicals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuEditTitleAndMemo.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+T</value>
   </data>
-  <data name="mnuAbout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mnuMoveList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAStJREFUeF7t
-        1mEKgzAMhuHebH93LI/mAXYnR6QZUSa0YFJp3g++QdEZ8jC2ldf7s2VtKWUD4HBI0kuALBkKsA89NTpD
-        AHRZnWer16JymGsPXrla/NwoBDvPHaB1ea3cv65rfbdP7KxHAizL4opgZ7kC9C6vlfelB/D8FNg5ANjD
-        3UkPIOlF0OXTA0zxJahpRdDlpwOQ7MMuIPRaxPKSw1x78I4sp8va6uIRy0uGAWjswpGLa4YDjA4AAAAA
-        QBjAPqSz3gkH0BktlfvlZ9EzdtZjAab5KwwAAAD8BrYUAAAAAAAAAAAAAAAAAKhPuD92FgD24BEAAADg
-        N7ClAAAAAAAAAAAAAAAAAEB9wv2xs0IAejsVgEQW6u1UABJZqLde+QuQsQAIQH1J2rJ9Aeswf7OwTsJt
-        AAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAQlJREFUeF7tlEEOgkAUQzk6S4/FzdBObDLKjwkRprN4TV5AMLa+xSyEkH+zh4mn
+        GjWSeNqQbduG4t51XeMSPgRokOjHfn8+Q/97r6KG7t2rdxqRTBvyPbgfXj37Rf+9/l5/XujevXqnEcm0
+        IR4/CvdOIyAFAmYRsO+PobgXAQiYUICfXU3VgQAEcAYgQCOSQYCoRt6JezkEEYAAXaM5jBuBexGAAATM
+        J8DPrqbqQAACOAMQoBHJIEBUI+/EvRyCCECArtEcxo3AvQhAAALmE+BnV1N1IAABnAEI0IhkECCqkXfi
+        Xg5BBCBA12gO40bgXgQgAAEI0IhkEJAEARMIaNGQFO8JhJCzWZYnt5/sVgOJUmQAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="mnuNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 38</value>
+    <value>215, 38</value>
   </data>
   <data name="mnuSelectGame.Text" xml:space="preserve">
     <value>Select Game</value>
@@ -2467,11 +2498,14 @@
   <data name="mnuGameNumber.ToolTipText" xml:space="preserve">
     <value>Current Gamenumber</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+  <data name="mnuSaveLayout.Text" xml:space="preserve">
+    <value>Save Layout</value>
   </data>
-  <data name="stsStatusStrip.ToolTip" xml:space="preserve">
-    <value />
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;mnuNextGame.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuNextGame.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Transparent</value>
@@ -2479,59 +2513,59 @@
   <data name="mnuSwitchSides.Text" xml:space="preserve">
     <value>Switch Sides</value>
   </data>
-  <data name="&gt;&gt;dlgSaveFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuDiagramSaveAsJPG.Text" xml:space="preserve">
+    <value>Save as JPG</value>
   </data>
-  <data name="mnuBoardStyle.Text" xml:space="preserve">
-    <value>Board Style</value>
+  <data name="&gt;&gt;mnuTitleAndMemo.Name" xml:space="preserve">
+    <value>mnuTitleAndMemo</value>
   </data>
   <data name="mnuPreviousGame.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;mnuDeleteGame.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuGameDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;mnuCopyGamePGN.Name" xml:space="preserve">
     <value>mnuCopyGamePGN</value>
   </data>
-  <data name="&gt;&gt;mnuLanguage.Type" xml:space="preserve">
+  <data name="mnuMenuStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 14pt</value>
+  </data>
+  <data name="&gt;&gt;mnuPasteDiagram.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pnlDragPanel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;mnuNewGame.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mnuMenuBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 38</value>
   </data>
   <data name="mnuPasteGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 38</value>
+    <value>334, 38</value>
   </data>
   <data name="&gt;&gt;mnuDeleteGame.Name" xml:space="preserve">
     <value>mnuDeleteGame</value>
   </data>
-  <data name="&gt;&gt;mnuBoardStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="pnlDragPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="ctlTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="mnuDiagramSaveAsJPG.Text" xml:space="preserve">
-    <value>Save as JPG</value>
+  <data name="&gt;&gt;mnuFile.Name" xml:space="preserve">
+    <value>mnuFile</value>
   </data>
   <data name="mnuNederlands.Text" xml:space="preserve">
     <value>Nederlands</value>
   </data>
   <data name="lblStatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 23</value>
+    <value>43, 19</value>
   </data>
   <data name="&gt;&gt;ctlTabControl.Parent" xml:space="preserve">
     <value>pnlMainPanel</value>
   </data>
-  <data name="&gt;&gt;mnuAbout.Type" xml:space="preserve">
+  <data name="&gt;&gt;mnuSetupToolbar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mnuColorBoard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuGraphicals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 29</value>
   </data>
   <data name="&gt;&gt;mnuCopyDiagram.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2556,8 +2590,8 @@
   <data name="&gt;&gt;mnuSaveLayout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator8.Name" xml:space="preserve">
-    <value>ToolStripSeparator8</value>
+  <data name="&gt;&gt;mnuBoardStyle.Name" xml:space="preserve">
+    <value>mnuBoardStyle</value>
   </data>
   <data name="&gt;&gt;mnuMenuStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2565,8 +2599,11 @@
   <data name="&gt;&gt;mnuGame.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pnlDragPanel.Name" xml:space="preserve">
-    <value>pnlDragPanel</value>
+  <data name="pnlMainPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="mnuNextGame.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
   </data>
   <data name="mnuPasteGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2588,61 +2625,92 @@
 </value>
   </data>
   <data name="mnuSetupToolbar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
+    <value>232, 38</value>
   </data>
-  <data name="&gt;&gt;mnuStockfish.Type" xml:space="preserve">
+  <data name="mnuStockfish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 38</value>
+  </data>
+  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 6</value>
+  </data>
+  <data name="&gt;&gt;mnuEditTitleAndMemo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuValidMoves.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAA25JREFUeF7tnNt12zAQRF2KS3EpKkWl+COFqJAUkf98KLuMgIzAkSySC2IZzz3n
-        HloOCGEx4tNU3oQQQgghhBBCCCGEEEIIIYQYzvX3r+sr3pr/T3hN+eo6nc5lYA/9+PjwZeXy8zJr86pt
-        X875/PUY3t/n620E+8/D6TQV+tRvEEh03+tRIHeOR4HMHMsrgfhk+KShrN0rsr5uIT11x0DccbwSSAZ3
-        DsQdgwKx3ejl4S54fxTI30DShKJA/gWSIhQFch/I8FAUyDyQoaEoEB6Ii23AvmAgn58/rhcbSCbLNcqI
-        QFxsB/YDA5nu7CajuWiMpPbLgkCxLdgHvOr2WyLZKIGwWy4bqXWzEFqxPRiPh4BFn5Lp47rtrrrJAmCy
-        dc14MJTvKJv8R7L1zXj8ANr7k5hVNvHPZH2Y8WQLZboT3ExGFtl4zXj81NcWw/U/LbOJyCQbtxkPnnmN
-        0E/F2QRklI3fjMWvRzAU3435617iCcWRwiiWsTfGgqH4hPUE34cVfAR9/MRY/CBvi2kLKbcyeljuFkxb
-        i70+ql4DMQ6fLFvs5tEDcVldZgwKZJ2sNnM7CmS9rD5zGwpkm6xGcz0KZLusTnMdCiRGVqu5HAUSJ6vX
-        XIYCiZXUvAwFEm9T8zIUSB+h5mUokHibmpehQGIlNS9DgcTJ6jWXoUBiZLWay1Eg22V1mutQINtkNZrr
-        USDrZfWZ21Ag62S1mdtRIMtldZnb8Ycc8Mn46QGETpaH83zJijyKZa4at9M+BuST1pP2vVix2S3jb4yh
-        fXpxCsS/O9JJDMQ9wlOLKI4djCHLo6RHOZ6wsZsx+EE808PW/uFgk5BFNmYzhqzfEckaChurGQf+R2a+
-        lYwWx1J+7iWb8GeyPsxY8BR3+HcN7UBfttZsgbD1zXhwC8nw5c+MgbB1zT7cBWJv7qGMtAmkB7VeNvmt
-        2B7sBwaSyQyBYFuwLwqEi+3A/iiQRGE4CmRQGH6h5bclWjNeFBbZeF0/PbZ/X0vtf1gYzlcT71vKdJY1
-        2FfuqfUIBH8P9uOrQPyTx05Dd/fx5FSjA8HfgX3JvGtaamQg+BrsjwKpzPpr3AcFUpn1B+6HAqnM+ru5
-        LwqkMuvP3B8FUmn7G4MCqWBf41AgldLPWPAvg0fW73EFBCKEEEIIIYQQQgghhBBH4+3tDx16m8Qfm3Mi
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuPasteDiagram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAABBdJREFUeF7tkAGO20gMBO/BeeS+4L7ksL2evSan+iLD0CoOUkAhkbYpsv3PC9xe
-        8I+Aih31LaDDv8tLoYP+1yPQ3AG/HTrilx6B5g76bdDyQx6B5p7wdGjp7fbvj2jLHaDl4XtLzw1PZVtI
-        x7kte4CWh++5njVPY1tGR01p7qj0vSnNlafQltAx5Jx7RvoeCbOn0JbQIeSce0b6Hgmzp9CW0CFXOW8r
-        T6EtoUOuct5WnkJbQodc5bytPIW2hA65ynlbeQptCR1ylfO28hTaEjokOWff1P6Ciibn7JvaX1DR5Jx9
-        U/sLKpqcs29qf0FFk9ts4OPjA01QViYoKxOeqbtHCSia3GYLevdY1FwHzvfim/MjAEWT2+yD+ayFvnQ9
-        Ly7Of/5xSUWT2+yD+TwWfj0vLs5//nFJRZPbbEHvxsK7fqBYWTHz63mx3i88v/6/8is78/b+v4Ckoslt
-        NuBHuQnKygRlZcIzdfcoAUWTc9Y/7CYoKxOUlQnKSqfu7iWoaHLO6uP07rGoKX6TfA9Q0eSc1cd96Xpe
-        rPeL3yT/+cclFU3O2YMLH09/8A8wTVBWJigrE5SVTt3dS1DR5JylZTJBWZmgrExQVjp1dy9BRZPbbICO
-        kAnKygRlZcIzdfcoAUWT22zAF7oJysoEZWXCM3X3KAFFk9tswBe6CcrKBGVlwjN19ygBRZPbbMAXugnK
-        ygRlZcIzdfcoAUWT22zAF7oJysoEZWXCM3X3KAFFk9tswBe6CcrKBGVlwjN19ygBRZNz1j/sJigrE5SV
-        CcpKp+7uJahocs7SMpmgrExQViYoK526u5egosk5S8tkgrIyQVmZoKx06u5egoom5ywtkwnKygRlZYKy
-        0qm7ewkqmpyztEwmKCsTlJUJykqn7u4lqGhyztIymaCsTFBWJigrnbq7l6CiyW02QEfIBGVlgrIy4Zm6
-        e5SAosltNuAL3QRlZYKyMuGZunuUgKLJbTbgC90EZWWCsjLhmbp7lICiyW024AvdBGVlgrIy4Zm6e5SA
-        osltNuAL3QRlZYKyMuGZuruXkFSW3OYCvtBNUFYmKCsTnqm77+xloPB0zviH3QRlZYKyMkFZ6dTdd7Yy
-        kkq7M0/LZIKyMkFZmaCsdOruL7ZCz0rLZIKyMkFZmaCsdOruxlbqGWmZTFBWJigrE5SVTt29sRU7Ki2T
-        CcrKBGVlgrLSqbsjW8FfSctkgrIyQVmZoKx06u6XaD9Ago6QCcrKBGVlwjMq8Qp/fwDX8Wc/SO/9eXFh
-        /iXuH146/jwWtufFhfmXuH94+fjg9k7L5ns7oCm+Of8S/qH7xwktJBOUlQnKyoRnVOIV2g/gH3YTlJUJ
-        ysoEZaWjEq+w/QD69/Hhr3fOei/8qJWl/ML/TnnPCv1tvZv5z/e3209mfEQofCDMugAAAABJRU5ErkJg
-        gg==
-</value>
   </data>
   <data name="mnuLoadLayout.Text" xml:space="preserve">
     <value>Load Layout</value>
   </data>
-  <data name="mnuDiagramInitial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 38</value>
+  <data name="&gt;&gt;mnuTitleAndMemo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dlgSaveFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mnuMode.Text" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="&gt;&gt;mnuExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mnuUndo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 28</value>
+  </data>
+  <data name="mnuDiagram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 29</value>
+  </data>
+  <data name="mnuRedo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="mnuBoard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAOJJREFUaEPtljEKAzEMBO//r/IX0qbJU5xT0tkTsAKWkNmFhWBGOk8VX3d68eJh
+        pX5/UF790VtrUynRrATGSMDJlhHoz0UBW0q1BXROjWQnAbK0QQqxnw9BdrFLAtGX8rASyGbPE6DYMC2l
+        RLMSGCMBJ1tGwP5MiZ0EbGmlTgJkqafEnV2sBLLZ8wQoNkxLKdGsBMZIwMmWEdBTgkKsLaXsYpcEoi/l
+        YSWQzZ4nQLFhWkqJZiUwRgJOtozA308JGxzPfjWDnQTI0hZQiLWllF3skkD0pTysBLLZ8wQKFw+L9Opv
+        2Svcpd7ubrIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="&gt;&gt;mnuMenuBottom.Name" xml:space="preserve">
+    <value>mnuMenuBottom</value>
+  </data>
+  <data name="mnuDeleteGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqJJREFUeF7l
+        0Atu3DAMBcDt/Q+dVgsoUJixbMr0/gp0FiktPlK6/bndfvj6929P7Hk3411YzBiDX5l2b6YfM+LAV6Fd
+        RyWX77TAs2g/KX2ATgs9ivbZ0s5f8gBNXOxq2mHL2HfZA3TjsCto5kzsv/wBmji0imZtUX9z/1FDtTj4
+        DOXPKKP7/kON1cbBK5Q5o4zoV0FB1eLMPcrYoxxhUYHVNFfUO6OMGRY7DaikmZ3O71HOHhYjDatSNU85
+        R7C4RYMrnMkf91vB4h4t8gzaLYvFo7TUo2ifFSxmaLmraY9VLK7QotU09ywWV2npKppXgcWzdIEzNKMK
+        ixV0kRXKrsRiJV0qQ5mVWKyiC61QdhUWK+giZ2hGBRbP0gXO0pwKLJ6h5ato3lksrtLS1TT3DBaztOiV
+        tMMqFjO04CNolxUsHqXFMs7kjHucweIRWiqjIi9mrGBxj5bJUGajs3uUk8HijJbIUOZIPTPKyGBxixbI
+        UKaod0YZR7EoGpyhzBllzCjjCBYjDcxQ5hHK2qL+I1iMNDBDmUcpb4v697A40qAMZWYpd4v6Z1jsNCBD
+        mauUL+qdYbFReIYyz9IcUe8WFhsFZyizgmaJeoVFBWYos5JmRuqTXwWFZcS8q2h2pL7oV0FBGTHvKpot
+        6h39+I8CMsasR9AOkfpG33+oOWMMfSTtEqmv+/5DjRlj6KNpn5F6uvuPmjJi6DNor5F6mvuPGo6Kgc+i
+        3Ubqae4/ajgqBj6T9hup52Mu32nPTuc/7gEa7drFs8sPEINeifbt4tmPfIBGO3fjuaUHGANemXZvxjP/
+        5QM0/Uz6AcYB70B3aPr3j3+ARvdo2rfUA8Tgd7J1n82P0Rj2jrbutPkxGsPele41/diNIe9Md9s9MH7/
+        BD/vd/v6C4Mjn8Jsl0JiAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="mnuMenuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="mnuGameDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 38</value>
+  </data>
+  <data name="mnuEditTitleAndMemo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAN9JREFUeF7tlEEKxDAMxPr0/ryLNoYsTlu2R7sSmMAwl9Ehm4j8crzkLjm6w8Z9
+        3y8lRK0vbFSAAh4IIKt8GTIFKEABvKdEbUJW+TJkCngioBtsVIACFPC/ALLKlyFTgAL8AxQw5q5ErS9s
+        VICfoAJ4T4nahKzyZcj8AxSgAAWMuStRm5BVvgyZAhTgH6CAMXclan1howL8BBXAe0rUJmSVL0PmH6AA
+        BShgzF2J2oSs8mXIFKAA/wAFjLkrUesLGxWgAAUoYMxdiVpf2KgABdwIeMPdCfhCofvFVJF3s20fuz4p
+        GLsNBSUAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="&gt;&gt;dlgLessonsFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuDeleteGame.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuBoardStyle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -24142,85 +24210,11 @@
         6AMAAAx3AQDoAwAAoIYBAI+xAAA=
 </value>
   </data>
-  <data name="&gt;&gt;stsStatusStrip.Name" xml:space="preserve">
-    <value>stsStatusStrip</value>
-  </data>
-  <data name="&gt;&gt;mnuExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuHelpIndex.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+F1</value>
-  </data>
-  <data name="mnuDiagram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 36</value>
-  </data>
-  <data name="mnuSaveLayout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAIdJREFUWEftkksKgDAMBXMIz+PZek1Poxtjg7y0GPqJJQMDRV9lFhJROucKH470
-        PrSm9l1+HwHd/wGNvBHjHmrkTWXYC78BtO3NRfwggI7HL8h7ERABEbBOgNn1AvgdsrBHmAOY91nby53E
-        HCBlanuEOQBR2qt3/Ac0FOE3YBT+AuYJH44ynRfSY1GMyW8t/AAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="mnuSaveLayout.Text" xml:space="preserve">
-    <value>Save Layout</value>
-  </data>
-  <data name="&gt;&gt;mnuMenuBottom.Name" xml:space="preserve">
-    <value>mnuMenuBottom</value>
-  </data>
-  <data name="mnuDeleteGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqJJREFUeF7l
-        0Atu3DAMBcDt/Q+dVgsoUJixbMr0/gp0FiktPlK6/bndfvj6929P7Hk3411YzBiDX5l2b6YfM+LAV6Fd
-        RyWX77TAs2g/KX2ATgs9ivbZ0s5f8gBNXOxq2mHL2HfZA3TjsCto5kzsv/wBmji0imZtUX9z/1FDtTj4
-        DOXPKKP7/kON1cbBK5Q5o4zoV0FB1eLMPcrYoxxhUYHVNFfUO6OMGRY7DaikmZ3O71HOHhYjDatSNU85
-        R7C4RYMrnMkf91vB4h4t8gzaLYvFo7TUo2ifFSxmaLmraY9VLK7QotU09ywWV2npKppXgcWzdIEzNKMK
-        ixV0kRXKrsRiJV0qQ5mVWKyiC61QdhUWK+giZ2hGBRbP0gXO0pwKLJ6h5ato3lksrtLS1TT3DBaztOiV
-        tMMqFjO04CNolxUsHqXFMs7kjHucweIRWiqjIi9mrGBxj5bJUGajs3uUk8HijJbIUOZIPTPKyGBxixbI
-        UKaod0YZR7EoGpyhzBllzCjjCBYjDcxQ5hHK2qL+I1iMNDBDmUcpb4v697A40qAMZWYpd4v6Z1jsNCBD
-        mauUL+qdYbFReIYyz9IcUe8WFhsFZyizgmaJeoVFBWYos5JmRuqTXwWFZcS8q2h2pL7oV0FBGTHvKpot
-        6h39+I8CMsasR9AOkfpG33+oOWMMfSTtEqmv+/5DjRlj6KNpn5F6uvuPmjJi6DNor5F6mvuPGo6Kgc+i
-        3Ubqae4/ajgqBj6T9hup52Mu32nPTuc/7gEa7drFs8sPEINeifbt4tmPfIBGO3fjuaUHGANemXZvxjP/
-        5QM0/Uz6AcYB70B3aPr3j3+ARvdo2rfUA8Tgd7J1n82P0Rj2jrbutPkxGsPele41/diNIe9Md9s9MH7/
-        BD/vd/v6C4Mjn8Jsl0JiAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuMenuStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="mnuGameDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 38</value>
-  </data>
-  <data name="mnuEditTitleAndMemo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAN9JREFUeF7tlEEKxDAMxPr0/ryLNoYsTlu2R7sSmMAwl9Ehm4j8crzkLjm6w8Z9
-        3y8lRK0vbFSAAh4IIKt8GTIFKEABvKdEbUJW+TJkCngioBtsVIACFPC/ALLKlyFTgAL8AxQw5q5ErS9s
-        VICfoAJ4T4nahKzyZcj8AxSgAAWMuStRm5BVvgyZAhTgH6CAMXclan1howL8BBXAe0rUJmSVL0PmH6AA
-        BShgzF2J2oSs8mXIFKAA/wAFjLkrUesLGxWgAAUoYMxdiVpf2KgABdwIeMPdCfhCofvFVJF3s20fuz4p
-        GLsNBSUAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="mnuMenuBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 38</value>
-  </data>
-  <data name="&gt;&gt;dlgLessonsFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuNederlands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 38</value>
-  </data>
-  <data name="&gt;&gt;mnuEditTitleAndMemo.Name" xml:space="preserve">
-    <value>mnuEditTitleAndMemo</value>
-  </data>
   <data name="&gt;&gt;mnuBlackAndWhiteBoard.Name" xml:space="preserve">
     <value>mnuBlackAndWhiteBoard</value>
   </data>
   <data name="mnuRedo.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 28</value>
-  </data>
-  <data name="mnuPasteDiagram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 38</value>
   </data>
   <data name="mnuMenuLocation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -24240,11 +24234,11 @@
   <metadata name="stsStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>222, 16</value>
   </metadata>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>321, 16</value>
-  </metadata>
   <metadata name="dlgLessonsFolder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>514, 17</value>
+  </metadata>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>321, 16</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

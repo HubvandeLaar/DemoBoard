@@ -63,4 +63,11 @@ Public Class frmPromotion
         End If
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.ChoosenPiece = Nothing
+        Me.Color = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

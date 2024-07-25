@@ -252,4 +252,13 @@ Public Class frmTrainingQuestion
         Call ChangeLanguageCurrentForm(Me)
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.gTrainingHalfMove = Nothing
+        Me.gLocalizedQuestion = Nothing
+        Me.gCorrectAnswer = Nothing
+        Me.gIncorrectSubVariant = Nothing
+        Me.gfrmMainform = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

@@ -45,7 +45,7 @@ Public Class frmTitleAndMemo
         If txtTitle.Text = "" Then
             Return 0
         End If
-        Dim TitleSize As Size = New Size(txtTitle.Width, Int32.MaxValue)
+        Dim TitleSize = New Size(txtTitle.Width, Int32.MaxValue)
         TitleSize = TextRenderer.MeasureText(txtTitle.Text, txtTitle.Font, TitleSize, TextFormatFlags.WordBreak)
         Return TitleSize.Height + 4
     End Function
@@ -73,4 +73,9 @@ Public Class frmTitleAndMemo
         txtMemo.Enabled = True
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.gfrmMainform = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

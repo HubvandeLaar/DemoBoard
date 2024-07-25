@@ -117,55 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="pnlDragPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pnlDragPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 145</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlDragPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="pnlDragPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 100</value>
-  </data>
-  <data name="ctlTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ctlTabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="ctlTabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>1108, 469</value>
+  </data>
+  <data name="ctlTabControl.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="pnlMainPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 37</value>
   </data>
-  <data name="pnlMainPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
   <data name="pnlMainPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>1114, 475</value>
   </data>
+  <data name="pnlMainPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="stsStatusStrip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="stsStatusStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>None</value>
+  </data>
+  <data name="lblStatusText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 17</value>
   </data>
   <data name="stsStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="stsStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>716, 24</value>
+    <value>60, 22</value>
   </data>
-  <data name="lblStatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 19</value>
-  </data>
-  <data name="mnuMenuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="mnuMenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 0, 2</value>
-  </data>
-  <data name="mnuMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1108, 37</value>
+  <data name="stsStatusStrip.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="mnuUndo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -294,12 +282,6 @@
   </data>
   <data name="mnuRedo.ToolTipText" xml:space="preserve">
     <value>Opnieuw</value>
-  </data>
-  <data name="mnuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 29</value>
-  </data>
-  <data name="mnuFile.Text" xml:space="preserve">
-    <value>&amp;Bestand</value>
   </data>
   <data name="mnuNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -470,11 +452,11 @@
   <data name="mnuExit.Text" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
-  <data name="mnuGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 29</value>
+  <data name="mnuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 29</value>
   </data>
-  <data name="mnuGame.Text" xml:space="preserve">
-    <value>&amp;Partij</value>
+  <data name="mnuFile.Text" xml:space="preserve">
+    <value>&amp;Bestand</value>
   </data>
   <data name="mnuCopyGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -498,17 +480,8 @@
         FJRZMeo7CuaN600oKLNi1HcU67xft3/xnisxfMmhmwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="mnuCopyGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
-  </data>
   <data name="mnuCopyGame.Text" xml:space="preserve">
     <value>Partij Kopieren</value>
-  </data>
-  <data name="mnuCopyGamePGN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 30</value>
-  </data>
-  <data name="mnuCopyGameXPGN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 30</value>
   </data>
   <data name="mnuPasteGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -529,9 +502,6 @@
         md4J5p22OFAQVKZ3gnmnLQ4UBJXpnYh5Px//AFlsXGDm9rfBAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="mnuPasteGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
-  </data>
   <data name="mnuPasteGame.Text" xml:space="preserve">
     <value>Partij Plakken</value>
   </data>
@@ -544,9 +514,6 @@
         AoQAzWGPAAKEAHQtN4ZOAAFCgOawRwABQgC6lhtDJ4AAIUBz2COAAAIIIMA/ADPcL4AjfPD0O6caM3eW
         5QXUlnl7OHjx1gAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="mnuSelectGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
   </data>
   <data name="mnuSelectGame.Text" xml:space="preserve">
     <value>Selecteer Partij</value>
@@ -569,9 +536,6 @@
         8F1kZxjQsVHJqkZZ96IBAH3KYbmw7o75J99ScCqrs1eyvgTEPlvecjU7fFLNy6Wui/y4KVIDqA65102l
         G+lfsQM3wmIM1XUbAwuOMLmQ6Pq/OuqbEwHGMQMAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="mnuNewGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
   </data>
   <data name="mnuNewGame.Text" xml:space="preserve">
     <value>Nieuwe Partij</value>
@@ -667,9 +631,6 @@
         kJQvfbRBGxm/Vx760T7aR/toH+2jPVH79Ol/urmt2mYmWJcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="mnuEditGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
-  </data>
   <data name="mnuEditGame.Text" xml:space="preserve">
     <value>Partij Aanpassen</value>
   </data>
@@ -690,9 +651,6 @@
         BD/vd/v6C4Mjn8Jsl0JiAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="mnuDeleteGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
-  </data>
   <data name="mnuDeleteGame.Text" xml:space="preserve">
     <value>Partij Verwijderen</value>
   </data>
@@ -706,8 +664,11 @@
         GLsNBSUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="mnuEditTitleAndMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
+  <data name="mnuGame.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 29</value>
+  </data>
+  <data name="mnuGame.Text" xml:space="preserve">
+    <value>&amp;Partij</value>
   </data>
   <data name="mnuPreviousGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -720,9 +681,6 @@
   </data>
   <data name="mnuPreviousGame.ToolTipText" xml:space="preserve">
     <value>Vorige Partij</value>
-  </data>
-  <data name="mnuGameNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 25</value>
   </data>
   <data name="mnuGameNumber.ToolTipText" xml:space="preserve">
     <value>Nummer Actieve Partij</value>
@@ -744,9 +702,6 @@
   </data>
   <data name="mnuMode.Text" xml:space="preserve">
     <value>Opzetten</value>
-  </data>
-  <data name="mnuDiagram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 29</value>
   </data>
   <data name="mnuCopyDiagram.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -897,12 +852,6 @@
   </data>
   <data name="mnuGraphicals.Text" xml:space="preserve">
     <value>Gra&amp;fische Elementen</value>
-  </data>
-  <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 29</value>
-  </data>
-  <data name="mnuView.Text" xml:space="preserve">
-    <value>&amp;Vensters</value>
   </data>
   <data name="mnuStatusBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 38</value>
@@ -1105,11 +1054,23 @@
   <data name="mnuStockfish.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 38</value>
   </data>
-  <data name="mnuSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 29</value>
+  <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 29</value>
   </data>
-  <data name="mnuSettings.Text" xml:space="preserve">
-    <value>&amp;Instellingen</value>
+  <data name="mnuView.Text" xml:space="preserve">
+    <value>&amp;Vensters</value>
+  </data>
+  <data name="mnuColorBoard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 30</value>
+  </data>
+  <data name="mnuColorBoard.Text" xml:space="preserve">
+    <value>Kleur</value>
+  </data>
+  <data name="mnuBlackAndWhiteBoard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 30</value>
+  </data>
+  <data name="mnuBlackAndWhiteBoard.Text" xml:space="preserve">
+    <value>Zwart Wit</value>
   </data>
   <data name="mnuBoardStyle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -22615,17 +22576,49 @@
   <data name="mnuBoardStyle.Text" xml:space="preserve">
     <value>Bord Stijl</value>
   </data>
-  <data name="mnuColorBoard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 30</value>
+  <data name="mnuEnglish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        FAAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="mnuColorBoard.Text" xml:space="preserve">
-    <value>Kleur</value>
-  </data>
-  <data name="mnuBlackAndWhiteBoard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 30</value>
-  </data>
-  <data name="mnuBlackAndWhiteBoard.Text" xml:space="preserve">
-    <value>Zwart Wit</value>
+  <data name="mnuNederlands.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAXBJREFUWEftks1KAmEYRmfU/lUIghZtXAgTKgWadxBBRFGRqGWEC4MiKJBoEWr2
+        Y/ZjtYiusLEp0xsQffuecZgZxG2vm3ngwPgycg6i5MyZmFswKfAxAyfc0rSaSFM9leElvU9wIyBQT+5R
+        6/2DFe3kDAEBBCjqTopaL2/0W7qmRrGsg2f7Z/t90LOd/u/2v9esvZJ2eIQApRewmaDmXZUaF5cswKVl
+        c1bA5/oWNQpX9H2aZwGur0zWFrC6QT/5c/1n4QAutfcnNAJW1kjLHVN994AFuNTtpBVAQ5oT4ASYAd1u
+        1zjxDU4zoNPpGGe+wWkGtNtt48w3OM0Ab/SBpqJP5IlUWYDLH3u0AsYXKuL4TK5wlQW4JhYrVsBI+FY/
+        yqF7FuAajdxYAe5QmbwxvgC4POGyFeCaL5FvqTbw5f8ALjjNAFkpkT9eY0VWimZAUFYK+oGXAgKCCJgV
+        LAvSzMAJtzQmmBHMMQMn3M6GOUn6AwxVgp+4iRH4AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="mnuLanguage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -22742,56 +22735,6 @@
   <data name="mnuLanguage.Text" xml:space="preserve">
     <value>Taal</value>
   </data>
-  <data name="mnuEnglish.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        FAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="mnuEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 38</value>
-  </data>
-  <data name="mnuNederlands.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAXBJREFUWEftks1KAmEYRmfU/lUIghZtXAgTKgWadxBBRFGRqGWEC4MiKJBoEWr2
-        Y/ZjtYiusLEp0xsQffuecZgZxG2vm3ngwPgycg6i5MyZmFswKfAxAyfc0rSaSFM9leElvU9wIyBQT+5R
-        6/2DFe3kDAEBBCjqTopaL2/0W7qmRrGsg2f7Z/t90LOd/u/2v9esvZJ2eIQApRewmaDmXZUaF5cswKVl
-        c1bA5/oWNQpX9H2aZwGur0zWFrC6QT/5c/1n4QAutfcnNAJW1kjLHVN994AFuNTtpBVAQ5oT4ASYAd1u
-        1zjxDU4zoNPpGGe+wWkGtNtt48w3OM0Ab/SBpqJP5IlUWYDLH3u0AsYXKuL4TK5wlQW4JhYrVsBI+FY/
-        yqF7FuAajdxYAe5QmbwxvgC4POGyFeCaL5FvqTbw5f8ALjjNAFkpkT9eY0VWimZAUFYK+oGXAgKCCJgV
-        LAvSzMAJtzQmmBHMMQMn3M6GOUn6AwxVgp+4iRH4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuNederlands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 38</value>
-  </data>
   <data name="mnuLessonsFolder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -22811,21 +22754,6 @@
   </data>
   <data name="mnuLessonsFolder.Text" xml:space="preserve">
     <value>Folder voor Lessen</value>
-  </data>
-  <data name="mnuMenuLocation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cQAAEnEB89x6jgAAAKpJREFUWEftl1EKgDAMQ73/qXqzaWTKmMk2oVbQBQLSRPL8dNmUmM3s9J1c3Vme
-        O9cSXJWGc3Vn+d6pD9F2BWBfXJq+kxzFRg8rhQC05AoAMQBY6TGA8jkcoFQPwh2AqQUxAUIAIAUxASbA
-        BPgHgBqHvg/QGofcAeqhVwCOsd449BjAyDjkCsDG4ZZCAGCl939M2DHSG1if9k6u7izPnWsJrkrDubqz
-        3MzSCoMIQucTInhdAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuMenuLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 38</value>
-  </data>
-  <data name="mnuMenuLocation.Text" xml:space="preserve">
-    <value>Positie van het Menu</value>
   </data>
   <data name="mnuMenuTop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -22852,6 +22780,21 @@
   </data>
   <data name="mnuMenuBottom.Text" xml:space="preserve">
     <value>Beneden</value>
+  </data>
+  <data name="mnuMenuLocation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        cQAAEnEB89x6jgAAAKpJREFUWEftl1EKgDAMQ73/qXqzaWTKmMk2oVbQBQLSRPL8dNmUmM3s9J1c3Vme
+        O9cSXJWGc3Vn+d6pD9F2BWBfXJq+kxzFRg8rhQC05AoAMQBY6TGA8jkcoFQPwh2AqQUxAUIAIAUxASbA
+        BPgHgBqHvg/QGofcAeqhVwCOsd449BjAyDjkCsDG4ZZCAGCl939M2DHSG1if9k6u7izPnWsJrkrDubqz
+        3MzSCoMIQucTInhdAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="mnuMenuLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>276, 38</value>
+  </data>
+  <data name="mnuMenuLocation.Text" xml:space="preserve">
+    <value>Positie van het Menu</value>
   </data>
   <data name="mnuLoadLayout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -22882,8 +22825,11 @@
   <data name="mnuSaveLayout.Text" xml:space="preserve">
     <value>Layout Opslaan</value>
   </data>
-  <data name="mnuHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 29</value>
+  <data name="mnuSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 29</value>
+  </data>
+  <data name="mnuSettings.Text" xml:space="preserve">
+    <value>&amp;Instellingen</value>
   </data>
   <data name="mnuHelpContents.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -23085,9 +23031,6 @@
         AQDoAwAA
 </value>
   </data>
-  <data name="mnuHelpContents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 38</value>
-  </data>
   <data name="mnuHelpContents.Text" xml:space="preserve">
     <value>&amp;Inhoud</value>
   </data>
@@ -23108,12 +23051,6 @@
         1W6KlE7inrYTcS2Xq5EZ3H9UhUxlY2gyKMAi0R+3BHAuvd7mVQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="mnuHelpIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 38</value>
-  </data>
-  <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 6</value>
-  </data>
   <data name="mnuAbout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAStJREFUeF7t
@@ -23125,14 +23062,17 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="mnuAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 38</value>
-  </data>
   <data name="mnuAbout.Text" xml:space="preserve">
     <value>&amp;Over ...</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="mnuMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1108, 37</value>
+  </data>
+  <data name="mnuMenuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dlgLessonsFolder.Description" xml:space="preserve">
+    <value>Selecteer de folder voor de Lessen</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1114, 530</value>
@@ -23164,9 +23104,6 @@
         CQAAAAAAAAAAAAAAAgAAAAAABAAAAP9/AACAAQAAgAMAAMADAADABwAAwAcAAMAHAADADwAA4A8AAPIP
         AAD6DwAA/g8AAPwHAAD8BwAA/AcAAP23AAA=
 </value>
-  </data>
-  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Demo Bord</value>

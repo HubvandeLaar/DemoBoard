@@ -42,4 +42,10 @@ Public Class frmEditTitleAndMemo
         Me.Hide()
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.PGNGame = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

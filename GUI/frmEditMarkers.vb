@@ -80,4 +80,10 @@ Public Class frmEditMarkers
         Me.Hide()
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.MarkerList = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

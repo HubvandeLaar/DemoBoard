@@ -646,6 +646,8 @@ Public Class ctlBoard
     Public Sub KeyEntered(pMsg As Message, pKeyData As Keys)
         Dim R As Long, C As Long
         If pKeyData > Int16.MaxValue Then Exit Sub
+        If pKeyData >= Keys.F1 And pKeyData <= Keys.F24 Then Exit Sub
+
         If picDragImage.Visible = True Then Exit Sub
         C = Column(gMouseX) : R = Row(gMouseY)
         If R < 1 Or R > 8 Or C < 1 Or C > 8 Then Exit Sub

@@ -315,4 +315,10 @@ Public Class frmMoveList
         ctlMoveList.ShowMoveList()
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.gfrmMainForm = Nothing
+        Me.gPGNHalfMoves = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

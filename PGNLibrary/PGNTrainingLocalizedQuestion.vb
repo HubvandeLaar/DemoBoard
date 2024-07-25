@@ -106,6 +106,7 @@ Public Class PGNTrainingLocalizedQuestion
 
     Protected Overrides Sub Finalize()
         Me.Answers = Nothing
+
         MyBase.Finalize()
     End Sub
 

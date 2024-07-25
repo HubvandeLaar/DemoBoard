@@ -1,4 +1,6 @@
 To Do Lijstje
+	Help werkt niet in Debug mode...
+	Multilingual Help
 	Testen of nieuwe installatie van hogere versie de gewijzigde XPGN's in myDocuments\DemoBoard lessen\ overschrijft
 
 	Documentatie en Helpteksten aanpassen !!
@@ -6,6 +8,11 @@ To Do Lijstje
 	Analyse van de Partij
 
 Aanpassingen
+V	Kopieren en plakken met lege zettenlijst ging fout
+V	Bij Folder voor Lessen; Default de huidige instelling tonen
+V	F1 op bord gaf Paard; F5 gaf Toren; Functietoetsen uitgesloten
+V	Venster Schaakbord niet blauw gemarkeerd als Schaakbord default geladen wordt...
+V   Statusbalk laadde in de Top !!!
 V	Export; Nieuw diagram of memo gooit andere entries weg...
 V	Export; Diagram komt er zonder Markers op te staan !!
 V	Save diagram als JPG; zijn de randen grijs; beter om die wit te maken...
@@ -19,7 +26,7 @@ X	Bij mnuView de statusen van de Subwindows bepalen.....sub.Parent..?
 	  Werkt niet; SubForm buiten MainForm droppen blijft Parent houden
 	  Visible is geen goede optie; bij meerdere tabbladen is degen die niet actief is, ook InVisible
 V	Tijdens Setup kan andere locatie worden aangegeven voor de Lessen
-V	Als de PGN-File veranderd is, wvolgt er een waarschuwing bij het openen van een ander bestand, etc..
+V	Als de PGN-File veranderd is, volgt er een waarschuwing bij het openen van een ander bestand, etc..
 V	Copy Game (PGN en XPGN) en Paste Game
 V	De 'nl'-folder met resources werd niet door Setup meegenomen
 V	referentie naar CPSArrow ipv Arrow in mnuGraphicals
@@ -196,7 +203,7 @@ V	Als mnuValidMoves.Checked = False; ook de validMoves niet bepalen !!
 V	Stuk weghalen voor loop in PlayMove
 V	MouseMove over board tijdens PlayMove geeft gekke dingen
 V	Zettenlijst wordt niet opgebouwd als Quiz als eerste te zien is
-V	Vraag bij Quiz 1 minstens één regel langer maken
+V	Vraag bij Quiz 1 minstens   n regel langer maken
 V	Select Quiz-tab als het een Quiz betreft
 V	PGNString in TraningQuestion houdt met parsing geen rekening met commentaar met komma's
 V	Good en Bad Answer Text via MessageText
@@ -298,7 +305,7 @@ V	Bij Titel en Tekst ligt de tekst soms over de titel, of is de titel te klein
 V	Quiz form ALWAYS ON TOP
 V	Bij openen PGN wordt de zettenlijst twee keer opgebouwd !
 V	Zettenlijst verbergen werkt !
-V	Bij click op Move (of prev move). Op Board de situatie van Vóór die zety laten zien.
+V	Bij click op Move (of prev move). Op Board de situatie van V  r die zety laten zien.
 V	Question should popup right from Mainform or Right on mainform
 V	TrainingQuestion in aparte Modus starten, anders geen edit mogelijkheid...
 V	Bij cmdRetry ook de vraag opnieuw stellen

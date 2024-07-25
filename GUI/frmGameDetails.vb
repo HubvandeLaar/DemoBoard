@@ -56,4 +56,9 @@ Public Class frmGameDetails
         gfrmMainForm = Nothing
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.gfrmMainForm = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

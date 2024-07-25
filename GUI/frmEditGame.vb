@@ -139,4 +139,10 @@ Public Class frmEditGame
         Return ""
     End Function
 
+    Protected Overrides Sub Finalize()
+        Me.PGNGame = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

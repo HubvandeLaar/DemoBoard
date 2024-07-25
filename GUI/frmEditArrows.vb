@@ -80,4 +80,10 @@ Class frmEditArrows
         Me.Hide()
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.ArrowList = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

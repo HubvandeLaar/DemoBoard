@@ -193,4 +193,13 @@ Public Class PGNComment
         Comment = Replace(Comment, "  ", " ")
         Return Comment
     End Function
+
+    Protected Overrides Sub Finalize()
+        Me.MarkerList = Nothing
+        Me.ArrowList = Nothing
+        Me.TextList = Nothing
+        Me.TrainingQuestion = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

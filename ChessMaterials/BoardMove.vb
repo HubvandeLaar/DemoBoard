@@ -47,4 +47,10 @@ Public Class BoardMove
         End If
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.Piece = Nothing
+        Me.PromotionPiece = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

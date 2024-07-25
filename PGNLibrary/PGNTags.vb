@@ -1,6 +1,5 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
 Imports System.Xml.Serialization
 
 <XmlType()>
@@ -89,11 +88,4 @@ Public Class PGNTags
     Public Sub New()
     End Sub
 
-    Protected Overrides Sub Finalize()
-        For Each PGNTag As PGNTag In Me
-            PGNTag = Nothing
-        Next PGNTag
-
-        MyBase.Finalize()
-    End Sub
 End Class

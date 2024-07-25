@@ -8,7 +8,7 @@ Imports PdfSharp.Pdf
 
 Public Class PDFDocument
 
-    Private PDFSharpDocument As Pdf.PdfDocument = New Pdf.PdfDocument()
+    Private PDFSharpDocument = New Pdf.PdfDocument()
 
     Public DiagramsPerPage As Integer = 12 ', 9, 6 or 4
     Public PageMarge As Long = CentimetersToPoints(1.5)   'cm
@@ -62,7 +62,7 @@ Public Class PDFDocument
     End Sub
 
     Sub InsertPageHeader(pPageHeader As String, pGraphics As XGraphics)
-        Dim HeaderRect As XRect = New XRect(New XPoint(PageMarge, PageMarge), New XSize(pGraphics.PdfPage.Width.Point - (PageMarge * 2), PageMarge + HeaderHeight))
+        Dim HeaderRect = New XRect(New XPoint(PageMarge, PageMarge), New XSize(pGraphics.PdfPage.Width.Point - (PageMarge * 2), PageMarge + HeaderHeight))
         Dim Formatter = New XTextFormatter(pGraphics)
         Formatter.DrawString(pPageHeader, New XFont("Calibri", 24), XBrushes.Black, HeaderRect, XStringFormats.TopLeft)
     End Sub
@@ -82,7 +82,7 @@ Public Class PDFDocument
         Dim Exercise As XRect = ExerciseRect(CurPage, ((pGameIndex - 1) Mod 12) + 1)
 
         'Create Bitmap Stream
-        Dim Stream As MemoryStream = New MemoryStream()
+        Dim Stream = New MemoryStream()
         pDiagram.Save(Stream, System.Drawing.Imaging.ImageFormat.Jpeg) 'save bitmap into memory stream In jpeg format
 
         'Insert Diagram with the right AspectRatio
@@ -91,7 +91,7 @@ Public Class PDFDocument
         Graphics.DrawImage(XImage.FromStream(Stream), DiagramRect)
 
         'Draw Bottom Text
-        Dim TextRect As XRect = New XRect(Exercise.Left, Exercise.Top + DiagramRect.Height, Exercise.Width, Exercise.Height - DiagramRect.Height + ColumnMarge)
+        Dim TextRect = New XRect(Exercise.Left, Exercise.Top + DiagramRect.Height, Exercise.Width, Exercise.Height - DiagramRect.Height + ColumnMarge)
         Dim Formatter = New XTextFormatter(Graphics)
         Formatter.DrawString(pBottomText, New XFont("Calibri", pFontSize), XBrushes.Black, TextRect, XStringFormats.TopLeft)
 
@@ -114,7 +114,7 @@ Public Class PDFDocument
     End Function
 
     Protected Overrides Sub Finalize()
-        PDFSharpDocument = Nothing
+        Me.PDFSharpDocument = Nothing
 
         MyBase.Finalize()
     End Sub

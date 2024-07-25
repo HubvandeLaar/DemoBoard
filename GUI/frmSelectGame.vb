@@ -115,4 +115,10 @@ Public Class frmSelectGame
         End Try
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.CurrentFile = Nothing
+        Me.SelectedGame = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

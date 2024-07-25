@@ -126,4 +126,9 @@ Public Class PGNTrainingQuestion
         Return Text
     End Function
 
+    Protected Overrides Sub Finalize()
+        Me.LocalizedQuestions = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

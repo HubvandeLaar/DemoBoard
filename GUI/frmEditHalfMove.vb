@@ -164,4 +164,11 @@ Public Class frmEditHalfMove
         Me.Hide()
     End Sub
 
+    Protected Overrides Sub Finalize()
+        Me.PGNHalfMove = Nothing
+        Me.gfrmMainForm = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 End Class

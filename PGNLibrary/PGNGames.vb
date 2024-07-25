@@ -71,12 +71,4 @@ Public Class PGNGames
         Next G
     End Sub
 
-    Protected Overrides Sub Finalize()
-        For Each PGNGame As PGNGame In Me
-            PGNGame = Nothing
-        Next PGNGame
-
-        MyBase.Finalize()
-    End Sub
-
 End Class

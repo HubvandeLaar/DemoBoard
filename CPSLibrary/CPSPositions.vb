@@ -36,6 +36,7 @@ Public Class CPSPositions
 
     Protected Overrides Sub Finalize()
         Me.PositionList = Nothing
+
         MyBase.Finalize()
     End Sub
 End Class

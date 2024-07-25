@@ -26,7 +26,7 @@ Public Class CPSFile
 
     Public Function ConvertToPGN() As PGNGames
         Dim ChessBoard As New ChessBoard()
-        Dim PGNGames As PGNGames = New PGNGames()
+        Dim PGNGames = New PGNGames()
         For Each Position As CPSPosition In Me.Positions.PositionList
             ChessBoard.Clear()
             Dim PGNGame As PGNGame = PGNGames.Add()
@@ -69,12 +69,18 @@ Public Class CPSFile
                             PGNGame.HalfMoves.FENComment.MarkerList = New PGNMarkerList()
                         End If
                         PGNGame.HalfMoves.FENComment.MarkerList.Add(New Marker("*", Field.Name))
-                    Case "King" : ChessBoard.Fields(Field.Name).Piece = New King(If(Field.Color = "White", WHITE, BLACK))
-                    Case "Queen" : ChessBoard.Fields(Field.Name).Piece = New Queen(If(Field.Color = "White", WHITE, BLACK))
-                    Case "Rook" : ChessBoard.Fields(Field.Name).Piece = New Rook(If(Field.Color = "White", WHITE, BLACK))
-                    Case "Bishop" : ChessBoard.Fields(Field.Name).Piece = New Bishop(If(Field.Color = "White", WHITE, BLACK))
-                    Case "Knight" : ChessBoard.Fields(Field.Name).Piece = New Knight(If(Field.Color = "White", WHITE, BLACK))
-                    Case "Pawn" : ChessBoard.Fields(Field.Name).Piece = New Pawn(If(Field.Color = "White", WHITE, BLACK))
+                    Case "King"
+                        ChessBoard.Fields(Field.Name).Piece = New King(If(Field.Color = "White", WHITE, BLACK))
+                    Case "Queen"
+                        ChessBoard.Fields(Field.Name).Piece = New Queen(If(Field.Color = "White", WHITE, BLACK))
+                    Case "Rook"
+                        ChessBoard.Fields(Field.Name).Piece = New Rook(If(Field.Color = "White", WHITE, BLACK))
+                    Case "Bishop"
+                        ChessBoard.Fields(Field.Name).Piece = New Bishop(If(Field.Color = "White", WHITE, BLACK))
+                    Case "Knight"
+                        ChessBoard.Fields(Field.Name).Piece = New Knight(If(Field.Color = "White", WHITE, BLACK))
+                    Case "Pawn"
+                        ChessBoard.Fields(Field.Name).Piece = New Pawn(If(Field.Color = "White", WHITE, BLACK))
                 End Select
             Next Field
             PGNGame.Tags.Add("FEN", ChessBoard.FEN)
@@ -92,6 +98,7 @@ Public Class CPSFile
 
     Protected Overrides Sub Finalize()
         Me.Positions = Nothing
+
         MyBase.Finalize()
     End Sub
 End Class

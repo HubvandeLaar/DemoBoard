@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ToDoList.txt = ToDoList.txt
 	EndProjectSection
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClassLifeCycles", "ClassLifeCycles\ClassLifeCycles.vbproj", "{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -211,6 +213,26 @@ Global
 		{41F203DD-778B-433F-8D0A-B1EC21565557}.Release|x64.Build.0 = Release|Any CPU
 		{41F203DD-778B-433F-8D0A-B1EC21565557}.Release|x86.ActiveCfg = Release|Any CPU
 		{41F203DD-778B-433F-8D0A-B1EC21565557}.Release|x86.Build.0 = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|ARM.Build.0 = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|x64.Build.0 = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Debug|x86.Build.0 = Debug|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|ARM.Build.0 = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|ARM64.Build.0 = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|x64.ActiveCfg = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|x64.Build.0 = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{9C5949FE-7070-46E1-8821-0DC1F5C0B7EA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
