@@ -10,3 +10,15 @@ Feedback is welcome, but I don't accept any resposibilities about damages caused
 
 Hub van de Laar
 HubvandeLaar@Hotmail.com
+
+De applicatie is ontworpen voor schaaktrainers
+- Als een digitaal demonstratie bord
+- Met snelle setup van stelling door het toetsenbord te gebruiken
+- Om partijen van jeugdspelers weer te geven (dus vreemde zetten kunnen ook opgeslagen worden)
+- Lessen kunnen worden opgeslagen als XPGN, PGN of CPS
+- Lessen kunnen ook geexporteerd worden naar PDF (om af te drukken)
+Voel je vrij om het programma te gebruiken zoals bedoeld.
+Reacties zijn welkom, maar ik aanvard geen enkele verantwoordelijkheid voor schade veroorzaakt door dit programma.
+
+Hub van de Laar
+HubvandeLaar@Hotmail.com
