@@ -1,0 +1,24 @@
+
+The application is designed to be used by chess trainers.
+- As a digitial demo board
+- With quick setup using the keyboard
+- Show games of children (so strange moves can also be stored)
+- Lessons can be saved as XPGN, PGN or CPS
+- Lessons can also be saved as PDF (for printout)
+You are welcome to use this application as intended.
+Feedback is welcome, but I don't accept any resposibilities about damages caused by this application.
+
+Hub van de Laar
+HubvandeLaar@Hotmail.com
+
+De applicatie is ontworpen voor schaaktrainers
+- Als een digitaal demonstratie bord
+- Met snelle setup van stelling door het toetsenbord te gebruiken
+- Om partijen van jeugdspelers weer te geven (dus vreemde zetten kunnen ook opgeslagen worden)
+- Lessen kunnen worden opgeslagen als XPGN, PGN of CPS
+- Lessen kunnen ook geexporteerd worden naar PDF (om af te drukken)
+Voel je vrij om het programma te gebruiken zoals bedoeld.
+Reacties zijn welkom, maar ik aanvard geen enkele verantwoordelijkheid voor schade veroorzaakt door dit programma.
+
+Hub van de Laar
+HubvandeLaar@Hotmail.com

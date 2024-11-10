@@ -368,6 +368,9 @@
       <DependentUpon>frmDockCross.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditArrows.nl.resx">
+      <DependentUpon>frmEditArrows.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditArrows.resx">
       <DependentUpon>frmEditArrows.vb</DependentUpon>
     </EmbeddedResource>
@@ -385,14 +388,26 @@
     <EmbeddedResource Include="frmEditHalfMove.resx">
       <DependentUpon>frmEditHalfMove.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditMarkers.nl.resx">
+      <DependentUpon>frmEditMarkers.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditMarkers.resx">
       <DependentUpon>frmEditMarkers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditNAGs.nl.resx">
+      <DependentUpon>frmEditNAGs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditNAGs.resx">
       <DependentUpon>frmEditNAGs.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTexts.nl.resx">
+      <DependentUpon>frmEditTexts.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditTexts.resx">
       <DependentUpon>frmEditTexts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTrainingQuestion.nl.resx">
+      <DependentUpon>frmEditTrainingQuestion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditTrainingQuestion.resx">
       <DependentUpon>frmEditTrainingQuestion.vb</DependentUpon>
@@ -529,15 +544,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Styles.css" />
-    <Content Include="DemoBoard.chm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard.chw">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <Content Include="DemoBoard EN.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard EN.chw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="DemoBoard Lessen\Opstapje 1, Verdedigen.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -547,9 +562,12 @@
     <Content Include="DemoBoard Lessen\Stap 1 Opgaven Ondersteunend Mat.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="DemoBoard.hhp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Content Include="DemoBoard NL.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard NL.chw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Frisselstein.pfx" />
     <Content Include="DemoBoard Lessen\Opstapje 1 Slaan, aanvallen en veilig aanvallen.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

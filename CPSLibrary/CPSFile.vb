@@ -1,9 +1,10 @@
 ﻿Option Explicit On
 
 Imports System.Xml.Serialization
+Imports ChessGlobals
 Imports ChessGlobals.ChessColor
-Imports ChessMaterials
 Imports PGNLibrary
+Imports ChessMaterials
 
 <XmlType("File")>
 Public Class CPSFile

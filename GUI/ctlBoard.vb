@@ -7,7 +7,6 @@ Imports ChessGlobals
 Imports ChessMaterials
 Imports ChessGlobals.ChessColor
 Imports ChessMaterials.ChessPiece
-
 Imports PGNLibrary
 
 Public Class ctlBoard
@@ -235,7 +234,7 @@ Public Class ctlBoard
     End Sub
 
     Public Function getBitMap(Optional pIncludeBorderLabels As Boolean = True)
-        Dim Bitmap As Bitmap = New Bitmap(picBoard.Image)
+        Dim Bitmap = New Bitmap(picBoard.Image)
         Dim Rect As Rectangle
         If pIncludeBorderLabels Then
             Rect = New Rectangle(0, 0, CInt(LeftPos(10)), (9 * gFieldSize) + (2 * gBorderSize)) 'Cut the right Toolbar

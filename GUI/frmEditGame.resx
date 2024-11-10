@@ -325,7 +325,7 @@
     <value>77, 312</value>
   </data>
   <data name="Label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 16</value>
+    <value>56, 16</value>
   </data>
   <data name="Label11.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -361,7 +361,7 @@
     <value>77, 287</value>
   </data>
   <data name="Label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 16</value>
+    <value>40, 16</value>
   </data>
   <data name="Label10.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -397,7 +397,7 @@
     <value>77, 262</value>
   </data>
   <data name="Label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 16</value>
+    <value>82, 16</value>
   </data>
   <data name="Label9.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -433,7 +433,7 @@
     <value>13, 262</value>
   </data>
   <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 16</value>
+    <value>76, 16</value>
   </data>
   <data name="Label8.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -455,6 +455,9 @@
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>nl</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>

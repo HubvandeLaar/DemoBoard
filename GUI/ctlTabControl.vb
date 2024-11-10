@@ -14,7 +14,7 @@ Public Class ctlTabControl
     Public WithEvents gfrmMainForm As frmMainForm
 
     Private MouseDownLocation As Point = Nothing
-    Private gPanelCloseIconLocation As Point = New Point(-18, 5)
+    Private gPanelCloseIconLocation = New Point(-18, 5)
 
     Private BeforeImage As String = ""
 
@@ -294,7 +294,8 @@ Public Class ctlTabControl
 
     Private Sub TabControl_Selected(pSender As Object, pArgs As TabControlEventArgs) Handles TabControl.Selected
         'Needed to enable visibility reset after page was invisible
-        If Me.SelectedTab IsNot Nothing Then
+        If Me.SelectedTab Is Nothing Then
+        Else
             Me.SelectedTab.Controls(0).Refresh()
         End If
         Application.DoEvents()

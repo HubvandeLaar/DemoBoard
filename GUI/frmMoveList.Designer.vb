@@ -118,8 +118,8 @@ Partial Class frmMoveList
         '
         'frmMoveList
         '
-        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        resources.ApplyResources(Me, "$this")
         Me.ControlBox = False
         Me.Controls.Add(Me.ctlMoveList)
         Me.Controls.Add(Me.cmdLast)

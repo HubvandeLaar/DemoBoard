@@ -13,4 +13,8 @@ Public Class frmAbout
         Me.Close()
     End Sub
 
+    Private Sub lblEmailaddress_Click(pSender As Object, pArgs As EventArgs) Handles lblEmailaddress.Click
+        System.Diagnostics.Process.Start("mailto:" & lblEmailaddress.Text)
+    End Sub
+
 End Class

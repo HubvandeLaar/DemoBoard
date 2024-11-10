@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="DemoBoard">
+		<param name="Local" value="DemoBoard.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Introductie">
+			<param name="Local" value="Introduction.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Installatie">
+			<param name="Local" value="Installation.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Hoofd Formulier">
+			<param name="Local" value="Main Form.htm">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Menubalk">
+				<param name="Local" value="Menu Bar.htm">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Menu Bestand">
+					<param name="Local" value="File Menu.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Menu Partij">
+					<param name="Local" value="Game Menu.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Navigatie">
+					<param name="Local" value="Navigation.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Modus">
+					<param name="Local" value="Mode.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Menu Diagram">
+					<param name="Local" value="Diagram Menu.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Menu Grafische Elementen">
+					<param name="Local" value="Graphicals Menu.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Menu Vensters">
+					<param name="Local" value="View Menu.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Menu Instellingen">
+					<param name="Local" value="Settings Menu.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Menu Help">
+					<param name="Local" value="Help Menu.htm">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Vensters">
+				<param name="Local" value="Panels.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Status Balk">
+				<param name="Local" value="Status Bar.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Schaakbord">
+			<param name="Local" value="Chess Board.htm">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Zetten Invoeren">
+				<param name="Local" value="Entering Moves.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Stelling Opzetten">
+				<param name="Local" value="Setup a Position.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Schaakstukken">
+				<param name="Local" value="Setup Toolbar.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Zettenlijst">
+			<param name="Local" value="Move List.htm">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Menubalk">
+				<param name="Local" value="Menu Options.htm">
+				<param name="Local" value="Go to Start.htm">
+				<param name="Local" value="Previous Move.htm">
+				<param name="Local" value="Next Move.htm">
+				<param name="Local" value="Last Move.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Rechts-klik Menu">
+				<param name="Local" value="Move Right-click Menu.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Geldige Zetten">
+			<param name="Local" value="Valid Moves.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Titel en Tekst">
+			<param name="Local" value="Title and Memo.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Trainingsvragen">
+			<param name="Local" value="Training Question.htm">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

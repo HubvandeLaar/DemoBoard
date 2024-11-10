@@ -834,54 +834,56 @@ Public Class frmMainForm
 
     Private Sub mnuHelpContents_Click(pSender As Object, pArgs As EventArgs) Handles mnuHelpContents.Click
         Dim Position As Point = Me.PointToClient(MousePosition)
+        Dim HelpFile As String = Application.StartupPath & If(CurrentLanguage = NEDERLANDS, "\DemoBoard NL.chm", "\DemoBoard EN.chm")
         If mnuFile.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "File Menu.htm")
+            Help.ShowHelp(Me, HelpFile, "File Menu.htm")
         ElseIf mnuGame.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Game Menu.htm")
+            Help.ShowHelp(Me, HelpFile, "Game Menu.htm")
         ElseIf mnuPreviousGame.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Navigation.htm")
+            Help.ShowHelp(Me, HelpFile, "Navigation.htm")
         ElseIf mnuDiagram.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Diagram Menu.htm")
+            Help.ShowHelp(Me, HelpFile, "Diagram Menu.htm")
         ElseIf mnuGraphicals.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Graphicals Menu.htm")
+            Help.ShowHelp(Me, HelpFile, "Graphicals Menu.htm")
         ElseIf mnuView.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "View Menu.htm")
+            Help.ShowHelp(Me, HelpFile, "View Menu.htm")
         ElseIf mnuSettings.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Settings Menu.htm")
+            Help.ShowHelp(Me, HelpFile, "Settings Menu.htm")
         ElseIf mnuHelp.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Help Menu.htm")
+            Help.ShowHelp(Me, HelpFile, "Help Menu.htm")
         ElseIf mnuMenuStrip.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Menu Bar.htm")
+            Help.ShowHelp(Me, HelpFile, "Menu Bar.htm")
         ElseIf gfrmBoard.Visible = True _
             And gfrmBoard.RectangleToScreen(gfrmBoard.ctlBoard.SetupToolbar.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Setup Toolbar.htm")
+            Help.ShowHelp(Me, HelpFile, "Setup Toolbar.htm")
         ElseIf gfrmBoard.Visible = True _
             And gfrmBoard.RectangleToScreen(gfrmBoard.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Chess Board.htm")
+            Help.ShowHelp(Me, HelpFile, "Chess Board.htm")
         ElseIf gfrmStockfish.Visible = True _
             And gfrmStockfish.RectangleToScreen(gfrmStockfish.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Stockfish.htm")
+            Help.ShowHelp(Me, HelpFile, "Stockfish.htm")
         ElseIf gfrmGameDetails.Visible = True _
             And gfrmGameDetails.RectangleToScreen(gfrmGameDetails.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Game Details.htm")
+            Help.ShowHelp(Me, HelpFile, "Game Details.htm")
         ElseIf gfrmMoveList.Visible = True _
             And gfrmMoveList.RectangleToScreen(gfrmMoveList.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Move List.htm")
+            Help.ShowHelp(Me, HelpFile, "Move List.htm")
         ElseIf gfrmValidMoves.Visible = True _
             And gfrmValidMoves.RectangleToScreen(gfrmValidMoves.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Valid Moves.htm")
+            Help.ShowHelp(Me, HelpFile, "Valid Moves.htm")
         ElseIf gfrmTitleAndMemo.Visible = True _
             And gfrmTitleAndMemo.RectangleToScreen(gfrmTitleAndMemo.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Title and Memo.htm")
+            Help.ShowHelp(Me, HelpFile, "Title and Memo.htm")
         ElseIf Me.Bounds.Contains(MousePosition) Then
-            Help.ShowHelp(Me, "DemoBoard.chm", "Main Form.htm")
+            Help.ShowHelp(Me, HelpFile, "Main Form.htm")
         Else
-            Help.ShowHelp(Me, "DemoBoard.chm")
+            Help.ShowHelp(Me, HelpFile)
         End If
     End Sub
 
     Private Sub mnuHelpIndex_Click(pSender As Object, pArgs As EventArgs) Handles mnuHelpIndex.Click
-        Help.ShowHelpIndex(Me, "DemoBoard.chm")
+        Dim HelpFile As String = If(CurrentLanguage = NEDERLANDS, "DemoBoard EN.chm", "DemoBoard EN.chm")
+        Help.ShowHelpIndex(Me, HelpFile)
     End Sub
 
     Private Sub mnuAbout_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuAbout.Click
@@ -1033,6 +1035,7 @@ Public Class frmMainForm
 #Region "Events from Subforms"
 
     Private Sub gfrmBoard_ChessPieceStartMoving(pPiece As ChessPiece, pFromFieldName As String, pChessBoard As ChessBoard) Handles gfrmBoard.ChessPieceStartMoving
+        lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Bezig met zet", "Moving piece")
         RaiseEvent ChessPieceStartMoving(pPiece, pFromFieldName, pChessBoard) 'To Update frmValidMoves
     End Sub
 
@@ -1040,6 +1043,8 @@ Public Class frmMainForm
                                        pChessBoard As ChessBoard, pCaptured As Boolean, pPromotionPiece As ChessPiece, pFEN As String, pFENBeforeDragging As String) Handles gfrmBoard.ChessPieceMoved
         Dim BeforeImage As New XElement("Before"), AfterImage As New XElement("After")
         Dim HalfMove As PGNHalfMove, MoveNr As Long
+
+        lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Klaar", "Ready")
 
         If Me.Mode = TRAINING Then
             If gfrmTrainingQuestion Is Nothing Then Exit Sub
@@ -1090,11 +1095,35 @@ Public Class frmMainForm
         AfterImage.Add(New XElement("Index", Str(HalfMove.Index)))
         gJournaling.SaveImage("ChessPiece.Moved", BeforeImage.ToString, AfterImage.ToString)
 
+        'Update Statusbar with Check, Checkmate or Stalemate
+        Dim PossibleMoves As List(Of BoardMove)
+        If King.InCheck(pChessBoard.ActiveColor, pChessBoard) Then
+            PossibleMoves = pChessBoard.AllPossibleMoves(pChessBoard.ActiveColor)
+            'While PossibleMoves.Count > 0 'Remove castling moves
+            '    If PossibleMoves(0).Castle = True Then
+            '        PossibleMoves.RemoveAt(0)
+            '    Else
+            '        Exit While
+            '    End If
+            'End While
+            If PossibleMoves.Count = 0 Then
+                lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Mat !", "Checkmate !")
+            Else
+                lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Schaak !", "Check !")
+            End If
+        Else
+            'King not in Check
+            If pChessBoard.AllPossibleMoves(pChessBoard.ActiveColor).Count = 0 Then
+                lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Pat !", "Stalemate !")
+            End If
+        End If
+
         RaiseEvent ChessPieceMoved(pPiece, pFromFieldName, pToFieldName, pChessBoard, pCaptured, pPromotionPiece)
     End Sub
 
     Private Sub gfrmBoard_FENChanged(pFEN As String) Handles gfrmBoard.FENChanged
         Dim KeyValue As String, BeforeImage As New XElement("Before"), AfterImage As New XElement("After")
+        lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Klaar", "Ready")
         If Me.Mode <> ChessMode.SETUP Then
             If Me.PGNGame.HalfMoves.Count > 0 Then
                 If MsgBox(MessageText("UpdateFEN"), MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo) <> MsgBoxResult.Yes Then
@@ -1696,7 +1725,7 @@ Public Class frmMainForm
             Case "PasteGame"               '(No Key) Paste of PGNGame 
                 If pNewValue Like "*[[]* [""]*[""][]]*" Then
                     Dim Game = New PGNGame()
-                    Game.XPGNString = (pNewValue)
+                    Game.XPGNString = pNewValue
                     Me.PGNFile.PGNGames.Insert(PGNGame.Index + 1, Game)
                     PGNGame = Game
                 Else

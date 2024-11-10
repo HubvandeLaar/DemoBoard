@@ -62,10 +62,14 @@ Partial Class frmExport
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.UseVisualStyleBackColor = True
         '
+        'dlgSaveFile
+        '
+        resources.ApplyResources(Me.dlgSaveFile, "dlgSaveFile")
+        '
         'txtPageHeader
         '
-        Me.txtPageHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         resources.ApplyResources(Me.txtPageHeader, "txtPageHeader")
+        Me.txtPageHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPageHeader.Name = "txtPageHeader"
         '
         'Label5
@@ -164,9 +168,9 @@ Partial Class frmExport
         '
         'lstLayout
         '
+        resources.ApplyResources(Me.lstLayout, "lstLayout")
         Me.lstLayout.BackColor = System.Drawing.SystemColors.Window
         Me.lstLayout.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colLayout, Me.colDiagrams, Me.colDiagramSize, Me.colBottomText})
-        resources.ApplyResources(Me.lstLayout, "lstLayout")
         Me.lstLayout.FullRowSelect = True
         Me.lstLayout.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
         Me.lstLayout.HideSelection = False

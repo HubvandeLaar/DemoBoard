@@ -23,138 +23,112 @@ Partial Class frmEditArrows
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEditArrows))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.grdArrows = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblAnswersNl = New System.Windows.Forms.Label()
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.mnuPopUp = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuDeleteRow = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuClearAll = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.grdArrows, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnuPopUp.SuspendLayout()
         Me.SuspendLayout()
         '
         'grdArrows
         '
+        resources.ApplyResources(Me.grdArrows, "grdArrows")
         Me.grdArrows.AllowUserToResizeColumns = False
         Me.grdArrows.AllowUserToResizeRows = False
-        Me.grdArrows.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdArrows.BackgroundColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdArrows.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdArrows.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdArrows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdArrows.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
-        Me.grdArrows.Location = New System.Drawing.Point(71, 7)
         Me.grdArrows.MultiSelect = False
         Me.grdArrows.Name = "grdArrows"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ScrollBar
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdArrows.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
-        Me.grdArrows.RowHeadersWidth = 30
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdArrows.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.grdArrows.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.grdArrows.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.grdArrows.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdArrows.Size = New System.Drawing.Size(400, 135)
-        Me.grdArrows.TabIndex = 35
+        '
+        'lblAnswersNl
+        '
+        resources.ApplyResources(Me.lblAnswersNl, "lblAnswersNl")
+        Me.lblAnswersNl.Name = "lblAnswersNl"
+        '
+        'cmdCancel
+        '
+        resources.ApplyResources(Me.cmdCancel, "cmdCancel")
+        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdCancel.Name = "cmdCancel"
+        Me.cmdCancel.UseVisualStyleBackColor = True
+        '
+        'cmdOK
+        '
+        resources.ApplyResources(Me.cmdOK, "cmdOK")
+        Me.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.cmdOK.Name = "cmdOK"
+        Me.cmdOK.UseVisualStyleBackColor = True
+        '
+        'mnuPopUp
+        '
+        resources.ApplyResources(Me.mnuPopUp, "mnuPopUp")
+        Me.mnuPopUp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuDeleteRow, Me.mnuClearAll})
+        Me.mnuPopUp.Name = "ContextMenuStrip1"
+        '
+        'mnuDeleteRow
+        '
+        resources.ApplyResources(Me.mnuDeleteRow, "mnuDeleteRow")
+        Me.mnuDeleteRow.Name = "mnuDeleteRow"
+        '
+        'mnuClearAll
+        '
+        resources.ApplyResources(Me.mnuClearAll, "mnuClearAll")
+        Me.mnuClearAll.Name = "mnuClearAll"
         '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DividerWidth = 1
         Me.DataGridViewTextBoxColumn1.FillWeight = 50.0!
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Color"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 25
+        resources.ApplyResources(Me.DataGridViewTextBoxColumn1, "DataGridViewTextBoxColumn1")
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 50
         '
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DividerWidth = 1
-        Me.DataGridViewTextBoxColumn2.HeaderText = "FromFieldName"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 50
+        resources.ApplyResources(Me.DataGridViewTextBoxColumn2, "DataGridViewTextBoxColumn2")
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DividerWidth = 1
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ToFieldName"
-        Me.DataGridViewTextBoxColumn3.MinimumWidth = 50
+        resources.ApplyResources(Me.DataGridViewTextBoxColumn3, "DataGridViewTextBoxColumn3")
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'lblAnswersNl
-        '
-        Me.lblAnswersNl.AutoSize = True
-        Me.lblAnswersNl.Location = New System.Drawing.Point(5, 10)
-        Me.lblAnswersNl.Name = "lblAnswersNl"
-        Me.lblAnswersNl.Size = New System.Drawing.Size(39, 13)
-        Me.lblAnswersNl.TabIndex = 34
-        Me.lblAnswersNl.Text = "Arrows"
-        '
-        'cmdCancel
-        '
-        Me.cmdCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Location = New System.Drawing.Point(375, 165)
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(75, 23)
-        Me.cmdCancel.TabIndex = 41
-        Me.cmdCancel.Text = "Cancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        '
-        'cmdOK
-        '
-        Me.cmdOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.cmdOK.Location = New System.Drawing.Point(165, 165)
-        Me.cmdOK.Name = "cmdOK"
-        Me.cmdOK.Size = New System.Drawing.Size(75, 23)
-        Me.cmdOK.TabIndex = 39
-        Me.cmdOK.Text = "OK"
-        Me.cmdOK.UseVisualStyleBackColor = True
-        '
-        'mnuPopUp
-        '
-        Me.mnuPopUp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuDeleteRow, Me.mnuClearAll})
-        Me.mnuPopUp.Name = "ContextMenuStrip1"
-        Me.mnuPopUp.Size = New System.Drawing.Size(158, 48)
-        '
-        'mnuDeleteRow
-        '
-        Me.mnuDeleteRow.Name = "mnuDeleteRow"
-        Me.mnuDeleteRow.ShortcutKeys = System.Windows.Forms.Keys.Delete
-        Me.mnuDeleteRow.Size = New System.Drawing.Size(157, 22)
-        Me.mnuDeleteRow.Text = "Delete Row"
-        '
-        'mnuClearAll
-        '
-        Me.mnuClearAll.Name = "mnuClearAll"
-        Me.mnuClearAll.Size = New System.Drawing.Size(157, 22)
-        Me.mnuClearAll.Text = "Clear All"
         '
         'frmEditArrows
         '
         Me.AcceptButton = Me.cmdOK
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdCancel
-        Me.ClientSize = New System.Drawing.Size(484, 211)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOK)
         Me.Controls.Add(Me.grdArrows)
@@ -162,8 +136,6 @@ Partial Class frmEditArrows
         Me.Name = "frmEditArrows"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Edit Arrows"
         CType(Me.grdArrows, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnuPopUp.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -175,10 +147,10 @@ Partial Class frmEditArrows
     Friend WithEvents lblAnswersNl As Label
     Friend WithEvents cmdCancel As Button
     Friend WithEvents cmdOK As Button
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents mnuPopUp As ContextMenuStrip
     Friend WithEvents mnuDeleteRow As ToolStripMenuItem
     Friend WithEvents mnuClearAll As ToolStripMenuItem
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
 End Class

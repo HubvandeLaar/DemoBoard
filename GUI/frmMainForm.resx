@@ -824,8 +824,27 @@
   <data name="mnuNextGame.ToolTipText" xml:space="preserve">
     <value>Next Game</value>
   </data>
-  <data name="stsStatusStrip.Text" xml:space="preserve">
-    <value>StatusStrip</value>
+  <data name="mnuCopyGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAA8lJREFUeF7tltGR2zAMRFNOvlPfdZI2UlPacCAcyIGeVjRNOpY09s68yR2BBRb6
+        uMmPjz4K/fy6XZppqaFXYlpq6JWYlhp6JaaFgbe/f04N88YVE8JAtfRMMG9cMSEMVEvPBPPGFRPCQLX0
+        TDBvXDEhDFRLF6xTvr8a5v0+YkYYKJfa8Quq9mqY12+YEgZuFsbxC6wVck8PozO8D3ntfVIYyGC+NAVQ
+        lHovozO8D3ntfVw3EwcymC9NARSl3svoDO9DXnufFAYymC9NAVq/91J8GdVHvA957X1SGHgvWH7b67lH
+        8WVUH/E+5LX3SWEgg50N5o0rJoSBaumZYN64YkIYqJaeCeaNKyaEgWqpgr7LUYWCPDb9Eapv8F2OKhTy
+        kX5o+iu8UN/huxxVKOTj/dB89Dt+gIJ1Nj9A7j0jzOu3u1CQZhzvbx2+M8G8frsLhY0xji/Utzu+s8G8
+        dkMIhZUJxy/U94bvjDCv3RBCQZkVvT7bIN9fDfN+H78IBWVW9Phs+vt+AJt89wPknh5GZ3gf8tp7CAUu
+        2KPHZ9NrAEWp9zI6w/uQ195DKKyG//q9T8NX/SmAotR7GZ3hfchr7yEUVsPV4YWGr/pTgNbvvRRfRvUR
+        70Neew+hsBpuh2Y98gFs8jZE+ln13KP4MqqPeB/y2nsIhdXwfLCx+ggN3xlh3rjehMLKlI5feNsPkPWW
+        H6Dw+QDxAfzfhq/60x+ho2Fev92FwsoUxxatPkTD5970V3iB9VfDvJYphMLKFAdLGj73pqPzz5nl/RFG
+        Z3gf8tp7CIXVcHV4oeHL2IYaYq/Wy+gM70Neew+hwAV79Phseg2gKPVeRmd4H/LaewgFLtjjns8mb0Ok
+        n1XPPYovo/qI9yGvvYdQ4II9Wj6buiG/t/paFF9G9RHvQ157D6HABXuM+o6CeeN6EwrKrBj1HQXzxvUm
+        FJRZMeo7CuaN600oKLNi1HcUzBvXm1BQZkXLJ//f8ETyrl6YN643oaDMipZPhX4meVcvzBvXm1BQZkXL
+        5yGTeMAseVcvzBvXm1BQZkXLtwn85I+Qd/XCvHG9CQVlVrR8m8A7H+BRVV/a1QvzxvUmFJRZ0fKpA8tb
+        5lFVX9rVC/PG9SYUlFnR8uUjPXAKz/dHVH1pVy/MG9ebUFBmRcuXj/TAEb4ovz+i6ku7emHeuN6EgjIr
+        Wj4ex4P5e6+qL+3qhXnjehMKyqxo+UrQ/0Xe1QvzxvUmFJRZ0fKp0M8k7+qFeeN6EwrKrBj1HQXzxvUm
+        FJRZMeo7CuaN600oKLNi1HcU67xft3/xnisxfMmhmwAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="mnuEditTitleAndMemo.Size" type="System.Drawing.Size, System.Drawing">
     <value>334, 38</value>
@@ -872,8 +891,8 @@
   <data name="mnuMenuTop.Text" xml:space="preserve">
     <value>Top</value>
   </data>
-  <data name="mnuDiagramInitial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 38</value>
+  <data name="&gt;&gt;mnuGraphicals.Name" xml:space="preserve">
+    <value>mnuGraphicals</value>
   </data>
   <data name="&gt;&gt;mnuMoveList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1079,7 +1098,7 @@
     <value>mnuSettings</value>
   </data>
   <data name="&gt;&gt;ctlTabControl.Type" xml:space="preserve">
-    <value>DemoBoard.ctlTabControl, DemoBoard, Version=1.1.0.0, Culture=neutral, PublicKeyToken=1cb0c78da27b6a77</value>
+    <value>DemoBoard.ctlTabControl, DemoBoard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1cb0c78da27b6a77</value>
   </data>
   <data name="mnuCopyGame.Size" type="System.Drawing.Size, System.Drawing">
     <value>334, 38</value>
@@ -1122,7 +1141,7 @@
     <value>0, 44</value>
   </data>
   <data name="stsStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 429</value>
+    <value>3, 345</value>
   </data>
   <data name="&gt;&gt;mnuAbout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1393,7 +1412,7 @@
     <value>Language</value>
   </data>
   <data name="stsStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1055, 24</value>
+    <value>1055, 22</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -1457,8 +1476,8 @@
         Hjfa7rN71I+NP9zO+wcAAAAAAJ8TqTtBShCfDIAXAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="&gt;&gt;mnuHelpIndex.Name" xml:space="preserve">
-    <value>mnuHelpIndex</value>
+  <data name="&gt;&gt;mnuTitleAndMemo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1904,9 +1923,6 @@
   <data name="&gt;&gt;mnuBoard.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mnuGraphicals.Name" xml:space="preserve">
-    <value>mnuGraphicals</value>
-  </data>
   <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2011,6 +2027,9 @@
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMainForm</value>
+  </data>
+  <data name="&gt;&gt;mnuHelpIndex.Name" xml:space="preserve">
+    <value>mnuHelpIndex</value>
   </data>
   <data name="pnlMainPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -2145,8 +2164,8 @@
   <data name="&gt;&gt;mnuCopyGame.Name" xml:space="preserve">
     <value>mnuCopyGame</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value>dsadsadsa</value>
+  <data name="mnuMenuBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 38</value>
   </data>
   <data name="mnuDiagramClear.Text" xml:space="preserve">
     <value>Clear</value>
@@ -2166,8 +2185,8 @@
   <data name="mnuSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 38</value>
   </data>
-  <data name="&gt;&gt;pnlDragPanel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="mnuDeleteGame.Size" type="System.Drawing.Size, System.Drawing">
     <value>334, 38</value>
@@ -2183,28 +2202,6 @@
   </data>
   <data name="&gt;&gt;ctlTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="mnuCopyGame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAA8lJREFUeF7tltGR2zAMRFNOvlPfdZI2UlPacCAcyIGeVjRNOpY09s68yR2BBRb6
-        uMmPjz4K/fy6XZppqaFXYlpq6JWYlhp6JaaFgbe/f04N88YVE8JAtfRMMG9cMSEMVEvPBPPGFRPCQLX0
-        TDBvXDEhDFRLF6xTvr8a5v0+YkYYKJfa8Quq9mqY12+YEgZuFsbxC6wVck8PozO8D3ntfVIYyGC+NAVQ
-        lHovozO8D3ntfVw3EwcymC9NARSl3svoDO9DXnufFAYymC9NAVq/91J8GdVHvA957X1SGHgvWH7b67lH
-        8WVUH/E+5LX3SWEgg50N5o0rJoSBaumZYN64YkIYqJaeCeaNKyaEgWqpgr7LUYWCPDb9Eapv8F2OKhTy
-        kX5o+iu8UN/huxxVKOTj/dB89Dt+gIJ1Nj9A7j0jzOu3u1CQZhzvbx2+M8G8frsLhY0xji/Utzu+s8G8
-        dkMIhZUJxy/U94bvjDCv3RBCQZkVvT7bIN9fDfN+H78IBWVW9Phs+vt+AJt89wPknh5GZ3gf8tp7CAUu
-        2KPHZ9NrAEWp9zI6w/uQ195DKKyG//q9T8NX/SmAotR7GZ3hfchr7yEUVsPV4YWGr/pTgNbvvRRfRvUR
-        70Neew+hsBpuh2Y98gFs8jZE+ln13KP4MqqPeB/y2nsIhdXwfLCx+ggN3xlh3rjehMLKlI5feNsPkPWW
-        H6Dw+QDxAfzfhq/60x+ho2Fev92FwsoUxxatPkTD5970V3iB9VfDvJYphMLKFAdLGj73pqPzz5nl/RFG
-        Z3gf8tp7CIXVcHV4oeHL2IYaYq/Wy+gM70Neew+hwAV79Phseg2gKPVeRmd4H/LaewgFLtjjns8mb0Ok
-        n1XPPYovo/qI9yGvvYdQ4II9Wj6buiG/t/paFF9G9RHvQ157D6HABXuM+o6CeeN6EwrKrBj1HQXzxvUm
-        FJRZMeo7CuaN600oKLNi1HcUzBvXm1BQZkXLJ//f8ETyrl6YN643oaDMipZPhX4meVcvzBvXm1BQZkXL
-        5yGTeMAseVcvzBvXm1BQZkXLtwn85I+Qd/XCvHG9CQVlVrR8m8A7H+BRVV/a1QvzxvUmFJRZ0fKpA8tb
-        5lFVX9rVC/PG9SYUlFnR8uUjPXAKz/dHVH1pVy/MG9ebUFBmRcuXj/TAEb4ovz+i6ku7emHeuN6EgjIr
-        Wj4ex4P5e6+qL+3qhXnjehMKyqxo+UrQ/0Xe1QvzxvUmFJRZ0fKp0M8k7+qFeeN6EwrKrBj1HQXzxvUm
-        FJRZMeo7CuaN600oKLNi1HcU67xft3/xnisxfMmhmwAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="mnuMenuBottom.Text" xml:space="preserve">
     <value>Bottom</value>
@@ -2453,7 +2450,7 @@
     <value>Ctrl+N</value>
   </data>
   <data name="lblStatusText.Text" xml:space="preserve">
-    <value>Status</value>
+    <value>Ready</value>
   </data>
   <data name="mnuTitleAndMemo.Text" xml:space="preserve">
     <value>Title and Memo</value>
@@ -2534,8 +2531,8 @@
   <data name="&gt;&gt;mnuNewGame.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mnuMenuBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 38</value>
+  <data name="&gt;&gt;pnlDragPanel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="mnuPasteGame.Size" type="System.Drawing.Size, System.Drawing">
     <value>334, 38</value>
@@ -2556,7 +2553,7 @@
     <value>Nederlands</value>
   </data>
   <data name="lblStatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 19</value>
+    <value>44, 17</value>
   </data>
   <data name="&gt;&gt;ctlTabControl.Parent" xml:space="preserve">
     <value>pnlMainPanel</value>
@@ -2639,8 +2636,8 @@
   <data name="mnuLoadLayout.Text" xml:space="preserve">
     <value>Load Layout</value>
   </data>
-  <data name="&gt;&gt;mnuTitleAndMemo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="mnuDiagramInitial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 38</value>
   </data>
   <data name="&gt;&gt;dlgSaveFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -24244,7 +24241,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>47</value>
+    <value>54</value>
   </metadata>
   <metadata name="dlgSaveFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>401, 17</value>

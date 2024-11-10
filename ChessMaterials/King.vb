@@ -223,52 +223,80 @@ Public Class King
         If KingField Is Nothing Then Return False
 
         'Straight upward
-        For Row = KingField.Row + 1 To 8 Step 1
+        For Distance = 1 To 8
+            Row = KingField.Row + Distance
+            If pChessBoard.Fields.Exists(KingField.Column, Row) = False Then Exit For
             Piece = pChessBoard.Fields(KingField.Column, Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If
-        Next Row
+        Next Distance
 
         'Straight downward
-        For Row = KingField.Row - 1 To 1 Step -1
+        For Distance = 1 To 8
+            Row = KingField.Row - Distance
+            If pChessBoard.Fields.Exists(KingField.Column, Row) = False Then Exit For
             Piece = pChessBoard.Fields(KingField.Column, Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If
-        Next Row
+        Next Distance
 
         'To the Right
-        For Column = KingField.Column + 1 To 8 Step 1
+        For Distance = 1 To 8
+            Column = KingField.Column + Distance
+            If pChessBoard.Fields.Exists(Column, KingField.Row) = False Then Exit For
             Piece = pChessBoard.Fields(Column, KingField.Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If
-        Next Column
+        Next Distance
 
         'To the Left
-        For Column = KingField.Column - 1 To 1 Step -1
+        For Distance = 1 To 8
+            Column = KingField.Column - Distance
+            If pChessBoard.Fields.Exists(Column, KingField.Row) = False Then Exit For
             Piece = pChessBoard.Fields(Column, KingField.Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If
-        Next Column
+        Next Distance
 
         'Direction Right Up
         For Distance = 1 To 8
@@ -277,9 +305,14 @@ Public Class King
             If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
             Piece = pChessBoard.Fields(Column, Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If
@@ -292,9 +325,14 @@ Public Class King
             If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
             Piece = pChessBoard.Fields(Column, Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If
@@ -307,9 +345,14 @@ Public Class King
             If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
             Piece = pChessBoard.Fields(Column, Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If
@@ -322,9 +365,14 @@ Public Class King
             If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
             Piece = pChessBoard.Fields(Column, Row).Piece
             If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                    Return True
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
                 End If
                 Exit For 'No more Moves in this line
             End If

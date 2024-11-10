@@ -1,0 +1,81 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=DemoBoard NL.chm
+Contents file=Table of Contents.hhc
+Default topic=DemoBoard.htm
+Display compile progress=Yes
+Error log file=log.log
+Full-text search=Yes
+Index file=Index.hhk
+Language=0x413 Nederlands (Nederland)
+Title=DemoBoard
+
+
+[FILES]
+About.htm
+Board Style.htm
+Chess Board.htm
+Clear.htm
+Copy.htm
+Delete Game.htm
+Delete Move.htm
+DemoBoard.htm
+Demote Variant.htm
+Diagram Menu.htm
+Edit Game.htm
+Edit Move.htm
+Edit Title and Memo.htm
+Entering Moves.htm
+Exit.htm
+Export to PDF.htm
+File Menu.htm
+Game Details.htm
+Game Menu.htm
+Go to Start.htm
+Graphicals Menu.htm
+Help Menu.htm
+Initial.htm
+Installation.htm
+Introduction.htm
+Language.htm
+Last Move.htm
+LessonsFolder.htm
+Load Layout.htm
+Main Form.htm
+Menu Bar.htm
+Menu Options.htm
+Mode.htm
+Move List.htm
+Move Right-click Menu.htm
+Navigation.htm
+New Game.htm
+New.htm
+Next Game Arrow.htm
+Next Move.htm
+Open.htm
+Panels.htm
+Paste.htm
+Play Mode.htm
+Previous Game Arrow.htm
+Previous Move.htm
+Promote Variant.htm
+Save.htm
+Save As JPG.htm
+Save Layout.htm
+Select Game.htm
+Settings Menu.htm
+Setup a Position.htm
+Setup Mode.htm
+Setup Toolbar.htm
+Status Bar.htm
+Stockfish.htm
+Switch Sides.htm
+Title and Memo.htm
+Training Mode.htm
+Training Question.htm
+Valid Moves.htm
+View Menu.htm
+Styles.css
+
+[INFOTYPES]
+

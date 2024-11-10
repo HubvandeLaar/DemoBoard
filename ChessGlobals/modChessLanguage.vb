@@ -1,6 +1,5 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
 Imports ChessGlobals.ChessLanguage
 Imports System.Globalization
 Imports System.Threading
@@ -46,7 +45,7 @@ Public Module modChessLanguage
     End Sub
 
     Public Sub ChangeLanguageCurrentForm(pCurrentForm As Form)
-        Dim Size As Drawing.Size, Location As Drawing.Point
+        Dim Size As Drawing.Size, Location As Drawing.Point, Visible As Boolean
         Dim Resources As ComponentResourceManager
         Resources = New ComponentResourceManager(pCurrentForm.GetType())
         pCurrentForm.Text = Resources.GetString("$this.Text", Thread.CurrentThread.CurrentUICulture)
@@ -62,9 +61,11 @@ Public Module modChessLanguage
                 Case Else
                     Size = Control.Size 'Save Size and location to ensure these are retained as is
                     Location = Control.Location
+                    Visible = Control.Visible
                     Resources.ApplyResources(Control, Control.Name, Thread.CurrentThread.CurrentUICulture)
                     Control.Size = Size
                     Control.Location = Location
+                    Control.Visible = Visible
             End Select
             'Resources.ApplyResources(Control, Control.Name, Thread.CurrentThread.CurrentUICulture)
             'If TypeOf Control Is ToolStrip Then

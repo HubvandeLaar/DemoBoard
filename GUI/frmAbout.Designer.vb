@@ -29,6 +29,8 @@ Partial Class frmAbout
         Me.lblCopyright = New System.Windows.Forms.Label()
         Me.lblVersion = New System.Windows.Forms.Label()
         Me.GroupBox = New System.Windows.Forms.GroupBox()
+        Me.lblEmailaddress = New System.Windows.Forms.Label()
+        Me.lblName = New System.Windows.Forms.Label()
         Me.picSchakelaar = New System.Windows.Forms.PictureBox()
         Me.GroupBox.SuspendLayout()
         CType(Me.picSchakelaar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -36,8 +38,8 @@ Partial Class frmAbout
         '
         'cmdOK
         '
-        Me.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK
         resources.ApplyResources(Me.cmdOK, "cmdOK")
+        Me.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOK.Name = "cmdOK"
         Me.cmdOK.UseVisualStyleBackColor = True
         '
@@ -68,16 +70,35 @@ Partial Class frmAbout
         '
         'GroupBox
         '
-        Me.GroupBox.BackColor = System.Drawing.SystemColors.Info
-        Me.GroupBox.Controls.Add(Me.cmdOK)
         resources.ApplyResources(Me.GroupBox, "GroupBox")
+        Me.GroupBox.BackColor = System.Drawing.SystemColors.Info
+        Me.GroupBox.Controls.Add(Me.lblVersion)
+        Me.GroupBox.Controls.Add(Me.lblCopyright)
+        Me.GroupBox.Controls.Add(Me.lblEmailaddress)
+        Me.GroupBox.Controls.Add(Me.lblName)
+        Me.GroupBox.Controls.Add(Me.cmdOK)
+        Me.GroupBox.Controls.Add(Me.lblDisclaimer)
+        Me.GroupBox.Controls.Add(Me.lblApplicationTitle)
         Me.GroupBox.Name = "GroupBox"
         Me.GroupBox.TabStop = False
         '
+        'lblEmailaddress
+        '
+        resources.ApplyResources(Me.lblEmailaddress, "lblEmailaddress")
+        Me.lblEmailaddress.BackColor = System.Drawing.SystemColors.Info
+        Me.lblEmailaddress.ForeColor = System.Drawing.Color.Blue
+        Me.lblEmailaddress.Name = "lblEmailaddress"
+        '
+        'lblName
+        '
+        resources.ApplyResources(Me.lblName, "lblName")
+        Me.lblName.BackColor = System.Drawing.SystemColors.Info
+        Me.lblName.Name = "lblName"
+        '
         'picSchakelaar
         '
-        Me.picSchakelaar.BackColor = System.Drawing.SystemColors.Info
         resources.ApplyResources(Me.picSchakelaar, "picSchakelaar")
+        Me.picSchakelaar.BackColor = System.Drawing.SystemColors.Info
         Me.picSchakelaar.Name = "picSchakelaar"
         Me.picSchakelaar.TabStop = False
         '
@@ -88,11 +109,7 @@ Partial Class frmAbout
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ControlBox = False
-        Me.Controls.Add(Me.lblVersion)
-        Me.Controls.Add(Me.lblDisclaimer)
         Me.Controls.Add(Me.picSchakelaar)
-        Me.Controls.Add(Me.lblApplicationTitle)
-        Me.Controls.Add(Me.lblCopyright)
         Me.Controls.Add(Me.GroupBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmAbout"
@@ -110,4 +127,6 @@ Partial Class frmAbout
     Friend WithEvents lblVersion As Label
     Friend WithEvents GroupBox As GroupBox
     Friend WithEvents picSchakelaar As PictureBox
+    Friend WithEvents lblEmailaddress As Label
+    Friend WithEvents lblName As Label
 End Class

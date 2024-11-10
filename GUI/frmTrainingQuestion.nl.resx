@@ -130,6 +130,9 @@
   <data name="Label1.Text" xml:space="preserve">
     <value>Score / Maximale score deze vraag</value>
   </data>
+  <data name="lblText.Text" xml:space="preserve">
+    <value>Geef de beste zet</value>
+  </data>
   <data name="cmdSolution.Location" type="System.Drawing.Point, System.Drawing">
     <value>331, 97</value>
   </data>
@@ -155,10 +158,7 @@
   <data name="cmdDetails.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="cmdDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="cmdDetails.Text" xml:space="preserve">
-    <value>Details</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Trainingsvraag</value>
   </data>
 </root>

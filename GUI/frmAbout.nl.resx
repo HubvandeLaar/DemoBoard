@@ -118,45 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cmdOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
   <data name="cmdOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblDisclaimer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 185</value>
-  </data>
   <data name="lblDisclaimer.Size" type="System.Drawing.Size, System.Drawing">
     <value>425, 59</value>
   </data>
   <data name="lblDisclaimer.Text" xml:space="preserve">
     <value>Deze applicatie is gratis voor schaaktrainers. Feedback over deze applicatie is altijd welkom, maar ik aanvaard geen enkele aansprakelijkheid voor eventuele schade door het gebruik van deze applicatie.</value>
   </data>
-  <data name="lblApplicationTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 134</value>
-  </data>
-  <data name="lblCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 270</value>
-  </data>
   <data name="lblCopyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 15</value>
+    <value>360, 15</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblCopyright.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 250</value>
-  </data>
   <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 16</value>
+    <value>360, 16</value>
+  </data>
+  <data name="GroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
   </data>
   <data name="picSchakelaar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAABTNJREFUeF7tmTGSGzkMRadqN9rL7EU22CM68AF8FaebbOIDOHcwBnsaf76gTzXV
+        wAAADsABataJCQAABTNJREFUeF7tmTGSGzkMRadqN9rL7EU22CM68AF8FaebbOIDOHcwBnsaf76gTzXV
         ItlUi6/qlS0CJEBibI/tt8lkMplMJpMevBeqUHklKlSe8vSoSysVKq9EhcpTnh51aaVC5ZWoUHnK04PL
         RjhmKhDfgnNNBeIRjpmnB5eNcMxUIL4F55oKxCMcM08PLhvhmKlAfAvONRWIRzhmnh5cNsIxU4H4Fpxr
         KhCPcMw8Pbjswq+fHz8aHDMViG/BuaYC8QjHzNODyy7kB3LTLdSenJEQPz247MIcyOHgsgtzIIeDyy7Q
@@ -183,9 +171,6 @@
   </data>
   <data name="picSchakelaar.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>490, 290</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

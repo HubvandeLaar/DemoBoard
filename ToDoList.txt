@@ -1,13 +1,16 @@
 To Do Lijstje
-	Help werkt niet in Debug mode...
-	Multilingual Help
-	Testen of nieuwe installatie van hogere versie de gewijzigde XPGN's in myDocuments\DemoBoard lessen\ overschrijft
-
-	Documentatie en Helpteksten aanpassen !!
-	Feedback op de Stelling (met Niveau)
-	Analyse van de Partij
+	Quiz/Multiple Choice eruit halen; is niet geimplementeerd !!!	
+	Analyse van de Partij (Feedback op de Stelling (met Niveau))
 
 Aanpassingen
+V	Statusbalk meldingen "bezig met zet", "Klaar", "Mat", "Schaak" en "Pat"
+V	Positie statusbalk aangepast.
+V	Lijst met geldige zetten ziet geen aanval van de koning op een veld
+V	Help werkt alleen bij opstarten via de .bat file (daar zit een CD in die niet altijd werkt...)
+V	Multilingual Help....
+V	Help werkt niet in Debug mode...
+V	Setup uit de distributie gehaald !
+V	About met naam en eMailadres
 V	Kopieren en plakken met lege zettenlijst ging fout
 V	Bij Folder voor Lessen; Default de huidige instelling tonen
 V	F1 op bord gaf Paard; F5 gaf Toren; Functietoetsen uitgesloten

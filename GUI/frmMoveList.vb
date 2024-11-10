@@ -1,9 +1,9 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
+Imports ChessGlobals.ChessColor
 Imports ChessGlobals.ChessLanguage
 Imports ChessMaterials
-Imports ChessGlobals.ChessColor
 Imports PGNLibrary
 Imports System.Windows.Forms
 Imports DemoBoard

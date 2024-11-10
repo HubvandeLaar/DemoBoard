@@ -1,7 +1,7 @@
-﻿De Help-folder is een level hoger in de DemoBoard-folder.
+﻿De Help-folders zijn een level hoger in de DemoBoard-folder.
 De *.HTML, *.HHK files moeten worden gecompileerd mbv MicroSoft's 'HTML Help Workshop'
 	- Start de 'HTML Help Workshop' via het menu 'Start'.
 	- Open 'DemoBoard.hhp'
 	- Compile
-Sluit vervolgens 'Visual Studio' en de 'HTML Help Workshop' en kopieer 'DemoBoard.chm' en 'DemoBoard.chw' naar de 'GUI' folder.
+Sluit vervolgens 'Visual Studio' en de 'HTML Help Workshop' en kopieer 'DemoBoard XX.chm' en 'DemoBoard XX.chw' naar de 'GUI' folder.
 Start 'Visual Studio' weer opnieuw

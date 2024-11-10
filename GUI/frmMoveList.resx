@@ -117,49 +117,193 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;cmdLast.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ctlMoveList.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;cmdLast.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ctlMoveList.Type" xml:space="preserve">
-    <value>DemoBoard.ctlMoveList, DemoBoard, Version=1.1.0.0, Culture=neutral, PublicKeyToken=1ce4f9cc6443dcd1</value>
+  <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="ImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABm
+        BwAAAk1TRnQBSQFMAgEBAgIAAQEBAAEBAQwBAAEMAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        ATADAAEMAwABAQEAAQgFAAFAAQIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/0EAAesB8i8AAREB7DAA
+        AW0B8S8AAQ8B7AH/LwAB8i0AAeouAAHzLQAB7C4AAfR/AAFCAU0BPgcAAT4DAAEoAwABMAMAAQwDAAEB
+        AQABAQUAAWAXAAP/AQAD/wUAAf8B/gE/BQAB/wH+AR8FAAH/Af4BBwUAAf8B/gEBBQAB/wH+AQEFAAH/
+        Af4BBwUAAf8B/gEPBQAB/wH+AT8FAAH/Af4BfwUAA/8FAAP/BQAL
+</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ctlMoveList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="cmdStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdStart.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Webdings, 15.75pt, style=Bold</value>
+  </data>
+  <data name="cmdStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 307</value>
+  </data>
+  <data name="cmdStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmdStart.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="cmdStart.Text" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="cmdStart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;cmdStart.Name" xml:space="preserve">
+    <value>cmdStart</value>
+  </data>
+  <data name="&gt;&gt;cmdStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdStart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdStart.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cmdPrevious.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="cmdPrevious.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Webdings, 15.75pt, style=Bold</value>
+  </data>
+  <data name="cmdPrevious.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 307</value>
+  </data>
+  <data name="cmdPrevious.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="cmdPrevious.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cmdPrevious.Text" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmdPrevious.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;cmdPrevious.Name" xml:space="preserve">
+    <value>cmdPrevious</value>
+  </data>
+  <data name="&gt;&gt;cmdPrevious.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;cmdPrevious.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="mnuDemoteVariant.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 26</value>
+  <data name="&gt;&gt;cmdPrevious.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;mnuEditMove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="cmdNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmMoveList</value>
+  <data name="cmdNext.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Webdings, 15.75pt, style=Bold</value>
+  </data>
+  <data name="cmdNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 307</value>
+  </data>
+  <data name="cmdNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="cmdNext.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="cmdNext.Text" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;ctlMoveList.Name" xml:space="preserve">
-    <value>ctlMoveList</value>
+  <data name="cmdNext.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;cmdNext.Name" xml:space="preserve">
+    <value>cmdNext</value>
+  </data>
+  <data name="&gt;&gt;cmdNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdNext.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdNext.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmdLast.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="cmdLast.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Webdings, 15.75pt, style=Bold</value>
+  </data>
+  <data name="cmdLast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 307</value>
+  </data>
+  <data name="cmdLast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="cmdLast.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cmdLast.Text" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="cmdLast.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;cmdLast.Name" xml:space="preserve">
+    <value>cmdLast</value>
+  </data>
+  <data name="&gt;&gt;cmdLast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmdLast.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmdLast.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="mnuMoveMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>121, 17</value>
+  </metadata>
+  <data name="mnuMoveMenu.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="mnuEditMove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAE/lJREFUeF7tnat6G00ShgMX7iXkEhYuDFy4MNAwMNDQMDAw0NAwMNDQ0NBQ0NBQ
+        wgAADsIBFShKgAAAE/lJREFUeF7tnat6G00ShgMX7iXkEhYuDFy4MNAwMNDQMDAw0NAwMNDQ0NBQ0NBQ
         bLbeqvqma1otW+P4IHvdf75nRtJMT0+9qkO3JP+fPtpH+2gf7aN9tLfUTk6+TY9Rnv7R/raNjPu3yq4/
         2po2MuRzKC/3au36+ua43yAjo72E8vIv2rjut2/fprOzs+OD0hvotZTDefbGtU5PT+frnp+fHw8UDepY
         lMN6tsY1vn37vnNdnstDXq/1g1qj29vb6e5uu9Bmc+saHb9WOcQnbfT79evX+RqbyzMPWXr8ap6iAawR
@@ -247,151 +391,107 @@
         kJQvfbRBGxm/Vx760T7aR/toH+2jPVH79Ol/urmt2mYmWJcAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="mnuEditMove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 26</value>
+  </data>
+  <data name="mnuEditMove.Text" xml:space="preserve">
+    <value>Edit move</value>
+  </data>
+  <data name="mnuDeleteMove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqJJREFUeF7l
+        0Atu3DAMBcDt/Q+dVgsoUJixbMr0/gp0FiktPlK6/bndfvj6929P7Hk3411YzBiDX5l2b6YfM+LAV6Fd
+        RyWX77TAs2g/KX2ATgs9ivbZ0s5f8gBNXOxq2mHL2HfZA3TjsCto5kzsv/wBmji0imZtUX9z/1FDtTj4
+        DOXPKKP7/kON1cbBK5Q5o4zoV0FB1eLMPcrYoxxhUYHVNFfUO6OMGRY7DaikmZ3O71HOHhYjDatSNU85
+        R7C4RYMrnMkf91vB4h4t8gzaLYvFo7TUo2ifFSxmaLmraY9VLK7QotU09ywWV2npKppXgcWzdIEzNKMK
+        ixV0kRXKrsRiJV0qQ5mVWKyiC61QdhUWK+giZ2hGBRbP0gXO0pwKLJ6h5ato3lksrtLS1TT3DBaztOiV
+        tMMqFjO04CNolxUsHqXFMs7kjHucweIRWiqjIi9mrGBxj5bJUGajs3uUk8HijJbIUOZIPTPKyGBxixbI
+        UKaod0YZR7EoGpyhzBllzCjjCBYjDcxQ5hHK2qL+I1iMNDBDmUcpb4v697A40qAMZWYpd4v6Z1jsNCBD
+        mauUL+qdYbFReIYyz9IcUe8WFhsFZyizgmaJeoVFBWYos5JmRuqTXwWFZcS8q2h2pL7oV0FBGTHvKpot
+        6h39+I8CMsasR9AOkfpG33+oOWMMfSTtEqmv+/5DjRlj6KNpn5F6uvuPmjJi6DNor5F6mvuPGo6Kgc+i
+        3Ubqae4/ajgqBj6T9hup52Mu32nPTuc/7gEa7drFs8sPEINeifbt4tmPfIBGO3fjuaUHGANemXZvxjP/
+        5QM0/Uz6AcYB70B3aPr3j3+ARvdo2rfUA8Tgd7J1n82P0Rj2jrbutPkxGsPele41/diNIe9Md9s9MH7/
+        BD/vd/v6C4Mjn8Jsl0JiAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="mnuDeleteMove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 26</value>
+  </data>
   <data name="mnuDeleteMove.Text" xml:space="preserve">
     <value>Delete this and subsequents moves</value>
   </data>
-  <data name="&gt;&gt;cmdNext.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;mnuDeleteMove.Name" xml:space="preserve">
-    <value>mnuDeleteMove</value>
-  </data>
-  <data name="cmdStart.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="mnuMoveMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 108</value>
+  <data name="mnuPromoteVariant.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAH1JREFUWEftztEKgCAMRmEf3Tc3BIWIY+rclGIfHLpyf8E5pyCV7xF5vHbE0R+4
+        j2//CRqvbUHDNXM0+swMjbUyQUOt1NFILzV0fDQVdHi0ZXR0NjE6Jk2EDkmbRkdWG0aPtRpCD7Xqokfa
+        vYsxJsuyMtVGDzX7zk+4nwvhAhB1tcUKgL4KAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="mnuPromoteVariant.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 26</value>
   </data>
-  <data name="cmdNext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>Manual</value>
-  </data>
-  <data name="&gt;&gt;cmdNext.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;mnuEditMove.Name" xml:space="preserve">
-    <value>mnuEditMove</value>
-  </data>
-  <data name="&gt;&gt;cmdStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmdPrevious.Text" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABo
-        BwAAAk1TRnQBSQFMAgEBAgEAAeQBAAH4AQABDAEAAQwBAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABMAMAAQwDAAEBAQABCAUAAUABAhgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
-        AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
-        AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
-        AwABZgMAAZkDAAHMAgABMwMAAjMCAAEzAWYCAAEzAZkCAAEzAcwCAAEzAf8CAAFmAwABZgEzAgACZgIA
-        AWYBmQIAAWYBzAIAAWYB/wIAAZkDAAGZATMCAAGZAWYCAAKZAgABmQHMAgABmQH/AgABzAMAAcwBMwIA
-        AcwBZgIAAcwBmQIAAswCAAHMAf8CAAH/AWYCAAH/AZkCAAH/AcwBAAEzAf8CAAH/AQABMwEAATMBAAFm
-        AQABMwEAAZkBAAEzAQABzAEAATMBAAH/AQAB/wEzAgADMwEAAjMBZgEAAjMBmQEAAjMBzAEAAjMB/wEA
-        ATMBZgIAATMBZgEzAQABMwJmAQABMwFmAZkBAAEzAWYBzAEAATMBZgH/AQABMwGZAgABMwGZATMBAAEz
-        AZkBZgEAATMCmQEAATMBmQHMAQABMwGZAf8BAAEzAcwCAAEzAcwBMwEAATMBzAFmAQABMwHMAZkBAAEz
-        AswBAAEzAcwB/wEAATMB/wEzAQABMwH/AWYBAAEzAf8BmQEAATMB/wHMAQABMwL/AQABZgMAAWYBAAEz
-        AQABZgEAAWYBAAFmAQABmQEAAWYBAAHMAQABZgEAAf8BAAFmATMCAAFmAjMBAAFmATMBZgEAAWYBMwGZ
-        AQABZgEzAcwBAAFmATMB/wEAAmYCAAJmATMBAANmAQACZgGZAQACZgHMAQABZgGZAgABZgGZATMBAAFm
-        AZkBZgEAAWYCmQEAAWYBmQHMAQABZgGZAf8BAAFmAcwCAAFmAcwBMwEAAWYBzAGZAQABZgLMAQABZgHM
-        Af8BAAFmAf8CAAFmAf8BMwEAAWYB/wGZAQABZgH/AcwBAAHMAQAB/wEAAf8BAAHMAQACmQIAAZkBMwGZ
-        AQABmQEAAZkBAAGZAQABzAEAAZkDAAGZAjMBAAGZAQABZgEAAZkBMwHMAQABmQEAAf8BAAGZAWYCAAGZ
-        AWYBMwEAAZkBMwFmAQABmQFmAZkBAAGZAWYBzAEAAZkBMwH/AQACmQEzAQACmQFmAQADmQEAApkBzAEA
-        ApkB/wEAAZkBzAIAAZkBzAEzAQABZgHMAWYBAAGZAcwBmQEAAZkCzAEAAZkBzAH/AQABmQH/AgABmQH/
-        ATMBAAGZAcwBZgEAAZkB/wGZAQABmQH/AcwBAAGZAv8BAAHMAwABmQEAATMBAAHMAQABZgEAAcwBAAGZ
-        AQABzAEAAcwBAAGZATMCAAHMAjMBAAHMATMBZgEAAcwBMwGZAQABzAEzAcwBAAHMATMB/wEAAcwBZgIA
-        AcwBZgEzAQABmQJmAQABzAFmAZkBAAHMAWYBzAEAAZkBZgH/AQABzAGZAgABzAGZATMBAAHMAZkBZgEA
-        AcwCmQEAAcwBmQHMAQABzAGZAf8BAALMAgACzAEzAQACzAFmAQACzAGZAQADzAEAAswB/wEAAcwB/wIA
-        AcwB/wEzAQABmQH/AWYBAAHMAf8BmQEAAcwB/wHMAQABzAL/AQABzAEAATMBAAH/AQABZgEAAf8BAAGZ
-        AQABzAEzAgAB/wIzAQAB/wEzAWYBAAH/ATMBmQEAAf8BMwHMAQAB/wEzAf8BAAH/AWYCAAH/AWYBMwEA
-        AcwCZgEAAf8BZgGZAQAB/wFmAcwBAAHMAWYB/wEAAf8BmQIAAf8BmQEzAQAB/wGZAWYBAAH/ApkBAAH/
-        AZkBzAEAAf8BmQH/AQAB/wHMAgAB/wHMATMBAAH/AcwBZgEAAf8BzAGZAQAB/wLMAQAB/wHMAf8BAAL/
-        ATMBAAHMAf8BZgEAAv8BmQEAAv8BzAEAAmYB/wEAAWYB/wFmAQABZgL/AQAB/wJmAQAB/wFmAf8BAAL/
-        AWYBAAEhAQABpQEAA18BAAN3AQADhgEAA5YBAAPLAQADsgEAA9cBAAPdAQAD4wEAA+oBAAPxAQAD+AEA
-        AfAB+wH/AQABpAKgAQADgAMAAf8CAAH/AwAC/wEAAf8DAAH/AQAB/wEAAv8CAAP/QQAB6wHyLwABEQHs
-        MAABbQHxLwABDwHsAf8vAAHyLQAB6i4AAfMtAAHsLgAB9H8AAUIBTQE+BwABPgMAASgDAAEwAwABDAMA
-        AQEBAAEBBQABYBcAA/8BAAP/BQAB/wH+AT8FAAH/Af4BHwUAAf8B/gEHBQAB/wH+AQEFAAH/Af4BAQUA
-        Af8B/gEHBQAB/wH+AQ8FAAH/Af4BPwUAAf8B/gF/BQAD/wUAA/8bAAs=
-</value>
-  </data>
-  <data name="cmdLast.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="cmdPrevious.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Webdings, 15.75pt, style=Bold</value>
-  </data>
-  <data name="cmdLast.Text" xml:space="preserve">
-    <value>:</value>
-  </data>
-  <data name="&gt;&gt;cmdStart.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;mnuPromoteVariant.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmdStart.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Webdings, 15.75pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;mnuDeleteMove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmdNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 307</value>
+  <data name="mnuPromoteVariant.Text" xml:space="preserve">
+    <value>Promote variant</value>
   </data>
   <data name="mnuDemoteVariant.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAJFJREFUWEftj0EOgCAMBHk6P0dqrAcWAsWWeugkG4mGnTUFQdChHMiU3iWV5Jzp
+        wgAADsIBFShKgAAAAJFJREFUWEftj0EOgCAMBHk6P0dqrAcWAsWWeugkG4mGnTUFQdChHMiU3iWV5Jzp
         OQUuaoUGuI1gucuIHTkBRbvZHUBAmTRf5AyUrkZDTkDxarQGEFA+i6acAckoFnICRKNYDSBA1sZSzoCU
         08rdB9R3ZrjKmaHcfcD99RCu8hfJgFJ5jrpI/t5shIRfjAicSekC0bK4REp0OlIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="cmdNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="mnuDemoteVariant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 26</value>
   </data>
-  <data name="mnuPromoteVariant.Text" xml:space="preserve">
-    <value>Promote variant</value>
+  <data name="mnuDemoteVariant.Text" xml:space="preserve">
+    <value>Demote variant</value>
   </data>
-  <data name="cmdNext.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="mnuMoveMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 108</value>
   </data>
-  <data name="&gt;&gt;cmdNext.Name" xml:space="preserve">
-    <value>cmdNext</value>
+  <data name="&gt;&gt;mnuMoveMenu.Name" xml:space="preserve">
+    <value>mnuMoveMenu</value>
   </data>
-  <data name="cmdPrevious.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;mnuMoveMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mnuDemoteVariant.Name" xml:space="preserve">
-    <value>mnuDemoteVariant</value>
+  <data name="ctlMoveList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="cmdStart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="ctlMoveList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;cmdStart.Name" xml:space="preserve">
-    <value>cmdStart</value>
+  <data name="ctlMoveList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 301</value>
+  </data>
+  <data name="ctlMoveList.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ctlMoveList.Name" xml:space="preserve">
+    <value>ctlMoveList</value>
+  </data>
+  <data name="&gt;&gt;ctlMoveList.Type" xml:space="preserve">
+    <value>DemoBoard.ctlMoveList, DemoBoard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1cb0c78da27b6a77</value>
+  </data>
+  <data name="&gt;&gt;ctlMoveList.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;ctlMoveList.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;ImageList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmdLast.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="cmdPrevious.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 307</value>
-  </data>
-  <data name="ctlMoveList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>nl</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>60</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>209, 345</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -609,143 +709,46 @@
         ////////8AAAAP////////////////AAAAA=
 </value>
   </data>
-  <data name="cmdLast.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Webdings, 15.75pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;mnuDemoteVariant.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmdStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="&gt;&gt;mnuMoveMenu.Name" xml:space="preserve">
-    <value>mnuMoveMenu</value>
-  </data>
-  <data name="mnuDeleteMove.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqJJREFUeF7l
-        0Atu3DAMBcDt/Q+dVgsoUJixbMr0/gp0FiktPlK6/bndfvj6929P7Hk3411YzBiDX5l2b6YfM+LAV6Fd
-        RyWX77TAs2g/KX2ATgs9ivbZ0s5f8gBNXOxq2mHL2HfZA3TjsCto5kzsv/wBmji0imZtUX9z/1FDtTj4
-        DOXPKKP7/kON1cbBK5Q5o4zoV0FB1eLMPcrYoxxhUYHVNFfUO6OMGRY7DaikmZ3O71HOHhYjDatSNU85
-        R7C4RYMrnMkf91vB4h4t8gzaLYvFo7TUo2ifFSxmaLmraY9VLK7QotU09ywWV2npKppXgcWzdIEzNKMK
-        ixV0kRXKrsRiJV0qQ5mVWKyiC61QdhUWK+giZ2hGBRbP0gXO0pwKLJ6h5ato3lksrtLS1TT3DBaztOiV
-        tMMqFjO04CNolxUsHqXFMs7kjHucweIRWiqjIi9mrGBxj5bJUGajs3uUk8HijJbIUOZIPTPKyGBxixbI
-        UKaod0YZR7EoGpyhzBllzCjjCBYjDcxQ5hHK2qL+I1iMNDBDmUcpb4v697A40qAMZWYpd4v6Z1jsNCBD
-        mauUL+qdYbFReIYyz9IcUe8WFhsFZyizgmaJeoVFBWYos5JmRuqTXwWFZcS8q2h2pL7oV0FBGTHvKpot
-        6h39+I8CMsasR9AOkfpG33+oOWMMfSTtEqmv+/5DjRlj6KNpn5F6uvuPmjJi6DNor5F6mvuPGo6Kgc+i
-        3Ubqae4/ajgqBj6T9hup52Mu32nPTuc/7gEa7drFs8sPEINeifbt4tmPfIBGO3fjuaUHGANemXZvxjP/
-        5QM0/Uz6AcYB70B3aPr3j3+ARvdo2rfUA8Tgd7J1n82P0Rj2jrbutPkxGsPele41/diNIe9Md9s9MH7/
-        BD/vd/v6C4Mjn8Jsl0JiAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="&gt;&gt;cmdPrevious.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdLast.Name" xml:space="preserve">
-    <value>cmdLast</value>
-  </data>
-  <data name="cmdPrevious.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="cmdPrevious.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="cmdStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="cmdStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 307</value>
-  </data>
-  <data name="&gt;&gt;ImageList.Name" xml:space="preserve">
-    <value>ImageList</value>
-  </data>
-  <data name="&gt;&gt;cmdPrevious.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="mnuPromoteVariant.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAH1JREFUWEftztEKgCAMRmEf3Tc3BIWIY+rclGIfHLpyf8E5pyCV7xF5vHbE0R+4
-        j2//CRqvbUHDNXM0+swMjbUyQUOt1NFILzV0fDQVdHi0ZXR0NjE6Jk2EDkmbRkdWG0aPtRpCD7Xqokfa
-        vYsxJsuyMtVGDzX7zk+4nwvhAhB1tcUKgL4KAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="cmdLast.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 307</value>
-  </data>
-  <data name="&gt;&gt;mnuMoveMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ctlMoveList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 301</value>
-  </data>
-  <data name="&gt;&gt;cmdNext.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuEditMove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 26</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Move List</value>
   </data>
-  <data name="&gt;&gt;ctlMoveList.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;ImageList.Name" xml:space="preserve">
+    <value>ImageList</value>
   </data>
-  <data name="cmdLast.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
+  <data name="&gt;&gt;ImageList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuEditMove.Name" xml:space="preserve">
+    <value>mnuEditMove</value>
+  </data>
+  <data name="&gt;&gt;mnuEditMove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuDeleteMove.Name" xml:space="preserve">
+    <value>mnuDeleteMove</value>
+  </data>
+  <data name="&gt;&gt;mnuDeleteMove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuPromoteVariant.Name" xml:space="preserve">
     <value>mnuPromoteVariant</value>
   </data>
-  <data name="cmdNext.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;mnuPromoteVariant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>209, 345</value>
+  <data name="&gt;&gt;mnuDemoteVariant.Name" xml:space="preserve">
+    <value>mnuDemoteVariant</value>
   </data>
-  <data name="cmdNext.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Webdings, 15.75pt, style=Bold</value>
+  <data name="&gt;&gt;mnuDemoteVariant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmMoveList</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mnuDeleteMove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 26</value>
-  </data>
-  <data name="mnuMoveMenu.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="cmdLast.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="mnuDemoteVariant.Text" xml:space="preserve">
-    <value>Demote variant</value>
-  </data>
-  <data name="&gt;&gt;cmdPrevious.Name" xml:space="preserve">
-    <value>cmdPrevious</value>
-  </data>
-  <data name="mnuEditMove.Text" xml:space="preserve">
-    <value>Edit move</value>
-  </data>
-  <data name="cmdPrevious.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cmdStart.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;cmdLast.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>60</value>
-  </metadata>
-  <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="mnuMoveMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>121, 17</value>
-  </metadata>
 </root>

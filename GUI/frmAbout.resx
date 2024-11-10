@@ -117,252 +117,113 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cmdOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 240</value>
-  </data>
-  <data name="cmdOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cmdOK.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="cmdOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;cmdOK.Name" xml:space="preserve">
-    <value>cmdOK</value>
-  </data>
-  <data name="&gt;&gt;cmdOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmdOK.Parent" xml:space="preserve">
-    <value>GroupBox</value>
-  </data>
   <data name="&gt;&gt;cmdOK.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblDisclaimer.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="lblDisclaimer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="lblDisclaimer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDisclaimer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 174</value>
-  </data>
-  <data name="lblDisclaimer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>414, 54</value>
-  </data>
-  <data name="lblDisclaimer.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="lblDisclaimer.Text" xml:space="preserve">
-    <value>This application is for free to be used  and distributed by chess trainers. Feedback about this application is always welcome, but I don't accept any responsibility about any damage caused by using this application.</value>
-  </data>
-  <data name="&gt;&gt;lblDisclaimer.Name" xml:space="preserve">
-    <value>lblDisclaimer</value>
-  </data>
-  <data name="&gt;&gt;lblDisclaimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDisclaimer.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblDisclaimer.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblApplicationTitle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="lblApplicationTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 24pt, style=Bold</value>
-  </data>
-  <data name="lblApplicationTitle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblApplicationTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 122</value>
-  </data>
-  <data name="lblApplicationTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>432, 42</value>
-  </data>
-  <data name="lblApplicationTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="lblApplicationTitle.Text" xml:space="preserve">
-    <value>My.Application.Info.Title</value>
-  </data>
-  <data name="lblApplicationTitle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
-  </data>
-  <data name="&gt;&gt;lblApplicationTitle.Name" xml:space="preserve">
-    <value>lblApplicationTitle</value>
-  </data>
-  <data name="&gt;&gt;lblApplicationTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblApplicationTitle.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblApplicationTitle.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lblCopyright.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="lblCopyright.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="lblCopyright.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 268</value>
-  </data>
-  <data name="lblCopyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>369, 22</value>
-  </data>
-  <data name="lblCopyright.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="lblCopyright.Text" xml:space="preserve">
-    <value>My.Application.Info.Copyright</value>
-  </data>
-  <data name="&gt;&gt;lblCopyright.Name" xml:space="preserve">
-    <value>lblCopyright</value>
-  </data>
-  <data name="&gt;&gt;lblCopyright.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblCopyright.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblCopyright.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
-  </data>
-  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 249</value>
-  </data>
-  <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>369, 20</value>
-  </data>
-  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblVersion.Text" xml:space="preserve">
-    <value>Application.Info.Version.Major, My.Application.Info.Version.Minor</value>
-  </data>
-  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
-    <value>lblVersion</value>
   </data>
   <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
+  <data name="&gt;&gt;picSchakelaar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lblVersion.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="GroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 5</value>
   </data>
-  <data name="GroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>485, 285</value>
+  <data name="lblApplicationTitle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="GroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GroupBox.Name" xml:space="preserve">
-    <value>GroupBox</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblCopyright.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
   </data>
-  <data name="&gt;&gt;GroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GroupBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="picSchakelaar.ErrorImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="picSchakelaar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAABTNJREFUeF7tmTGSGzkMRadqN9rL7EU22CM68AF8FaebbOIDOHcwBnsaf76gTzXV
-        ItlUi6/qlS0CJEBibI/tt8lkMplMJpMevBeqUHklKlSe8vSoSysVKq9EhcpTnh51aaVC5ZWoUHnK04PL
-        RjhmKhDfgnNNBeIRjpmnB5eNcMxUIL4F55oKxCMcM08PLhvhmKlAfAvONRWIRzhmnh5cNsIxU4H4Fpxr
-        KhCPcMw8Pbjswq+fHz8aHDMViG/BuaYC8QjHzNODyy7kB3LTLdSenJEQPz247MIcyOHgsgtzIIeDyy7Q
-        QEaBezRPDy67MNJA1l64R/P04LKjwj2apweXXSj9FZLy3FbMXyGBlo+dg2u++kCexNOjLj2yp0ddemRf
-        Alx4NLg386XAxUeBezJfkotHOIrYh/nSqAc50omhHuYIJ4R6oJ5OBHigC9LfoN17yezjWuYkAx7pgtxA
-        xEOXwrXMSQY8ErBH53WO5dZLCHsnGfBIYA6kGnsui0cCcyDV2HNZPBKYA6nGnsvikcAcSDX2XBaPtGDD
-        qD6QdKYR9r4Eey6LR1qYA6nG3gtjz8IcSDX2Xhh7FuZAqrH3wtgD5kCKyV0qrrslIB/MgRSTu1Rcd0tA
-        PpgDKUZdKq5Ft0Bua7iW+bTEi+zxFshrDdcyn5Z4kXuMqBzYmlDvacElGF6/YUTlwNaEek9FbH6RUXFh
-        ROXA1oR6T0VsfpFRcaGjYle2RtR8GtB0CZwfdFTsyqY80be+sckLF9bL5FD7Vh2sMbweY60INYckNnlh
-        CWpfzmW4+qsVtiTUGpLY5Nr6PtR5LKPiyZaEWkMSm1xb38fe8+7N3wvXWR2OqyYfYe95al+yNqLGcKC5
-        mlyda39u4HP4M4R/Hm1BqDEcaK41XOf/9+/Zur6uYjXg81eHAo1VY+Pb5IUbOU16Ivj81aFAYw6vxZhT
-        kuPEeOnnjg4FGnN4Lcackhwnxks/d3YY0JTDazHmlOTUQNVp6BCgIYfXYswpyalB6xrh/CFAQw6vxZhT
-        klODljXi2eYQoCGH12LMKcnJkr7DMr+//1j0z1fY2u4aBYSzhwFNJfjvBzHGlOTkKNr7osNIoLG78a9s
-        txCuKWs3HkYinD8UaKwXXFPVvhWrRaxhDgOa6gXXVLVz67XhOuYwoKlecE1VO7deG66zOgRoaEH8/o0Y
-        UZKzlxZn3oLrmYeDZhxeizGnJGcvLc68BddbPRQ04vBajDklOTm29ubWW8N1zcNAEw6vxZhTkpNja29u
-        vTVcd/UQ0IDDazHmlOTk2NqbW+8B117tDoo7vBZjTklOjq29ufVecH2zOyju8FqMOSU5Obb25tZ7wfXN
-        7qC4w2sx5pTk5Njam1vvAdde7Q6KO7wWY05JTo6tvSp+kIeABhbUPxI+sqbY2Ms9HewhoIFR4J4GsDso
-        PgreT/q/maOgd+kOineh4Lc69PNf5YGkOsl0rv/c8c+r/C5mV1D4Ia4vcTa7gaK7Of8w3C6g4C7iML79
-        U8f1vC9fvl5Yvc6WXu/T5qDY3bQaRnI98/CBJL3mh82JBdupLptz3RMHgqGoPS303j9thio2nNmBlKge
-        WKn25q3K5eF//P3+9te3PsbahT40kLY+jDpUP97RUn83B6L2Kuk8qdqT83NfVfjga//890PVUA/XPtQw
-        kuhT7W2t124AH75tzyGtNdUwkuhJ7W2t1z4QbuJa1XRS5d6pGkYSOapubakfcihUg01Uw0iq3I6+JMvl
-        1TCSHk+Jkz7wo99y0gn1+MrJZPKEvL39BsUWg70HibeSAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="picSchakelaar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="picSchakelaar.InitialImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="picSchakelaar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 10</value>
-  </data>
-  <data name="picSchakelaar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 100</value>
-  </data>
-  <data name="picSchakelaar.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="picSchakelaar.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 237</value>
   </data>
   <data name="&gt;&gt;picSchakelaar.Name" xml:space="preserve">
     <value>picSchakelaar</value>
   </data>
-  <data name="&gt;&gt;picSchakelaar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblApplicationTitle.Text" xml:space="preserve">
+    <value>My.Application.Info.Title</value>
   </data>
-  <data name="&gt;&gt;picSchakelaar.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;lblEmailaddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
+    <value>lblVersion</value>
+  </data>
+  <data name="lblName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="GroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;cmdOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblApplicationTitle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="cmdOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>374, 324</value>
+  </data>
+  <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="picSchakelaar.ErrorImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="lblApplicationTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>432, 42</value>
+  </data>
+  <data name="cmdOK.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;lblApplicationTitle.Name" xml:space="preserve">
+    <value>lblApplicationTitle</value>
+  </data>
+  <data name="&gt;&gt;cmdOK.Parent" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>414, 19</value>
+  </data>
+  <data name="&gt;&gt;lblDisclaimer.Parent" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="lblEmailaddress.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;picSchakelaar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;lblEmailaddress.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="lblCopyright.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>491, 292</value>
+  <data name="lblEmailaddress.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>475, 365</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -580,13 +441,227 @@
         ////////8AAAAP////////////////AAAAA=
 </value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="lblName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="lblDisclaimer.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblDisclaimer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>414, 54</value>
+  </data>
+  <data name="lblApplicationTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 123</value>
+  </data>
+  <data name="lblApplicationTitle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblEmailaddress.Parent" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="picSchakelaar.InitialImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="lblName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblCopyright.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 344</value>
+  </data>
+  <data name="&gt;&gt;GroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblCopyright.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="lblDisclaimer.Text" xml:space="preserve">
+    <value>This application is for free to be used  and distributed by chess trainers. Feedback about this application is always welcome, but I don't accept any responsibility about any damage caused by using this application.</value>
+  </data>
+  <data name="lblCopyright.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 22</value>
+  </data>
+  <data name="picSchakelaar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="lblApplicationTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;lblDisclaimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblDisclaimer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 324</value>
+  </data>
+  <data name="&gt;&gt;GroupBox.Name" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="cmdOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;lblCopyright.Parent" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="picSchakelaar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 100</value>
+  </data>
+  <data name="lblApplicationTitle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
+  <data name="&gt;&gt;picSchakelaar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>484, 374</value>
+  </data>
+  <data name="lblCopyright.Text" xml:space="preserve">
+    <value>My.Application.Info.Copyright</value>
+  </data>
+  <data name="&gt;&gt;lblCopyright.Name" xml:space="preserve">
+    <value>lblCopyright</value>
+  </data>
+  <data name="GroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmAbout</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="picSchakelaar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 10</value>
   </data>
+  <data name="&gt;&gt;lblEmailaddress.Name" xml:space="preserve">
+    <value>lblEmailaddress</value>
+  </data>
+  <data name="&gt;&gt;lblApplicationTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDisclaimer.Name" xml:space="preserve">
+    <value>lblDisclaimer</value>
+  </data>
+  <data name="lblEmailaddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>414, 19</value>
+  </data>
+  <data name="&gt;&gt;lblName.Name" xml:space="preserve">
+    <value>lblName</value>
+  </data>
+  <data name="picSchakelaar.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="picSchakelaar.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="&gt;&gt;GroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCopyright.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblApplicationTitle.Parent" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="lblDisclaimer.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="lblCopyright.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="lblApplicationTitle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 24pt, style=Bold</value>
+  </data>
+  <data name="cmdOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="picSchakelaar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;cmdOK.Name" xml:space="preserve">
+    <value>cmdOK</value>
+  </data>
+  <data name="lblDisclaimer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 182</value>
+  </data>
+  <data name="lblEmailaddress.Text" xml:space="preserve">
+    <value>HubvandeLaar@Hotmail.com</value>
+  </data>
+  <data name="cmdOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="lblEmailaddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 254</value>
+  </data>
+  <data name="lblEmailaddress.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;lblName.Parent" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Hub van de Laar</value>
+  </data>
+  <data name="lblDisclaimer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblEmailaddress.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Underline</value>
+  </data>
+  <data name="lblCopyright.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;lblDisclaimer.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 20</value>
+  </data>
+  <data name="lblVersion.Text" xml:space="preserve">
+    <value>Application.Info.Version.Major, My.Application.Info.Version.Minor</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>nl</value>
+  </metadata>
 </root>
