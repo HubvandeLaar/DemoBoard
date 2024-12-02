@@ -1,0 +1,234 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Schaak"]
+[Memo "De Dame geeft schaak.
+Weggaan en tussenplaatsen kan niet.
+De Koning kan de Dame slaan.
+"]
+[FEN "k7/Q7/8/8/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat"]
+[Memo "De dame geeft schaak.
+Weggaan en tussenplaatsen kan niet.
+De koning kan nu de dame ook niet meer slaan.
+De dame wordt ondersteund door de witte koning. 
+
+Het is mat !
+Wit heeft gewonnen en krijgt 1 punt. het is 1-0."]
+[FEN "k7/Q7/1K6/8/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Wit kan hier matzetten met ondersteuning van de pion.
+"]
+[FEN "8/8/k7/2P5/8/1Q6/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Zwart kan hier mat zetten met ondersteuning van de loper."]
+[FEN "8/8/8/4b3/8/7K/8/4q3 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Wit kan hier matzetten met ondersteuning van het paard."]
+[FEN "8/1QN5/8/k7/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Zwart kan hier mat zetten met ondersteuning van de toren."]
+[FEN "6r1/8/7p/8/5q2/7K/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Wit kan hier mat zetten met ondersteuning van het paard.
+De pion is geen probleem."]
+[FEN "8/8/8/kpQ5/8/2N5/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Hier wordt de dame door de toren ondersteund.
+De dame kan matzetten, maar moet wel opletten !"]
+[FEN "6r1/8/6q1/8/8/4B2P/8/7K w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat achter de paaltjes"]
+[Memo "De dame kan hier mat zetten omdat de pionnen er voor zorgen dat de koning niet weg kan.
+Dit heet 'Mat achter de paaltjes'."]
+[FEN "k7/pp6/8/8/8/8/2Q5/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Soms is het wat moeilijker om de koning mat te zetten omdat de koning naar heel veel velden kan vluchten.
+Maar een dame kan naar heel veel velden.
+De koning gaat toch mat !"]
+[FEN "8/5q2/8/6p1/8/6KP/6P1/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Je hoeft niet altijd met de dame mat te zetten.
+Hier wordt de toren ondersteund door de loper."]
+[FEN "k7/p1B5/8/1R6/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Zelfs een klein pionnetje kan goede ondersteuning bieden."]
+[FEN "5Bnk/7p/7P/8/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat in één"]
+[Memo "Hier geeft het pionnetje ondersteuning aan aan toren."]
+[FEN "8/8/8/8/8/1p6/3r4/KR6 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Stikmat"]
+[Memo "De stukken van wit zorgen ervoor dat de koning niet kan ontsnappen.
+Het paard hoeft alleen nog schaak te geven.
+Dan is het stikmat !"]
+[FEN "8/8/8/8/5n2/8/6PP/6NK w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Inplaatsen"]
+[Memo "Waar moet de dame staan zodat het mat is ?"]
+[FEN "k7/p7/8/8/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Inplaatsen"]
+[Memo "Waar moet de zwarte dame staan zodat het mat is ?"]
+[FEN "8/8/8/8/4b3/6P1/7K/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Inplaatsen"]
+[Memo "Waar moet de witte pion staan zodat het mat is ?"]
+[FEN "2Q5/pk6/1p6/8/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Inplaatsen"]
+[Memo "Waar moet de witte pion staan zodat het mat is ?"]
+[FEN "8/8/8/8/8/4b3/8/6rK w - - 0 0"]
+
+

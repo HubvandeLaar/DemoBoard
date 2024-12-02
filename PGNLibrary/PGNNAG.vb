@@ -289,9 +289,6 @@ Public Class PGNNAG
         Me.PGNString = pPGNString
     End Sub
 
-    Sub New()
-    End Sub
-
     Public Overrides Function ToString() As String
         Return Me.Code & " " & Me.Text
     End Function

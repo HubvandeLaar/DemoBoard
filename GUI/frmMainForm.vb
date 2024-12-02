@@ -171,6 +171,7 @@ Public Class frmMainForm
     Private Sub mnuOpen_Click(pSender As Object, pArgs As EventArgs) Handles mnuOpen.Click
         Dim Dialog As New OpenFileDialog
         Try
+
             If PGNFileModified() = True Then
                 If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
                     mnuSave_Click(Nothing, Nothing)

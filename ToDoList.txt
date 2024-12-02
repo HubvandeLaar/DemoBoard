@@ -3,6 +3,8 @@ To Do Lijstje
 	Analyse van de Partij (Feedback op de Stelling (met Niveau))
 
 Aanpassingen
+V	Error Message teksts ingekort door de directoris in de StackTrace eruit te halen.
+V   Versie 2.0
 V	Statusbalk meldingen "bezig met zet", "Klaar", "Mat", "Schaak" en "Pat"
 V	Positie statusbalk aangepast.
 V	Lijst met geldige zetten ziet geen aanval van de koning op een veld

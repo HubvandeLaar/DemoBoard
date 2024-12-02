@@ -568,6 +568,24 @@
     <Content Include="DemoBoard NL.chw">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="DemoBoard Lessen\Stap 1 Mat - kopie.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="DemoBoard Lessen\Stap 1 Mat, Pat en Remise - kopie.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1 Mat, Pat en Remise.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1 Mat.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1, Voordelige Ruil - kopie.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DemoBoard Lessen\Stap 1, Voordelige Ruil.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Frisselstein.pfx" />
     <Content Include="DemoBoard Lessen\Opstapje 1 Slaan, aanvallen en veilig aanvallen.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
