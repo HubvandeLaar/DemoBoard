@@ -41,17 +41,21 @@ Public Class frmErrorMessageBox
     End Sub
 
     Public Function RemoveDirectories(pStackTrace As String) As String
-        Dim Lines() As String, Line As String, EndPos As Integer, Startpos As Integer
-        Lines = pStackTrace.Split(vbCrLf)
-        For I As Integer = 0 To Lines.Count - 1
-            Line = Lines(I)
-            EndPos = InStrRev(Line, "\")
-            Startpos = InStrRev(Line, " in ")
-            If Startpos > 0 And EndPos > 0 Then
-                Lines(I) = Strings.Left(Line, Startpos) & "in " & Strings.Mid(Line, EndPos + 1)
-            End If
-        Next I
-        Return String.Join("", Lines)
+        Try
+            Dim Lines() As String, Line As String, EndPos As Integer, Startpos As Integer
+            Lines = pStackTrace.Split(vbCrLf)
+            For I As Integer = 0 To Lines.Count - 1
+                Line = Lines(I)
+                EndPos = InStrRev(Line, "\")
+                Startpos = InStrRev(Line, " in ")
+                If Startpos > 0 And EndPos > 0 Then
+                    Lines(I) = Strings.Left(Line, Startpos) & "in " & Strings.Mid(Line, EndPos + 1)
+                End If
+            Next I
+            Return String.Join("", Lines)
+        Catch
+            Return pStackTrace
+        End Try
     End Function
 
 End Class
