@@ -33,6 +33,9 @@ Public Class Text
                 Case "G" : Return "GText"
                 Case "Y" : Return "YText"
                 Case "R" : Return "RText"
+                Case "B" : Return "BText"
+                Case "C" : Return "CText"
+                Case "O" : Return "OText"
                 Case Else : Return ""
             End Select
         End Get
@@ -45,6 +48,9 @@ Public Class Text
                 Case "G" : Return Brushes.Green
                 Case "Y" : Return Brushes.Yellow
                 Case "R" : Return Brushes.Red
+                Case "B" : Return Brushes.Blue
+                Case "C" : Return Brushes.Cyan
+                Case "O" : Return Brushes.Orange
                 Case Else : Return Brushes.Black
             End Select
         End Get

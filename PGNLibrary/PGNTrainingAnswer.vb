@@ -34,4 +34,9 @@ Public Class PGNTrainingAnswer
         End Get
     End Property
 
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return Me.PGNString
+    End Function
+
 End Class

@@ -15,9 +15,12 @@ Public Class Marker
                 Case "G" : Return "GMarker"
                 Case "Y" : Return "YMarker"
                 Case "R" : Return "RMarker"
+                Case "B" : Return "BMarker"
+                Case "C" : Return "CMarker"
+                Case "O" : Return "OMarker"
                 Case "+" : Return "PlusSign"
                 Case "-" : Return "MinusSign"
-                Case "O", "o", "0" : Return "Circle"
+                Case "o", "0" : Return "Circle"
                 Case "#" : Return "Rectangle"
                 Case "." : Return "Dot"
                 Case "*" : Return "BlueStar"
@@ -30,7 +33,7 @@ Public Class Marker
     Public ReadOnly Property InFront() As Boolean
         Get
             Select Case Me.Symbol
-                Case "G", "Y", "R" 'Green, Yellow or Red Rounded Rectangle
+                Case "G", "Y", "R", "B", "C", "O" 'Green, Yellow, Red, Blue, Cyan or Orange Rounded Rectangle
                     Return False
                 Case Else
                     Return True

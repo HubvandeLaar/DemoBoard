@@ -88,4 +88,9 @@ Public Class PGNTags
     Public Sub New()
     End Sub
 
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return String.Join(" ", Me)
+    End Function
+
 End Class

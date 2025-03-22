@@ -122,7 +122,7 @@ Public Class PGNGame
         End Get
     End Property
 
-    <XmlElement()> 'Included prperty only for serialization 
+    <XmlElement()> 'Included property only for serialization 
     Public Property FENComment As PGNComment
         Set(pFENComment As PGNComment)
             Me.HalfMoves.FENComment = pFENComment
@@ -177,7 +177,7 @@ Public Class PGNGame
         For I = Max To 1 Step -1
             If PreviousHalfMove(I).Color <> UNKNOWN Then
                 TempBoard.PerformMove(PreviousHalfMove(I).BoardMove(TempBoard))
-                TempBoard.ActiveColor = Opponent(PreviousHalfMove(I).Color)
+                TempBoard.ActiveColor = PreviousHalfMove(I).Color.Opponent
             End If
         Next I
 

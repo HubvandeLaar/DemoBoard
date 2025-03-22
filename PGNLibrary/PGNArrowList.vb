@@ -91,4 +91,9 @@ Public Class PGNArrowList
         Return Mid(pComment, P1, P2 - P1 + 1)
     End Function
 
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return Me.XPGNString
+    End Function
+
 End Class

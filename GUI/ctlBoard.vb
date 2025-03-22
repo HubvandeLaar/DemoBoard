@@ -150,10 +150,10 @@ Public Class ctlBoard
 
     Public Property MarkerString As String
         Set(pFieldMarkerString As String)
-            gInternalChessBoard.Fields.ClearMarkers()
+            gInternalChessBoard.ClearMarkers()
             gInternalMarkerList = New PGNMarkerList(pFieldMarkerString)
             For Each FieldMarker As Marker In gInternalMarkerList
-                gInternalChessBoard.Fields(FieldMarker.FieldName).Marker = FieldMarker
+                gInternalChessBoard(FieldMarker.FieldName).Marker = FieldMarker
             Next FieldMarker
             Me.Paint()
         End Set
@@ -162,7 +162,7 @@ Public Class ctlBoard
                 Return ""
             Else
                 gInternalMarkerList.Clear()
-                For Each Field As ChessField In gInternalChessBoard.Fields
+                For Each Field As ChessField In gInternalChessBoard
                     If Field Is Nothing Then Continue For
                     If Field.Marker Is Nothing Then Continue For
                     gInternalMarkerList.Add(Field.Marker)
@@ -188,10 +188,10 @@ Public Class ctlBoard
 
     Public Property TextString As String
         Set(pTextString As String)
-            gInternalChessBoard.Fields.ClearTexts()
+            gInternalChessBoard.ClearTexts()
             gInternalTextList = New PGNTextList(pTextString)
             For Each Text As Text In gInternalTextList
-                gInternalChessBoard.Fields(Text.FieldName).Text = Text
+                gInternalChessBoard(Text.FieldName).Text = Text
             Next Text
             Me.Paint()
         End Set
@@ -200,7 +200,7 @@ Public Class ctlBoard
                 Return ""
             Else
                 gInternalTextList.Clear()
-                For Each Field As ChessField In gInternalChessBoard.Fields
+                For Each Field As ChessField In gInternalChessBoard
                     If Field Is Nothing Then Continue For
                     If Field.Text Is Nothing Then Continue For
                     gInternalTextList.Add(Field.Text)
@@ -213,14 +213,14 @@ Public Class ctlBoard
     'Public Methods
     Public Sub AddPiece(pPiece As ChessPiece, pFieldName As String)
         Dim Field As ChessField
-        Field = gInternalChessBoard.Fields(pFieldName)
+        Field = gInternalChessBoard(pFieldName)
         Field.Piece = pPiece
         Paint()
     End Sub
 
     Public Sub DeletePiece(pFieldName As String)
         Dim Field As ChessField
-        Field = gInternalChessBoard.Fields(pFieldName)
+        Field = gInternalChessBoard(pFieldName)
         Field.Piece = Nothing
         Paint()
     End Sub
@@ -260,7 +260,7 @@ Public Class ctlBoard
 
         'Draw Field Markers behind Pieces
         Me.PaintMarkerList(pInFront:=False)
-        Me.PaintPieces(gInternalChessBoard.Fields)
+        Me.PaintPieces(gInternalChessBoard)
         'Draw Plus, Minus, Circle and Rectangle on top of Pieces
         Me.PaintMarkerList(pInFront:=True)
         Me.PaintArrowList()
@@ -342,7 +342,7 @@ Public Class ctlBoard
 
     Public Sub PlayMove(pFromFieldName As String, pToFieldName As String)
         Dim Piece As ChessPiece, BoardMove As BoardMove
-        Piece = gInternalChessBoard.Fields(pFromFieldName).Piece
+        Piece = gInternalChessBoard(pFromFieldName).Piece
         BoardMove = New BoardMove(Piece, pFromFieldName, pToFieldName)
         PlayMove(BoardMove)
         Wait(2000)
@@ -354,14 +354,14 @@ Public Class ctlBoard
         Dim StartFEN As String = gInternalChessBoard.FEN
 
         Image = frmImages.getImage(pBoardMove.Piece.IconName)
-        FromPoint = New Point(LeftPos(gInternalChessBoard.Fields(pBoardMove.FromFieldName).Column) + PieceOffset(Image),
-                              TopPos(gInternalChessBoard.Fields(pBoardMove.FromFieldName).Row) + PieceOffset(Image))
-        ToPoint = New Point(LeftPos(gInternalChessBoard.Fields(pBoardMove.ToFieldName).Column) + PieceOffset(Image),
-                            TopPos(gInternalChessBoard.Fields(pBoardMove.ToFieldName).Row) + PieceOffset(Image))
+        FromPoint = New Point(LeftPos(gInternalChessBoard(pBoardMove.FromFieldName).Column) + PieceOffset(Image),
+                              TopPos(gInternalChessBoard(pBoardMove.FromFieldName).Row) + PieceOffset(Image))
+        ToPoint = New Point(LeftPos(gInternalChessBoard(pBoardMove.ToFieldName).Column) + PieceOffset(Image),
+                            TopPos(gInternalChessBoard(pBoardMove.ToFieldName).Row) + PieceOffset(Image))
         Me.SetPlayMovePiece(FromPoint.X, FromPoint.Y, PieceSize(Image), Image)
 
         'Remove movinge piece from original position on board
-        gInternalChessBoard.Fields(pBoardMove.FromFieldName).Piece = Nothing
+        gInternalChessBoard(pBoardMove.FromFieldName).Piece = Nothing
         Me.Paint()
 
         Dx = (ToPoint.X - picPlayMovePiece.Left) / 20
@@ -399,7 +399,7 @@ Public Class ctlBoard
 
     'Public Functions
     Public Function getPiece(pFieldName As String) As ChessPiece
-        Return gInternalChessBoard.Fields(pFieldName).Piece
+        Return gInternalChessBoard(pFieldName).Piece
     End Function
 
     'Events
@@ -428,24 +428,22 @@ Public Class ctlBoard
 
             If pArgs.Button = MouseButtons.Right Then
                 'Rightclick So raise event to compose RightClick Field menu
-                RaiseEvent MouseRightClickOnField(pSender, pArgs, gInternalChessBoard.Fields(C, R).Name)
+                RaiseEvent MouseRightClickOnField(pSender, pArgs, gInternalChessBoard(C, R).Name)
                 Exit Sub
             End If
 
-            If picGArrow.BackColor <> SystemColors.ButtonFace _
-            Or picYArrow.BackColor <> SystemColors.ButtonFace _
-            Or picRArrow.BackColor <> SystemColors.ButtonFace Then
-                gFromField = gInternalChessBoard.Fields(C, R)
+            If picArrow.BackColor <> SystemColors.ButtonFace Then
+                gFromField = gInternalChessBoard(C, R)
                 Exit Sub
             End If
 
-            If gInternalChessBoard.Fields(C, R).Piece IsNot Nothing _
-            And gInternalChessBoard.Fields(C, R).Marker IsNot Nothing Then
+            If gInternalChessBoard(C, R).Piece IsNot Nothing _
+            And gInternalChessBoard(C, R).Marker IsNot Nothing Then
                 'Field contains Piece and SignOrMarker
                 If CloseToCenterOfField(C, R, pArgs) Then
-                    gDragPiece = gInternalChessBoard.Fields(C, R).Piece 'Save a copy of the original Piece
-                    gFromField = gInternalChessBoard.Fields(C, R)
-                    gInternalChessBoard.Fields(C, R).Piece = Nothing 'Remove the dragging piece
+                    gDragPiece = gInternalChessBoard(C, R).Piece 'Save a copy of the original Piece
+                    gFromField = gInternalChessBoard(C, R)
+                    gInternalChessBoard(C, R).Piece = Nothing 'Remove the dragging piece
                     Image = frmImages.getImage(gDragPiece.IconName)
                     SetDragImage(LeftPos(C), TopPos(R), PieceSize(Image), Image)
                     gDragOffset = New Point(pArgs.X - LeftPos(C) - PieceOffset(Image), pArgs.Y - TopPos(R) - PieceOffset(Image))
@@ -453,9 +451,9 @@ Public Class ctlBoard
                     Me.Paint() 'As last, contains DoEvents; processing f.i. quick MouseUp event
                     Exit Sub
                 Else
-                    gDragMarker = gInternalChessBoard.Fields(C, R).Marker
-                    gFromField = gInternalChessBoard.Fields(C, R)
-                    gInternalChessBoard.Fields(C, R).Marker = Nothing 'Remove the sign or marker
+                    gDragMarker = gInternalChessBoard(C, R).Marker
+                    gFromField = gInternalChessBoard(C, R)
+                    gInternalChessBoard(C, R).Marker = Nothing 'Remove the sign or marker
                     Image = frmImages.getImage(gDragMarker.IconName)
                     SetDragImage(LeftPos(C), TopPos(R), PieceSize(Image), Image)
                     gDragOffset = New Point(pArgs.X - LeftPos(C) - PieceOffset(Image), pArgs.Y - TopPos(R) - PieceOffset(Image))
@@ -464,10 +462,10 @@ Public Class ctlBoard
                 End If
             End If
 
-            If gInternalChessBoard.Fields(C, R).Piece IsNot Nothing Then
-                gDragPiece = gInternalChessBoard.Fields(C, R).Piece 'Save a copy of he original
-                gFromField = gInternalChessBoard.Fields(C, R)
-                gInternalChessBoard.Fields(C, R).Piece = Nothing 'Remove the dragging piece
+            If gInternalChessBoard(C, R).Piece IsNot Nothing Then
+                gDragPiece = gInternalChessBoard(C, R).Piece 'Save a copy of he original
+                gFromField = gInternalChessBoard(C, R)
+                gInternalChessBoard(C, R).Piece = Nothing 'Remove the dragging piece
                 Image = frmImages.getImage(gDragPiece.IconName)
                 SetDragImage(LeftPos(C), TopPos(R), PieceSize(Image), Image)
                 gDragOffset = New Point(pArgs.X - LeftPos(C) - PieceOffset(Image), pArgs.Y - TopPos(R) - PieceOffset(Image))
@@ -476,10 +474,10 @@ Public Class ctlBoard
                 Exit Sub
             End If
 
-            If gInternalChessBoard.Fields(C, R).Marker IsNot Nothing Then
-                gDragMarker = gInternalChessBoard.Fields(C, R).Marker
-                gFromField = gInternalChessBoard.Fields(C, R)
-                gInternalChessBoard.Fields(C, R).Marker = Nothing 'Remove the sign or marker
+            If gInternalChessBoard(C, R).Marker IsNot Nothing Then
+                gDragMarker = gInternalChessBoard(C, R).Marker
+                gFromField = gInternalChessBoard(C, R)
+                gInternalChessBoard(C, R).Marker = Nothing 'Remove the sign or marker
                 Image = frmImages.getImage(gDragMarker.IconName)
                 SetDragImage(LeftPos(C), TopPos(R), PieceSize(Image), Image)
                 gDragOffset = New Point(pArgs.X - LeftPos(C) - PieceOffset(Image), pArgs.Y - TopPos(R) - PieceOffset(Image))
@@ -499,8 +497,8 @@ Public Class ctlBoard
 
         If gDragMarker IsNot Nothing Then
             If R > 0 And R < 9 And C > 0 And C < 9 Then
-                gDragMarker.FieldName = gInternalChessBoard.Fields(C, R).Name
-                gInternalChessBoard.Fields(C, R).Marker = gDragMarker
+                gDragMarker.FieldName = gInternalChessBoard(C, R).Name
+                gInternalChessBoard(C, R).Marker = gDragMarker
             End If
             Call HideDragging()
             RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
@@ -509,29 +507,10 @@ Public Class ctlBoard
             Exit Sub
         End If
 
-        If picGArrow.BackColor <> SystemColors.ButtonFace Then
-            gInternalArrowList.Add(New Arrow("G", gFromField.Name, gInternalChessBoard.Fields(C, R).Name))
-            picGArrow.BackColor = SystemColors.ButtonFace
-            Call HideDragging()
-            RaiseEvent ArrowListChanged(Me, gInternalArrowList.ListString)
-            Call ResetDragging()
-            Me.Paint()
-            Exit Sub
-        End If
-
-        If picYArrow.BackColor <> SystemColors.ButtonFace Then
-            gInternalArrowList.Add(New Arrow("Y", gFromField.Name, gInternalChessBoard.Fields(C, R).Name))
-            picYArrow.BackColor = SystemColors.ButtonFace
-            Call HideDragging()
-            RaiseEvent ArrowListChanged(Me, gInternalArrowList.ListString)
-            Call ResetDragging()
-            Me.Paint()
-            Exit Sub
-        End If
-
-        If picRArrow.BackColor <> SystemColors.ButtonFace Then
-            gInternalArrowList.Add(New Arrow("R", gFromField.Name, gInternalChessBoard.Fields(C, R).Name))
-            picRArrow.BackColor = SystemColors.ButtonFace
+        If picArrow.BackColor <> SystemColors.ButtonFace _
+        AndAlso gFromField IsNot Nothing Then
+            gInternalArrowList.Add(New Arrow(gSetupToolbar.gMarkerColor, gFromField.Name, gInternalChessBoard(C, R).Name))
+            picArrow.BackColor = SystemColors.ButtonFace
             Call HideDragging()
             RaiseEvent ArrowListChanged(Me, gInternalArrowList.ListString)
             Call ResetDragging()
@@ -551,9 +530,9 @@ Public Class ctlBoard
                 frmAddText.ShowDialog(Me)
                 If frmAddText.OKPressed = True Then
                     gDragText.Color = frmAddText.TextColor
-                    gDragText.FieldName = gInternalChessBoard.Fields(C, R).Name
+                    gDragText.FieldName = gInternalChessBoard(C, R).Name
                     gDragText.Text = frmAddText.ColoureText
-                    gInternalChessBoard.Fields(C, R).Text = gDragText
+                    gInternalChessBoard(C, R).Text = gDragText
                     Call HideDragging()
                     Me.Paint()
                     RaiseEvent TextListChanged(Me, Me.TextString)
@@ -582,8 +561,8 @@ Public Class ctlBoard
                 Exit Sub
             End If
 
-            Captured = (gInternalChessBoard.Fields(C, R).Piece IsNot Nothing)
-            gInternalChessBoard.Fields(C, R).Piece = gDragPiece
+            Captured = (gInternalChessBoard(C, R).Piece IsNot Nothing)
+            gInternalChessBoard(C, R).Piece = gDragPiece
 
             If gDragPiece.Type = PieceType.PAWN _
             And (R = 1 Or R = 8) Then
@@ -595,12 +574,12 @@ Public Class ctlBoard
                 Call HideDragging()
                 Me.Paint()
                 gInternalChessBoard.AddPiece(gDragPiece, C, R)
-                RaiseEvent NewChessPiece(gDragPiece, gInternalChessBoard.Fields(C, R).Name,
+                RaiseEvent NewChessPiece(gDragPiece, gInternalChessBoard(C, R).Name,
                                              gInternalChessBoard)
                 Call ResetDragging()
                 Exit Sub
 
-            ElseIf gFromField.Name = gInternalChessBoard.Fields(C, R).Name Then
+            ElseIf gFromField.Name = gInternalChessBoard(C, R).Name Then
                 'FormField is same as ToField, so no move !! 
                 Call HideDragging()
                 Me.Paint()
@@ -609,19 +588,21 @@ Public Class ctlBoard
 
             Else 'FromField is filled in so a Move
                 Call HideDragging()
-                '  gInternalChessBoard.ActiveColor = If(gDragPiece.Color = WHITE, BLACK, WHITE)
+                gInternalChessBoard.ActiveColor = gDragPiece.Color.Opponent
 
                 'Select Case gFromField.Name 'Perhaps Rook or King was moved
                 '    Case "a1" : gInternalChessBoard.WhiteLongCastlingAllowed = False
-                '    Case "e1" : gInternalChessBoard.WhiteShortCastlingAllowed = False : gInternalChessBoard.WhiteLongCastlingAllowed = False
+                '    Case "e1" : gInternalChessBoard.WhiteShortCastlingAllowed = False 
+                '                gInternalChessBoard.WhiteLongCastlingAllowed = False
                 '    Case "h1" : gInternalChessBoard.WhiteShortCastlingAllowed = False
                 '    Case "a8" : gInternalChessBoard.BlackLongCastlingAllowed = False
-                '    Case "e8" : gInternalChessBoard.BlackShortCastlingAllowed = False : gInternalChessBoard.BlackLongCastlingAllowed = False
+                '    Case "e8" : gInternalChessBoard.BlackShortCastlingAllowed = False
+                '                gInternalChessBoard.BlackLongCastlingAllowed = False
                 '    Case "h8" : gInternalChessBoard.BlackShortCastlingAllowed = False
                 'End Select
 
                 Me.Paint()
-                RaiseEvent ChessPieceMoved(gDragPiece, gFromField.Name, gInternalChessBoard.Fields(C, R).Name,
+                RaiseEvent ChessPieceMoved(gDragPiece, gFromField.Name, gInternalChessBoard(C, R).Name,
                                            gInternalChessBoard, Captured, PromotionPiece, FEN, FENBeforeDragging)
                 Call ResetDragging()
                 Exit Sub
@@ -651,30 +632,30 @@ Public Class ctlBoard
         C = Column(gMouseX) : R = Row(gMouseY)
         If R < 1 Or R > 8 Or C < 1 Or C > 8 Then Exit Sub
 
-            Select Case UCase(Chr(pKeyData))
-                Case King.KeyStroke(CurrentLanguage)
-                    gInternalChessBoard.AddPiece(New King(ActiveColor), C, R)
-                Case Queen.KeyStroke(CurrentLanguage)
-                    gInternalChessBoard.AddPiece(New Queen(ActiveColor), C, R)
-                Case Rook.KeyStroke(CurrentLanguage)
-                    gInternalChessBoard.AddPiece(New Rook(ActiveColor), C, R)
-                Case Bishop.KeyStroke(CurrentLanguage)
-                    gInternalChessBoard.AddPiece(New Bishop(ActiveColor), C, R)
-                Case Knight.KeyStroke(CurrentLanguage)
-                    gInternalChessBoard.AddPiece(New Knight(ActiveColor), C, R)
-                Case Pawn.KeyStroke(CurrentLanguage)
-                    gInternalChessBoard.AddPiece(New Pawn(ActiveColor), C, R)
-                Case Else
-                    If pKeyData = Keys.Delete Then
-                        gInternalChessBoard.Fields(C, R).Piece = Nothing
-                    Else
-                        Exit Sub
-                    End If
-            End Select
+        Select Case UCase(Chr(pKeyData))
+            Case King.KeyStroke(CurrentLanguage)
+                gInternalChessBoard.AddPiece(New King(ActiveColor), C, R)
+            Case Queen.KeyStroke(CurrentLanguage)
+                gInternalChessBoard.AddPiece(New Queen(ActiveColor), C, R)
+            Case Rook.KeyStroke(CurrentLanguage)
+                gInternalChessBoard.AddPiece(New Rook(ActiveColor), C, R)
+            Case Bishop.KeyStroke(CurrentLanguage)
+                gInternalChessBoard.AddPiece(New Bishop(ActiveColor), C, R)
+            Case Knight.KeyStroke(CurrentLanguage)
+                gInternalChessBoard.AddPiece(New Knight(ActiveColor), C, R)
+            Case Pawn.KeyStroke(CurrentLanguage)
+                gInternalChessBoard.AddPiece(New Pawn(ActiveColor), C, R)
+            Case Else
+                If pKeyData = Keys.Delete Then
+                    gInternalChessBoard(C, R).Piece = Nothing
+                Else
+                    Exit Sub
+                End If
+        End Select
 
-            Me.Paint()
-        RaiseEvent NewChessPiece(gInternalChessBoard.Fields(C, R).Piece,
-                                 gInternalChessBoard.Fields(C, R).Name,
+        Me.Paint()
+        RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                                 gInternalChessBoard(C, R).Name,
                                  gInternalChessBoard)
     End Sub
 
@@ -743,33 +724,11 @@ Public Class ctlBoard
         End If
     End Function
 
-    Private Sub picGArrow_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picGArrow.Click
-        If picGArrow.BackColor <> SystemColors.ButtonFace Then
-            picGArrow.BackColor = SystemColors.ButtonFace 'Reset
+    Private Sub picArrow_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picArrow.Click
+        If picArrow.BackColor <> SystemColors.ButtonFace Then
+            picArrow.BackColor = SystemColors.ButtonFace 'Reset
         Else
-            picGArrow.BackColor = SystemColors.ButtonShadow
-            picYArrow.BackColor = SystemColors.ButtonFace 'Reset
-            picRArrow.BackColor = SystemColors.ButtonFace 'Reset
-        End If
-    End Sub
-
-    Private Sub picYArrow_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picYArrow.Click
-        If picYArrow.BackColor <> SystemColors.ButtonFace Then
-            picYArrow.BackColor = SystemColors.ButtonFace 'Reset
-        Else
-            picYArrow.BackColor = SystemColors.ButtonShadow
-            picGArrow.BackColor = SystemColors.ButtonFace 'Reset
-            picRArrow.BackColor = SystemColors.ButtonFace 'Reset
-        End If
-    End Sub
-
-    Private Sub picRArrow_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picRArrow.Click
-        If picRArrow.BackColor <> SystemColors.ButtonFace Then
-            picRArrow.BackColor = SystemColors.ButtonFace 'Reset
-        Else
-            picRArrow.BackColor = SystemColors.ButtonShadow
-            picGArrow.BackColor = SystemColors.ButtonFace 'Reset
-            picYArrow.BackColor = SystemColors.ButtonFace 'Reset
+            picArrow.BackColor = SystemColors.ButtonShadow
         End If
     End Sub
 
@@ -814,11 +773,11 @@ Public Class ctlBoard
 
     End Sub
 
-    Private Sub PaintPieces(pFields As ChessFields)
+    Private Sub PaintPieces(pBoard As ChessBoard)
         Dim Icon As Icon
-        For Each Field As ChessField In pFields
-            If Field Is Nothing Then Continue For
-            If Field.Piece IsNot Nothing Then
+        For Each Field As ChessField In pBoard
+            If Field IsNot Nothing _
+            AndAlso Field.Piece IsNot Nothing Then
                 Icon = frmImages.getIcon(Field.Piece.IconName)
                 PaintIcon(Icon, LeftPos(Field.Column), TopPos(Field.Row))
             End If
@@ -931,6 +890,9 @@ Public Class ctlBoard
             Case "G" : gBitmapGraphics.FillPath(Brushes.Green, OutlinePath)
             Case "Y" : gBitmapGraphics.FillPath(Brushes.Yellow, OutlinePath)
             Case "R" : gBitmapGraphics.FillPath(Brushes.Red, OutlinePath)
+            Case "B" : gBitmapGraphics.FillPath(Brushes.Blue, OutlinePath)
+            Case "C" : gBitmapGraphics.FillPath(Brushes.Cyan, OutlinePath)
+            Case "O" : gBitmapGraphics.FillPath(Brushes.Orange, OutlinePath)
         End Select
         gBitmapGraphics.DrawPath(Pens.Black, OutlinePath)
     End Sub
@@ -982,4 +944,81 @@ Public Class ctlBoard
         gBitmapGraphics.Dispose()
     End Sub
 
+    Private Sub picGreen_Click(sender As Object, e As EventArgs) Handles picGreen.Click
+        gSetupToolbar.gMarkerColor = "G"
+        picGreen.BackColor = SystemColors.ButtonShadow
+
+        picYellow.BackColor = SystemColors.ButtonFace
+        picRed.BackColor = SystemColors.ButtonFace
+        picBlue.BackColor = SystemColors.ButtonFace
+        picCyan.BackColor = SystemColors.ButtonFace
+        picOrange.BackColor = SystemColors.ButtonFace
+
+        Me.Paint()
+    End Sub
+
+    Private Sub picYellow_Click(sender As Object, e As EventArgs) Handles picYellow.Click
+        gSetupToolbar.gMarkerColor = "Y"
+        picYellow.BackColor = SystemColors.ButtonShadow
+
+        picGreen.BackColor = SystemColors.ButtonFace
+        picRed.BackColor = SystemColors.ButtonFace
+        picBlue.BackColor = SystemColors.ButtonFace
+        picCyan.BackColor = SystemColors.ButtonFace
+        picOrange.BackColor = SystemColors.ButtonFace
+
+        Me.Paint()
+    End Sub
+
+    Private Sub picRed_Click(sender As Object, e As EventArgs) Handles picRed.Click
+        gSetupToolbar.gMarkerColor = "R"
+        picRed.BackColor = SystemColors.ButtonShadow
+
+        picGreen.BackColor = SystemColors.ButtonFace
+        picYellow.BackColor = SystemColors.ButtonFace
+        picBlue.BackColor = SystemColors.ButtonFace
+        picCyan.BackColor = SystemColors.ButtonFace
+        picOrange.BackColor = SystemColors.ButtonFace
+
+        Me.Paint()
+    End Sub
+
+    Private Sub picBlue_Click(sender As Object, e As EventArgs) Handles picBlue.Click
+        gSetupToolbar.gMarkerColor = "B"
+        picBlue.BackColor = SystemColors.ButtonShadow
+
+        picGreen.BackColor = SystemColors.ButtonFace
+        picYellow.BackColor = SystemColors.ButtonFace
+        picRed.BackColor = SystemColors.ButtonFace
+        picCyan.BackColor = SystemColors.ButtonFace
+        picOrange.BackColor = SystemColors.ButtonFace
+
+        Me.Paint()
+    End Sub
+
+    Private Sub picCyan_Click(sender As Object, e As EventArgs) Handles picCyan.Click
+        gSetupToolbar.gMarkerColor = "C"
+        picCyan.BackColor = SystemColors.ButtonShadow
+
+        picGreen.BackColor = SystemColors.ButtonFace
+        picYellow.BackColor = SystemColors.ButtonFace
+        picRed.BackColor = SystemColors.ButtonFace
+        picBlue.BackColor = SystemColors.ButtonFace
+        picOrange.BackColor = SystemColors.ButtonFace
+
+        Me.Paint()
+    End Sub
+
+    Private Sub picOrange_Click(sender As Object, e As EventArgs) Handles picOrange.Click
+        gSetupToolbar.gMarkerColor = "O"
+        picOrange.BackColor = SystemColors.ButtonShadow
+
+        picGreen.BackColor = SystemColors.ButtonFace
+        picYellow.BackColor = SystemColors.ButtonFace
+        picRed.BackColor = SystemColors.ButtonFace
+        picBlue.BackColor = SystemColors.ButtonFace
+        picCyan.BackColor = SystemColors.ButtonFace
+
+        Me.Paint()
+    End Sub
 End Class

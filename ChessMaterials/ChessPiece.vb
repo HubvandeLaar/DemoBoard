@@ -79,6 +79,13 @@ Public Class ChessPiece
         End Get
     End Property
 
+    <XmlIgnore>
+    Public Overridable ReadOnly Property Value() As Integer
+        Get
+            Return 0
+        End Get
+    End Property
+
     Public Overridable Function PossibleMoves(pFromFieldName As String, pChessBoard As ChessBoard) As List(Of BoardMove)
         Return Nothing
     End Function

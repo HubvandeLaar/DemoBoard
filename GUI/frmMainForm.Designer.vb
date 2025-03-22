@@ -50,6 +50,7 @@ Partial Class frmMainForm
         Me.mnuSelectGame = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuNewGame = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuEditGame = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuGameAnalysis = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuDeleteGame = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuEditTitleAndMemo = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPreviousGame = New System.Windows.Forms.ToolStripMenuItem()
@@ -100,11 +101,10 @@ Partial Class frmMainForm
         '
         'pnlDragPanel
         '
-        resources.ApplyResources(Me.pnlDragPanel, "pnlDragPanel")
         Me.pnlDragPanel.BackColor = System.Drawing.Color.MidnightBlue
         Me.pnlDragPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        resources.ApplyResources(Me.pnlDragPanel, "pnlDragPanel")
         Me.pnlDragPanel.Name = "pnlDragPanel"
-        Me.ToolTip.SetToolTip(Me.pnlDragPanel, resources.GetString("pnlDragPanel.ToolTip"))
         '
         'pnlMainPanel
         '
@@ -112,7 +112,6 @@ Partial Class frmMainForm
         Me.pnlMainPanel.BackColor = System.Drawing.Color.MidnightBlue
         Me.pnlMainPanel.Controls.Add(Me.ctlTabControl)
         Me.pnlMainPanel.Name = "pnlMainPanel"
-        Me.ToolTip.SetToolTip(Me.pnlMainPanel, resources.GetString("pnlMainPanel.ToolTip"))
         '
         'ctlTabControl
         '
@@ -120,7 +119,6 @@ Partial Class frmMainForm
         Me.ctlTabControl.BackColor = System.Drawing.Color.MidnightBlue
         Me.ctlTabControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.ctlTabControl.Name = "ctlTabControl"
-        Me.ToolTip.SetToolTip(Me.ctlTabControl, resources.GetString("ctlTabControl.ToolTip"))
         '
         'stsStatusStrip
         '
@@ -128,13 +126,12 @@ Partial Class frmMainForm
         Me.stsStatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.stsStatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblStatusText})
         Me.stsStatusStrip.Name = "stsStatusStrip"
-        Me.ToolTip.SetToolTip(Me.stsStatusStrip, resources.GetString("stsStatusStrip.ToolTip"))
         '
         'lblStatusText
         '
-        resources.ApplyResources(Me.lblStatusText, "lblStatusText")
         Me.lblStatusText.BackColor = System.Drawing.SystemColors.Control
         Me.lblStatusText.Name = "lblStatusText"
+        resources.ApplyResources(Me.lblStatusText, "lblStatusText")
         '
         'mnuMenuStrip
         '
@@ -145,7 +142,6 @@ Partial Class frmMainForm
         Me.mnuMenuStrip.Name = "mnuMenuStrip"
         Me.mnuMenuStrip.ShowItemToolTips = True
         Me.mnuMenuStrip.Tag = ""
-        Me.ToolTip.SetToolTip(Me.mnuMenuStrip, resources.GetString("mnuMenuStrip.ToolTip"))
         '
         'mnuUndo
         '
@@ -159,8 +155,8 @@ Partial Class frmMainForm
         '
         'mnuFile
         '
-        resources.ApplyResources(Me.mnuFile, "mnuFile")
         Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNew, Me.mnuOpen, Me.ToolStripSeparator3, Me.mnuSave, Me.ToolStripSeparator4, Me.ToolStripSeparator5, Me.mnuExport, Me.mnuExit})
+        resources.ApplyResources(Me.mnuFile, "mnuFile")
         Me.mnuFile.Name = "mnuFile"
         '
         'mnuNew
@@ -175,8 +171,8 @@ Partial Class frmMainForm
         '
         'ToolStripSeparator3
         '
-        resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
         '
         'mnuSave
         '
@@ -185,13 +181,13 @@ Partial Class frmMainForm
         '
         'ToolStripSeparator4
         '
-        resources.ApplyResources(Me.ToolStripSeparator4, "ToolStripSeparator4")
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        resources.ApplyResources(Me.ToolStripSeparator4, "ToolStripSeparator4")
         '
         'ToolStripSeparator5
         '
-        resources.ApplyResources(Me.ToolStripSeparator5, "ToolStripSeparator5")
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        resources.ApplyResources(Me.ToolStripSeparator5, "ToolStripSeparator5")
         '
         'mnuExport
         '
@@ -205,25 +201,25 @@ Partial Class frmMainForm
         '
         'mnuGame
         '
-        resources.ApplyResources(Me.mnuGame, "mnuGame")
-        Me.mnuGame.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCopyGame, Me.mnuPasteGame, Me.mnuSelectGame, Me.mnuNewGame, Me.mnuEditGame, Me.mnuDeleteGame, Me.mnuEditTitleAndMemo})
+        Me.mnuGame.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCopyGame, Me.mnuPasteGame, Me.mnuSelectGame, Me.mnuNewGame, Me.mnuEditGame, Me.mnuGameAnalysis, Me.mnuDeleteGame, Me.mnuEditTitleAndMemo})
         Me.mnuGame.Name = "mnuGame"
+        resources.ApplyResources(Me.mnuGame, "mnuGame")
         '
         'mnuCopyGame
         '
-        resources.ApplyResources(Me.mnuCopyGame, "mnuCopyGame")
         Me.mnuCopyGame.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCopyGamePGN, Me.mnuCopyGameXPGN})
+        resources.ApplyResources(Me.mnuCopyGame, "mnuCopyGame")
         Me.mnuCopyGame.Name = "mnuCopyGame"
         '
         'mnuCopyGamePGN
         '
-        resources.ApplyResources(Me.mnuCopyGamePGN, "mnuCopyGamePGN")
         Me.mnuCopyGamePGN.Name = "mnuCopyGamePGN"
+        resources.ApplyResources(Me.mnuCopyGamePGN, "mnuCopyGamePGN")
         '
         'mnuCopyGameXPGN
         '
-        resources.ApplyResources(Me.mnuCopyGameXPGN, "mnuCopyGameXPGN")
         Me.mnuCopyGameXPGN.Name = "mnuCopyGameXPGN"
+        resources.ApplyResources(Me.mnuCopyGameXPGN, "mnuCopyGameXPGN")
         '
         'mnuPasteGame
         '
@@ -245,6 +241,11 @@ Partial Class frmMainForm
         resources.ApplyResources(Me.mnuEditGame, "mnuEditGame")
         Me.mnuEditGame.Name = "mnuEditGame"
         '
+        'mnuGameAnalysis
+        '
+        resources.ApplyResources(Me.mnuGameAnalysis, "mnuGameAnalysis")
+        Me.mnuGameAnalysis.Name = "mnuGameAnalysis"
+        '
         'mnuDeleteGame
         '
         resources.ApplyResources(Me.mnuDeleteGame, "mnuDeleteGame")
@@ -262,8 +263,8 @@ Partial Class frmMainForm
         '
         'mnuGameNumber
         '
-        resources.ApplyResources(Me.mnuGameNumber, "mnuGameNumber")
         Me.mnuGameNumber.Name = "mnuGameNumber"
+        resources.ApplyResources(Me.mnuGameNumber, "mnuGameNumber")
         '
         'mnuNextGame
         '
@@ -272,8 +273,8 @@ Partial Class frmMainForm
         '
         'mnuMode
         '
-        resources.ApplyResources(Me.mnuMode, "mnuMode")
         Me.mnuMode.BackColor = System.Drawing.SystemColors.Menu
+        resources.ApplyResources(Me.mnuMode, "mnuMode")
         Me.mnuMode.ForeColor = System.Drawing.Color.Navy
         Me.mnuMode.Margin = New System.Windows.Forms.Padding(2)
         Me.mnuMode.MergeAction = System.Windows.Forms.MergeAction.MatchOnly
@@ -281,9 +282,9 @@ Partial Class frmMainForm
         '
         'mnuDiagram
         '
-        resources.ApplyResources(Me.mnuDiagram, "mnuDiagram")
         Me.mnuDiagram.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCopyDiagram, Me.mnuPasteDiagram, Me.mnuDiagramClear, Me.mnuDiagramInitial, Me.mnuSwitchSides, Me.mnuDiagramSaveAsJPG})
         Me.mnuDiagram.Name = "mnuDiagram"
+        resources.ApplyResources(Me.mnuDiagram, "mnuDiagram")
         '
         'mnuCopyDiagram
         '
@@ -317,117 +318,117 @@ Partial Class frmMainForm
         '
         'mnuGraphicals
         '
-        resources.ApplyResources(Me.mnuGraphicals, "mnuGraphicals")
         Me.mnuGraphicals.Name = "mnuGraphicals"
+        resources.ApplyResources(Me.mnuGraphicals, "mnuGraphicals")
         '
         'mnuView
         '
-        resources.ApplyResources(Me.mnuView, "mnuView")
         Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuStatusBar, Me.mnuBoard, Me.mnuSetupToolbar, Me.mnuMoveList, Me.mnuGameDetails, Me.mnuValidMoves, Me.mnuTitleAndMemo, Me.mnuStockfish})
         Me.mnuView.Name = "mnuView"
+        resources.ApplyResources(Me.mnuView, "mnuView")
         '
         'mnuStatusBar
         '
-        resources.ApplyResources(Me.mnuStatusBar, "mnuStatusBar")
         Me.mnuStatusBar.Checked = True
         Me.mnuStatusBar.CheckOnClick = True
         Me.mnuStatusBar.CheckState = System.Windows.Forms.CheckState.Checked
         Me.mnuStatusBar.Name = "mnuStatusBar"
+        resources.ApplyResources(Me.mnuStatusBar, "mnuStatusBar")
         '
         'mnuBoard
         '
-        resources.ApplyResources(Me.mnuBoard, "mnuBoard")
         Me.mnuBoard.CheckOnClick = True
+        resources.ApplyResources(Me.mnuBoard, "mnuBoard")
         Me.mnuBoard.Name = "mnuBoard"
         '
         'mnuSetupToolbar
         '
-        resources.ApplyResources(Me.mnuSetupToolbar, "mnuSetupToolbar")
         Me.mnuSetupToolbar.Checked = True
         Me.mnuSetupToolbar.CheckOnClick = True
         Me.mnuSetupToolbar.CheckState = System.Windows.Forms.CheckState.Checked
+        resources.ApplyResources(Me.mnuSetupToolbar, "mnuSetupToolbar")
         Me.mnuSetupToolbar.Name = "mnuSetupToolbar"
         '
         'mnuMoveList
         '
-        resources.ApplyResources(Me.mnuMoveList, "mnuMoveList")
         Me.mnuMoveList.Checked = True
         Me.mnuMoveList.CheckOnClick = True
         Me.mnuMoveList.CheckState = System.Windows.Forms.CheckState.Checked
+        resources.ApplyResources(Me.mnuMoveList, "mnuMoveList")
         Me.mnuMoveList.Name = "mnuMoveList"
         '
         'mnuGameDetails
         '
-        resources.ApplyResources(Me.mnuGameDetails, "mnuGameDetails")
         Me.mnuGameDetails.Checked = True
         Me.mnuGameDetails.CheckOnClick = True
         Me.mnuGameDetails.CheckState = System.Windows.Forms.CheckState.Checked
         Me.mnuGameDetails.Name = "mnuGameDetails"
+        resources.ApplyResources(Me.mnuGameDetails, "mnuGameDetails")
         '
         'mnuValidMoves
         '
-        resources.ApplyResources(Me.mnuValidMoves, "mnuValidMoves")
         Me.mnuValidMoves.CheckOnClick = True
+        resources.ApplyResources(Me.mnuValidMoves, "mnuValidMoves")
         Me.mnuValidMoves.Name = "mnuValidMoves"
         '
         'mnuTitleAndMemo
         '
-        resources.ApplyResources(Me.mnuTitleAndMemo, "mnuTitleAndMemo")
         Me.mnuTitleAndMemo.Checked = True
         Me.mnuTitleAndMemo.CheckOnClick = True
         Me.mnuTitleAndMemo.CheckState = System.Windows.Forms.CheckState.Checked
+        resources.ApplyResources(Me.mnuTitleAndMemo, "mnuTitleAndMemo")
         Me.mnuTitleAndMemo.Name = "mnuTitleAndMemo"
         '
         'mnuStockfish
         '
-        resources.ApplyResources(Me.mnuStockfish, "mnuStockfish")
         Me.mnuStockfish.CheckOnClick = True
+        resources.ApplyResources(Me.mnuStockfish, "mnuStockfish")
         Me.mnuStockfish.Name = "mnuStockfish"
         '
         'mnuSettings
         '
-        resources.ApplyResources(Me.mnuSettings, "mnuSettings")
         Me.mnuSettings.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuBoardStyle, Me.mnuLanguage, Me.mnuLessonsFolder, Me.mnuMenuLocation, Me.mnuLoadLayout, Me.mnuSaveLayout})
         Me.mnuSettings.Name = "mnuSettings"
+        resources.ApplyResources(Me.mnuSettings, "mnuSettings")
         '
         'mnuBoardStyle
         '
-        resources.ApplyResources(Me.mnuBoardStyle, "mnuBoardStyle")
         Me.mnuBoardStyle.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuColorBoard, Me.mnuBlackAndWhiteBoard})
+        resources.ApplyResources(Me.mnuBoardStyle, "mnuBoardStyle")
         Me.mnuBoardStyle.Name = "mnuBoardStyle"
         '
         'mnuColorBoard
         '
-        resources.ApplyResources(Me.mnuColorBoard, "mnuColorBoard")
         Me.mnuColorBoard.CheckOnClick = True
         Me.mnuColorBoard.Name = "mnuColorBoard"
+        resources.ApplyResources(Me.mnuColorBoard, "mnuColorBoard")
         '
         'mnuBlackAndWhiteBoard
         '
-        resources.ApplyResources(Me.mnuBlackAndWhiteBoard, "mnuBlackAndWhiteBoard")
         Me.mnuBlackAndWhiteBoard.Checked = True
         Me.mnuBlackAndWhiteBoard.CheckOnClick = True
         Me.mnuBlackAndWhiteBoard.CheckState = System.Windows.Forms.CheckState.Checked
         Me.mnuBlackAndWhiteBoard.Name = "mnuBlackAndWhiteBoard"
+        resources.ApplyResources(Me.mnuBlackAndWhiteBoard, "mnuBlackAndWhiteBoard")
         '
         'mnuLanguage
         '
-        resources.ApplyResources(Me.mnuLanguage, "mnuLanguage")
         Me.mnuLanguage.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuEnglish, Me.mnuNederlands})
+        resources.ApplyResources(Me.mnuLanguage, "mnuLanguage")
         Me.mnuLanguage.Name = "mnuLanguage"
         '
         'mnuEnglish
         '
-        resources.ApplyResources(Me.mnuEnglish, "mnuEnglish")
         Me.mnuEnglish.Checked = True
         Me.mnuEnglish.CheckOnClick = True
         Me.mnuEnglish.CheckState = System.Windows.Forms.CheckState.Checked
+        resources.ApplyResources(Me.mnuEnglish, "mnuEnglish")
         Me.mnuEnglish.Name = "mnuEnglish"
         '
         'mnuNederlands
         '
-        resources.ApplyResources(Me.mnuNederlands, "mnuNederlands")
         Me.mnuNederlands.CheckOnClick = True
+        resources.ApplyResources(Me.mnuNederlands, "mnuNederlands")
         Me.mnuNederlands.Name = "mnuNederlands"
         '
         'mnuLessonsFolder
@@ -437,22 +438,22 @@ Partial Class frmMainForm
         '
         'mnuMenuLocation
         '
-        resources.ApplyResources(Me.mnuMenuLocation, "mnuMenuLocation")
         Me.mnuMenuLocation.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMenuTop, Me.mnuMenuBottom})
+        resources.ApplyResources(Me.mnuMenuLocation, "mnuMenuLocation")
         Me.mnuMenuLocation.Name = "mnuMenuLocation"
         '
         'mnuMenuTop
         '
-        resources.ApplyResources(Me.mnuMenuTop, "mnuMenuTop")
         Me.mnuMenuTop.Checked = True
         Me.mnuMenuTop.CheckOnClick = True
         Me.mnuMenuTop.CheckState = System.Windows.Forms.CheckState.Checked
+        resources.ApplyResources(Me.mnuMenuTop, "mnuMenuTop")
         Me.mnuMenuTop.Name = "mnuMenuTop"
         '
         'mnuMenuBottom
         '
-        resources.ApplyResources(Me.mnuMenuBottom, "mnuMenuBottom")
         Me.mnuMenuBottom.CheckOnClick = True
+        resources.ApplyResources(Me.mnuMenuBottom, "mnuMenuBottom")
         Me.mnuMenuBottom.Name = "mnuMenuBottom"
         '
         'mnuLoadLayout
@@ -467,9 +468,9 @@ Partial Class frmMainForm
         '
         'mnuHelp
         '
-        resources.ApplyResources(Me.mnuHelp, "mnuHelp")
         Me.mnuHelp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuHelpContents, Me.mnuHelpIndex, Me.ToolStripSeparator8, Me.mnuAbout})
         Me.mnuHelp.Name = "mnuHelp"
+        resources.ApplyResources(Me.mnuHelp, "mnuHelp")
         '
         'mnuHelpContents
         '
@@ -483,17 +484,13 @@ Partial Class frmMainForm
         '
         'ToolStripSeparator8
         '
-        resources.ApplyResources(Me.ToolStripSeparator8, "ToolStripSeparator8")
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        resources.ApplyResources(Me.ToolStripSeparator8, "ToolStripSeparator8")
         '
         'mnuAbout
         '
         resources.ApplyResources(Me.mnuAbout, "mnuAbout")
         Me.mnuAbout.Name = "mnuAbout"
-        '
-        'dlgSaveFile
-        '
-        resources.ApplyResources(Me.dlgSaveFile, "dlgSaveFile")
         '
         'dlgLessonsFolder
         '
@@ -510,7 +507,6 @@ Partial Class frmMainForm
         Me.HelpButton = True
         Me.KeyPreview = True
         Me.Name = "frmMainForm"
-        Me.ToolTip.SetToolTip(Me, resources.GetString("$this.ToolTip"))
         Me.pnlMainPanel.ResumeLayout(False)
         Me.stsStatusStrip.ResumeLayout(False)
         Me.stsStatusStrip.PerformLayout()
@@ -589,4 +585,5 @@ Partial Class frmMainForm
     Friend WithEvents mnuMenuLocation As ToolStripMenuItem
     Friend WithEvents mnuMenuTop As ToolStripMenuItem
     Friend WithEvents mnuMenuBottom As ToolStripMenuItem
+    Friend WithEvents mnuGameAnalysis As ToolStripMenuItem
 End Class

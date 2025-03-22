@@ -78,24 +78,31 @@ Public Class Bishop
         End Get
     End Property
 
+    <XmlIgnore>
+    Public Overrides ReadOnly Property Value As Integer
+        Get
+            Return 3
+        End Get
+    End Property
+
     Public Overrides Function PossibleMoves(pFromFieldName As String, pChessBoard As ChessBoard) As List(Of BoardMove)
         Dim Moves As New List(Of BoardMove)
         Dim Move As BoardMove
         Dim Distance As Long, Column As Long, Row As Long
-        Dim FromField As ChessField = pChessBoard.Fields(pFromFieldName)
+        Dim FromField As ChessField = pChessBoard(pFromFieldName)
 
         'Direction Right Up
         For Distance = 1 To 8
             Column = FromField.Column + Distance
             Row = FromField.Row + Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+            If pChessBoard.Exists(Column, Row) = False Then Exit For
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             Else
-                If pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 End If
                 Exit For 'No more Moves in this line
             End If
@@ -105,14 +112,14 @@ Public Class Bishop
         For Distance = 1 To 8
             Column = FromField.Column + Distance
             Row = FromField.Row - Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+            If pChessBoard.Exists(Column, Row) = False Then Exit For
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             Else
-                If pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 End If
                 Exit For 'No more Moves in this line
             End If
@@ -122,14 +129,14 @@ Public Class Bishop
         For Distance = 1 To 8
             Column = FromField.Column - Distance
             Row = FromField.Row + Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+            If pChessBoard.Exists(Column, Row) = False Then Exit For
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             Else
-                If pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 End If
                 Exit For 'No more Moves in this line
             End If
@@ -139,14 +146,14 @@ Public Class Bishop
         For Distance = 1 To 8
             Column = FromField.Column - Distance
             Row = FromField.Row - Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+            If pChessBoard.Exists(Column, Row) = False Then Exit For
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             Else
-                If pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 End If
                 Exit For 'No more Moves in this line
             End If

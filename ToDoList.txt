@@ -3,6 +3,19 @@ To Do Lijstje
 	Analyse van de Partij (Feedback op de Stelling (met Niveau))
 
 Aanpassingen
+V	Added colors (Blue, Cyan and Orange) to SetupToolbar, and reduced the Marker, Text and Arrow buttons
+V	Functions overgebracht naar ChessBoard
+V	Fields bij ChessBoard trekken
+V	Added ToString() method to classes for easy debugging
+V	Added PonderMoves to EngineResult
+V	Added Readonly Prop Opponent to ChessBoard
+V	Added Extension Properties to ChessColor (Text and Opponent)
+V	Changed If's to use ANDALSO rather than nesting the If's
+V	Serialisation of PGNNAG ging fout doordat er geen parameterloze cTor was
+V	Net gesaved, en toch bij afsluiten de vraag of ik wil saven
+V	Bij partijgegevens stond bij de wit-speler een zwarte pion
+V	Stockfish ging niet opnieuw rekenen als een zet in de zettenlijst werd aangeklikt.
+V	Stockfish ging met verkeerde FEN rekenen (active Color)
 V	Error Message teksts ingekort door de directoris in de StackTrace eruit te halen.
 V   Versie 2.0
 V	Statusbalk meldingen "bezig met zet", "Klaar", "Mat", "Schaak" en "Pat"

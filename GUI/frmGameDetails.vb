@@ -45,8 +45,8 @@ Public Class frmGameDetails
     End Sub
 
     Private Sub frmGameDetails_DoubleClick(pSender As Object, pArgs As EventArgs) Handles Me.DoubleClick,
-                                                                                          PictureBox1.DoubleClick, lblWhiteName.DoubleClick, lblWhiteELO.DoubleClick,
-                                                                                          PictureBox2.DoubleClick, lblBlackName.DoubleClick, lblBlackELO.DoubleClick,
+                                                                                          PictureBox2.DoubleClick, lblWhiteName.DoubleClick, lblWhiteELO.DoubleClick,
+                                                                                          PictureBox1.DoubleClick, lblBlackName.DoubleClick, lblBlackELO.DoubleClick,
                                                                                           Label4.DoubleClick, lblSiteYear.DoubleClick,
                                                                                           Label5.DoubleClick, lblEvent.DoubleClick
         RaiseEvent DoubleClicked()

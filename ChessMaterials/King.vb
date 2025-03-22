@@ -4,6 +4,7 @@ Imports ChessGlobals
 Imports ChessGlobals.ChessLanguage
 Imports ChessGlobals.ChessColor
 Imports System.Xml.Serialization
+Imports Microsoft.VisualBasic.Devices
 
 <XmlType>
 Public Class King
@@ -70,466 +71,126 @@ Public Class King
         End Get
     End Property
 
+    <XmlIgnore>
+    Public Overrides ReadOnly Property Value As Integer
+        Get
+            Return 9999
+        End Get
+    End Property
+
     Public Overrides Function PossibleMoves(pFromFieldName As String, pChessBoard As ChessBoard) As List(Of BoardMove)
         Dim Moves As New List(Of BoardMove)
         Dim Move As BoardMove
         Dim Column As Long, Row As Long
-        Dim FromField As ChessField = pChessBoard.Fields(pFromFieldName)
+        Dim FromField As ChessField = pChessBoard(pFromFieldName)
 
-        If King.InCheck(Me.Color, pChessBoard) = False Then 'Castling not allowed when In Check
+        If pChessBoard.ShortCastlingAllowed(pFromFieldName) Then
+            Move = New BoardMove(Me, pFromFieldName, If(Me.Color = WHITE, "g1", "g8"))
+            Moves.Add(Move)
+        End If
 
-            'Short Castling
-            If Me.Color = WHITE And pChessBoard.WhiteShortCastlingAllowed Then
-                If pChessBoard.Fields("f1").Piece Is Nothing _
-                And pChessBoard.Fields("g1").Piece Is Nothing Then
-                    Move = New BoardMove(Me, pFromFieldName, "g1", pCastle:=True)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-                End If
-            End If
-            If Me.Color = BLACK And pChessBoard.BlackShortCastlingAllowed Then
-                If pChessBoard.Fields("f8").Piece Is Nothing _
-                And pChessBoard.Fields("g8").Piece Is Nothing Then
-                    Move = New BoardMove(Me, pFromFieldName, "g8", pCastle:=True)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-                End If
-            End If
-
-            'Long Castling
-            If Me.Color = WHITE And pChessBoard.WhiteLongCastlingAllowed Then
-                If pChessBoard.Fields("b1").Piece Is Nothing _
-                And pChessBoard.Fields("c1").Piece Is Nothing _
-                And pChessBoard.Fields("d1").Piece Is Nothing Then
-                    Move = New BoardMove(Me, pFromFieldName, "c1", pCastle:=True)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-                End If
-            End If
-            If Me.Color = BLACK And pChessBoard.BlackLongCastlingAllowed Then
-                If pChessBoard.Fields("b1").Piece Is Nothing _
-                And pChessBoard.Fields("c1").Piece Is Nothing _
-                And pChessBoard.Fields("d1").Piece Is Nothing Then
-                    Move = New BoardMove(Me, pFromFieldName, "c8", pCastle:=True)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-                End If
-            End If
-
+        If pChessBoard.LongCastlingAllowed(pFromFieldName) Then
+            Move = New BoardMove(Me, pFromFieldName, If(Me.Color = WHITE, "c1", "c8"))
+            Moves.Add(Move)
         End If
 
         Column = FromField.Column
         Row = FromField.Row + 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Column = FromField.Column + 1
         Row = FromField.Row + 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Column = FromField.Column + 1
         Row = FromField.Row
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Column = FromField.Column + 1
         Row = FromField.Row - 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Column = FromField.Column
         Row = FromField.Row - 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Column = FromField.Column - 1
         Row = FromField.Row - 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Column = FromField.Column - 1
         Row = FromField.Row
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Column = FromField.Column - 1
         Row = FromField.Row + 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            If pChessBoard.Fields(Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
-            ElseIf pChessBoard.Fields(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard.Fields(Column, Row).Name)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+        If pChessBoard.Exists(Column, Row) = True Then
+            If pChessBoard(Column, Row).Piece Is Nothing Then
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+            ElseIf pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
         Return Moves
-    End Function
-
-    ''' <summary>To Test if the KING is In Check
-    ''' Faster than getting all opponent moves and see if king is a target</summary>
-    Public Shared Function InCheck(pColor As ChessColor, pChessBoard As ChessBoard) As Boolean
-        Dim Distance As Long, Column As Long, Row As Long, Piece As ChessPiece
-        Dim KingField As ChessField = FindKing(pColor, pChessBoard)
-
-        'No King; No Check
-        If KingField Is Nothing Then Return False
-
-        'Straight upward
-        For Distance = 1 To 8
-            Row = KingField.Row + Distance
-            If pChessBoard.Fields.Exists(KingField.Column, Row) = False Then Exit For
-            Piece = pChessBoard.Fields(KingField.Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'Straight downward
-        For Distance = 1 To 8
-            Row = KingField.Row - Distance
-            If pChessBoard.Fields.Exists(KingField.Column, Row) = False Then Exit For
-            Piece = pChessBoard.Fields(KingField.Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'To the Right
-        For Distance = 1 To 8
-            Column = KingField.Column + Distance
-            If pChessBoard.Fields.Exists(Column, KingField.Row) = False Then Exit For
-            Piece = pChessBoard.Fields(Column, KingField.Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'To the Left
-        For Distance = 1 To 8
-            Column = KingField.Column - Distance
-            If pChessBoard.Fields.Exists(Column, KingField.Row) = False Then Exit For
-            Piece = pChessBoard.Fields(Column, KingField.Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'Direction Right Up
-        For Distance = 1 To 8
-            Column = KingField.Column + Distance
-            Row = KingField.Row + Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'Direction Right Down
-        For Distance = 1 To 8
-            Column = KingField.Column + Distance
-            Row = KingField.Row - Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'Direction Left Up
-        For Distance = 1 To 8
-            Column = KingField.Column - Distance
-            Row = KingField.Row + Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'Direction Left Down
-        For Distance = 1 To 8
-            Column = KingField.Column - Distance
-            Row = KingField.Row - Distance
-            If pChessBoard.Fields.Exists(Column, Row) = False Then Exit For
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        Return True
-                    End If
-                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        Return True
-                    End If
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'Pawn Left Down
-        Column = KingField.Column - 1
-        Row = KingField.Row + If(pColor = WHITE, 1, -1)
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.PAWN) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        'Pawn Right Down
-        Column = KingField.Column + 1
-        Row = KingField.Row + If(pColor = WHITE, 1, -1)
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.PAWN) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        'Knights
-        Column = KingField.Column + 1
-        Row = KingField.Row + 2
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Column = KingField.Column - 1
-        Row = KingField.Row + 2
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Column = KingField.Column + 1
-        Row = KingField.Row - 2
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Column = KingField.Column - 1
-        Row = KingField.Row - 2
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Column = KingField.Column + 2
-        Row = KingField.Row + 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Column = KingField.Column + 2
-        Row = KingField.Row - 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Column = KingField.Column - 2
-        Row = KingField.Row + 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Column = KingField.Column - 2
-        Row = KingField.Row - 1
-        If pChessBoard.Fields.Exists(Column, Row) = True Then
-            Piece = pChessBoard.Fields(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color <> pColor _
-                And (Piece.Type = PieceType.KNIGHT) Then
-                    Return True
-                End If
-            End If
-        End If
-
-        Return False
-    End Function
-
-    Public Shared Function InCheckAfterMove(pMove As BoardMove, pColor As ChessColor, pChessBoard As ChessBoard) As Boolean
-        Dim Board = New ChessBoard(pChessBoard.FEN)
-        Board.PerformMove(pMove)
-        Return King.InCheck(pColor, Board)
-    End Function
-
-    Public Shared Function CheckMate(pColor As ChessColor, pChessBoard As ChessBoard) As Boolean
-        Dim KingField As ChessField = FindKing(pColor, pChessBoard)
-        Dim PossibleMoves As List(Of BoardMove) = pChessBoard.AllPossibleMoves(pColor)
-        If PossibleMoves.Count = 0 Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
-    Public Shared Function FindKing(pColor As ChessColor, pChessBoard As ChessBoard) As ChessField
-        For Each Field As ChessField In pChessBoard.Fields
-            If Field Is Nothing Then Continue For
-            If Field.Piece Is Nothing Then Continue For
-            If Field.Piece.Color = pColor _
-            And Field.Piece.Type = PieceType.KING Then
-                Return Field
-            End If
-        Next Field
-        Return Nothing
     End Function
 
     Public Sub New(pColor As ChessColor)

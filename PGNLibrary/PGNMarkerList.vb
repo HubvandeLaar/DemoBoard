@@ -35,7 +35,7 @@ Public Class PGNMarkerList
             Dim Elements As String = ""
             For Each Marker As Marker In Me
                 Select Case Marker.Symbol
-                    Case "G", "Y", "R"
+                    Case "G", "Y", "R", "B", "C", "O"
                         If Elements <> "" Then Elements = Elements & ", "
                         Elements = Elements & Marker.PGNString()
                 End Select
@@ -100,6 +100,11 @@ Public Class PGNMarkerList
             Throw New System.ArgumentOutOfRangeException(MessageText("InvalidMarkerList", pComment))
         End If
         Return Mid(pComment, P1, P2 - P1 + 1)
+    End Function
+
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return Me.XPGNString
     End Function
 
 End Class

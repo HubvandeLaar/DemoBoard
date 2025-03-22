@@ -178,6 +178,11 @@ Public Class PGNComment
     Public Sub New()
     End Sub
 
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return Me.XPGNString
+    End Function
+
     'Private Functions and Methods
 
     Private Function RemoveDiagram(pComment As String) As String

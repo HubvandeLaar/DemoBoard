@@ -1,13 +1,13 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
-Imports ChessGlobals.ChessLanguage
 Imports ChessGlobals.ChessColor
 Imports ChessMaterials.ChessPiece
 
 Public Class ChessBoard
+    Implements IEnumerable
 
-    Public Fields As ChessFields                  'Fields 1 to 64 
+    Private Field(0 To 64) As ChessField
 
     'FEN Variables
     Public ActiveColor As ChessColor              'The side to move
@@ -20,10 +20,94 @@ Public Class ChessBoard
     Public MoveNr As Integer
 
     Public Sub New(Optional pFEN As String = "")
-        Fields = New ChessFields()
-        Clear()
+        Dim I As Integer, R As Integer, C As Integer
+        I = 0
+        For R = 1 To 8
+            For C = 1 To 8
+                I = I + 1
+                Field(I) = New ChessField(C, R, Me)
+            Next C
+        Next R
         Me.FEN = pFEN
     End Sub
+
+    Default Public ReadOnly Property Item(pColIndexOrName As Object, Optional pRow As Integer = 0) As ChessField
+        Get
+            Dim Row As Integer, Column As Integer, ColIndexOrName As String
+            If pRow > 0 Then
+                Row = pRow
+                If TypeOf pColIndexOrName Is String Then
+                    ColIndexOrName = CStr(pColIndexOrName)
+                    Column = InStr("abcdefgh", ColIndexOrName)
+                Else 'Assumed to be numeric
+                    Column = CInt(pColIndexOrName)
+                End If
+                If Row < 0 Or Row > 8 Or Column < 0 Or Column > 8 Then
+                    Throw New System.ArgumentOutOfRangeException(MessageText("ColumnRowRange", Column, Row))
+                End If
+                Return Field((Row - 1) * 8 + Column)
+            End If
+            'pRow not specified
+            If TypeOf pColIndexOrName Is String Then 'Assumed to be a name of length two
+                ColIndexOrName = CStr(pColIndexOrName)
+                Row = Val(Mid(ColIndexOrName, 2))
+                Column = InStr("abcdefgh", Left(ColIndexOrName, 1))
+                If Row < 1 Or Row > 8 Or Column < 1 Or Column > 8 Then
+                    Throw New System.ArgumentOutOfRangeException(MessageText("ColumnRowRange", Column, Row))
+                End If
+                Return Field((Row - 1) * 8 + Column)
+            Else 'Assumed to be numeric specifying the index
+                Return Field(CInt(pColIndexOrName))
+            End If
+        End Get
+    End Property
+
+    ReadOnly Property Count() As Long
+        Get
+            Return Field.Count
+        End Get
+    End Property
+
+    Public Function GetEnumerator() As IEnumerator _
+    Implements IEnumerable.GetEnumerator
+        Return Field.GetEnumerator
+    End Function
+
+    Public Sub ClearFields()
+        For Each Field As ChessField In Me.Field
+            If Field Is Nothing Then Continue For
+            Field.Piece = Nothing
+            Field.Marker = Nothing
+            Field.Text = Nothing
+        Next Field
+    End Sub
+
+    Public Sub ClearMarkers()
+        For Each Field As ChessField In Me.Field
+            If Field Is Nothing Then Continue For
+            Field.Marker = Nothing
+        Next Field
+    End Sub
+
+    Public Sub ClearTexts()
+        For Each Field As ChessField In Me.Field
+            If Field Is Nothing Then Continue For
+            Field.Text = Nothing
+        Next Field
+    End Sub
+
+    Public Function Exists(pField As ChessField) As Boolean
+        For Each Field As ChessField In Me.Field
+            If Field Is pField Then Return True
+        Next Field
+        Return False
+    End Function
+
+    Public Function Exists(pColumn As Long, pRow As Long) As Boolean
+        If pColumn < 1 Or pColumn > 8 Then Return False
+        If pRow < 1 Or pRow > 8 Then Return False
+        Return True
+    End Function
 
     Public Property FEN As String
         Set(pFEN As String)
@@ -31,7 +115,7 @@ Public Class ChessBoard
             Dim P As Long, R As Long, C As Long
             Dim NrOfHalfMovesString As String = "", MoveNrString As String = ""
 
-            Fields.Clear()
+            ClearFields()
 
             'Set up Pieces from Black-side to White-side
             R = 8 : C = 1
@@ -41,7 +125,7 @@ Public Class ChessBoard
                     Case "/" 'R = R - 1: C = 1
                     Case "R", "N", "B", "Q", "K", "P",
                          "r", "n", "b", "q", "k", "p"
-                        Fields(C, R).Piece = ChessPiece.CreatePiece(Mid$(pFEN, P, 1))
+                        Me(C, R).Piece = ChessPiece.CreatePiece(Mid$(pFEN, P, 1))
                         C += 1
                     Case "0" To "9"  'Empty fields: if 32 then first add 30 later 2
                         If IsNumeric(Mid$(pFEN, P + 1, 1)) Then
@@ -117,14 +201,14 @@ Public Class ChessBoard
             'Piece Placement
             For R = 8 To 1 Step -1
                 For C = 1 To 8
-                    If Fields(C, R).Piece Is Nothing Then
+                    If Me(C, R).Piece Is Nothing Then
                         P += 1
                     Else
                         If P > 0 Then
                             PiecePlacement = PiecePlacement & String.Format(P)
                             P = 0
                         End If
-                        PiecePlacement = PiecePlacement & Fields(C, R).Piece.FENName
+                        PiecePlacement = PiecePlacement & Me(C, R).Piece.FENName
                     End If
                 Next C
                 If P > 0 Then
@@ -155,6 +239,12 @@ Public Class ChessBoard
         End Get
     End Property
 
+    Public ReadOnly Property Opponent() As ChessColor
+        Get
+            Return Me.ActiveColor.Opponent
+        End Get
+    End Property
+
     Public Sub Clear()
         FEN = "8/8/8/8/8/8/8/8 w - - 0 1"
     End Sub
@@ -164,38 +254,38 @@ Public Class ChessBoard
     End Sub
 
     Public Sub AddPiece(pPiece As ChessPiece, pColumn As Integer, pRow As Integer)
-        Fields(pColumn, pRow).Piece = pPiece
+        Me(pColumn, pRow).Piece = pPiece
 
         'Set Castling Options (might be a little too eager)
         If pPiece.Type = PieceType.KING Then
             If pPiece.Color = ChessColor.WHITE Then
-                If IsPiece(Fields("a1"), PieceType.ROOK, WHITE) = True Then
+                If IsPiece(Me("a1"), PieceType.ROOK, WHITE) = True Then
                     WhiteLongCastlingAllowed = True
-                ElseIf IsPiece(Fields("h1"), PieceType.ROOK, WHITE) = True Then
+                ElseIf IsPiece(Me("h1"), PieceType.ROOK, WHITE) = True Then
                     WhiteShortCastlingAllowed = True
                 End If
             Else 'Color is Black
-                If IsPiece(Fields("a8"), PieceType.ROOK, BLACK) = True Then
+                If IsPiece(Me("a8"), PieceType.ROOK, BLACK) = True Then
                     BlackLongCastlingAllowed = True
-                ElseIf IsPiece(Fields("h8"), PieceType.ROOK, BLACK) = True Then
+                ElseIf IsPiece(Me("h8"), PieceType.ROOK, BLACK) = True Then
                     BlackShortCastlingAllowed = True
                 End If
             End If
 
         ElseIf pPiece.Type = PieceType.ROOK Then
             If pPiece.Color = ChessColor.WHITE Then
-                If IsPiece(Fields("e1"), PieceType.KING, WHITE) = True Then
-                    If Fields(pColumn, pRow).Name = "a1" Then
+                If IsPiece(Me("e1"), PieceType.KING, WHITE) = True Then
+                    If Me(pColumn, pRow).Name = "a1" Then
                         WhiteLongCastlingAllowed = True
-                    ElseIf Fields(pColumn, pRow).Name = "h1" Then
+                    ElseIf Me(pColumn, pRow).Name = "h1" Then
                         WhiteShortCastlingAllowed = True
                     End If
                 End If
             Else 'Color is Black
-                If IsPiece(Fields("e8"), PieceType.KING, BLACK) = True Then
-                    If Fields(pColumn, pRow).Name = "a8" Then
+                If IsPiece(Me("e8"), PieceType.KING, BLACK) = True Then
+                    If Me(pColumn, pRow).Name = "a8" Then
                         BlackLongCastlingAllowed = True
-                    ElseIf Fields(pColumn, pRow).Name = "h8" Then
+                    ElseIf Me(pColumn, pRow).Name = "h8" Then
                         BlackShortCastlingAllowed = True
                     End If
                 End If
@@ -206,7 +296,7 @@ Public Class ChessBoard
     Public Sub RemovePiece(pPiece As ChessPiece, pColumn As Integer, pRow As Integer)
         If pRow < 0 Or pRow > 8 Or pColumn < 0 Or pColumn > 8 Then Exit Sub
 
-        Fields(pColumn, pRow).Piece = Nothing
+        Me(pColumn, pRow).Piece = Nothing
 
         'Set Castling Options (might be a little too eager)
         If pPiece.Type = PieceType.KING Then
@@ -220,15 +310,15 @@ Public Class ChessBoard
 
         ElseIf pPiece.Type = PieceType.ROOK Then
             If pPiece.Color = ChessColor.WHITE Then
-                If Fields(pColumn, pRow).Name = "a1" Then
+                If Me(pColumn, pRow).Name = "a1" Then
                     WhiteLongCastlingAllowed = False
-                ElseIf Fields(pColumn, pRow).Name = "h1" Then
+                ElseIf Me(pColumn, pRow).Name = "h1" Then
                     WhiteShortCastlingAllowed = False
                 End If
             Else 'Color is Black
-                If Fields(pColumn, pRow).Name = "a8" Then
+                If Me(pColumn, pRow).Name = "a8" Then
                     BlackLongCastlingAllowed = False
-                ElseIf Fields(pColumn, pRow).Name = "h8" Then
+                ElseIf Me(pColumn, pRow).Name = "h8" Then
                     BlackShortCastlingAllowed = False
                 End If
             End If
@@ -236,7 +326,7 @@ Public Class ChessBoard
 
     End Sub
 
-    Public Function IsPiece(pField As ChessField, pPieceType As PieceType, pColor As ChessColor)
+    Public Function IsPiece(pField As ChessField, pPieceType As PieceType, pColor As ChessColor) As Boolean
         If pField.Piece Is Nothing Then Return False
         If pField.Piece.Type <> pPieceType Then Return False
         If pField.Piece.Color <> pColor Then Return False
@@ -258,62 +348,62 @@ Public Class ChessBoard
             If pMove.Piece.Color = WHITE Then
                 If pMove.ToFieldName = "c1" Then
                     'If Me.WhiteLongCastling = False Then Return False
-                    Me.Fields("c1").Piece = Me.Fields("e1").Piece : Fields("e1").Piece = Nothing
-                    Fields("d1").Piece = Fields("a1").Piece : Fields("a1").Piece = Nothing
+                    Me("c1").Piece = Me("e1").Piece : Me("e1").Piece = Nothing
+                    Me("d1").Piece = Me("a1").Piece : Me("a1").Piece = Nothing
                     WhiteShortCastlingAllowed = False : WhiteLongCastlingAllowed = False
                 Else
                     'If Me.WhiteShortCastling = False Then Return False
-                    Fields("g1").Piece = Fields("e1").Piece : Fields("e1").Piece = Nothing
-                    Fields("f1").Piece = Fields("h1").Piece : Fields("h1").Piece = Nothing
+                    Me("g1").Piece = Me("e1").Piece : Me("e1").Piece = Nothing
+                    Me("f1").Piece = Me("h1").Piece : Me("h1").Piece = Nothing
                     WhiteShortCastlingAllowed = False : WhiteLongCastlingAllowed = False
                 End If
-                Me.ActiveColor = Opponent(pMove.Piece.Color)
+                Me.ActiveColor = pMove.Piece.Color.Opponent
                 Return True
             Else 'Black
                 If pMove.ToFieldName = "c8" Then
                     'If Me.BlackLongCastling = False Then Return False
-                    Fields("c8").Piece = Fields("e8").Piece : Fields("e8").Piece = Nothing
-                    Fields("d8").Piece = Fields("a8").Piece : Fields("a8").Piece = Nothing
+                    Me("c8").Piece = Me("e8").Piece : Me("e8").Piece = Nothing
+                    Me("d8").Piece = Me("a8").Piece : Me("a8").Piece = Nothing
                     BlackShortCastlingAllowed = False : BlackLongCastlingAllowed = False
                 Else
                     'If Me.BlackShortCastling = False Then Return False
-                    Fields("g8").Piece = Fields("e8").Piece : Fields("e8").Piece = Nothing
-                    Fields("f8").Piece = Fields("h8").Piece : Fields("h8").Piece = Nothing
+                    Me("g8").Piece = Me("e8").Piece : Me("e8").Piece = Nothing
+                    Me("f8").Piece = Me("h8").Piece : Me("h8").Piece = Nothing
                     BlackShortCastlingAllowed = False : BlackLongCastlingAllowed = False
                 End If
-                Me.ActiveColor = Opponent(pMove.Piece.Color)
+                Me.ActiveColor = pMove.Piece.Color.Opponent
                 Return True
             End If
         End If
 
         If IsIntendedCastling(pMove) = True Then
-            Me.ActiveColor = Opponent(pMove.Piece.Color)
+            Me.ActiveColor = pMove.Piece.Color.Opponent
             MsgBox(MessageText("IntendedCastling"), MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly)
             Return True
         End If
 
-        If pMove.Piece.Type = PieceType.PAWN Or (Me.Fields(pMove.ToFieldName).Piece IsNot Nothing) Then
+        If pMove.Piece.Type = PieceType.PAWN Or (Me(pMove.ToFieldName).Piece IsNot Nothing) Then
             MovesSincePawnMoveOrCapture = 0
         Else
             MovesSincePawnMoveOrCapture += 1
         End If
 
         'Move the piece
-        Me.Fields(pMove.ToFieldName).Piece = pMove.Piece
-        Me.Fields(pMove.FromFieldName).Piece = Nothing
+        Me(pMove.ToFieldName).Piece = pMove.Piece
+        Me(pMove.FromFieldName).Piece = Nothing
 
         'Promotion
         If pMove.PromotionPiece IsNot Nothing Then
-            Me.Fields(pMove.ToFieldName).Piece = pMove.PromotionPiece
+            Me(pMove.ToFieldName).Piece = pMove.PromotionPiece
         End If
 
         'When en passant move then Erase the pawn 
         If pMove.EnPassant = True _
         Or (pMove.Piece.Type = PieceType.PAWN And pMove.ToFieldName = EpFieldName) Then
             If pMove.Piece.Color = WHITE Then
-                Fields(Left(pMove.ToFieldName, 1), Val(Right(pMove.ToFieldName, 1)) - 1).Piece = Nothing
+                Me(Left(pMove.ToFieldName, 1), Val(Right(pMove.ToFieldName, 1)) - 1).Piece = Nothing
             Else 'BLACK
-                Fields(Left(pMove.ToFieldName, 1), Val(Right(pMove.ToFieldName, 1)) + 1).Piece = Nothing
+                Me(Left(pMove.ToFieldName, 1), Val(Right(pMove.ToFieldName, 1)) + 1).Piece = Nothing
             End If
         End If
 
@@ -321,14 +411,14 @@ Public Class ChessBoard
         EpFieldName = ""
         If pMove.Piece.Type = PieceType.PAWN Then
             If Val(Right(pMove.ToFieldName, 1)) - Val(Right(pMove.FromFieldName, 1)) = 2 Then 'White Pawn move of two steps
-                EpFieldName = Fields(Left(pMove.FromFieldName, 1), Val(Right(pMove.FromFieldName, 1)) + 1).Name
+                EpFieldName = Me(Left(pMove.FromFieldName, 1), Val(Right(pMove.FromFieldName, 1)) + 1).Name
             End If
             If Val(Right(pMove.FromFieldName, 1)) - Val(Right(pMove.ToFieldName, 1)) = 2 Then 'Black Pawn move of two steps
-                EpFieldName = Fields(Left(pMove.FromFieldName, 1), Val(Right(pMove.FromFieldName, 1)) - 1).Name
+                EpFieldName = Me(Left(pMove.FromFieldName, 1), Val(Right(pMove.FromFieldName, 1)) - 1).Name
             End If
         End If
 
-        Me.ActiveColor = Opponent(pMove.Piece.Color)
+        Me.ActiveColor = pMove.Piece.Color.Opponent
         Return True
     End Function
 
@@ -341,7 +431,7 @@ Public Class ChessBoard
         End If
 
         'Find all Other ChessPieces of same type and color 
-        For Each Field In Me.Fields
+        For Each Field In Me
             If Field Is Nothing Then Continue For
             If IsPiece(Field, pPiece.Type, pPiece.Color) = True _
             And Field.Name <> pFromFieldName Then
@@ -387,19 +477,18 @@ Public Class ChessBoard
         Dim CandidateFields As New List(Of ChessField), Field As ChessField, F As Long
         'When FromField has been specified 
         If pFromColumn <> "" And pFromRow <> "" Then
-            Return Me.Fields(pFromColumn & pFromRow)
+            Return Me(pFromColumn & pFromRow)
         End If
 
         'Find all ChessPieces of same type and color 
-        For Each Field In Me.Fields
-            If Field Is Nothing Then Continue For
-            If Field.Piece IsNot Nothing Then
-                If Field.Piece.Type = pPiece.Type _
-                AndAlso (pPiece.Color = UNKNOWN OrElse Field.Piece.Color = pPiece.Color) _
-                AndAlso (pFromColumn = "" OrElse Left(Field.Name, 1) = pFromColumn) _
-                AndAlso (pFromRow = "" OrElse Right(Field.Name, 1) = pFromRow) Then
-                    CandidateFields.Add(Field)
-                End If
+        For Each Field In Me
+            If Field IsNot Nothing _
+            AndAlso Field.Piece IsNot Nothing _
+            AndAlso Field.Piece.Type = pPiece.Type _
+            AndAlso (pPiece.Color = UNKNOWN OrElse Field.Piece.Color = pPiece.Color) _
+            AndAlso (pFromColumn = "" OrElse Left(Field.Name, 1) = pFromColumn) _
+            AndAlso (pFromRow = "" OrElse Right(Field.Name, 1) = pFromRow) Then
+                CandidateFields.Add(Field)
             End If
         Next Field
 
@@ -435,7 +524,7 @@ Public Class ChessBoard
 
     Public Function AllPossibleMoves(pColor As ChessColor) As List(Of BoardMove)
         Dim Moves As New List(Of BoardMove)
-        For Each Field As ChessField In Me.Fields
+        For Each Field As ChessField In Me
             If Field Is Nothing Then Continue For
             If Field.Piece Is Nothing Then Continue For
             If Field.Piece.Color <> pColor Then Continue For
@@ -446,14 +535,14 @@ Public Class ChessBoard
 
     Private Function IsIntendedCastling(pMove As BoardMove) As Boolean
         'Perhaps Castling; but from wrong starting position, or rooks moved, or whatever...
-        Dim FromField As ChessField = Fields(pMove.FromFieldName)
-        Dim ToField As ChessField = Fields(pMove.ToFieldName)
+        Dim FromField As ChessField = Me(pMove.FromFieldName)
+        Dim ToField As ChessField = Me(pMove.ToFieldName)
         If pMove.Piece.Type <> PieceType.KING _
         Or Math.Abs(FromField.Column - ToField.Column) <> 2 Then
             Return False
         End If
 
-        Dim KingWalkOverField As ChessField = Fields((FromField.Column + ToField.Column) / 2, FromField.Row)
+        Dim KingWalkOverField As ChessField = Me((FromField.Column + ToField.Column) / 2, FromField.Row)
         If ToField.Piece IsNot Nothing _
         Or KingWalkOverField.Piece IsNot Nothing Then 'King's target and walk-over field are empty
             Return False
@@ -464,23 +553,23 @@ Public Class ChessBoard
                 Return False
             End If
             If FromField.Column < ToField.Column Then 'King moving to the Right side
-                If Fields("h1").Piece.Type = PieceType.ROOK Then
+                If Me("h1").Piece.Type = PieceType.ROOK Then
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("h1").Piece : Fields("h1").Piece = Nothing
+                    KingWalkOverField.Piece = Me("h1").Piece : Me("h1").Piece = Nothing
                     Return True
-                ElseIf Fields("g1").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
+                ElseIf Me("g1").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("g1").Piece : Fields("g1").Piece = Nothing
+                    KingWalkOverField.Piece = Me("g1").Piece : Me("g1").Piece = Nothing
                     Return True
                 End If
             Else 'King moving to the Left side
-                If Fields("a1").Piece.Type = PieceType.ROOK Then
+                If Me("a1").Piece.Type = PieceType.ROOK Then
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("a1").Piece : Fields("a1").Piece = Nothing
+                    KingWalkOverField.Piece = Me("a1").Piece : Me("a1").Piece = Nothing
                     Return True
-                ElseIf Fields("b1").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
+                ElseIf Me("b1").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("b1").Piece : Fields("b1").Piece = Nothing
+                    KingWalkOverField.Piece = Me("b1").Piece : Me("b1").Piece = Nothing
                     Return True
                 End If
             End If
@@ -489,27 +578,453 @@ Public Class ChessBoard
                 Return False
             End If
             If FromField.Column < ToField.Column Then 'King moving to the Right side
-                If Fields("h8").Piece.Type = PieceType.ROOK Then
+                If Me("h8").Piece.Type = PieceType.ROOK Then
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("h8").Piece : Fields("h8").Piece = Nothing
+                    KingWalkOverField.Piece = Me("h8").Piece : Me("h8").Piece = Nothing
                     Return True
-                ElseIf Fields("g8").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
+                ElseIf Me("g8").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("g8").Piece : Fields("g8").Piece = Nothing
+                    KingWalkOverField.Piece = Me("g8").Piece : Me("g8").Piece = Nothing
                     Return True
                 End If
             Else 'King moving to the Left side
-                If Fields("a8").Piece.Type = PieceType.ROOK Then
+                If Me("a8").Piece.Type = PieceType.ROOK Then
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("a8").Piece : Fields("a8").Piece = Nothing
+                    KingWalkOverField.Piece = Me("a8").Piece : Me("a8").Piece = Nothing
                     Return True
-                ElseIf Fields("b8").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
+                ElseIf Me("b8").Piece.Type = PieceType.ROOK Then 'Rook at invalid place, but probably castling intended
                     ToField.Piece = FromField.Piece : FromField.Piece = Nothing
-                    KingWalkOverField.Piece = Fields("b8").Piece : Fields("b8").Piece = Nothing
+                    KingWalkOverField.Piece = Me("b8").Piece : Me("b8").Piece = Nothing
                     Return True
                 End If
             End If
         End If
+        Return False
+    End Function
+
+    ''' <summary>To Test if the KING is In Check
+    ''' Faster than getting all opponent moves and see if king is a target</summary>
+    Public Function InCheck(pColor As ChessColor) As Boolean
+        Dim Distance As Long, Column As Long, Row As Long, Piece As ChessPiece
+        Dim KingField As ChessField = Me.FindKing(pColor)
+
+        'No King; No Check
+        If KingField Is Nothing Then Return False
+
+        'Straight upward
+        For Distance = 1 To 8
+            Row = KingField.Row + Distance
+            If Me.Exists(KingField.Column, Row) = False Then Exit For
+            Piece = Me(KingField.Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'Straight downward
+        For Distance = 1 To 8
+            Row = KingField.Row - Distance
+            If Me.Exists(KingField.Column, Row) = False Then Exit For
+            Piece = Me(KingField.Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'To the Right
+        For Distance = 1 To 8
+            Column = KingField.Column + Distance
+            If Me.Exists(Column, KingField.Row) = False Then Exit For
+            Piece = Me(Column, KingField.Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'To the Left
+        For Distance = 1 To 8
+            Column = KingField.Column - Distance
+            If Me.Exists(Column, KingField.Row) = False Then Exit For
+            Piece = Me(Column, KingField.Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'Direction Right Up
+        For Distance = 1 To 8
+            Column = KingField.Column + Distance
+            Row = KingField.Row + Distance
+            If Me.Exists(Column, Row) = False Then Exit For
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'Direction Right Down
+        For Distance = 1 To 8
+            Column = KingField.Column + Distance
+            Row = KingField.Row - Distance
+            If Me.Exists(Column, Row) = False Then Exit For
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'Direction Left Up
+        For Distance = 1 To 8
+            Column = KingField.Column - Distance
+            Row = KingField.Row + Distance
+            If Me.Exists(Column, Row) = False Then Exit For
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'Direction Left Down
+        For Distance = 1 To 8
+            Column = KingField.Column - Distance
+            Row = KingField.Row - Distance
+            If Me.Exists(Column, Row) = False Then Exit For
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor Then
+                    If Distance = 1 _
+                    And Piece.Type = PieceType.KING Then
+                        Return True
+                    End If
+                    If (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
+                        Return True
+                    End If
+                End If
+                Exit For 'No more Moves in this line
+            End If
+        Next Distance
+
+        'Pawn Left Down
+        Column = KingField.Column - 1
+        Row = KingField.Row + If(pColor = WHITE, 1, -1)
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.PAWN) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        'Pawn Right Down
+        Column = KingField.Column + 1
+        Row = KingField.Row + If(pColor = WHITE, 1, -1)
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.PAWN) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        'Knights
+        Column = KingField.Column + 1
+        Row = KingField.Row + 2
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Column = KingField.Column - 1
+        Row = KingField.Row + 2
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Column = KingField.Column + 1
+        Row = KingField.Row - 2
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Column = KingField.Column - 1
+        Row = KingField.Row - 2
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Column = KingField.Column + 2
+        Row = KingField.Row + 1
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Column = KingField.Column + 2
+        Row = KingField.Row - 1
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Column = KingField.Column - 2
+        Row = KingField.Row + 1
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Column = KingField.Column - 2
+        Row = KingField.Row - 1
+        If Me.Exists(Column, Row) = True Then
+            Piece = Me(Column, Row).Piece
+            If Piece IsNot Nothing Then
+                If Piece.Color <> pColor _
+                And (Piece.Type = PieceType.KNIGHT) Then
+                    Return True
+                End If
+            End If
+        End If
+
+        Return False
+    End Function
+
+    Public Function InCheckAfterMove(pMove As BoardMove, pColor As ChessColor) As Boolean
+        Dim Board = New ChessBoard(Me.FEN)
+        Board.PerformMove(pMove)
+        Return Board.InCheck(pColor)
+    End Function
+
+    Public Function CheckMate(pColor As ChessColor) As Boolean
+        Dim KingField As ChessField = Me.FindKing(pColor)
+        Dim PossibleMoves As List(Of BoardMove) = Me.AllPossibleMoves(pColor)
+        If PossibleMoves.Count = 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function CanCheckMate() As BoardMove
+        Dim PossibleMoves As List(Of BoardMove) = Me.AllPossibleMoves(Me.ActiveColor)
+        For Each Move As BoardMove In PossibleMoves
+            Dim Board As New ChessBoard(Me.FEN) 'Copy Board
+            Board.PerformMove(Move)
+            If Board.CheckMate(Board.ActiveColor) Then
+                Return Move
+            End If
+        Next Move
+        Return Nothing
+    End Function
+
+    Public Function FindKing(pColor As ChessColor) As ChessField
+        For Each Field As ChessField In Me
+            If Field Is Nothing Then Continue For
+            If Field.Piece Is Nothing Then Continue For
+            If Field.Piece.Color = pColor _
+            And Field.Piece.Type = PieceType.KING Then
+                Return Field
+            End If
+        Next Field
+        Return Nothing
+    End Function
+
+    Public Function ShortCastlingAllowed(pFromFieldName As String) As Boolean
+        Dim Move As BoardMove
+        Dim King As ChessPiece = Me(pFromFieldName).Piece
+        If King Is Nothing Then Return False
+
+        If Me.InCheck(King.Color) Then 'Castling not allowed when In Check
+            Return False
+        End If
+
+        If King.Color = ChessColor.WHITE And Me.WhiteShortCastlingAllowed = False Then
+            Return False
+        ElseIf King.Color = ChessColor.BLACK And Me.BlackShortCastlingAllowed = False Then
+            Return False
+        End If
+
+        If King.Color = WHITE Then
+            If Me("f1").Piece Is Nothing _
+            And Me("g1").Piece Is Nothing Then
+                Move = New BoardMove(King, pFromFieldName, "f1")
+                If Me.InCheckAfterMove(Move, King.Color) = False Then
+                    Move = New BoardMove(King, pFromFieldName, "g1")
+                    If Me.InCheckAfterMove(Move, King.Color) = False Then
+                        Return True
+                    End If
+                End If
+            End If
+            Return False
+        End If
+
+        If King.Color = BLACK Then
+            If Me("f8").Piece Is Nothing _
+            And Me("g8").Piece Is Nothing Then
+                Move = New BoardMove(King, pFromFieldName, "f8")
+                If Me.InCheckAfterMove(Move, King.Color) = False Then
+                    Move = New BoardMove(King, pFromFieldName, "g8")
+                    If Me.InCheckAfterMove(Move, King.Color) = False Then
+                        Return True
+                    End If
+                End If
+            End If
+            Return False
+        End If
+
+        Return False
+    End Function
+
+    Public Function LongCastlingAllowed(pFromFieldName As String) As Boolean
+        Dim Move As BoardMove
+        Dim King As ChessPiece = Me(pFromFieldName).Piece
+        If King Is Nothing Then Return False
+
+        If Me.InCheck(King.Color) Then 'Castling not allowed when In Check
+            Return False
+        End If
+
+        If King.Color = ChessColor.WHITE And Me.WhiteLongCastlingAllowed = False Then
+            Return False
+        ElseIf King.Color = ChessColor.BLACK And Me.BlackLongCastlingAllowed = False Then
+            Return False
+        End If
+
+        'Long Castling
+        If King.Color = WHITE Then
+            If Me("b1").Piece Is Nothing _
+            And Me("c1").Piece Is Nothing _
+            And Me("d1").Piece Is Nothing Then
+                Move = New BoardMove(King, pFromFieldName, "d1")
+                If Me.InCheckAfterMove(Move, King.Color) = False Then
+                    Move = New BoardMove(King, pFromFieldName, "c1")
+                    If Me.InCheckAfterMove(Move, King.Color) = False Then
+                        Return True
+                    End If
+                End If
+            End If
+            Return False
+        End If
+
+        If King.Color = BLACK Then
+            If Me("b8").Piece Is Nothing _
+            And Me("c8").Piece Is Nothing _
+            And Me("d8").Piece Is Nothing Then
+                Move = New BoardMove(King, pFromFieldName, "d8")
+                If Me.InCheckAfterMove(Move, King.Color) = False Then
+                    Move = New BoardMove(King, pFromFieldName, "c8")
+                    If Me.InCheckAfterMove(Move, King.Color) = False Then
+                        Return True
+                    End If
+                End If
+            End If
+            Return False
+        End If
+
         Return False
     End Function
 
@@ -518,7 +1033,7 @@ Public Class ChessBoard
     End Function
 
     Protected Overrides Sub Finalize()
-        Me.Fields = Nothing
+        Me.Field = Nothing
         Me.ActiveColor = Nothing
 
         MyBase.Finalize()

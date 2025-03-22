@@ -1,117 +1,110 @@
 ﻿Option Explicit On
 
+'Requires .NET Framework 4.7.2
+'Requires NuGet of System.Reactive.Linq
+
 Imports System.IO
+Imports System.Reactive.Linq
 
 Public Class Engine
-
-    Private WithEvents Process As Process
+    Private strmReader As StreamReader
     Private strmWriter As StreamWriter
-
-    Private WaitingForUciOk As Boolean = False
-    Private WaitingForReadyOK As Boolean = False
-    Private WaitingFEN As String = ""
+    Private WithEvents EngineProcess As Process
+    Private EngineListener As IDisposable
 
     Public Event Message(pMessage As String)
 
-    Public Sub New()
-        CreateProcess()
-    End Sub
-
-    Public Sub CreateProcess()
+    Public Sub StartEngine()
         Dim EngineFile As New FileInfo(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "stockfish_12_32bit.exe"))
-        If EngineFile.Exists Then
-            Process = New Process
-            Process.StartInfo.FileName = EngineFile.FullName
-            Process.StartInfo.UseShellExecute = False
-            Process.StartInfo.RedirectStandardInput = True
-            Process.StartInfo.RedirectStandardOutput = True
-            Process.StartInfo.RedirectStandardError = True
-            Process.StartInfo.CreateNoWindow = True
+        If EngineFile.Exists _
+        AndAlso EngineFile.Extension = ".exe" Then
+            EngineProcess = New Process
+            EngineProcess.StartInfo.FileName = EngineFile.FullName
+            EngineProcess.StartInfo.UseShellExecute = False
+            EngineProcess.StartInfo.RedirectStandardInput = True
+            EngineProcess.StartInfo.RedirectStandardOutput = True
+            EngineProcess.StartInfo.RedirectStandardError = True
+            EngineProcess.StartInfo.CreateNoWindow = True
+            EngineProcess.Start()
+            strmWriter = EngineProcess.StandardInput
+            strmReader = EngineProcess.StandardOutput
 
-            Process.Start()
+            EngineListener = Observable.Timer(TimeSpan.Zero, TimeSpan.FromMilliseconds(1)).Subscribe(Sub() ReadEngineMessages())
 
-            Process.BeginOutputReadLine()
-            Process.BeginErrorReadLine()
-            strmWriter = Process.StandardInput
+            SendCommand("uci")
+            SendCommand("isready")
         Else
             Throw New FileNotFoundException("Engine file stockfish_12_32bit.exe not found")
         End If
     End Sub
 
-    Public Sub Start(pFEN As String) 'When Switching On
-        If Process Is Nothing _
-        OrElse Process.HasExited = True Then
-            Call CreateProcess()
-        End If
-        WaitingFEN = pFEN
-        WaitingForUciOk = True
-        SendCommand("uci")
-    End Sub
-
-    Public Sub [Stop]()
-        If Process IsNot Nothing _
-        And Process.HasExited = False Then
+    Public Sub StopEngine()
+        If EngineProcess IsNot Nothing _
+        AndAlso EngineProcess.HasExited = False Then
             SendCommand("stop")
+            System.Windows.Forms.Application.DoEvents()
+            EngineListener.Dispose()
+            Try
+                strmReader.Close()
+                strmWriter.Close()
+                System.Windows.Forms.Application.DoEvents()
+                EngineProcess.Kill()
+            Catch
+            Finally
+                System.Windows.Forms.Application.DoEvents()
+                EngineProcess.Dispose()
+            End Try
         End If
     End Sub
 
-    Public Sub NewFEN(pFEN)
-        SendCommand("stop")
+    Public Sub EvaluateFEN(pFEN As String)
+        SendCommand("setoption name MultiPV value 1")
+        SendCommand("setoption name Use NNUE value false")
         SendCommand("ucinewgame")
-        WaitingFEN = pFEN
-        WaitingForReadyOK = True
-        SendCommand("isready")
+        SendCommand("position fen " & pFEN)
+        SendCommand("go depth 12")
     End Sub
 
-    Public Sub Quit()
-        If Process IsNot Nothing _
-        And Process.HasExited = False Then
-            SendCommand("quit")
-        End If
+    Public Sub Best3Variants(pFEN)
+        SendCommand("setoption name MultiPV value 3")
+        SendCommand("setoption name Use NNUE value false")
+        SendCommand("ucinewgame")
+        SendCommand("position fen " & pFEN)
+        SendCommand("go movetime 2000") '2 seconds or infinite") 
     End Sub
+
+    Public Function CheckMate(pMessage) As Boolean
+        If pMessage.Contains("ponder") Then
+            CheckMate = False
+        Else
+            CheckMate = True
+        End If
+    End Function
 
     Private Sub SendCommand(pCommand As String)
-        If strmWriter Is Nothing Then
-            Return
+        If strmWriter IsNot Nothing Then
+            'Debug.Print(">" & pCommand)
+            strmWriter.WriteLine(pCommand)
         End If
-        'Debug.Print(">" & pCommand)
-        strmWriter.WriteLine(pCommand)
     End Sub
 
-    Private Sub Process_OutputDataReceived(pSender As Object, pArgs As DataReceivedEventArgs) Handles Process.OutputDataReceived
-        'Debug.Print("<" & pArgs.Data)
-        If WaitingForUciOk Then
-            If pArgs.Data = "uciok" Then
-                WaitingForUciOk = False
-                SendCommand("setoption Name MultiPV value 3")
-                SendCommand("ucinewgame")
-                SendCommand("isready")
-                WaitingForReadyOK = True
-                'WaitingFEN set wil be processed after readyok
-                Exit Sub
-            End If
+    Private Sub ReadEngineMessages()
+        Dim Message = strmReader.ReadLine()
+        If Message <> String.Empty Then
+            'Debug.Print("<" & Message)
+            RaiseEvent Message(Message)
         End If
-        If WaitingForReadyOK = True Then
-            If pArgs.Data = "readyok" Then
-                WaitingForReadyOK = False
-                If WaitingFEN <> "" Then
-                    SendCommand("position fen " & WaitingFEN)
-                    SendCommand("go movetime 10000")
-                End If
-            End If
-            Exit Sub
-        End If
-
-        RaiseEvent Message(pArgs.Data)
     End Sub
 
-    Private Sub Process_ErrorDataReceived(pSender As Object, pArgs As DataReceivedEventArgs) Handles Process.ErrorDataReceived
+    Private Sub Process_ErrorDataReceived(pSender As Object, pArgs As DataReceivedEventArgs) Handles EngineProcess.ErrorDataReceived
         RaiseEvent Message("Error: " & pArgs.Data)
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.Process = Nothing
+        Me.EngineProcess = Nothing
+        Me.strmReader = Nothing
         Me.strmWriter = Nothing
+        Me.EngineListener = Nothing
 
         MyBase.Finalize()
     End Sub

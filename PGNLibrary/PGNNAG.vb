@@ -6,7 +6,7 @@ Imports ChessGlobals.ChessLanguage
 Imports PGNLibrary.PGNNAG.NAGPrintPosition
 Imports System.Xml.Serialization
 
-<XmlType()>
+<XmlType>
 Public Class PGNNAG
 
     Public Enum NAGType
@@ -72,6 +72,11 @@ Public Class PGNNAG
             End Select
         End Get
     End Property
+
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return Me.PGNString
+    End Function
 
     Private Sub StoreValues(pNumber As Long)
         'First the standard codes, independend from Language
@@ -289,8 +294,8 @@ Public Class PGNNAG
         Me.PGNString = pPGNString
     End Sub
 
-    Public Overrides Function ToString() As String
-        Return Me.Code & " " & Me.Text
-    End Function
+    Sub New() 'Needed for (de)serialization
+        Me.PGNString = ""
+    End Sub
 
 End Class

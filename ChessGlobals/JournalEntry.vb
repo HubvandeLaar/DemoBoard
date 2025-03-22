@@ -21,4 +21,11 @@ Public Class JournalEntry
     Public Sub New()
     End Sub
 
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return "Class " & Me.ClassName & " Key " & Me.KeyValue & vbCrLf &
+               "      Before " & Me.BeforeImage & vbCrLf &
+               "      After  " & Me.AfterImage
+    End Function
+
 End Class

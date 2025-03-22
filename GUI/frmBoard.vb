@@ -19,6 +19,7 @@ Public Class frmBoard
     Public Event FieldMarkerListChanged(pHalfMove As PGNHalfMove, pMarkerString As String)
     Public Event ArrowListChanged(pHalfMove As PGNHalfMove, pArrowString As String)
     Public Event TextListChanged(pHalfMove As PGNHalfMove, pTextString As String)
+    Public Event BoardShown(pFEN As String)
 
     Public gCurrentFieldName As String 'Needed to save Current Field when Right-Click menu is shown
     Public gCurrentHalfMove As PGNHalfMove 'Being updated by MoveList PositionChanged
@@ -144,7 +145,7 @@ Public Class frmBoard
         Try
             Dim Captured As Boolean
             Dim Board As New ChessBoard(ctlBoard.FEN)
-            Captured = (Board.Fields(pBoardMove.ToFieldName).Piece IsNot Nothing)
+            Captured = (Board(pBoardMove.ToFieldName).Piece IsNot Nothing)
 
             RaiseEvent ChessPieceMoved(pBoardMove.Piece, pBoardMove.FromFieldName, pBoardMove.ToFieldName,
                                        Board, Captured, pBoardMove.PromotionPiece, ctlBoard.FEN, ctlBoard.FENBeforeDragging)
@@ -379,6 +380,7 @@ Public Class frmBoard
         ctlBoard.MarkerString = pPGNGame.HalfMoves.MarkerListString(pCurrentHalfMove)
         ctlBoard.ArrowString = pPGNGame.HalfMoves.ArrowListString(pCurrentHalfMove)
         ctlBoard.TextString = pPGNGame.HalfMoves.TextListString(pCurrentHalfMove)
+        RaiseEvent BoardShown(FEN)
     End Sub
 
     Private Sub frmBoard_Disposed(pSender As Object, pArgs As EventArgs) Handles Me.Disposed

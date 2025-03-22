@@ -27,16 +27,24 @@ Partial Class ctlBoard
         Me.picDragImage = New System.Windows.Forms.PictureBox()
         Me.picPlayMovePiece = New System.Windows.Forms.PictureBox()
         Me.timClock = New System.Windows.Forms.Timer(Me.components)
-        Me.picGArrow = New System.Windows.Forms.PictureBox()
-        Me.picYArrow = New System.Windows.Forms.PictureBox()
-        Me.picRArrow = New System.Windows.Forms.PictureBox()
+        Me.picArrow = New System.Windows.Forms.PictureBox()
         Me.picBoard = New System.Windows.Forms.PictureBox()
+        Me.picOrange = New System.Windows.Forms.PictureBox()
+        Me.picCyan = New System.Windows.Forms.PictureBox()
+        Me.picBlue = New System.Windows.Forms.PictureBox()
+        Me.picRed = New System.Windows.Forms.PictureBox()
+        Me.picYellow = New System.Windows.Forms.PictureBox()
+        Me.picGreen = New System.Windows.Forms.PictureBox()
         CType(Me.picDragImage, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPlayMovePiece, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picGArrow, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picYArrow, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picRArrow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picArrow, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBoard, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picOrange, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picCyan, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picBlue, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picRed, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picYellow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picGreen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picDragImage
@@ -71,38 +79,16 @@ Partial Class ctlBoard
         '
         Me.timClock.Interval = 20
         '
-        'picGArrow
+        'picArrow
         '
-        Me.picGArrow.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.picGArrow.Image = CType(resources.GetObject("picGArrow.Image"), System.Drawing.Image)
-        Me.picGArrow.Location = New System.Drawing.Point(503, 412)
-        Me.picGArrow.Name = "picGArrow"
-        Me.picGArrow.Size = New System.Drawing.Size(40, 40)
-        Me.picGArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picGArrow.TabIndex = 60
-        Me.picGArrow.TabStop = False
-        '
-        'picYArrow
-        '
-        Me.picYArrow.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.picYArrow.Image = CType(resources.GetObject("picYArrow.Image"), System.Drawing.Image)
-        Me.picYArrow.Location = New System.Drawing.Point(549, 413)
-        Me.picYArrow.Name = "picYArrow"
-        Me.picYArrow.Size = New System.Drawing.Size(40, 40)
-        Me.picYArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picYArrow.TabIndex = 61
-        Me.picYArrow.TabStop = False
-        '
-        'picRArrow
-        '
-        Me.picRArrow.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.picRArrow.Image = CType(resources.GetObject("picRArrow.Image"), System.Drawing.Image)
-        Me.picRArrow.Location = New System.Drawing.Point(595, 415)
-        Me.picRArrow.Name = "picRArrow"
-        Me.picRArrow.Size = New System.Drawing.Size(40, 40)
-        Me.picRArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picRArrow.TabIndex = 62
-        Me.picRArrow.TabStop = False
+        Me.picArrow.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.picArrow.Image = CType(resources.GetObject("picArrow.Image"), System.Drawing.Image)
+        Me.picArrow.Location = New System.Drawing.Point(595, 307)
+        Me.picArrow.Name = "picArrow"
+        Me.picArrow.Size = New System.Drawing.Size(40, 40)
+        Me.picArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picArrow.TabIndex = 60
+        Me.picArrow.TabStop = False
         '
         'picBoard
         '
@@ -116,6 +102,72 @@ Partial Class ctlBoard
         Me.picBoard.TabIndex = 42
         Me.picBoard.TabStop = False
         '
+        'picOrange
+        '
+        Me.picOrange.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.picOrange.Image = CType(resources.GetObject("picOrange.Image"), System.Drawing.Image)
+        Me.picOrange.Location = New System.Drawing.Point(595, 399)
+        Me.picOrange.Name = "picOrange"
+        Me.picOrange.Size = New System.Drawing.Size(40, 40)
+        Me.picOrange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picOrange.TabIndex = 64
+        Me.picOrange.TabStop = False
+        '
+        'picCyan
+        '
+        Me.picCyan.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.picCyan.Image = CType(resources.GetObject("picCyan.Image"), System.Drawing.Image)
+        Me.picCyan.Location = New System.Drawing.Point(549, 399)
+        Me.picCyan.Name = "picCyan"
+        Me.picCyan.Size = New System.Drawing.Size(40, 40)
+        Me.picCyan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picCyan.TabIndex = 65
+        Me.picCyan.TabStop = False
+        '
+        'picBlue
+        '
+        Me.picBlue.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.picBlue.Image = CType(resources.GetObject("picBlue.Image"), System.Drawing.Image)
+        Me.picBlue.Location = New System.Drawing.Point(503, 399)
+        Me.picBlue.Name = "picBlue"
+        Me.picBlue.Size = New System.Drawing.Size(40, 40)
+        Me.picBlue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picBlue.TabIndex = 66
+        Me.picBlue.TabStop = False
+        '
+        'picRed
+        '
+        Me.picRed.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.picRed.Image = CType(resources.GetObject("picRed.Image"), System.Drawing.Image)
+        Me.picRed.Location = New System.Drawing.Point(595, 353)
+        Me.picRed.Name = "picRed"
+        Me.picRed.Size = New System.Drawing.Size(40, 40)
+        Me.picRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picRed.TabIndex = 67
+        Me.picRed.TabStop = False
+        '
+        'picYellow
+        '
+        Me.picYellow.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.picYellow.Image = CType(resources.GetObject("picYellow.Image"), System.Drawing.Image)
+        Me.picYellow.Location = New System.Drawing.Point(549, 353)
+        Me.picYellow.Name = "picYellow"
+        Me.picYellow.Size = New System.Drawing.Size(40, 40)
+        Me.picYellow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picYellow.TabIndex = 68
+        Me.picYellow.TabStop = False
+        '
+        'picGreen
+        '
+        Me.picGreen.BackColor = System.Drawing.SystemColors.ButtonShadow
+        Me.picGreen.Image = CType(resources.GetObject("picGreen.Image"), System.Drawing.Image)
+        Me.picGreen.Location = New System.Drawing.Point(503, 353)
+        Me.picGreen.Name = "picGreen"
+        Me.picGreen.Size = New System.Drawing.Size(40, 40)
+        Me.picGreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picGreen.TabIndex = 69
+        Me.picGreen.TabStop = False
+        '
         'ctlBoard
         '
         Me.AccessibleRole = System.Windows.Forms.AccessibleRole.HotkeyField
@@ -124,28 +176,40 @@ Partial Class ctlBoard
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.SystemColors.Control
+        Me.Controls.Add(Me.picGreen)
+        Me.Controls.Add(Me.picYellow)
+        Me.Controls.Add(Me.picRed)
+        Me.Controls.Add(Me.picBlue)
+        Me.Controls.Add(Me.picCyan)
+        Me.Controls.Add(Me.picOrange)
         Me.Controls.Add(Me.picDragImage)
         Me.Controls.Add(Me.picPlayMovePiece)
-        Me.Controls.Add(Me.picRArrow)
-        Me.Controls.Add(Me.picYArrow)
-        Me.Controls.Add(Me.picGArrow)
+        Me.Controls.Add(Me.picArrow)
         Me.Controls.Add(Me.picBoard)
         Me.Name = "ctlBoard"
         Me.Size = New System.Drawing.Size(654, 456)
         CType(Me.picDragImage, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPlayMovePiece, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picGArrow, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picYArrow, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picRArrow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picArrow, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picBoard, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picOrange, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picCyan, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picBlue, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picRed, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picYellow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picGreen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents picDragImage As PictureBox
     Friend WithEvents picPlayMovePiece As PictureBox
     Friend WithEvents timClock As Timer
-    Friend WithEvents picGArrow As PictureBox
-    Friend WithEvents picYArrow As PictureBox
-    Friend WithEvents picRArrow As PictureBox
+    Friend WithEvents picArrow As PictureBox
     Friend WithEvents picBoard As PictureBox
+    Friend WithEvents picOrange As PictureBox
+    Friend WithEvents picCyan As PictureBox
+    Friend WithEvents picBlue As PictureBox
+    Friend WithEvents picRed As PictureBox
+    Friend WithEvents picYellow As PictureBox
+    Friend WithEvents picGreen As PictureBox
 End Class

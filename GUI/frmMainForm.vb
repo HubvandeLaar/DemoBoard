@@ -169,8 +169,8 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuOpen_Click(pSender As Object, pArgs As EventArgs) Handles mnuOpen.Click
-        Dim Dialog As New OpenFileDialog
         Try
+            Dim Dialog As New OpenFileDialog
 
             If PGNFileModified() = True Then
                 If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
@@ -228,6 +228,9 @@ Public Class frmMainForm
             Me.Text = Me.PGNFile.FileName
             Me.PGNFile.SaveAs()
             Cursor = Cursors.Default
+
+            gJournaling.Clear()
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
@@ -294,8 +297,8 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuSelectGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuSelectGame.Click
-        Dim BeforeImage As String, AfterImage As String
         Try
+            Dim BeforeImage As String, AfterImage As String
             If Me.PGNFile.PGNGames.Count < 2 Then Exit Sub
             BeforeImage = If(Me.PGNGame Is Nothing, "", CStr(Me.PGNGame.Index))
 
@@ -340,6 +343,17 @@ Public Class frmMainForm
         End If
     End Sub
 
+    Private Sub mnuGameAnalysis_Click(pSender As Object, pArgs As EventArgs) Handles mnuGameAnalysis.Click
+        Try
+            Application.UseWaitCursor = True
+            ChessCoach.AnaLyze(PGNGame)
+            Application.UseWaitCursor = False
+        Catch pException As Exception
+            Application.UseWaitCursor = False
+            frmErrorMessageBox.Show(pException)
+        End Try
+    End Sub
+
     Private Sub mnuDeleteGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuDeleteGame.Click
         Try
             Dim BeforeImage As String = Journaling.Serialize(PGNGame)
@@ -367,8 +381,8 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuPreviousGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuPreviousGame.Click
-        Dim BeforeImage As String, AfterImage As String
         Try
+            Dim BeforeImage As String, AfterImage As String
             If Me.PGNGame Is Nothing Then Exit Sub
             If Me.PGNGame.Index < 1 Then Exit Sub
             BeforeImage = CStr(Me.PGNGame.Index)
@@ -387,8 +401,8 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuNextGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuNextGame.Click
-        Dim BeforeImage As String, AfterImage As String
         Try
+            Dim BeforeImage As String, AfterImage As String
             If Me.PGNGame Is Nothing Then Exit Sub
             If Me.PGNGame.Index >= Me.PGNFile.PGNGames.Count - 1 Then Exit Sub
             BeforeImage = CStr(Me.PGNGame.Index)
@@ -427,8 +441,8 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuPasteDiagram_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuPasteDiagram.Click
-        Dim FEN As String
         Try
+            Dim FEN As String
             Dim BeforeImage As String = CStr(gPGNGame.Index)
             FEN = Clipboard.GetData(DataFormats.Text)
             If FEN Like "*/*/*/*/*/*/*/* [bw] *" Then
@@ -485,8 +499,8 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuGraphicals_DropDownOpening(pSender As Object, pArgs As EventArgs) Handles mnuGraphicals.DropDownOpening
-        Dim MenuItem As ToolStripItem, Image As Image
         Try
+            Dim MenuItem As ToolStripItem, Image As Image
             mnuGraphicals.DropDownItems.Clear()
 
             'Markers
@@ -752,7 +766,6 @@ Public Class frmMainForm
         End Try
     End Sub
 
-
     Private Sub mnuLessonsFolder_Click(pSender As Object, pArgs As EventArgs) Handles mnuLessonsFolder.Click
         Try
             Dim OldFolder As String = CurrentLessonsFolder
@@ -793,8 +806,8 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuLoadLayout_DropDownOpening(pSender As Object, pArgs As EventArgs) Handles mnuLoadLayout.DropDownOpening
-        Dim MenuItem As ToolStripItem
         Try
+            Dim MenuItem As ToolStripItem
             mnuLoadLayout.DropDownItems.Clear()
 
             Dim Files As String() = IO.Directory.GetFiles(RootFolder() & "Settings")
@@ -1098,7 +1111,7 @@ Public Class frmMainForm
 
         'Update Statusbar with Check, Checkmate or Stalemate
         Dim PossibleMoves As List(Of BoardMove)
-        If King.InCheck(pChessBoard.ActiveColor, pChessBoard) Then
+        If pChessBoard.InCheck(pChessBoard.ActiveColor) Then
             PossibleMoves = pChessBoard.AllPossibleMoves(pChessBoard.ActiveColor)
             'While PossibleMoves.Count > 0 'Remove castling moves
             '    If PossibleMoves(0).Castle = True Then

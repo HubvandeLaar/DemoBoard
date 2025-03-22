@@ -6,15 +6,12 @@ Imports ChessGlobals.ChessColor
 Public Class SetupToolbar
     Public Visible As Boolean = True
 
+    Public gMarkerColor As String = "G" 'G, Y, R, B, C, O
+
     'NB gPieces(C, R)
     Private ReadOnly gPieces(,) As ChessPiece = {{Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing},
                                                 {Nothing, New King(WHITE), New Queen(WHITE), New Rook(WHITE), New Bishop(WHITE), New Knight(WHITE), New Pawn(WHITE)},
                                                 {Nothing, New King(BLACK), New Queen(BLACK), New Rook(BLACK), New Bishop(BLACK), New Knight(BLACK), New Pawn(BLACK)}} 'Zerobased 
-    'NB gMarkerSymbol(C, R)
-    Private ReadOnly gMarkerSymbol(,) As String = {{"", "", "", "", "", "", "", "", "", "", "10", "11"},
-                                                  {"", "", "", "", "", "", "", "O", "+", "G", "10", "11"},
-                                                  {"", "", "", "", "", "", "", "#", "-", "Y", "10", "11"},
-                                                  {"", "", "", "", "", "", "", ".", "*", "R", "10", "11"}}
 
     Private WithEvents gCtlBoard As ctlBoard
 
@@ -59,9 +56,13 @@ Public Class SetupToolbar
 
     Public Sub Paint()
         If Visible = False Then
-            gCtlBoard.picGArrow.Visible = False
-            gCtlBoard.picYArrow.Visible = False
-            gCtlBoard.picRArrow.Visible = False
+            gCtlBoard.picArrow.Visible = False
+            gCtlBoard.picGreen.Visible = False
+            gCtlBoard.picYellow.Visible = False
+            gCtlBoard.picRed.Visible = False
+            gCtlBoard.picBlue.Visible = False
+            gCtlBoard.picCyan.Visible = False
+            gCtlBoard.picOrange.Visible = False
             Exit Sub
         End If
 
@@ -87,20 +88,25 @@ Public Class SetupToolbar
             .PaintImage(frmImages.PlusSign.Image, LeftPos(1), TopPos(8), IconSize, IconOffset)
             .PaintImage(frmImages.MinusSign.Image, LeftPos(2), TopPos(8), IconSize, IconOffset)
             .PaintImage(frmImages.BlueStar.Image, LeftPos(3), TopPos(8), IconSize, IconOffset)
-            .PaintImage(frmImages.GMarker.Image, LeftPos(1), TopPos(9), IconSize, IconOffset)
-            .PaintImage(frmImages.YMarker.Image, LeftPos(2), TopPos(9), IconSize, IconOffset)
-            .PaintImage(frmImages.RMarker.Image, LeftPos(3), TopPos(9), IconSize, IconOffset)
-            'Text
-            .PaintImage(frmImages.GText.Image, LeftPos(1), TopPos(10), IconSize, IconOffset)
-            .PaintImage(frmImages.YText.Image, LeftPos(2), TopPos(10), IconSize, IconOffset)
-            .PaintImage(frmImages.RText.Image, LeftPos(3), TopPos(10), IconSize, IconOffset)
-            'Arrows
-            .picGArrow.Left = LeftPos(1) + IconOffset : .picGArrow.Top = TopPos(11) + IconOffset
-            .picGArrow.Visible = True : .picGArrow.Size = New Size(IconSize, IconSize)
-            .picYArrow.Left = LeftPos(2) + IconOffset : .picYArrow.Top = TopPos(11) + IconOffset
-            .picYArrow.Visible = True : .picYArrow.Size = New Size(IconSize, IconSize)
-            .picRArrow.Left = LeftPos(3) + IconOffset : .picRArrow.Top = TopPos(11) + IconOffset
-            .picRArrow.Visible = True : .picRArrow.Size = New Size(IconSize, IconSize)
+            'Colored Markers
+            .PaintImage(frmImages.getImage(gMarkerColor & "Marker"), LeftPos(1), TopPos(9), IconSize, IconOffset)
+            .PaintImage(frmImages.getImage(gMarkerColor & "Text"), LeftPos(2), TopPos(9), IconSize, IconOffset)
+            .picArrow.Image = frmImages.getImage(gMarkerColor & "Arrow")
+            .picArrow.Left = LeftPos(3) + IconOffset : .picArrow.Top = TopPos(9) + IconOffset
+            .picArrow.Visible = True : .picArrow.Size = New Size(IconSize, IconSize)
+            'Colors
+            .picGreen.Left = LeftPos(1) + IconOffset : .picGreen.Top = TopPos(10) + IconOffset
+            .picGreen.Visible = True : .picGreen.Size = New Size(IconSize, IconSize)
+            .picYellow.Left = LeftPos(2) + IconOffset : .picYellow.Top = TopPos(10) + IconOffset
+            .picYellow.Visible = True : .picYellow.Size = New Size(IconSize, IconSize)
+            .picRed.Left = LeftPos(3) + IconOffset : .picRed.Top = TopPos(10) + IconOffset
+            .picRed.Visible = True : .picRed.Size = New Size(IconSize, IconSize)
+            .picBlue.Left = LeftPos(1) + IconOffset : .picBlue.Top = TopPos(11) + IconOffset
+            .picBlue.Visible = True : .picBlue.Size = New Size(IconSize, IconSize)
+            .picCyan.Left = LeftPos(2) + IconOffset : .picCyan.Top = TopPos(11) + IconOffset
+            .picCyan.Visible = True : .picCyan.Size = New Size(IconSize, IconSize)
+            .picOrange.Left = LeftPos(3) + IconOffset : .picOrange.Top = TopPos(11) + IconOffset
+            .picOrange.Visible = True : .picOrange.Size = New Size(IconSize, IconSize)
         End With
     End Sub
 
@@ -108,31 +114,47 @@ Public Class SetupToolbar
         Dim C As Long, R As Long
         C = Column(pArgs.X) : R = Row(pArgs.Y)
         If C > 3 Then Exit Sub
-        If R < 7 Then 'Pieces
-            If C = 3 Then Exit Sub
-            Dim ChessPiece = gPieces(C, R)
-            If ChessPiece Is Nothing Then Exit Sub
-            Call gCtlBoard.SetDragPiece(ChessPiece, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
-            Exit Sub
+        Select Case R
+            Case 1, 2, 3, 4, 5, 6  'Pieces
+                If C = 3 Then Exit Sub
+                Dim ChessPiece = gPieces(C, R)
+                If ChessPiece Is Nothing Then Exit Sub
+                Call gCtlBoard.SetDragPiece(ChessPiece, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
+                Exit Sub
 
-        ElseIf R < 10 Then 'FieldMarkers
-            Dim Symbol As String = gMarkerSymbol(C, R)
-            If Symbol = "" Then Exit Sub
-            Call gCtlBoard.SetDragMarker(Symbol, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
-            Exit Sub
+            Case 7 'Circle, Rectangle, Dot
+                Dim Symbol As String
+                Select Case C
+                    Case 1 : Symbol = "0"
+                    Case 2 : Symbol = "#"
+                    Case 3 : Symbol = "."
+                    Case Else : Exit Sub
+                End Select
+                Call gCtlBoard.SetDragMarker(Symbol, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
+                Exit Sub
 
-        ElseIf R = 10 Then 'Text
-            Dim Color As String
-            Select Case C
-                Case 1 : Color = "G"
-                Case 2 : Color = "Y"
-                Case 3 : Color = "R"
-                Case Else : Exit Sub
-            End Select
-            Call gCtlBoard.SetDragText(Color, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
-            Exit Sub
+            Case 8 'Plus, Minus, BlueStar
+                Dim Symbol As String
+                Select Case C
+                    Case 1 : Symbol = "+"
+                    Case 2 : Symbol = "-"
+                    Case 3 : Symbol = "*"
+                    Case Else : Exit Sub
+                End Select
+                Call gCtlBoard.SetDragMarker(Symbol, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
+                Exit Sub
 
-        End If
+            Case 9  'Marker, Text, Arrow
+                Select Case C
+                    Case 1 : Call gCtlBoard.SetDragMarker(gMarkerColor, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
+                    Case 2 : Call gCtlBoard.SetDragText(gMarkerColor, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
+                    Case 3  'Arrow
+                    Case Else : Exit Sub
+                End Select
+                Exit Sub
+
+            Case 10, 11 'Colors
+        End Select
     End Sub
 
     Private Function LeftPos(pColumn As Long) As Long

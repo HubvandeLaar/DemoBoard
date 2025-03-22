@@ -11,7 +11,7 @@
     <AssemblyName>DemoBoard</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>D:\Users\Hub\Desktop\Setup\</PublishUrl>
@@ -32,6 +32,7 @@
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -299,6 +300,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -702,6 +704,10 @@
     <Content Include="Frisselstein.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChessCoach\ChessCoach.vbproj">
+      <Project>{8756f295-b965-4d77-b067-9003d5d44248}</Project>
+      <Name>ChessCoach</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChessEngine\ChessEngine.vbproj">
       <Project>{b05245e5-25ce-4502-9ddb-058cf261c4c8}</Project>
       <Name>ChessEngine</Name>

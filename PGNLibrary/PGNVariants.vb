@@ -41,7 +41,7 @@ Public Class PGNVariants
         End If
 
         If FirstMoveOfParentVariant = -1 Then
-            MsgBox(MessageText("InvalidMove"))
+            MsgBox(MessageText("InvalidVariantMove"))
             Exit Sub
         End If
 
@@ -193,6 +193,11 @@ Public Class PGNVariants
         CurrentMoveIndex = NewCurrentMoveIndex
         PGNHalfMoves.ReNumber()
     End Sub
+
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return String.Join(" ", Me)
+    End Function
 
     Private Function FindLastMoveOfVariant(pFirstMove) As Long
         For I As Integer = pFirstMove + 1 To PGNHalfMoves.Count - 1

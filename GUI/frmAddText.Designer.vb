@@ -23,35 +23,12 @@ Partial Class frmAddText
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddText))
-        Me.optGreenText = New System.Windows.Forms.RadioButton()
-        Me.optYellowText = New System.Windows.Forms.RadioButton()
-        Me.optRedText = New System.Windows.Forms.RadioButton()
         Me.picText = New System.Windows.Forms.PictureBox()
         Me.txtText = New System.Windows.Forms.TextBox()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
         CType(Me.picText, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'optGreenText
-        '
-        resources.ApplyResources(Me.optGreenText, "optGreenText")
-        Me.optGreenText.Checked = True
-        Me.optGreenText.Name = "optGreenText"
-        Me.optGreenText.TabStop = True
-        Me.optGreenText.UseVisualStyleBackColor = True
-        '
-        'optYellowText
-        '
-        resources.ApplyResources(Me.optYellowText, "optYellowText")
-        Me.optYellowText.Name = "optYellowText"
-        Me.optYellowText.UseVisualStyleBackColor = True
-        '
-        'optRedText
-        '
-        resources.ApplyResources(Me.optRedText, "optRedText")
-        Me.optRedText.Name = "optRedText"
-        Me.optRedText.UseVisualStyleBackColor = True
         '
         'picText
         '
@@ -89,9 +66,6 @@ Partial Class frmAddText
         Me.Controls.Add(Me.cmdOK)
         Me.Controls.Add(Me.txtText)
         Me.Controls.Add(Me.picText)
-        Me.Controls.Add(Me.optRedText)
-        Me.Controls.Add(Me.optYellowText)
-        Me.Controls.Add(Me.optGreenText)
         Me.Name = "frmAddText"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
@@ -101,9 +75,6 @@ Partial Class frmAddText
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents optGreenText As System.Windows.Forms.RadioButton
-    Friend WithEvents optYellowText As System.Windows.Forms.RadioButton
-    Friend WithEvents optRedText As System.Windows.Forms.RadioButton
     Friend WithEvents picText As System.Windows.Forms.PictureBox
     Friend WithEvents txtText As System.Windows.Forms.TextBox
     Friend WithEvents cmdOK As System.Windows.Forms.Button

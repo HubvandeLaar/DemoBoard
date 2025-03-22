@@ -17,11 +17,7 @@ Public Class frmEditHalfMove
 
             lblMoveNr.Text = pPGNHalfMove.MoveNrString
             lblMoveText.Text = pPGNHalfMove.MoveText(CurrentLanguage)
-            If CurrentLanguage = ChessLanguage.NEDERLANDS Then
-                lblColor.Text = If(pPGNHalfMove.Color = ChessColor.WHITE, "Wit", "Zwart")
-            Else
-                lblColor.Text = If(pPGNHalfMove.Color = ChessColor.WHITE, "White", "Black")
-            End If
+            lblColor.Text = pPGNHalfMove.Color.Text
             lblVariantLevel.Text = Str(pPGNHalfMove.VariantLevel)
             lblVariantNumber.Text = Str(pPGNHalfMove.VariantNumber)
             lblIndex.Text = Str(pPGNHalfMove.Index)

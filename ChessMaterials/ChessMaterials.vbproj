@@ -10,7 +10,8 @@
     <AssemblyName>ChessMaterials</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,14 +75,16 @@
     <Compile Include="BoardMove.vb" />
     <Compile Include="ChessBoard.vb" />
     <Compile Include="ChessField.vb" />
-    <Compile Include="ChessFields.vb" />
     <Compile Include="ChessPiece.vb" />
+    <Compile Include="Direction.vb" />
+    <Compile Include="Directions.vb" />
     <Compile Include="King.vb" />
     <Compile Include="Knight.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>

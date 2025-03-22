@@ -35,9 +35,9 @@ Partial Class frmImages
         Me.Nederlands = New System.Windows.Forms.PictureBox()
         Me.English = New System.Windows.Forms.PictureBox()
         Me.Language = New System.Windows.Forms.PictureBox()
-        Me.RArrow = New System.Windows.Forms.PictureBox()
-        Me.YArrow = New System.Windows.Forms.PictureBox()
-        Me.GArrow = New System.Windows.Forms.PictureBox()
+        Me.OText = New System.Windows.Forms.PictureBox()
+        Me.CText = New System.Windows.Forms.PictureBox()
+        Me.BText = New System.Windows.Forms.PictureBox()
         Me.RText = New System.Windows.Forms.PictureBox()
         Me.YText = New System.Windows.Forms.PictureBox()
         Me.GText = New System.Windows.Forms.PictureBox()
@@ -65,6 +65,21 @@ Partial Class frmImages
         Me.WQueen = New System.Windows.Forms.PictureBox()
         Me.WKing = New System.Windows.Forms.PictureBox()
         Me.Dot = New System.Windows.Forms.PictureBox()
+        Me.BMarker = New System.Windows.Forms.PictureBox()
+        Me.CMarker = New System.Windows.Forms.PictureBox()
+        Me.OMarker = New System.Windows.Forms.PictureBox()
+        Me.Orange = New System.Windows.Forms.PictureBox()
+        Me.Cyan = New System.Windows.Forms.PictureBox()
+        Me.Blue = New System.Windows.Forms.PictureBox()
+        Me.Red = New System.Windows.Forms.PictureBox()
+        Me.Yellow = New System.Windows.Forms.PictureBox()
+        Me.Green = New System.Windows.Forms.PictureBox()
+        Me.RArrow = New System.Windows.Forms.PictureBox()
+        Me.YArrow = New System.Windows.Forms.PictureBox()
+        Me.GArrow = New System.Windows.Forms.PictureBox()
+        Me.OArrow = New System.Windows.Forms.PictureBox()
+        Me.CArrow = New System.Windows.Forms.PictureBox()
+        Me.BArrow = New System.Windows.Forms.PictureBox()
         CType(Me.CloseBlack, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CloseGrayOnGray, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CloseGrayOnGold, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,9 +90,9 @@ Partial Class frmImages
         CType(Me.Nederlands, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.English, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Language, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RArrow, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.YArrow, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GArrow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OText, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CText, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GText, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,6 +120,21 @@ Partial Class frmImages
         CType(Me.WQueen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WKing, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Dot, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BMarker, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CMarker, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OMarker, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Orange, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Cyan, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Blue, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Red, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Yellow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Green, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RArrow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.YArrow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GArrow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OArrow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CArrow, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BArrow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CloseBlack
@@ -224,48 +254,48 @@ Partial Class frmImages
         Me.Language.TabIndex = 65
         Me.Language.TabStop = False
         '
-        'RArrow
+        'OText
         '
-        Me.RArrow.ErrorImage = Nothing
-        Me.RArrow.Image = CType(resources.GetObject("RArrow.Image"), System.Drawing.Image)
-        Me.RArrow.InitialImage = Nothing
-        Me.RArrow.Location = New System.Drawing.Point(264, 516)
-        Me.RArrow.Name = "RArrow"
-        Me.RArrow.Size = New System.Drawing.Size(120, 120)
-        Me.RArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.RArrow.TabIndex = 64
-        Me.RArrow.TabStop = False
+        Me.OText.ErrorImage = Nothing
+        Me.OText.Image = CType(resources.GetObject("OText.Image"), System.Drawing.Image)
+        Me.OText.InitialImage = Nothing
+        Me.OText.Location = New System.Drawing.Point(645, 516)
+        Me.OText.Name = "OText"
+        Me.OText.Size = New System.Drawing.Size(120, 120)
+        Me.OText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.OText.TabIndex = 64
+        Me.OText.TabStop = False
         '
-        'YArrow
+        'CText
         '
-        Me.YArrow.ErrorImage = Nothing
-        Me.YArrow.Image = CType(resources.GetObject("YArrow.Image"), System.Drawing.Image)
-        Me.YArrow.InitialImage = Nothing
-        Me.YArrow.Location = New System.Drawing.Point(138, 516)
-        Me.YArrow.Name = "YArrow"
-        Me.YArrow.Size = New System.Drawing.Size(120, 120)
-        Me.YArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.YArrow.TabIndex = 63
-        Me.YArrow.TabStop = False
+        Me.CText.ErrorImage = Nothing
+        Me.CText.Image = CType(resources.GetObject("CText.Image"), System.Drawing.Image)
+        Me.CText.InitialImage = Nothing
+        Me.CText.Location = New System.Drawing.Point(519, 516)
+        Me.CText.Name = "CText"
+        Me.CText.Size = New System.Drawing.Size(120, 120)
+        Me.CText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.CText.TabIndex = 63
+        Me.CText.TabStop = False
         '
-        'GArrow
+        'BText
         '
-        Me.GArrow.ErrorImage = Nothing
-        Me.GArrow.Image = CType(resources.GetObject("GArrow.Image"), System.Drawing.Image)
-        Me.GArrow.InitialImage = Nothing
-        Me.GArrow.Location = New System.Drawing.Point(12, 516)
-        Me.GArrow.Name = "GArrow"
-        Me.GArrow.Size = New System.Drawing.Size(120, 120)
-        Me.GArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.GArrow.TabIndex = 62
-        Me.GArrow.TabStop = False
+        Me.BText.ErrorImage = Nothing
+        Me.BText.Image = CType(resources.GetObject("BText.Image"), System.Drawing.Image)
+        Me.BText.InitialImage = Nothing
+        Me.BText.Location = New System.Drawing.Point(393, 516)
+        Me.BText.Name = "BText"
+        Me.BText.Size = New System.Drawing.Size(120, 120)
+        Me.BText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.BText.TabIndex = 62
+        Me.BText.TabStop = False
         '
         'RText
         '
         Me.RText.ErrorImage = Nothing
         Me.RText.Image = CType(resources.GetObject("RText.Image"), System.Drawing.Image)
         Me.RText.InitialImage = Nothing
-        Me.RText.Location = New System.Drawing.Point(645, 390)
+        Me.RText.Location = New System.Drawing.Point(267, 516)
         Me.RText.Name = "RText"
         Me.RText.Size = New System.Drawing.Size(120, 120)
         Me.RText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -277,7 +307,7 @@ Partial Class frmImages
         Me.YText.ErrorImage = Nothing
         Me.YText.Image = CType(resources.GetObject("YText.Image"), System.Drawing.Image)
         Me.YText.InitialImage = Nothing
-        Me.YText.Location = New System.Drawing.Point(519, 390)
+        Me.YText.Location = New System.Drawing.Point(141, 516)
         Me.YText.Name = "YText"
         Me.YText.Size = New System.Drawing.Size(120, 120)
         Me.YText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -289,7 +319,7 @@ Partial Class frmImages
         Me.GText.ErrorImage = Nothing
         Me.GText.Image = CType(resources.GetObject("GText.Image"), System.Drawing.Image)
         Me.GText.InitialImage = Nothing
-        Me.GText.Location = New System.Drawing.Point(393, 390)
+        Me.GText.Location = New System.Drawing.Point(15, 516)
         Me.GText.Name = "GText"
         Me.GText.Size = New System.Drawing.Size(120, 120)
         Me.GText.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -584,11 +614,206 @@ Partial Class frmImages
         Me.Dot.TabIndex = 72
         Me.Dot.TabStop = False
         '
+        'BMarker
+        '
+        Me.BMarker.ErrorImage = Nothing
+        Me.BMarker.Image = CType(resources.GetObject("BMarker.Image"), System.Drawing.Image)
+        Me.BMarker.InitialImage = Nothing
+        Me.BMarker.Location = New System.Drawing.Point(393, 390)
+        Me.BMarker.Name = "BMarker"
+        Me.BMarker.Size = New System.Drawing.Size(120, 120)
+        Me.BMarker.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.BMarker.TabIndex = 73
+        Me.BMarker.TabStop = False
+        '
+        'CMarker
+        '
+        Me.CMarker.ErrorImage = Nothing
+        Me.CMarker.Image = CType(resources.GetObject("CMarker.Image"), System.Drawing.Image)
+        Me.CMarker.InitialImage = Nothing
+        Me.CMarker.Location = New System.Drawing.Point(519, 390)
+        Me.CMarker.Name = "CMarker"
+        Me.CMarker.Size = New System.Drawing.Size(120, 120)
+        Me.CMarker.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.CMarker.TabIndex = 74
+        Me.CMarker.TabStop = False
+        '
+        'OMarker
+        '
+        Me.OMarker.ErrorImage = Nothing
+        Me.OMarker.Image = CType(resources.GetObject("OMarker.Image"), System.Drawing.Image)
+        Me.OMarker.InitialImage = Nothing
+        Me.OMarker.Location = New System.Drawing.Point(645, 390)
+        Me.OMarker.Name = "OMarker"
+        Me.OMarker.Size = New System.Drawing.Size(120, 120)
+        Me.OMarker.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.OMarker.TabIndex = 75
+        Me.OMarker.TabStop = False
+        '
+        'Orange
+        '
+        Me.Orange.ErrorImage = Nothing
+        Me.Orange.Image = CType(resources.GetObject("Orange.Image"), System.Drawing.Image)
+        Me.Orange.InitialImage = Nothing
+        Me.Orange.Location = New System.Drawing.Point(645, 642)
+        Me.Orange.Name = "Orange"
+        Me.Orange.Size = New System.Drawing.Size(120, 120)
+        Me.Orange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Orange.TabIndex = 81
+        Me.Orange.TabStop = False
+        '
+        'Cyan
+        '
+        Me.Cyan.ErrorImage = Nothing
+        Me.Cyan.Image = CType(resources.GetObject("Cyan.Image"), System.Drawing.Image)
+        Me.Cyan.InitialImage = Nothing
+        Me.Cyan.Location = New System.Drawing.Point(519, 642)
+        Me.Cyan.Name = "Cyan"
+        Me.Cyan.Size = New System.Drawing.Size(120, 120)
+        Me.Cyan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Cyan.TabIndex = 80
+        Me.Cyan.TabStop = False
+        '
+        'Blue
+        '
+        Me.Blue.ErrorImage = Nothing
+        Me.Blue.Image = CType(resources.GetObject("Blue.Image"), System.Drawing.Image)
+        Me.Blue.InitialImage = Nothing
+        Me.Blue.Location = New System.Drawing.Point(393, 642)
+        Me.Blue.Name = "Blue"
+        Me.Blue.Size = New System.Drawing.Size(120, 120)
+        Me.Blue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Blue.TabIndex = 79
+        Me.Blue.TabStop = False
+        '
+        'Red
+        '
+        Me.Red.ErrorImage = Nothing
+        Me.Red.Image = CType(resources.GetObject("Red.Image"), System.Drawing.Image)
+        Me.Red.InitialImage = Nothing
+        Me.Red.Location = New System.Drawing.Point(267, 642)
+        Me.Red.Name = "Red"
+        Me.Red.Size = New System.Drawing.Size(120, 120)
+        Me.Red.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Red.TabIndex = 78
+        Me.Red.TabStop = False
+        '
+        'Yellow
+        '
+        Me.Yellow.ErrorImage = Nothing
+        Me.Yellow.Image = CType(resources.GetObject("Yellow.Image"), System.Drawing.Image)
+        Me.Yellow.InitialImage = Nothing
+        Me.Yellow.Location = New System.Drawing.Point(141, 642)
+        Me.Yellow.Name = "Yellow"
+        Me.Yellow.Size = New System.Drawing.Size(120, 120)
+        Me.Yellow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Yellow.TabIndex = 77
+        Me.Yellow.TabStop = False
+        '
+        'Green
+        '
+        Me.Green.ErrorImage = Nothing
+        Me.Green.Image = CType(resources.GetObject("Green.Image"), System.Drawing.Image)
+        Me.Green.InitialImage = Nothing
+        Me.Green.Location = New System.Drawing.Point(12, 642)
+        Me.Green.Name = "Green"
+        Me.Green.Size = New System.Drawing.Size(120, 120)
+        Me.Green.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Green.TabIndex = 76
+        Me.Green.TabStop = False
+        '
+        'RArrow
+        '
+        Me.RArrow.ErrorImage = Nothing
+        Me.RArrow.Image = CType(resources.GetObject("RArrow.Image"), System.Drawing.Image)
+        Me.RArrow.InitialImage = Nothing
+        Me.RArrow.Location = New System.Drawing.Point(267, 768)
+        Me.RArrow.Name = "RArrow"
+        Me.RArrow.Size = New System.Drawing.Size(120, 120)
+        Me.RArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.RArrow.TabIndex = 84
+        Me.RArrow.TabStop = False
+        '
+        'YArrow
+        '
+        Me.YArrow.ErrorImage = Nothing
+        Me.YArrow.Image = CType(resources.GetObject("YArrow.Image"), System.Drawing.Image)
+        Me.YArrow.InitialImage = Nothing
+        Me.YArrow.Location = New System.Drawing.Point(141, 768)
+        Me.YArrow.Name = "YArrow"
+        Me.YArrow.Size = New System.Drawing.Size(120, 120)
+        Me.YArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.YArrow.TabIndex = 83
+        Me.YArrow.TabStop = False
+        '
+        'GArrow
+        '
+        Me.GArrow.ErrorImage = Nothing
+        Me.GArrow.Image = CType(resources.GetObject("GArrow.Image"), System.Drawing.Image)
+        Me.GArrow.InitialImage = Nothing
+        Me.GArrow.Location = New System.Drawing.Point(15, 768)
+        Me.GArrow.Name = "GArrow"
+        Me.GArrow.Size = New System.Drawing.Size(120, 120)
+        Me.GArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.GArrow.TabIndex = 82
+        Me.GArrow.TabStop = False
+        '
+        'OArrow
+        '
+        Me.OArrow.ErrorImage = Nothing
+        Me.OArrow.Image = CType(resources.GetObject("OArrow.Image"), System.Drawing.Image)
+        Me.OArrow.InitialImage = Nothing
+        Me.OArrow.Location = New System.Drawing.Point(645, 768)
+        Me.OArrow.Name = "OArrow"
+        Me.OArrow.Size = New System.Drawing.Size(120, 120)
+        Me.OArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.OArrow.TabIndex = 87
+        Me.OArrow.TabStop = False
+        '
+        'CArrow
+        '
+        Me.CArrow.ErrorImage = Nothing
+        Me.CArrow.Image = CType(resources.GetObject("CArrow.Image"), System.Drawing.Image)
+        Me.CArrow.InitialImage = Nothing
+        Me.CArrow.Location = New System.Drawing.Point(519, 768)
+        Me.CArrow.Name = "CArrow"
+        Me.CArrow.Size = New System.Drawing.Size(120, 120)
+        Me.CArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.CArrow.TabIndex = 86
+        Me.CArrow.TabStop = False
+        '
+        'BArrow
+        '
+        Me.BArrow.ErrorImage = Nothing
+        Me.BArrow.Image = CType(resources.GetObject("BArrow.Image"), System.Drawing.Image)
+        Me.BArrow.InitialImage = Nothing
+        Me.BArrow.Location = New System.Drawing.Point(393, 768)
+        Me.BArrow.Name = "BArrow"
+        Me.BArrow.Size = New System.Drawing.Size(120, 120)
+        Me.BArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.BArrow.TabIndex = 85
+        Me.BArrow.TabStop = False
+        '
         'frmImages
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1036, 657)
+        Me.ClientSize = New System.Drawing.Size(1036, 940)
+        Me.Controls.Add(Me.OArrow)
+        Me.Controls.Add(Me.CArrow)
+        Me.Controls.Add(Me.BArrow)
+        Me.Controls.Add(Me.RArrow)
+        Me.Controls.Add(Me.YArrow)
+        Me.Controls.Add(Me.GArrow)
+        Me.Controls.Add(Me.Orange)
+        Me.Controls.Add(Me.Cyan)
+        Me.Controls.Add(Me.Blue)
+        Me.Controls.Add(Me.Red)
+        Me.Controls.Add(Me.Yellow)
+        Me.Controls.Add(Me.Green)
+        Me.Controls.Add(Me.OMarker)
+        Me.Controls.Add(Me.CMarker)
+        Me.Controls.Add(Me.BMarker)
         Me.Controls.Add(Me.Dot)
         Me.Controls.Add(Me.BlueStar)
         Me.Controls.Add(Me.Delete)
@@ -597,9 +822,9 @@ Partial Class frmImages
         Me.Controls.Add(Me.Nederlands)
         Me.Controls.Add(Me.English)
         Me.Controls.Add(Me.Language)
-        Me.Controls.Add(Me.RArrow)
-        Me.Controls.Add(Me.YArrow)
-        Me.Controls.Add(Me.GArrow)
+        Me.Controls.Add(Me.OText)
+        Me.Controls.Add(Me.CText)
+        Me.Controls.Add(Me.BText)
         Me.Controls.Add(Me.RText)
         Me.Controls.Add(Me.YText)
         Me.Controls.Add(Me.GText)
@@ -643,9 +868,9 @@ Partial Class frmImages
         CType(Me.Nederlands, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.English, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Language, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RArrow, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.YArrow, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GArrow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OText, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CText, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BText, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RText, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.YText, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GText, System.ComponentModel.ISupportInitialize).EndInit()
@@ -673,6 +898,21 @@ Partial Class frmImages
         CType(Me.WQueen, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WKing, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Dot, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BMarker, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CMarker, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OMarker, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Orange, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Cyan, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Blue, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Red, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Yellow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Green, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RArrow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.YArrow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GArrow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OArrow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CArrow, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BArrow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -686,9 +926,9 @@ Partial Class frmImages
     Friend WithEvents Nederlands As PictureBox
     Friend WithEvents English As PictureBox
     Friend WithEvents Language As PictureBox
-    Friend WithEvents RArrow As PictureBox
-    Friend WithEvents YArrow As PictureBox
-    Friend WithEvents GArrow As PictureBox
+    Friend WithEvents OText As PictureBox
+    Friend WithEvents CText As PictureBox
+    Friend WithEvents BText As PictureBox
     Friend WithEvents RText As PictureBox
     Friend WithEvents YText As PictureBox
     Friend WithEvents GText As PictureBox
@@ -716,4 +956,19 @@ Partial Class frmImages
     Friend WithEvents WQueen As PictureBox
     Friend WithEvents WKing As PictureBox
     Friend WithEvents Dot As PictureBox
+    Friend WithEvents BMarker As PictureBox
+    Friend WithEvents CMarker As PictureBox
+    Friend WithEvents OMarker As PictureBox
+    Friend WithEvents Orange As PictureBox
+    Friend WithEvents Cyan As PictureBox
+    Friend WithEvents Blue As PictureBox
+    Friend WithEvents Red As PictureBox
+    Friend WithEvents Yellow As PictureBox
+    Friend WithEvents Green As PictureBox
+    Friend WithEvents RArrow As PictureBox
+    Friend WithEvents YArrow As PictureBox
+    Friend WithEvents GArrow As PictureBox
+    Friend WithEvents OArrow As PictureBox
+    Friend WithEvents CArrow As PictureBox
+    Friend WithEvents BArrow As PictureBox
 End Class

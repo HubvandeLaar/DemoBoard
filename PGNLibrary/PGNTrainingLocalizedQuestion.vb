@@ -110,4 +110,9 @@ Public Class PGNTrainingLocalizedQuestion
         MyBase.Finalize()
     End Sub
 
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return Me.PGNString
+    End Function
+
 End Class

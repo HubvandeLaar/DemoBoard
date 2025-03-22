@@ -1,7 +1,6 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
-Imports ChessMaterials
 Imports System.Xml.Serialization
 
 <XmlType()>
@@ -239,7 +238,7 @@ Public Class PGNHalfMoves
                                                  VariantLevel, VariantNumber(VariantLevel),
                                                  pRaiseEvent:=False)
                         CurrentHalfMove.Index = Me.Count
-                        SavedComment = "" : MoveText = "" : Color = Opponent(Color)
+                        SavedComment = "" : MoveText = "" : Color = Color.Opponent
                         If UBound(VariantNumber) <> VariantLevel Then ReDim Preserve VariantNumber(VariantLevel) 'Causes reset of the lower levels when a move at higher level is found
                         P = Q
 
@@ -874,6 +873,11 @@ Public Class PGNHalfMoves
             Debug.Print(Space(3 * Move.VariantLevel) & Move.VariantNumber & "  " & Move.ToString())
         Next
     End Sub
+
+    Public Overrides Function ToString() As String
+        'For debugging puposes 
+        Return Me.XPGNString
+    End Function
 
     'Private Methods and Functions 
 

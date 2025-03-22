@@ -401,25 +401,24 @@ Public Class PGNHalfMove
         If Me.Color = ChessColor.UNKNOWN Then
             Me.Color = pChessBoard.ActiveColor
         End If
-        FromField = pChessBoard.Fields(If(Me.Color = WHITE, "e1", "e8"))
+        FromField = pChessBoard(If(Me.Color = WHITE, "e1", "e8"))
         If Castling Like "?-?" Then
-            Return New BoardMove(FromField.Piece, FromField.Name, If(Me.Color = WHITE, "g1", "g8"), pCastle:=True)
+            Return New BoardMove(FromField.Piece, FromField.Name, If(Me.Color = WHITE, "g1", "g8"))
         ElseIf Castling Like "?-?-?" Then
-            Return New BoardMove(FromField.Piece, FromField.Name, If(Me.Color = WHITE, "c1", "c8"), pCastle:=True)
+            Return New BoardMove(FromField.Piece, FromField.Name, If(Me.Color = WHITE, "c1", "c8"))
         End If
 
         If Me.Piece.Color = ChessColor.UNKNOWN Then
             Me.Piece.Color = pChessBoard.ActiveColor
         End If
         Field = pChessBoard.FindPiece(Me.Piece, FromColumnName, FromRowName, Me.ToFieldName)
-        Return New BoardMove(Me.Piece, Field.Name, Me.ToFieldName, pCastle:=False,
-                                                                   pEnPassant:=(Me.Rest Like "*ep*"),
+        Return New BoardMove(Me.Piece, Field.Name, Me.ToFieldName, pEnPassant:=(Me.Rest Like "*ep*"),
                                                                    pPromotionPiece:=PromotionPiece())
     End Function
 
     Public Overrides Function ToString() As String
         'For debugging puposes 
-        Return MoveNrString(True) & Me.MoveText
+        Return MoveNrString(True) & Me.MoveText()
     End Function
 
     Public Sub New(Optional pHalfMoves As PGNHalfMoves = Nothing, Optional pCommentBefore As String = "",
@@ -456,15 +455,15 @@ Public Class PGNHalfMove
 
         Me.Rest = ""
         If pPiece.Type = PieceType.PAWN _
-        And pToFieldName = pChessBoard.EpFieldName Then
+        AndAlso pToFieldName = pChessBoard.EpFieldName Then
             Me.Rest = Me.Rest & "ep"
         End If
         If pPiece.Type = PieceType.PAWN _
-        And pPromotionPiece IsNot Nothing Then
+        AndAlso pPromotionPiece IsNot Nothing Then
             Me.Rest = Me.Rest & pPromotionPiece.MoveName()
         End If
-        If King.InCheck(Opponent(pPiece.Color), pChessBoard) = True Then
-            If King.CheckMate(Opponent(pPiece.Color), pChessBoard) = True Then
+        If pChessBoard.InCheck(pPiece.Color.Opponent) = True Then
+            If pChessBoard.CheckMate(pPiece.Color.Opponent) = True Then
                 Me.Rest = Me.Rest & "#"
             Else
                 Me.Rest = Me.Rest & "+"
@@ -536,4 +535,5 @@ Public Class PGNHalfMove
 
         MyBase.Finalize()
     End Sub
+
 End Class

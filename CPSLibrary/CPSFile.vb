@@ -1,10 +1,9 @@
 ﻿Option Explicit On
 
 Imports System.Xml.Serialization
-Imports ChessGlobals
 Imports ChessGlobals.ChessColor
-Imports PGNLibrary
 Imports ChessMaterials
+Imports PGNLibrary
 
 <XmlType("File")>
 Public Class CPSFile
@@ -34,7 +33,7 @@ Public Class CPSFile
             PGNGame.Tags.Add("Title", Position.Name)
             PGNGame.Tags.Add("Memo", Position.Description)
             For Each Arrow As CPSArrow In Position.Arrows
-                Dim NewArrow = New Arrow(Arrow.PGNColor(), Arrow.FieldName(Arrow.StartPoint), Arrow.FieldName(Arrow.EndPoint))
+                Dim NewArrow = New Arrow(Arrow.PGNColor(), ChessField.FieldName(Arrow.StartPoint), ChessField.FieldName(Arrow.EndPoint))
                 If NewArrow.FromFieldName = NewArrow.ToFieldName Then Continue For
                 If PGNGame.HalfMoves.FENComment Is Nothing Then
                     PGNGame.HalfMoves.FENComment = New PGNComment("")
@@ -71,17 +70,17 @@ Public Class CPSFile
                         End If
                         PGNGame.HalfMoves.FENComment.MarkerList.Add(New Marker("*", Field.Name))
                     Case "King"
-                        ChessBoard.Fields(Field.Name).Piece = New King(If(Field.Color = "White", WHITE, BLACK))
+                        ChessBoard(Field.Name).Piece = New King(If(Field.Color = "White", WHITE, BLACK))
                     Case "Queen"
-                        ChessBoard.Fields(Field.Name).Piece = New Queen(If(Field.Color = "White", WHITE, BLACK))
+                        ChessBoard(Field.Name).Piece = New Queen(If(Field.Color = "White", WHITE, BLACK))
                     Case "Rook"
-                        ChessBoard.Fields(Field.Name).Piece = New Rook(If(Field.Color = "White", WHITE, BLACK))
+                        ChessBoard(Field.Name).Piece = New Rook(If(Field.Color = "White", WHITE, BLACK))
                     Case "Bishop"
-                        ChessBoard.Fields(Field.Name).Piece = New Bishop(If(Field.Color = "White", WHITE, BLACK))
+                        ChessBoard(Field.Name).Piece = New Bishop(If(Field.Color = "White", WHITE, BLACK))
                     Case "Knight"
-                        ChessBoard.Fields(Field.Name).Piece = New Knight(If(Field.Color = "White", WHITE, BLACK))
+                        ChessBoard(Field.Name).Piece = New Knight(If(Field.Color = "White", WHITE, BLACK))
                     Case "Pawn"
-                        ChessBoard.Fields(Field.Name).Piece = New Pawn(If(Field.Color = "White", WHITE, BLACK))
+                        ChessBoard(Field.Name).Piece = New Pawn(If(Field.Color = "White", WHITE, BLACK))
                 End Select
             Next Field
             PGNGame.Tags.Add("FEN", ChessBoard.FEN)

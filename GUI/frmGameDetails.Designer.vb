@@ -31,10 +31,10 @@ Partial Class frmGameDetails
         Me.lblEvent = New System.Windows.Forms.Label()
         Me.lblWhiteELO = New System.Windows.Forms.Label()
         Me.lblBlackELO = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label4
@@ -77,25 +77,25 @@ Partial Class frmGameDetails
         resources.ApplyResources(Me.lblBlackELO, "lblBlackELO")
         Me.lblBlackELO.Name = "lblBlackELO"
         '
-        'PictureBox1
-        '
-        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.TabStop = False
-        '
         'PictureBox2
         '
         resources.ApplyResources(Me.PictureBox2, "PictureBox2")
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.TabStop = False
         '
+        'PictureBox1
+        '
+        resources.ApplyResources(Me.PictureBox1, "PictureBox1")
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.TabStop = False
+        '
         'frmGameDetails
         '
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         resources.ApplyResources(Me, "$this")
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ControlBox = False
-        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.lblBlackELO)
         Me.Controls.Add(Me.lblWhiteELO)
         Me.Controls.Add(Me.lblEvent)
@@ -107,8 +107,8 @@ Partial Class frmGameDetails
         Me.Name = "frmGameDetails"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -121,6 +121,6 @@ Partial Class frmGameDetails
     Friend WithEvents lblEvent As Label
     Friend WithEvents lblWhiteELO As Label
     Friend WithEvents lblBlackELO As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

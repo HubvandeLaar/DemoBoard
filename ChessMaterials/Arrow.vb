@@ -18,6 +18,9 @@ Public Class Arrow
                 Case "G" : Return "GArrow"
                 Case "Y" : Return "YArrow"
                 Case "R" : Return "RArrow"
+                Case "B" : Return "BArrow"
+                Case "C" : Return "CArrow"
+                Case "O" : Return "OArrow"
                 Case Else : Return ""
             End Select
         End Get
@@ -30,6 +33,9 @@ Public Class Arrow
                 Case "G" : Return Brushes.Green
                 Case "Y" : Return Brushes.Yellow
                 Case "R" : Return Brushes.Red
+                Case "B" : Return Brushes.Blue
+                Case "C" : Return Brushes.Cyan
+                Case "O" : Return Brushes.Orange
                 Case Else : Return Brushes.Black
             End Select
         End Get

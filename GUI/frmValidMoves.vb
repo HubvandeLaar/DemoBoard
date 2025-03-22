@@ -40,7 +40,7 @@ Public Class frmValidMoves
 
     Private Sub UpdateValidMoves(pFEN As String, pPiece As ChessPiece, pFromFieldName As String)
         Dim Board As New ChessBoard(pFEN)
-        Board.Fields(pFromFieldName).Piece = pPiece
+        Board(pFromFieldName).Piece = pPiece
         lstValidMoves.Items.Clear()
         gMoves = pPiece.PossibleMoves(pFromFieldName, Board)
         Me.ListMoves()

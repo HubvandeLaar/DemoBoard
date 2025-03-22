@@ -70,10 +70,17 @@ Public Class Pawn
         End Get
     End Property
 
+    <XmlIgnore>
+    Public Overrides ReadOnly Property Value As Integer
+        Get
+            Return 1
+        End Get
+    End Property
+
     Public Overrides Function PossibleMoves(pFromFieldName As String, pChessBoard As ChessBoard) As List(Of BoardMove)
         Dim Moves As New List(Of BoardMove), ToField As ChessField
         Dim Move As BoardMove
-        Dim FromField As ChessField = pChessBoard.Fields(pFromFieldName)
+        Dim FromField As ChessField = pChessBoard(pFromFieldName)
 
         If FromField.Row = 1 _
         Or FromField.Row = 8 Then
@@ -83,48 +90,48 @@ Public Class Pawn
         'Promotion
         If FromField.Row = If(Me.Color = WHITE, 7, 2) Then
             'Promotion and Move straight Ahead
-            ToField = pChessBoard.Fields(FromField.Column, FromField.Row + If(Me.Color = WHITE, 1, -1))
+            ToField = pChessBoard(FromField.Column, FromField.Row + If(Me.Color = WHITE, 1, -1))
             If ToField.Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New QUEEN(Me.Color))
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Queen(Me.Color))
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Rook(Me.Color))
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Bishop(Me.Color))
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Knight(Me.Color))
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
 
             'Promotion and Capture Left Ahead
             If FromField.Column > 1 Then
-                ToField = pChessBoard.Fields(FromField.Column - 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
+                ToField = pChessBoard(FromField.Column - 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
                 If ToField.Piece IsNot Nothing Then
                     If ToField.Piece.Color <> Me.Color Then
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Queen(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Rook(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Bishop(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Knight(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                     End If
                 End If
             End If
 
             'Promotion and Çapture Right Ahead
             If FromField.Column < 8 Then
-                ToField = pChessBoard.Fields(FromField.Column + 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
+                ToField = pChessBoard(FromField.Column + 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
                 If ToField.Piece IsNot Nothing Then
                     If ToField.Piece.Color <> Me.Color Then
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Queen(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Rook(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Bishop(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                         Move = New BoardMove(Me, pFromFieldName, ToField.Name, pPromotionPiece:=New Knight(Me.Color))
-                        If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                     End If
                 End If
             End If
@@ -133,49 +140,49 @@ Public Class Pawn
         End If
 
         'Allways One-step Normal Move ahead
-        ToField = pChessBoard.Fields(FromField.Column, FromField.Row + If(Me.Color = WHITE, 1, -1))
+        ToField = pChessBoard(FromField.Column, FromField.Row + If(Me.Color = WHITE, 1, -1))
         If ToField.Piece Is Nothing Then
             Move = New BoardMove(Me, pFromFieldName, ToField.Name)
-            If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+            If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             'And somtimes Also Two steps ahead
             If FromField.Row = If(Me.Color = WHITE, 2, 7) Then
-                ToField = pChessBoard.Fields(FromField.Column, FromField.Row + If(Me.Color = WHITE, 2, -2))
+                ToField = pChessBoard(FromField.Column, FromField.Row + If(Me.Color = WHITE, 2, -2))
                 If ToField.Piece Is Nothing Then
                     Move = New BoardMove(Me, pFromFieldName, ToField.Name)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 End If
             End If
         End If
 
         'Capturing Left-Ahead
         If FromField.Column > 1 Then
-            ToField = pChessBoard.Fields(FromField.Column - 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
+            ToField = pChessBoard(FromField.Column - 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
             If ToField.Piece IsNot Nothing Then
                 If ToField.Piece.Color <> Me.Color Then
                     Move = New BoardMove(Me, pFromFieldName, ToField.Name)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 End If
             End If
         End If
 
         'Capturing Right-Ahead
         If FromField.Column < 8 Then
-            ToField = pChessBoard.Fields(FromField.Column + 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
+            ToField = pChessBoard(FromField.Column + 1, FromField.Row + If(Me.Color = WHITE, 1, -1))
             If ToField.Piece IsNot Nothing Then
                 If ToField.Piece.Color <> Me.Color Then
                     Move = New BoardMove(Me, pFromFieldName, ToField.Name)
-                    If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
                 End If
             End If
         End If
 
         'En-Passant capturing
         If pChessBoard.EpFieldName <> "" Then
-            ToField = pChessBoard.Fields(pChessBoard.EpFieldName)
+            ToField = pChessBoard(pChessBoard.EpFieldName)
             If Math.Abs(FromField.Column - ToField.Column) = 1 _
             And FromField.Row + If(Me.Color = WHITE, 1, -1) = ToField.Column Then
                 Move = New BoardMove(Me, pFromFieldName, ToField.Name, pEnPassant:=True)
-                If King.InCheckAfterMove(Move, Me.Color, pChessBoard) = False Then Moves.Add(Move)
+                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If
         End If
 
