@@ -4,17 +4,17 @@
   <description asmv2:publisher="Frisselstein BV" asmv2:product="DemoBoard" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="DemoBoard.exe.manifest" size="33264">
+    <dependentAssembly dependencyType="install" codebase="DemoBoard.exe.manifest" size="37460">
       <assemblyIdentity name="DemoBoard.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/OcNG2p5vtfbUie7eHF33Yf93AAGgNMwXSTLjXLwEgk=</dsig:DigestValue>
+        <dsig:DigestValue>RSEJ0nrBot2Im1U3eTZB0bvlf6wlBThhyI3NvFtCYg4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -1,0 +1,82 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pat"]
+[Memo "Eerst de koning afsnijden.
+En dan is het ineens Pat.
+Dat is jammer, want Zwart kan makkelijk winnen !"]
+[FEN "6k1/8/8/1q6/r7/8/3K4/8 b KQkq - 0 0"]
+
+1... Qb3 2. Kc1 Ra2
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pat"]
+[Memo "Als Zwart de pion op g6 slaat of blokkeert met Kg7 is het Pat. "]
+[FEN "K7/P1q4k/6P1/8/8/8/8/8 w KQkq - 0 0"]
+
+1... Kh6 2. g7+ Qc7-c8#
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pat"]
+[Memo "Zwart staat een stuk sterker.
+Maar f2 en h2 leiden alletwee tot Pat !
+Beter om de h-pion weg te geven en de f-pion te laten promoveren. "]
+[FEN "8/8/8/8/8/5pkp/8/7K w KQkq - 0 0"]
+
+1... Kf2 2. Kh2 Ke2 3. Kxh3
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pat"]
+[Memo "Wit staat veel sterker.
+Hoe kunnen we Pat voorkomen ?"]
+[FEN "2k5/2P5/3K4/8/8/8/8/7B w KQkq - 0 0"]
+
+1. Bb7+ Kxb7 2. Kd7
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pat"]
+[Memo "Waar staat de witte koning Pat ?"]
+[FEN "8/8/b4p2/4r3/8/8/1k6/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Pat"]
+[Memo "Waar staat de wite koning Pat ?
+Kijk wel naar het hele bord"]
+[FEN "1q4bk/8/8/8/8/8/8/8 w KQkq - 0 0"]
+
+

@@ -1,0 +1,74 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Shinkman Stelling"]
+[Memo "William Antony Shinkman (1847 - 1933) was een van de genieën uit de begintijd van de moderne schaakproblemen.
+Hij maakte een paar duizend problemen, maar dit is zijn bekenste (uit 1887).
+
+De vraag is: "Hoe geeft Wit mat in 8 ?""]
+[FEN "k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 0"]
+
+1. O-O-O Kxa7 2. Rd8 Kxa6 3. Rd7 Kxa5 4. Rd6 Kxa4 5. Rd5 Kxa3 6. Rd4 Kxa2 7.
+Rd3 Ka1 8. Ra3+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Shinkman Stelling"]
+[Memo "Pas in 1929 bedacht iemand een andere oplossing voor dit probleem.
+"]
+[FEN "k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 0"]
+
+1. Kd2 Kxa7 2. Kc3 Kxa6 3. Kb4 Kb7 4. Kc5 Ka7 5. Kc6 Ka8 6. Rf1 Ka7 7. Rf8 Ka6
+8. Ra8+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Shinkman Stelling"]
+[Memo "Heel lang werd er aangenomen dat de Shinkman stelling een ongeldige stelling zou zijn. 
+
+Pas in 2001 bedacht Bader Al-Hajiri uit Koeweit met behulp van sterke computers de kortst mogelijke partij om tot deze stelling te komen.
+
+Bedenk even dat er veel materiaal nodig is om de witte pionnen daar te krijgen.
+a3:1, a4:2, a5:3, a6:4 en a7:5 dat zijn 15 stukken of pionnen. De koning mag niet; dus alles moet gebruikt worden ! Zelfs de h-pion die door te promoveren pas nuttig kan worden !
+
+Na een maand puzzelen had Bader Al-Hajiri een oplossing in 51 zetten. Dat verbeterde hij al snel naar 43 zetten, en dat was het absolute minimum.  Een week later ging dit naar 35 zetten. Hij was ervan overtuigd dat dit het absolute minimum was.
+Maar een paar dagen later kwam hij met een oplossing in 34 zetten. Hij dacht dat hij droomde, maar het was echt waar !!!!
+
+Aldus Tim Krabbé
+
+"]
+[FEN "k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Shinkman Stelling"]
+[Memo "De partij van Al-Hajiri."]
+[FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"]
+
+1. g4 e5 2. Nh3 Ba3 3. bxa3 h5 4. Bb2 hxg4 5. Bc3 Rh4 6. Bd4 exd4 7. Nc3 dxc3
+8. dxc3 g3 9. Qd3 Rb4 10. Nf4 g5 11. h4 f5 12. h5 d5 13. h6 Bd7 14. h7 g2 15.
+h8B g1R 16. Bd4 Ba4 17. Rh4 Rg3 18. Bg2 gxf4 19. Be3 fxe3 20. Be4 fxe4 21. fxe3
+exd3 22. exd3 c5 23. Rc4 dxc4 24. dxc4 b5 25. cxb4 Qa5 26. cxb5 Na6 27. bxa5
+O-O-O 28. bxa6 Rd4 29. exd4 Rb3 30. cxb3 Ne7 31. bxa4 Nd5 32. dxc5 Nb6 33. cxb6
+Kb8 34. bxa7 Ka8
+

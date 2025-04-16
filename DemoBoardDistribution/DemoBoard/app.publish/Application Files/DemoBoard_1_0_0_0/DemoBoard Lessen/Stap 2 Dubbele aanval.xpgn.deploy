@@ -1,0 +1,265 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Even herhalen welke aanvallen we kennen:
+In Stap 2 noemen we dat AANVALSDOELEN.
+
+"]
+[FEN "8/1k6/8/8/8/1Q6/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "Koning"]
+[FEN "8/8/5r2/8/8/8/5K2/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "Hout"]
+[FEN "8/1b6/8/8/8/1Q6/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "Hout"]
+[FEN "8/8/5r2/8/8/8/5N2/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "Onvoldoende gedekt hout"]
+[FEN "1r6/1r6/8/8/2B5/1R6/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "Hout dat meer waard is"]
+[FEN "8/7p/6r1/4N3/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "Veld"]
+[FEN "6k1/5ppp/8/2Q5/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl Yc8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "Veld"]
+[FEN "8/8/8/8/r7/8/4n1PK/8 b KQkq - 0 0"]
+
+{[%csl Yh4]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Koning + Hout"]
+[FEN "5k2/8/5Q2/8/3r4/8/8/8 w KQkq - 0 0"]
+
+{[%cal Yf6f8, Yf6d4]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Koning + Hout"]
+[FEN "8/k7/8/2Q5/2b5/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Koning + Hout"]
+[FEN "8/8/8/8/6Nq/8/7K/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Waar kan de dame staan voor en goede dubbele aanval ?"]
+[FEN "8/5k2/8/2r5/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl .f2, .a7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "k2r4/8/8/8/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl .a5]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "8/8/8/8/7B/8/8/5K2 w KQkq - 0 0"]
+
+{[%csl .h1, .h3, .c4]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "6k1/8/8/6n1/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl .g6, .d8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "8/8/8/8/8/8/3R4/K7 b KQkq - 0 0"]
+
+{[%csl .c1, .e1, .a5]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Waar moet de dame naar toe ?"]
+[FEN "8/6k1/7p/4b3/7Q/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Waar moet de dame naar toe ?"]
+[FEN "8/5q2/8/8/8/7K/4R3/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Goede aanval op Hout + Hout"]
+[FEN "2n5/8/Q7/8/8/b7/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Ook een goede dubbele aanval,
+maar de stukken kunnen elkaar wel dekken.
+Toch gaat er één verloren !"]
+[FEN "7R/8/5q2/8/5N2/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbele Aanval"]
+[Memo "Wat is de beste zet voor zwart ?"]
+[FEN "6k1/5pp1/N7/1p2R3/3P4/8/5BPK/2q5 b KQkq - 0 0"]
+
+

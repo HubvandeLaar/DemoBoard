@@ -1,0 +1,123 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbelschaak"]
+[Memo "Het is niet nodig om eerst alle stukken te slaan en af te ruilen om mat te zetten.
+Mat zetten kan vaak al midden in de partij.
+Soms komen er onverwachte technieken bij kijken.  
+Hier kan je mat zetten met dubbelschaak."]
+[FEN "7k/7p/6b1/4R1p1/3B1r2/8/6K1/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Dubbelschaak"]
+[Memo "Het is alleen mogelijk om mat te zetten met dubbelschaak.
+Na elke andere paardzet volgt 2. Txf1 of 2. Lxf1.."]
+[FEN "8/6k1/8/5R2/8/7B/PP6/K3nr2 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Jager, Bewaker en Helper"]
+[Memo "Wit moet de Dame (jager) erbijhalen om mat te kunnen zetten."]
+[FEN "5rk1/q4p1p/1p3Bp1/8/7Q/P7/1P4P1/1K6 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Jager, Bewaker en Helper"]
+[Memo "Met 1. Td8+ wint wit natuurlijk het paard.
+En meestal kijk je dan niet verder, maar...
+Waar moet de jager heen om dadelijk mat te gaan zetten ? "]
+[FEN "2n3k1/2p4p/6pB/r1p5/1bP5/7K/1P4P1/3R4 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Jager, Bewaker en Helper"]
+[Memo "Hier hoeft alleen de Helper op zijn plaats komen om mat te zetten."]
+[FEN "5rk1/5p1p/4bQ2/8/8/6N1/5P2/6K1 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Jager, Bewaker en Helper"]
+[Memo "Het matbeeld is hier wat moeilijker.
+Toch valt op dat de witte koning in een benarde positie zit.
+De helper moet eerst op zijn plaats, voordat de jager mat kan zetten."]
+[FEN "8/P5bk/7p/R7/4p2p/N6P/6KP/2r5 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Jager, Bewaker en Helper"]
+[Memo "Hier lijkt Dh8+ verleidelijk.
+Want het liefst zetten we eerst schaak en zien dan later wel of het mat wordt.
+In dit gevan kan de bewaker eerst op zijn plaats gezet worden."]
+[FEN "1r3k2/5ppQ/1q1p1p2/2pP4/8/5P2/3R2K1/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Jager, Bewaker en Helper"]
+[Memo "Vaak wordt hier Dh1+ gespeeld, en niet verder gekeken.
+Ook een pion kan een mooie bewaker zijn !"]
+[FEN "1k5r/1pp2p2/1p6/3B4/6pq/1Q2P3/6P1/5RK1 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Rolverwisseling"]
+[Memo "Mat met twee torens is niet altijd even simpel.
+Bij het afrollen van de torens om de koning naar de kant te dwingen, worden de torens één voor één gespeeld.
+Nu zou de toren op b5 aan de beurt zijn.
+Wat we nu ook willen is dat de koning van c8 af gaat.
+Daarvoor moeten we een soort wachtzet doen."]
+[FEN "2k5/8/R7/1R6/8/8/8/5K2 w KQkq - 0 0"]
+
+

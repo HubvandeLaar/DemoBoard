@@ -1,8 +1,14 @@
 To Do Lijstje
-	Quiz/Multiple Choice eruit halen; is niet geimplementeerd !!!	
+	DemoBoard Lessen en Lessen in DemoBoard...
 	Analyse van de Partij (Feedback op de Stelling (met Niveau))
 
 Aanpassingen
+V	File Open Dialog with initial directory set to folder of last used RecentFile
+V	RecentFiles tonen bij opstarten
+V	Pijltjes gebruiken om naar de volgende/vorige partij te gaan
+V	Bij Grafics ook toevoegen en weghalen met een teken
+V	Bij toevoegen stukken op bord: Met L loper plaatsen, maar ook weer weghalen
+V	Changed Open file to show all *.xpgn, *.pgn, *.cps files
 V	Added colors (Blue, Cyan and Orange) to SetupToolbar, and reduced the Marker, Text and Arrow buttons
 V	Functions overgebracht naar ChessBoard
 V	Fields bij ChessBoard trekken

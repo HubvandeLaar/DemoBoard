@@ -1,0 +1,229 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Paardspel"]
+[Memo "Wie slaat als eerst alle pionnen.
+Alleen de paarden mogen zetten."]
+[FEN "1n6/8/8/pPpPpPpP/PpPpPpPp/8/8/1N6 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Paardspel"]
+[Memo "Wie slaat het eerst alle pionnen.
+Alleen de paarden mogen zetten.
+
+variant 1: Alleen de andere kleur, wie is het snelst klaar?
+
+
+variant 2: Als je het paard van de ander slaat heb je ook gewonnen"]
+[FEN "1n6/8/8/pppppppp/PPPPPPPP/8/8/1N6 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelletje omlopen"]
+[Memo "Om de beurt een zet doen.
+De stukken lopen met de klok mee,
+om de zwarte punten heen,
+totdat ze weer op hun positie terugkomen.
+Elkaar slaan mag niet."]
+[FEN "6rb/8/8/8/8/8/8/BR6 w KQkq - 0 0"]
+
+{[%csl .d3, .e3, .d4, .e4, .d5, .e5, .d6, .e6]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Paardenren"]
+[Memo "Wie is het eerst in de hoek van de ander.
+Paarden mogen elkaar niet slaan."]
+[FEN "7n/8/8/8/8/8/8/N7 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelletje met paarden"]
+[Memo "Wie slaat als eerst alle onverdedigde pionnen van de tegenstander"]
+[FEN "1n6/ppp5/8/8/8/8/PPP5/1N6 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelletje met 8 pionnen"]
+[Memo ""]
+[FEN "8/pppppppp/8/8/8/8/PPPPPPPP/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "1 Schipper mag ik overvaren"]
+[Memo "Probeer alle zwarte pionnen te vangen. Als zwart 1 pion aan de overkant krijgt heeft hij gewonnen"]
+[FEN "8/ppp1pppp/3p4/8/8/8/8/3Q4 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "2 Paardenrace"]
+[Memo "Wit probeert alle zwarte pionnen te vangen. Elke geslagen pion is een punt voor wit. Elke pion aan de overkant is een punt voor zwart"]
+[FEN "8/pppppppp/8/8/8/8/8/4N3 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Loper vangen"]
+[Memo "Moeilijke oefening.Wit probeert de Loper te vangen"]
+[FEN "5b2/8/8/8/8/8/8/R2Q3R w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "3 Vang het Paard"]
+[Memo "Probeer met de Dame het Paard te vangen"]
+[FEN "8/8/8/4n3/8/8/8/3Q4 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "4 Lopen met die Loper"]
+[Memo "Wit probeert alle pionnen  te vangen. Zwart wint als hij 1 pion aan de overkant krijgt"]
+[FEN "8/5ppp/8/8/8/8/8/5B2 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "5 Promotie"]
+[Memo "Wie als eerste een pion aan de overkant krijgt, die wint."]
+[FEN "5b2/pppppppp/8/8/8/8/PPPPPPPP/1N6 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "7 Vang het Paard (2)"]
+[Memo "Probeer het zwarte Paard te vangen"]
+[FEN "6n1/8/8/8/8/8/8/RNB5 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "8 Waar gaat die Koning heen"]
+[Memo "Wie krijgt als eerste een pion aan de overkant"]
+[FEN "3k4/ppp5/8/8/8/8/5PPP/4K3 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "9 Promotie (2)"]
+[Memo "breng een pion aan de overkant"]
+[FEN "6n1/8/8/8/8/8/3PPP2/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "10 Promotie (3)"]
+[Memo "Breng een pion aan de overkant"]
+[FEN "8/3r4/8/8/3P4/2P1P3/3P4/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "11 Zet mat (1)"]
+[Memo "Zet de zwarte Koning zo snel mogelijk mat. Tel de zetten"]
+[FEN "8/8/8/4k3/8/8/8/3QK3 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "12 Zet mat (2)"]
+[Memo "Zet de zwarte Koning zo snel mogelijk mat. Tel de zetten"]
+[FEN "8/8/8/4k3/8/8/8/R3K3 w KQkq - 0 0"]
+
+

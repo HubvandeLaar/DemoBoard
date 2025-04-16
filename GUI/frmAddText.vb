@@ -20,7 +20,7 @@ Public Class frmAddText
         End Get
     End Property
 
-    Public ReadOnly Property ColoureText() As String
+    Public ReadOnly Property ColouredText() As String
         Get
             Return txtText.Text
         End Get

@@ -1,0 +1,177 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Loop van de Pion"]
+[Memo "Eerste keer mag de pion 1 of 2 stapjes
+Anders alleen maar 1 stapje"]
+[FEN "8/3p4/8/8/7P/5P2/1P6/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl +b3, +b4, +f4, +h5]"]
+
+{[%csl +b3, +b4, +f4, +h5]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan met de Pion"]
+[Memo "De pion mag alleen schuin slaan"]
+[FEN "8/8/3p1p2/4P3/8/1r1n4/2P5/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl #c2, Ob3, +c3, Od3, +c4, #e5, Od6, +e6, Of6]"]
+
+{[%csl #c2, Ob3, +c3, Od3, +c4, #e5, Od6, +e6, Of6]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan"]
+[Memo ""]
+[FEN "8/8/2b5/8/8/8/2R5/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl #c2, Oc6][%cal Yc2c6]"]
+
+{[%csl #c2, Oc6][%cal Yc2c6]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan"]
+[Memo ""]
+[FEN "8/8/2b5/8/8/8/6N1/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Og2, #c6][%cal Yc6g2]"]
+
+{[%csl Og2, #c6][%cal Yc6g2]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan"]
+[Memo ""]
+[FEN "8/8/8/8/8/5nK1/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Of3, #g3][%cal Yg3f3]"]
+
+{[%csl Of3, #g3][%cal Yg3f3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan"]
+[Memo ""]
+[FEN "8/8/8/3r4/3pnb2/4N3/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl +d1, +f1, +c2, +g2, #e3, +c4, +g4, Od5, -f5]"]
+
+{[%csl +d1, +f1, +c2, +g2, #e3, +c4, +g4, Od5, -f5]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Wat kan het witte paard?"]
+[Memo ""]
+[FEN "8/8/8/4k3/3Rb1q1/3nNr2/2rRKnB1/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl #e3]"]
+
+{[%csl #e3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Veilig aanvallen"]
+[Memo ""]
+[FEN "r7/8/8/8/8/1Q6/8/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Veilig aanvallen"]
+[Memo ""]
+[FEN "8/4r3/8/7B/8/8/6R1/8 b KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Veilig aanvallen"]
+[Memo ""]
+[FEN "8/3r4/8/8/1n6/5B2/8/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Muntjes slaan"]
+[Memo "Sla veilig alle pionnen (vervangen door muntjes?) "]
+[FEN "3q2r1/8/8/P2PP2P/P2PP2P/8/8/1R1Q4 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvallen en verdedigen"]
+[Memo "De Dame probeert de zwarte stukken te pakken. Zwart moet zich verdedigen."]
+[FEN "8/1b5r/5n2/8/8/8/8/4Q3 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Loper vangen"]
+[Memo "Moeilijke oefening.Wit probeert de Loper te vangen"]
+[FEN "5b2/8/8/8/8/8/8/R2Q3R w KQkq - 0 0"]
+[FENGraphicals ""]
+
+

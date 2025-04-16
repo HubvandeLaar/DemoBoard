@@ -8,6 +8,7 @@ Imports ChessMaterials
 Imports PGNLibrary
 Imports CPSLibrary
 Imports System.ComponentModel
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
 
 Public Class frmMainForm
     Public WithEvents gfrmBoard As frmBoard
@@ -163,12 +164,12 @@ Public Class frmMainForm
             End If
         End If
 
-        Me.PGNFile = New PGNFile()
+        Me.OpenFile()
 
         gJournaling.Clear()
     End Sub
 
-    Private Sub mnuOpen_Click(pSender As Object, pArgs As EventArgs) Handles mnuOpen.Click
+    Public Sub mnuOpen_Click(pSender As Object, pArgs As EventArgs) Handles mnuOpen.Click
         Try
             Dim Dialog As New OpenFileDialog
 
@@ -179,33 +180,40 @@ Public Class frmMainForm
             End If
 
             Dialog.AutoUpgradeEnabled = True
-            Dialog.DefaultExt = "xpgn"
             Dialog.Filter = "Chess files (*.xpgn, *.pgn, *.cps)|*.xpgn; *.pgn; *.cps|Extended PGN files (*.xpgn)|*.xpgn|PGN files (*.pgn)|*.pgn|ChesserDemo files (*.cps)|*.cps|All files (*.*)|*.*"
             Dialog.FilterIndex = 1
-            Dialog.InitialDirectory = CurrentLessonsFolder
-            'Dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\DemoBoard Lessen\"
+            Dialog.InitialDirectory = modRecentFiles.LastFolder()
             Dialog.Multiselect = False
             Dialog.Title = MessageText("OpenPGNFile")
             Dialog.ShowDialog(Me)
             If Dialog.FileName <> "" Then
-                Cursor = Cursors.WaitCursor
-                Application.DoEvents()
-                If Dialog.FileName Like "*.cps" Then
-                    Dim CPSFile As New CPSFile(Dialog.FileName)
-                    Me.Text = CPSFile.FileName
-                    Me.PGNFile = New PGNFile With {.PGNGames = CPSFile.ConvertToPGN()}
-                Else
-                    Me.PGNFile = New PGNFile(Dialog.FileName)
-                    Me.Text = Me.PGNFile.FileName
-                End If
-
-                gJournaling.Clear()
-                Cursor = Cursors.Default
+                OpenFile(Dialog.FileName)
             End If
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
         End Try
+    End Sub
+
+    Public Sub OpenFile(Optional pFileName As String = "")
+        Cursor = Cursors.WaitCursor
+        Application.DoEvents()
+        If pFileName = "" Then
+            Me.PGNFile = New PGNFile()
+        ElseIf pFileName Like "*.cps" Then
+            Dim CPSFile As New CPSFile(pFileName)
+            Me.Text = CPSFile.FileName
+            Me.PGNFile = New PGNFile With {.PGNGames = CPSFile.ConvertToPGN()}
+            modRecentFiles.Add(pFileName)
+        Else
+            Me.PGNFile = New PGNFile(pFileName)
+            Me.Text = Me.PGNFile.FileName
+            modRecentFiles.Add(pFileName)
+        End If
+
+        gJournaling.Clear()
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub mnuSave_Click(pSender As Object, pArgs As EventArgs) Handles mnuSave.Click
@@ -228,6 +236,7 @@ Public Class frmMainForm
             Me.Text = Me.PGNFile.FileName
             Me.PGNFile.SaveAs()
             Cursor = Cursors.Default
+            modRecentFiles.Add(dlgSaveFile.FileName)
 
             gJournaling.Clear()
 
@@ -935,6 +944,7 @@ Public Class frmMainForm
             CurrentLanguage = GetLanguage()
             SetLanguage(CurrentLanguage, Me)
 
+            'For opening by doubleclicking file with associated extension
             Dim Arguments() As String = Environment.GetCommandLineArgs()
             If Arguments.Count > 1 Then
                 Cursor = Cursors.WaitCursor
@@ -957,6 +967,7 @@ Public Class frmMainForm
 
             Call InitSubForms()
 
+            'Load Default.xml settings
             Dim DefaultFile As String = RootFolder() & "Settings\Default.xml"
             If IO.File.Exists(DefaultFile) Then
                 DeSerializeLayout(DefaultFile)
@@ -977,6 +988,11 @@ Public Class frmMainForm
                 ctlTabControl.AddTabPage(gfrmGameDetails)
             End If
 
+            'Show Recent Files
+            Dim frmRecentFiles = New frmRecentFiles
+            frmRecentFiles.ShowDialog(Me)
+            frmRecentFiles = Nothing
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
@@ -994,8 +1010,14 @@ Public Class frmMainForm
     End Sub
 
     Protected Overrides Function ProcessCmdKey(ByRef pMsg As Message, pKeyData As Keys) As Boolean
-        RaiseEvent BoardKeyDown(pMsg, pKeyData)
-
+        Select Case pKeyData
+            Case Keys.Left
+                mnuPreviousGame_Click(Nothing, Nothing)
+            Case Keys.Right
+                mnuNextGame_Click(Nothing, Nothing)
+            Case Else
+                RaiseEvent BoardKeyDown(pMsg, pKeyData)
+        End Select
         Return MyBase.ProcessCmdKey(pMsg, pKeyData)
     End Function
 

@@ -1,0 +1,144 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdediging"]
+[Memo "Het paard verdedigt de loper. Het paard is een belangrijke verdediger"]
+[FEN "8/6p1/5n2/8/4b3/8/8/4R3 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan + Hout"]
+[Memo "Nu kan wit de verdediger uitschakelen
+Door het paard te slaan"]
+[FEN "8/6p1/5n2/6B1/4b3/8/8/4R3 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Slaan + Hout"]
+[Memo "Het zwarte paard wordt al aangevallen
+De loper verdedigt het zwarte paard
+Het witte paard kan deze verdediger uitschakelen
+door de loper te slaan"]
+[FEN "8/5p2/4b3/8/3N2n1/8/8/6R1 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Wederzijdse Aanval"]
+[Memo "Bij wederzijdse aanval, is het belangrijk om
+de verdediger met schaak uit te schakelen"]
+[FEN "8/k1p5/1n6/B7/N1r5/8/8/2R5 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Zoekstrategie"]
+[Memo "1. Welk stuk val ik aan ?
+2. Vind de verdediger
+3. Kan ik de verdediger slaan ?"]
+[FEN "7r/8/8/6q1/6Q1/8/6KN/8 b KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Weg + Hout"]
+[Memo "Nu kan Wit de verdediger uitschakelen
+door het paard weg te jagen"]
+[FEN "8/6p1/5n2/8/4b1P1/8/8/4R3 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Weg + Hout"]
+[Memo "De zwarte toren verdedigt de loper.
+Is er een manier om hem weg te jagen ?"]
+[FEN "2r5/2b5/6p1/8/2R5/8/8/3B4 w KQkq - 0 2"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Lokken + Hout"]
+[Memo "Nu kan Wit de verdediger uitschakelen
+Door het paard op c6 weg te lokken
+Let op ! De verdediger wordt niet geslagen !"]
+[FEN "8/1p6/2n5/8/1b1n4/8/N7/3R4 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Lokken + Hout"]
+[Memo "Hier kan Wit de verdediger uitschakelen
+Door de dame weg te lokken naar g8"]
+[FEN "7k/6pq/8/7b/5Q2/6N1/8/7K w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Opgave"]
+[Memo "1. Welke stukken val ik aan ?
+2. Vind de verdedigers
+3. Kan ik een verdediger uitschakelen ?"]
+[FEN "r2r1k2/5ppp/3bpq2/2p5/p1P1Q3/1P3N2/P4PPP/3R1RK1 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+

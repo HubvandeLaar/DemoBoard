@@ -1,0 +1,81 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "7k/1q4pp/8/p7/PB2p3/7P/5PP1/1Q4K1 w KQkq - 0 0"]
+
+1. Qd1 {[%cal Yd1d8]Door dreigin met mat kan de loper gered worden}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "8/r4p1k/p2B1P2/3Rn1rp/2p5/2R3PK/8/8 b KQkq - 0 0"]
+
+1... Nf3 {[%cal Yg5d5]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "2kr3r/pp1n1pb1/2p4p/6pn/1q1pP1b1/2N2NB1/PPPQ2PP/1K1R1B1R w KQkq - 0 0"]
+
+1. Nb5 {[%cal Yb5a7]} 1... Qc5 (1... Qa4 2. b3 Qa6 3. Nd6+ Kb8 4. Nxf7+ Ka8 5.
+Nxh8) 2. Bd6 (2. b4 {[%csl Ya7]Kan ook} 2... Qb6 3. Nd6+ Kb8 4. Nc4+) 2... Qb6
+3. Bc7
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "r1b2rk1/4q1pp/2p1pn2/p2pP1B1/8/1R6/P1PQB1PP/3R2K1 b KQkq - 0 0"]
+
+1... Qa7+ 2. Be3 Ne4
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "4k2r/4bp1p/p1qp1n2/3R4/1r3P1P/5Q1B/1PP5/2K1R3 w KQkq - 0 0"]
+
+1. Rc5 {is een prachtige redding} 1... Qxf3 (1... Qxc5 2. Qa8+ {En Mat !}) {En
+Mat !} 2. Rc8+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "k7/ppp3bp/5np1/1R3p2/4rP2/1P1P4/2P3Q1/1K6 b KQkq - 0 0"]
+
+1... Re1+ 2. Ka2 Nd5 {[%cal Ye1a1, Yd5c3]}
+

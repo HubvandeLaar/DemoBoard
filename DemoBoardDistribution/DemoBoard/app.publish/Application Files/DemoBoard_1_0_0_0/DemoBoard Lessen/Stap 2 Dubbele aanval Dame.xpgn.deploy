@@ -1,0 +1,292 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalsdoelen"]
+[Memo "HOUT     : Ongedekt stuk of 
+                  Onvoldoende gedekt stuk
+KONING : Door schaak te geven
+VELD      : Aanval op een Matveld 
+                  (als de dame daar staat is het mat) 
+
+
+Objects to attack
+PIECE    : Uncovered piece or
+                  insufficient covered piece
+KING      : By giving check
+FIELD    : Attack on checkmate field
+                  (when queen stands there,
+                   it's checkmate)"]
+[FEN "8/8/8/8/8/8/8/8 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Koning en Hout"]
+[Memo "Vind de aanval op de koning en het ongedekte stuk
+
+
+Attack on King and Piece
+Find the attack on king and uncovered piece"]
+[FEN "8/k7/8/8/1n6/8/2Q5/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Yb4, Ya7]"]
+
+{[%csl Yb4, Ya7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Koning en Hout"]
+[Memo "Vind de aanval op de koning en het ongedekte stuk
+
+
+Attack on King and Piece
+Find the attack on king and uncovered piece"]
+[FEN "8/5Qpk/8/8/6r1/8/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Yg4, Yh7]"]
+
+{[%csl Yg4, Yh7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval Hout en Hout"]
+[Memo "Aanval op twee stukken
+
+
+Attack on Piece and Piece
+An attack on two pieces"]
+[FEN "8/8/2b5/8/8/n1Q5/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%cal Yc3c6, Yc3a3]"]
+
+{[%cal Yc3c6, Yc3a3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "5r2/8/7Q/8/7n/8/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%cal Yh6f8, Yh6h4]"]
+
+{[%cal Yh6f8, Yh6h4]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout + Hout"]
+[Memo "Vind de aanval op twee stukken
+
+
+Attack on Piece and Piece
+Find the attack on two pieces"]
+[FEN "5Q2/r7/8/pb6/8/8/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Yb5, Ya7]"]
+
+{[%csl Yb5, Ya7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout + Hout"]
+[Memo "Vind de aanval op twee stukken
+
+
+Attack on Piece and Piece
+Find the attack on two pieces"]
+[FEN "8/8/8/8/8/1B6/1P5R/4q3 w KQkq - 0 0"]
+[FENGraphicals "[%csl Yh2, Yb3]"]
+
+{[%csl Yh2, Yb3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout + Veld"]
+[Memo "
+
+
+
+Attack on Piece and Field"]
+[FEN "k7/pp6/8/8/8/r7/8/2Q5 w KQkq - 0 0"]
+[FENGraphicals "[%csl Ya3, Yc8][%cal Yc1c8, Yc1a3]"]
+
+{[%csl Ya3, Yc8][%cal Yc1c8, Yc1a3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout + Veld"]
+[Memo "
+
+
+
+Attack on Piece and Field"]
+[FEN "8/7N/6q1/8/5p2/7K/8/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Yg3, Yh7][%cal Yg6h7, Yg6g3]"]
+
+{[%csl Yg3, Yh7][%cal Yg6h7, Yg6g3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout + Veld"]
+[Memo "Vind de aanval op Hout en Veld
+
+
+Attack on Piece and Field
+Find the attack on piece and field"]
+[FEN "k7/pn6/8/8/3Q4/8/r7/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Ya2, Yc8]"]
+
+{[%csl Ya2, Yc8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout en Veld"]
+[Memo "Vind de aanval op Hout en Veld
+
+
+Attack on Piece and Field
+Find the attack on piece and field"]
+[FEN "5q2/7R/7p/8/4p2n/4P3/7P/6NK w KQkq - 0 0"]
+[FENGraphicals "[%csl Yg2, Yh7]"]
+
+{[%csl Yg2, Yh7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout + Hout"]
+[Memo "Onvoldoende gedekte stukken zijn ook een aanvalsdoel !
+
+
+Attack on Piece and Piece
+Insufficient covered pieces also are an object to attack !"]
+[FEN "1Q6/8/3r4/1b1p4/8/N1n5/3p4/8 w KQkq - 0 0"]
+[FENGraphicals "[%csl Yb5, Yd6][%cal Yb8d6, Yb8b5]"]
+
+{[%csl Yb5, Yd6][%cal Yb8d6, Yb8b5]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanval op Hout + Veld"]
+[Memo "Vind de dubbele aanval
+
+
+Attack on Piece and Field
+Find the attack on piece and field"]
+[FEN "7k/4N1pp/8/8/7q/7r/4Q3/7R w KQkq - 0 0"]
+[FENGraphicals "[%csl Yh3, Yg8]"]
+
+{[%csl Yh3, Yg8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalluh !"]
+[Memo "Zoek eerst de aanvalsdoelen
+o   Hout
+o   Koning
+o   Veld
+
+Vind dan de plaats waar de dame een goede dubbele aanval heeft
+
+
+Attack !
+First look for the objects to attack
+o   Piece
+o   King
+o   Field
+
+Then look for a place where the queen has a proper double attack"]
+[FEN "4rbk1/3q1ppp/1p4n1/6B1/8/1NP2Q1P/1P4P1/R5K1 b KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Aanvalluh !"]
+[Memo "Zoek eerst de aanvalsdoelen
+o   Hout
+o   Koning
+o   Veld
+
+Vind dan de plaats waar de dame een goede dubbele aanval heeft
+
+
+Attack !
+First look for the objects to attack
+o   Piece
+o   King
+o   Field
+
+Then look for a place where the queen has a proper double attack"]
+[FEN "q1r1n1k1/2pN1p1p/1p4p1/1P3p2/5P2/r6P/3Q1PP1/R2R2K1 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+

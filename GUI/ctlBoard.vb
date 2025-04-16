@@ -531,7 +531,7 @@ Public Class ctlBoard
                 If frmAddText.OKPressed = True Then
                     gDragText.Color = frmAddText.TextColor
                     gDragText.FieldName = gInternalChessBoard(C, R).Name
-                    gDragText.Text = frmAddText.ColoureText
+                    gDragText.Text = frmAddText.ColouredText
                     gInternalChessBoard(C, R).Text = gDragText
                     Call HideDragging()
                     Me.Paint()
@@ -625,38 +625,203 @@ Public Class ctlBoard
 
     Public Sub KeyEntered(pMsg As Message, pKeyData As Keys)
         Dim R As Long, C As Long
-        If pKeyData > Int16.MaxValue Then Exit Sub
-        If pKeyData >= Keys.F1 And pKeyData <= Keys.F24 Then Exit Sub
+        Debug.Print(pMsg.WParam.ToInt32() & " " & pMsg.LParam.ToInt32() & " " & pKeyData)
+
+        ' If pKeyData > Int16.MaxValue Then Exit Sub
+        ' If pKeyData >= Keys.F1 And pKeyData <= Keys.F24 Then Exit Sub
 
         If picDragImage.Visible = True Then Exit Sub
         C = Column(gMouseX) : R = Row(gMouseY)
         If R < 1 Or R > 8 Or C < 1 Or C > 8 Then Exit Sub
 
-        Select Case UCase(Chr(pKeyData))
-            Case King.KeyStroke(CurrentLanguage)
-                gInternalChessBoard.AddPiece(New King(ActiveColor), C, R)
-            Case Queen.KeyStroke(CurrentLanguage)
-                gInternalChessBoard.AddPiece(New Queen(ActiveColor), C, R)
-            Case Rook.KeyStroke(CurrentLanguage)
-                gInternalChessBoard.AddPiece(New Rook(ActiveColor), C, R)
-            Case Bishop.KeyStroke(CurrentLanguage)
-                gInternalChessBoard.AddPiece(New Bishop(ActiveColor), C, R)
-            Case Knight.KeyStroke(CurrentLanguage)
-                gInternalChessBoard.AddPiece(New Knight(ActiveColor), C, R)
-            Case Pawn.KeyStroke(CurrentLanguage)
-                gInternalChessBoard.AddPiece(New Pawn(ActiveColor), C, R)
-            Case Else
-                If pKeyData = Keys.Delete Then
+        Select Case pKeyData
+            Case Asc(King.KeyStroke(CurrentLanguage)), Asc(King.KeyStroke(CurrentLanguage)) + Keys.Shift
+                If gInternalChessBoard(C, R).Piece Is Nothing Then
+                    gInternalChessBoard.AddPiece(New King(ActiveColor), C, R)
+                ElseIf gInternalChessBoard(C, R).Piece.Type = PieceType.KING Then
                     gInternalChessBoard(C, R).Piece = Nothing
                 Else
-                    Exit Sub
+                    gInternalChessBoard.AddPiece(New King(ActiveColor), C, R)
                 End If
-        End Select
-
-        Me.Paint()
-        RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
                                  gInternalChessBoard(C, R).Name,
                                  gInternalChessBoard)
+                Me.Paint()
+
+            Case Asc(Queen.KeyStroke(CurrentLanguage)), Asc(Queen.KeyStroke(CurrentLanguage)) + Keys.Shift
+                If gInternalChessBoard(C, R).Piece Is Nothing Then
+                    gInternalChessBoard.AddPiece(New Queen(ActiveColor), C, R)
+                ElseIf gInternalChessBoard(C, R).Piece.Type = PieceType.QUEEN Then
+                    gInternalChessBoard(C, R).Piece = Nothing
+                Else
+                    gInternalChessBoard.AddPiece(New Queen(ActiveColor), C, R)
+                End If
+                RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                                 gInternalChessBoard(C, R).Name,
+                                 gInternalChessBoard)
+                Me.Paint()
+
+            Case Asc(Rook.KeyStroke(CurrentLanguage)), Asc(Rook.KeyStroke(CurrentLanguage)) + Keys.Shift
+                If gInternalChessBoard(C, R).Piece Is Nothing Then
+                    gInternalChessBoard.AddPiece(New Rook(ActiveColor), C, R)
+                ElseIf gInternalChessBoard(C, R).Piece.Type = PieceType.ROOK Then
+                    gInternalChessBoard(C, R).Piece = Nothing
+                Else
+                    gInternalChessBoard.AddPiece(New Rook(ActiveColor), C, R)
+                End If
+                RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                                 gInternalChessBoard(C, R).Name,
+                                 gInternalChessBoard)
+                Me.Paint()
+
+            Case Asc(Bishop.KeyStroke(CurrentLanguage)), Asc(Bishop.KeyStroke(CurrentLanguage)) + Keys.Shift
+                If gInternalChessBoard(C, R).Piece Is Nothing Then
+                    gInternalChessBoard.AddPiece(New Bishop(ActiveColor), C, R)
+                ElseIf gInternalChessBoard(C, R).Piece.Type = PieceType.BISHOP Then
+                    gInternalChessBoard(C, R).Piece = Nothing
+                Else
+                    gInternalChessBoard.AddPiece(New Bishop(ActiveColor), C, R)
+                End If
+                RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                                 gInternalChessBoard(C, R).Name,
+                                 gInternalChessBoard)
+                Me.Paint()
+
+            Case Asc(Knight.KeyStroke(CurrentLanguage)), Asc(Knight.KeyStroke(CurrentLanguage)) + Keys.Shift
+                If gInternalChessBoard(C, R).Piece Is Nothing Then
+                    gInternalChessBoard.AddPiece(New Knight(ActiveColor), C, R)
+                ElseIf gInternalChessBoard(C, R).Piece.Type = PieceType.KNIGHT Then
+                    gInternalChessBoard(C, R).Piece = Nothing
+                Else
+                    gInternalChessBoard.AddPiece(New Knight(ActiveColor), C, R)
+                End If
+                RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                                 gInternalChessBoard(C, R).Name,
+                                 gInternalChessBoard)
+                Me.Paint()
+
+            Case Asc(Pawn.KeyStroke(CurrentLanguage)), Asc(Pawn.KeyStroke(CurrentLanguage)) + Keys.Shift
+                If gInternalChessBoard(C, R).Piece Is Nothing Then
+                    gInternalChessBoard.AddPiece(New Pawn(ActiveColor), C, R)
+                ElseIf gInternalChessBoard(C, R).Piece.Type = PieceType.PAWN Then
+                    gInternalChessBoard(C, R).Piece = Nothing
+                Else
+                    gInternalChessBoard.AddPiece(New Pawn(ActiveColor), C, R)
+                End If
+                RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                                 gInternalChessBoard(C, R).Name,
+                                 gInternalChessBoard)
+                Me.Paint()
+
+            Case Keys.D0, Keys.NumPad0 'Cypher 0
+                If gInternalChessBoard(C, R).Marker Is Nothing Then
+                    gInternalChessBoard(C, R).Marker = New Marker("0")
+                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                ElseIf gInternalChessBoard(C, R).Marker.Symbol = "0" Then
+                    gInternalChessBoard(C, R).Marker = Nothing
+                End If
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                Me.Paint()
+
+            Case 51 + Keys.Shift 'Hashtag #
+                If gInternalChessBoard(C, R).Marker Is Nothing Then
+                    gInternalChessBoard(C, R).Marker = New Marker("#")
+                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                ElseIf gInternalChessBoard(C, R).Marker.Symbol = "#" Then
+                    gInternalChessBoard(C, R).Marker = Nothing
+                End If
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                Me.Paint()
+
+            Case 190, Keys.Decimal  'Dot .
+                If gInternalChessBoard(C, R).Marker Is Nothing Then
+                    gInternalChessBoard(C, R).Marker = New Marker(".")
+                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                ElseIf gInternalChessBoard(C, R).Marker.Symbol = "." Then
+                    gInternalChessBoard(C, R).Marker = Nothing
+                End If
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                Me.Paint()
+
+            Case 187 + Keys.Shift, 107 'Plus +
+                If gInternalChessBoard(C, R).Marker Is Nothing Then
+                    gInternalChessBoard(C, R).Marker = New Marker("+")
+                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                ElseIf gInternalChessBoard(C, R).Marker.Symbol = "+" Then
+                    gInternalChessBoard(C, R).Marker = Nothing
+                End If
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                Me.Paint()
+
+            Case 189, 109 'Minus -
+                If gInternalChessBoard(C, R).Marker Is Nothing Then
+                    gInternalChessBoard(C, R).Marker = New Marker("-")
+                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                ElseIf gInternalChessBoard(C, R).Marker.Symbol = "-" Then
+                    gInternalChessBoard(C, R).Marker = Nothing
+                End If
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                Me.Paint()
+
+            Case 56 + Keys.Shift 'Star *
+                If gInternalChessBoard(C, R).Marker Is Nothing Then
+                    gInternalChessBoard(C, R).Marker = New Marker("*")
+                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                ElseIf gInternalChessBoard(C, R).Marker.Symbol = "*" Then
+                    gInternalChessBoard(C, R).Marker = Nothing
+                End If
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                Me.Paint()
+
+            Case Keys.O, Keys.O + Keys.Shift 'Character o or O
+                If gInternalChessBoard(C, R).Marker Is Nothing Then
+                    gInternalChessBoard(C, R).Marker = New Marker(gSetupToolbar.gMarkerColor)
+                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                Else
+                    gInternalChessBoard(C, R).Marker = Nothing
+                End If
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                Me.Paint()
+
+            Case Keys.A, Keys.A + Keys.Shift 'Character a or A
+                If gInternalChessBoard(C, R).Text Is Nothing Then
+                    frmAddText.TextColor = gSetupToolbar.gMarkerColor
+                    frmAddText.ShowDialog(Me)
+                    If frmAddText.OKPressed = True Then
+                        gInternalChessBoard(C, R).Text = New Text(frmAddText.TextColor,
+                                                                  gInternalChessBoard(C, R).Name,
+                                                                  frmAddText.ColouredText)
+                    End If
+                Else
+                    gInternalChessBoard(C, R).Text = Nothing
+                End If
+                RaiseEvent TextListChanged(Me, Me.TextString)
+                Me.Paint()
+
+            Case Keys.V, Keys.V + Keys.Shift 'Character v or V
+                If gFromField Is Nothing Then
+                    gFromField = gInternalChessBoard(C, R)
+                Else
+                    gInternalArrowList.Add(New Arrow(gSetupToolbar.gMarkerColor, gFromField.Name, gInternalChessBoard(C, R).Name))
+                    picArrow.BackColor = SystemColors.ButtonFace
+                    RaiseEvent ArrowListChanged(Me, gInternalArrowList.ListString)
+                    Me.Paint()
+                    gFromField = Nothing
+                End If
+
+            Case Keys.Delete
+                gInternalChessBoard(C, R).Piece = Nothing
+                gInternalChessBoard(C, R).Marker = Nothing
+                gInternalChessBoard(C, R).Text = Nothing
+                RaiseEvent NewChessPiece(gInternalChessBoard(C, R).Piece,
+                                 gInternalChessBoard(C, R).Name,
+                                 gInternalChessBoard)
+                RaiseEvent FieldMarkerListChanged(Me, Me.MarkerString)
+                RaiseEvent TextListChanged(Me, Me.TextString)
+                Me.Paint()
+
+        End Select
+
     End Sub
 
     Protected Overrides Function ProcessCmdKey(ByRef pMsg As Message, pKeyData As Keys) As Boolean

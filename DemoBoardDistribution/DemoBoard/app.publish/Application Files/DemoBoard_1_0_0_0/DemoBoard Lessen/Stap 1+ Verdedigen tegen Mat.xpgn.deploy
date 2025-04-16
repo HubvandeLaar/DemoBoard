@@ -1,0 +1,217 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "1. Herkennen van de matbeelden
+2. Vormen van verdediging
+	Slaan
+	Dekken
+	Tussenplaatsen
+	Weggaan
+
+Defending against Checkmate
+1. Recognize checkmate positions
+2. Ways to defend
+	Capture
+	Covering
+	Put in between
+	Go away"]
+[FEN "8/8/8/8/8/8/8/8 w KQkq - 0 1"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Er dreigt Dxa2#
+De zwarte dame is de jager en het zwarte paard de helper.
+We kunnen mat voorkomen door de helper te SLAAN.
+
+
+There is a threat of Dxa2 #
+The black queen is the hunter and the black knight the helper.
+We can avoid being mate by CAPTURING the helper "]
+[FEN "8/8/8/8/qn6/2B5/BP6/K7 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Er dreigt mat door Dg7# en Dh8#.
+De witte dame is de jager en de loper de helper.
+Zwart kan mat voorkomen door de helper te SLAAN.
+
+There is a threat of checkmate by Qg7# and Qh8#.
+The black queen is the hunter and the bishop the helper.
+Black can prevent checkmate by CAPTURING the helper."]
+[FEN "4q1k1/5p2/5BpQ/8/4n3/8/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Dit lijkt op het eerste diagram.
+Zwart dreigt met mat door Dxa2#.
+De zwarte dame is de jager en het paard is de helper.
+De helper slaan kost wel heel veel.
+Gelukkig kunnen we ook het matveld nog eens DEKKEN.
+
+This looks similar to the first diagram.
+Black threatens checkmate by Qxa2#.
+The black queen is the hunter and the black knight the helper.
+Fortunately, we can COVER the checkmate field again. "]
+[FEN "8/8/8/2Q5/qn6/8/BP6/K7 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Wit dreigt met mat door Dg7#
+De witte dame is de jager en de loper is de helper.
+We kunnen ook hier het matveld nog eens DEKKEN.
+
+
+White threatens checkmate by Qg7#
+The white queen is the hunter and the black bishop the helper.
+We here also can COVER the checkmate field."]
+[FEN "4q1k1/5p1p/5BpQ/8/8/8/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Zwart dreigt mat met Dxa2#.
+De witte dame is de jager en de toren is de helper.
+Wit kan mat voorkomen door TUSSENPLAATSEN.
+
+
+Black threatens checkmate with Dxa2#.
+The black queen is the hunter and the black rook the helper.
+White can prevent checkmate by PUTTING IN BETWEEN.."]
+[FEN "r7/8/8/8/q7/2R5/BP6/K1R5 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Wit dreigt mat met Th8#.
+De toren is de jager en de loper is de helper.
+Met TUSSENPLAATSEN kunnen we mat voorkomen.
+
+
+White threatens checkmate with Rh8#.
+The white rook is the hunter and the bishop is the helper.
+PUTTING IN BETWEEN can prevent checkmate."]
+[FEN "4r1k1/5p2/5Bp1/5n2/8/8/8/7R b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Zwart dreigt mat met Dxa2#.
+De zwarte dame is de jager en het paard de helper.
+De helper slaan kost heel veel.
+Het gaat beter met WEGGAAN.
+
+
+Black threatens checkmate with Qxa2#.
+The black queen is the hunter and the black knight the helper.
+CAPTURING the helper costs a lot.
+It's better to GO AWAY."]
+[FEN "8/8/8/8/1nQ5/qP6/P7/K7 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Wit dreigt mat met Le5#.
+De witte loper is de jager en het paard de helper.
+Met WEGGAAN kan zwart mat voorkomen.
+
+White threatens checkmate with Be5#.
+The white bishop is the hunter and the knight the helper.
+Black can prevent checkmate by GOING AWAY."]
+[FEN "7k/7p/4b1pN/8/5B2/8/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Zwart dreigt met Dc1#.
+De koning zelf kan niet WEGGAAN.
+Wit kan wel  'Een vluchtgaatje maken' en ervoor zorgen dat hij dadelijk kan WEGGAAN.
+
+
+Black threatens with Qc1#.
+The king himself cannot GO AWAY.
+White can "Make an escape hole" and make sure he can GO AWAY later. "]
+[FEN "8/8/8/8/8/8/PPq5/K7 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Verdedigen tegen Mat"]
+[Memo "Wit dreigt met Te8#.
+Vluchten met de koning werkt niet, want dan volgt nog steeds Te8#.
+Beter is om een 'vluchtgaatje' te maken zodat we dadelijk kunnen WEGGAAN.
+
+White threatens with Re8#.
+Running away with the king does not work, because of Re8#.
+It is better to make a 'escape hole' so that we can GO AWAY later.
+."]
+[FEN "7k/6pp/8/6N1/8/4R3/8/8 b KQkq - 0 0"]
+
+

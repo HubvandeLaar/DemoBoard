@@ -1,0 +1,126 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Met twee witte lopers"]
+[FEN "8/8/2p5/5pp1/4k3/2K3P1/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Kan de loper op h1 staan ?
+Nee, want dan heeft zwart in de voorgaande zet zichzelf schaak gezet."]
+[FEN "8/8/2p5/5pp1/3Bk3/2K3P1/6B1/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Met wit paard en witte dame"]
+[FEN "8/8/2p5/2k5/1p6/8/1K6/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo ""]
+[FEN "8/3N4/2p5/2k5/1p6/3Q4/1K6/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Goedkoop mat bedenken.
+Toren = 5; Paar = 3, etc.."]
+[FEN "8/8/4b3/4kp2/8/8/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Of met zes pionnen !!"]
+[FEN "8/6B1/4b3/4kp2/3R4/8/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Drie keer mat bedenken met telkens één stuk"]
+[FEN "8/8/2r5/Ppk5/3pP3/1K6/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo ""]
+[FEN "8/1N6/2r5/PpkR4/1B1pP3/1K6/8/8 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Met zwarte koning,
+Witte loper, twee paarden en één pion.
+
+Waar komt de koning te staan  ?"]
+[FEN "8/8/8/8/8/8/8/8 b KQkq - 0 0"]
+
+{[%csl .h5, .e6, .f6, .g7, .h7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo ""]
+[FEN "8/6Bk/4NN2/7P/8/8/8/8 w KQkq - 0 0"]
+
+

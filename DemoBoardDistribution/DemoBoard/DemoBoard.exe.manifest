@@ -43,26 +43,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChessEngine.dll" size="11776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChessCoach.dll" size="24064">
+      <assemblyIdentity name="ChessCoach" version="1.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>naDg4xYdaxt361OI5URpSkRffT0mEKYbbR7L8BPP8JE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChessEngine.dll" size="14848">
       <assemblyIdentity name="ChessEngine" version="1.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vlL5y4guVAP83H3XqLgyRyJzmzylBSN1t76+kmQBEyg=</dsig:DigestValue>
+        <dsig:DigestValue>COcxpeNEWKaQAaJFm0gjkRnJ2kL9mLWY2lTSLaOncck=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChessGlobals.dll" size="44032">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChessGlobals.dll" size="55296">
       <assemblyIdentity name="ChessGlobals" version="1.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dl8KM0IyE6443BfGk2EyNlb5yxJ8jWArkZwSwsF1UQY=</dsig:DigestValue>
+        <dsig:DigestValue>zWQUc1eJ50q3WpmjiYuCAL3rmLdF5lUp+y0c8tKAz0c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,55 +86,55 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>H05eWot62WrtibMP0f6/8I+6D22lGKtV436bunPBEN0=</dsig:DigestValue>
+        <dsig:DigestValue>sdIzPh1a4SgdWyFbg8gtFBL+U7d8DDvNG1hhxYZ00Q0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChessMaterials.dll" size="41984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChessMaterials.dll" size="47616">
       <assemblyIdentity name="ChessMaterials" version="1.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aEEtyLZsF2uf5frAS4dh4PtiGiaLsePZ8OIdqvJwxpw=</dsig:DigestValue>
+        <dsig:DigestValue>6hAb/7r+dXBQ29wx6/twgttQZHaBscm2o/PICaC1ARA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CPSLibrary.dll" size="14336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CPSLibrary.dll" size="13824">
       <assemblyIdentity name="CPSLibrary" version="1.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BwBpZ9gB5dTxTbEo0b+l3YEr2ZtTKZc1kBLwh7T/+mE=</dsig:DigestValue>
+        <dsig:DigestValue>rpLUV695ivlAIuuRM/1sj0Tkznhl/2Sx5fFYfQXTp/Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DemoBoard.exe" size="3561472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DemoBoard.exe" size="3606528">
       <assemblyIdentity name="DemoBoard" version="2.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Jf3qekBx8E9F8KmZOZ1q/X0yIjOzHT/QojYJwl+QgA8=</dsig:DigestValue>
+        <dsig:DigestValue>4/n2Op/x0/w6F5GVHD5IsJxb+m5ZpsTv+g7CuCtnsj0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\DemoBoard.resources.dll" size="1504768">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\DemoBoard.resources.dll" size="1507840">
       <assemblyIdentity name="DemoBoard.resources" version="2.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="nl" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>sJiUjEQPlGuH0/plARHQYHJGRbpo2cW45klUEo6jHNw=</dsig:DigestValue>
+        <dsig:DigestValue>AjZXxYTmycjJ1PS/tawZ2zQSX4w5c4YpRP/KkKUUZMY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -134,7 +146,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kQojHlemOVehhspB+cYS7uxdIpQLBSbBnjW5OcJ4PIw=</dsig:DigestValue>
+        <dsig:DigestValue>Z3nX4jRgleRIAsvJRLZxXAh5xD6eGuLubIOQG4+7Pig=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -163,14 +175,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGNLibrary.dll" size="64512">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGNLibrary.dll" size="65024">
       <assemblyIdentity name="PGNLibrary" version="1.0.0.0" publicKeyToken="1CB0C78DA27B6A77" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9zarXD1OM8BtR4AWiQ7IQHbSwYf0DuHwNwV05Axrv3Q=</dsig:DigestValue>
+        <dsig:DigestValue>1r72fAkkOWWsVxrjwAW2KL4PuCy/ARztfvuxSSdQ4vU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Reactive.dll" size="1359952">
+      <assemblyIdentity name="System.Reactive" version="6.0.0.0" publicKeyToken="94BC3704CDDFC263" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LpmNoAU2LaafLocYb2dekw02ZquZaD3P9i2Li3tnuzg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Threading.Tasks.Extensions.dll" size="25984">
+      <assemblyIdentity name="System.Threading.Tasks.Extensions" version="4.2.0.1" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>T4H/0NxyBNt1r8NepCkXabB8RAWS8oiUJg7qdmJqI8Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -246,6 +282,33 @@
       <dsig:DigestValue>brxkxtLfXovb5YZ5dgh7ByT4QmHYfG7JeIkcvV2FbZE=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="DemoBoard Lessen\Stap 1 Mat, Pat en Remise - kopie.xpgn" size="3812">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>AvrugQ4x8s5p0n+J0wFP+6m0Ri1mP5qxp8itVnRoxWI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="DemoBoard Lessen\Stap 1 Mat, Pat en Remise.xpgn" size="3812">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>AvrugQ4x8s5p0n+J0wFP+6m0Ri1mP5qxp8itVnRoxWI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="DemoBoard Lessen\Stap 1 Mat.xpgn" size="4415">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>uL1S5jCl8CfXUa0PiZMaUHIXEA0zPo/0YGkIXjrSQx8=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="DemoBoard Lessen\Stap 1 Opgaven Ondersteunend Mat.pdf" size="1266637">
     <hash>
       <dsig:Transforms>
@@ -316,6 +379,24 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>kDk0QdfzUxKDj6upRgvKbZsnJ4TUP+nyjI6P+Bh0gk0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="DemoBoard Lessen\Stap 1, Voordelige Ruil - kopie.xpgn" size="4202">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ho984XqDiybnYNVFp5vmi+deg4gO38CudgJ4S61Z0DI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="DemoBoard Lessen\Stap 1, Voordelige Ruil.xpgn" size="4202">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ho984XqDiybnYNVFp5vmi+deg4gO38CudgJ4S61Z0DI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="DemoBoard Lessen\Stap 1+ Mat bedenken.xpgn" size="2066">
@@ -525,13 +606,13 @@
       <dsig:DigestValue>WaulYUBpcxndOAV+z1GM7dOZwujiaTyRWiNJgo5Z4z0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="DemoBoard.exe.config" size="188">
+  <file name="DemoBoard.exe.config" size="230">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>j5XMowm9qYcyNWR87Ke1KpLLXBlaYAR38CaZywZFE9o=</dsig:DigestValue>
+      <dsig:DigestValue>l470+w4BqeZUzXifyW057ze1g8NqZ2WEeap9/FN5spM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Fonts\cambria.ttc" size="1792664">

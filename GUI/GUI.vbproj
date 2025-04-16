@@ -14,7 +14,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\Users\Hub\Desktop\Setup\</PublishUrl>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\hubva\Documents\Visual Studio 2019\DemoBoard\Setup\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,7 +33,6 @@
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -260,6 +260,12 @@
     <Compile Include="frmEditTitleAndMemo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRecentFiles.Designer.vb">
+      <DependentUpon>frmRecentFiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecentFiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmStockfish.Designer.vb">
       <DependentUpon>frmStockfish.vb</DependentUpon>
     </Compile>
@@ -312,6 +318,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="modRecentFiles.vb" />
     <Compile Include="SetupToolbar.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -464,6 +471,12 @@
     <EmbeddedResource Include="frmEditTitleAndMemo.resx">
       <DependentUpon>frmEditTitleAndMemo.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecentFiles.nl.resx">
+      <DependentUpon>frmRecentFiles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecentFiles.resx">
+      <DependentUpon>frmRecentFiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStockfish.resx">
       <DependentUpon>frmStockfish.vb</DependentUpon>

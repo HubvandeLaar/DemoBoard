@@ -121,4 +121,8 @@ Public Class frmSelectGame
 
         MyBase.Finalize()
     End Sub
+
+    Private Sub lstGames_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstGames.SelectedIndexChanged
+
+    End Sub
 End Class

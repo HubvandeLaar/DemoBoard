@@ -22,7 +22,7 @@ ChessMaterials
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="M:ChessMaterials.King.InCheck(ChessGlobals.modChessColor.ChessColor,ChessMaterials.ChessBoard)">
+<member name="M:ChessMaterials.ChessBoard.InCheck(ChessGlobals.modChessColor.ChessColor)">
  <summary>To Test if the KING is In Check
  Faster than getting all opponent moves and see if king is a target</summary>
 </member>

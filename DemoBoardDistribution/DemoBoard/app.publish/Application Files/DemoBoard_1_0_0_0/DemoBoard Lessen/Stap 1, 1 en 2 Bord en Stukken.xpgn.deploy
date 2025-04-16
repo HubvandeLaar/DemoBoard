@@ -1,0 +1,173 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Leeg bord"]
+[Memo "Velden, kolommen en rijen"]
+[FEN "8/8/8/8/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl .g2, .c3, .e6]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De toren"]
+[Memo ""]
+[FEN "8/8/8/8/8/2R5/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De toren"]
+[Memo ""]
+[FEN "8/8/8/8/8/2R5/8/8 w KQkq - 0 0"]
+
+{[%csl +c1, +c2, +a3, +b3, +d3, +e3, +f3, +g3, +h3, +c4, +c5, +c6, +c7, +c8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De loper"]
+[Memo ""]
+[FEN "8/8/8/8/3B4/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De loper"]
+[Memo ""]
+[FEN "8/8/8/8/3B4/8/8/8 w KQkq - 0 0"]
+
+{[%csl +a1, +g1, +b2, +f2, +c3, +e3, +c5, +e5, +b6, +f6, +a7, +g7, +h8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De dame"]
+[Memo ""]
+[FEN "8/8/8/8/8/4Q3/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De dame"]
+[Memo ""]
+[FEN "8/8/8/8/8/4Q3/8/8 w KQkq - 0 0"]
+
+{[%csl +c1, +e1, +g1, +d2, +e2, +f2, +a3, +b3, +c3, +d3, +f3, +g3, +h3, +d4,
++e4, +f4, +c5, +e5, +g5, +b6, +e6, +h6, +a7, +e7, +e8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De koning"]
+[Memo ""]
+[FEN "8/8/8/8/8/8/5K2/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De koning"]
+[Memo ""]
+[FEN "8/8/8/8/8/8/5K2/8 w KQkq - 0 0"]
+
+{[%csl +e1, +f1, +g1, +e2, +g2, +e3, +f3, +g3]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Het paard"]
+[Memo ""]
+[FEN "8/8/8/4N3/8/8/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Het paard"]
+[Memo ""]
+[FEN "8/8/8/4N3/8/8/8/8 w KQkq - 0 0"]
+
+{[%csl +d3, +f3, +c4, +g4, +c6, +g6, +d7, +f7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De beginstelling"]
+[Memo "De witte stukken staan bij 1 en 2.
+De zwarte stukken staan bij 8 en 7.
+De Koningen staan op e1 en e8.
+De Koningen staan tegenover elkaar. 
+De Dames staan op d1 en d8.
+De Dames staan op het veld met haar eigen kleur."]
+[FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelletje omlopen"]
+[Memo "Om de beurt een zet doen.
+De stukken lopen met de klok mee,
+om de zwarte punten heen,
+totdat ze weer op hun positie terugkomen.
+Elkaar slaan mag niet."]
+[FEN "6rb/8/8/8/8/8/8/BR6 w KQkq - 0 0"]
+
+{[%csl .d3, .e3, .d4, .e4, .d5, .e5, .d6, .e6]}
+

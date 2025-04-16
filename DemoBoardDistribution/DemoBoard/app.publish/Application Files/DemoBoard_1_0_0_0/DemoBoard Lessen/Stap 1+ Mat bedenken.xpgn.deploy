@@ -1,0 +1,158 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Het is bijna mat.
+Waar moeten we een witte pion inplaatsen om mat te krijgen ? 
+
+En een zwarte pion ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Witte pion op a3
+Zwarte pion op b4"]
+[FEN "8/8/1p6/2p5/K7/1Pn5/8/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Het is nog geen mat.
+Waar moet de witte pion komen om het mat te maken ?
+
+En waar een zwarte pion ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Witte pion op g6
+Zwarte pion ook op g6"]
+[FEN "6rk/6p1/5r2/8/8/8/8/7R w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Mat Bedenken"]
+[Memo "Waar moeten we een zwarte koning en toren inplaatsen om mat te krijgen ?
+
+Logisch nadenken helpt !
+* Het zwarte paard moet nog gedekt worden.
+* De koning staat nog niet schaak. Dat moet dus de toren doen.
+* De koning moet zoveel mogelijk velden afnemen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Kb4 en Td5"]
+[FEN "8/8/8/8/3K4/2n1P3/P7/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Waar Staat de Koning Mat ? "]
+[Memo "De zwarte koning is van het bord gevallen.
+Op welk veld stond de zwarte koning mat ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Op b5
+Niet juist Op a4 (Pa5)
+                Op a5 (Da6)
+                Op b4 (Pxc3++)"]
+[FEN "5b1r/Qp1r2pp/6q1/3p4/2nNn3/2P5/PP4P1/1K1R3R w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Waar Staat Elk Stuk"]
+[Memo "Waar moet je een zwarte koning, twee witte torens en een witte koning plaatsen om een matbeeld te krijgen ?
+
+Slim is om eerst te kijken waar de koningen komen te staan.
+Waar moet de witte koning komen staan ?
+Een toren zal schaak moeten geven.
+
+
+
+
+
+
+
+
+
+
+Oplossing 
+Zwart: Kd5 
+Wit    : Kc3, Te5, Te6"]
+[FEN "8/8/8/8/8/8/8/8 w KQkq - 0 1"]
+
+{[%csl .c3, .d5, .e5, .e6]}
+

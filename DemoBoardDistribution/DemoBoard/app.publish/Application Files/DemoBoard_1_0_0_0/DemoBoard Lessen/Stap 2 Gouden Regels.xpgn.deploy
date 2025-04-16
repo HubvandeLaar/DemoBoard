@@ -1,0 +1,93 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "8/8/8/3N4/8/8/8/7n w KQkq - 0 0"]
+[FENGraphicals "[%csl +f2, +c3, +e3, +g3, +b4, +f4, +b6, +f6, +c7, +e7]"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 0"]
+[FENGraphicals "[%csl *b5, *d5, *f5, *h5, *a6]"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "rnbqkbnr/pppppppp/8/8/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "rnbqkbnr/pppppppp/8/8/2B1P3/5N2/PPPP1PPP/RNBQ1RK1 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FEN "rnbqkbnr/pppppppp/8/8/2BPPB2/2N2N2/PPP2PPP/R2Q1RK1 w KQkq - 0 0"]
+[FENGraphicals ""]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FENGraphicals ""]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. O-O Nf6 5. d3 O-O
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title ""]
+[Memo ""]
+[FENGraphicals ""]
+
+1. e4 e5 2. Qh5 {Populair bij jongelui. Dreigt te slaan op e5 en valt f7 en h7 aan} 2... Nc6 {Prima zet} (2... g6 {Is fout vanwege..} 3. Qxe5+) 
+3. Bc4 {Met matdreiging op f7 !} 3... g6 (3... Nf6 4. Qxf7+) 4. Qf3 Nf6 5. g4 (5. Qb3 Qe7 (5... Nd4 6. Bxf7+ Ke7 7. Qc4 b5 {En de verdediger van de
+loper wordt weggejaagd})) 5... Nd4 6. Qd3 d5 7. exd5 Bxg4 
+

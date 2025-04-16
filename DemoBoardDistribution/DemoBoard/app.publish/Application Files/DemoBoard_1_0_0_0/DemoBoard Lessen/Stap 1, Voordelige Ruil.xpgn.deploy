@@ -1,0 +1,197 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Waarde van de stukken"]
+[Memo "Het paard 
+- Kan naar 8 velden.
+- Kan over pionnen en stukken springen.
+- Kan witte en donkere velden aanvallen.
+"]
+[FEN "8/8/8/3N4/8/8/8/8 w - - 0 0"]
+
+{[%csl +c3, +e3, +b4, +f4, +b6, +f6, +c7, +e7]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Waarde van de stukken"]
+[Memo "De loper
+- Kan naar maximaal 13 velden.
+- Deze kan alleen witte velden aanvallen."]
+[FEN "8/8/8/3B4/8/8/8/8 w - - 0 0"]
+
+{[%csl +h1, +a2, +g2, +b3, +f3, +c4, +e4, +c6, +e6, +b7, +f7, +a8, +g8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Waarde van de stukken"]
+[Memo "De dame
+- Kan naar maximaal 27 velden
+
+Afhankelijk van wat je met een stuk kan is de waarde:
+
+          vanaf d5      waarde
+Paard	8	3
+Loper	13	3
+Toren	14	5
+Dame	27	9
+Pion	1	1
+Koning	8	-"]
+[FEN "8/8/8/3Q4/8/8/8/8 w - - 0 0"]
+
+{[%csl +d1, +h1, +a2, +d2, +g2, +b3, +d3, +f3, +c4, +d4, +e4, +a5, +b5, +c5,
++e5, +f5, +g5, +h5, +c6, +d6, +e6, +b7, +d7, +f7, +a8, +d8, +g8]}
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Ruilen"]
+[Memo "Wit kan de dames ruilen.
+Als wit de zwarte dame slaat, slaat zwart met de toren terug.
+Wit heeft 9 punten verdient, en zwart ook.
+Dit heet ruilen."]
+[FEN "6rq/8/8/4Q3/8/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Ruilen"]
+[Memo "Hier kan wit de torens ruilen.
+Als wit de toren slaat wint wit 5 punten.
+Zwart zal met de koning terugslaan en krijgt ook 5 punten.
+Dit is dus ruilen."]
+[FEN "7k/7r/8/8/8/8/7R/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Ruilen"]
+[Memo "En hier kan wit de lopers ruilen.
+"]
+[FEN "8/5p2/6b1/8/4B3/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Ruilen"]
+[Memo "Hier kan wit kiezen om the paard of de loper te ruilen tegen het zwarte paard.
+Slaan met loper wint 3 punten, daarna gaat de loper verloren en kost dat 3 punten. Dit heet dus ook ruilen, ruilen van loper tegen paard."]
+[FEN "8/8/5p1p/6n1/5B2/5N2/6P1/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Voordelige ruil"]
+[Memo "Hier kan de witte pion de dame slaan.
+Wit wint dan 9 punten. Zwart zal terugslaan met zijn pion en wint dan 1 punt.
+Wit wint meer punten dan dat hij moet inleveren.
+Dit is een voordelige ruil. "]
+[FEN "8/6p1/5q2/6P1/5P2/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Voordelige ruil"]
+[Memo "De zwarte toren kan de dame slaan en wint dan 9 punten.
+De zwarte toren gaat daarna verloren en kost 5 punten.
+Zwart wint meer punten dan dat hij verliest.
+Het is dus een voordelige ruil."]
+[FEN "5r2/8/8/8/8/5Q2/6B1/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Voordelige ruil"]
+[Memo "Het witte paard kan hier de toren slaan en wint dan 5 punten.
+Het paard wordt daarna geslagen, en kost 3 punten.
+Dit levert wit 2 punten voordeel op.
+Dit noemt met ook wel kwaliteit.
+Wit wint een kwaliteit met een voordelige ruil."]
+[FEN "6r1/8/8/8/8/6r1/4N3/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Voordelige ruil"]
+[Memo "De zwarte loper kan de toren slaan en wint dan 5 punten.
+De loper gaat verloren en kost 3 punten.
+Zwart heeft een kwaliteit winst door deze voordelige ruil."]
+[FEN "8/4b3/8/8/7R/6P1/8/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Voordelige ruil"]
+[Memo "Wat is hier de beste zet voor wit ?"]
+[FEN "8/8/4b3/3q4/6r1/4N3/3P4/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Voordelige ruil"]
+[Memo "Wat is hier de beste zet voor wit ?"]
+[FEN "6n1/8/5r1b/6P1/7P/8/8/8 w - - 0 0"]
+
+

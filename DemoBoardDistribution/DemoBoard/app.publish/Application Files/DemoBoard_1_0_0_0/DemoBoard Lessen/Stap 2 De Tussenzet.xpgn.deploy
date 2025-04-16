@@ -1,0 +1,110 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Tussenzet"]
+[Memo "Wit heeft met b3-b4 de zwarte loper aangevallen.
+Zwart heeft met e6-e5 de tegenaanval geopend.
+Is dat wel slim ? Hoek kan wit met een tussenzet een loper winnen ?
+(aanval op de Koning)"]
+[FEN "8/1p2kp1p/p4p2/b3p3/1P1BP2P/P7/5PPK/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Tussenzet"]
+[Memo "Ook hier voerde zwart een tegenaanval uit op het witte paard.
+Slaan we eerst de loper, of is er iets slimmers te bedenken ?
+
+(aanval op Hout)"]
+[FEN "4k3/5p1p/2q1pb2/3pP3/6p1/5NP1/5P1P/3Q2K1 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Tussenzet"]
+[Memo "Dxh5 is verleidelijk, maar dat wint geen materiaal.
+Idem voor Dg5, De8 en Kc7.
+Hoe kunnen we met mat dreigen ?
+(aanval op Veld)"]
+[FEN "3r4/1k1bb2Q/pp2p2p/3pq2B/8/1N6/PPP3PP/1K5R b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Tussenzet"]
+[Memo "Wit kan hier met afruilen een stuk winnen !
+
+
+(met Slaan of Offeren)"]
+[FEN "8/5pp1/p1n1pn2/8/1p5P/2B2BP1/P4PK1/8 w KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Tussenzet"]
+[Memo "Wit moet hier naar verschillende opties kijken.
+A. 1. Lxd5 Lxc3  2. Lxb7 wint natuurlijk een pion
+B. Op 1. Dc8+ volgt natuurlijk 1. ... Dd8
+C. Na 1. Dxf6 heeft Zwart meerdere opties: 
+           1. ... gxf6 2. Lxd5 en heeft Wit een loper meer
+           1. ... Dd1+ werkt niet door 2. Lxd1 en heeft Wit ook de loper
+           1. ... Dxf3 werkt niet door 2. Dd8+ met verlies van dame
+Stop niet meteen met rekenen als je een stuk offert !"]
+[FEN "6k1/pp3pp1/5b1p/3q1p2/1P6/P1Q2B1P/5PP1/6K1 w KQkq - 0 0"]
+
+) (1. Bxd5 ( {Op} 1. Qc8+ {volgt natuurlijk } 1... Qd8) (1. Qxf6 gxf6 (1...
+Qd1+ {werkt niet door} 2. Bxd1) (1... Qxf3 2. Qd8+) 2. Bxd5) 1... Bxc3 2. Bxb7
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Tussenzet"]
+[Memo "1. ... Txh6  dan volgt 2. Dxg3 en verliest zwart kwaliteit
+Met 1. ... Tg2 wint zwart tijd om alsnog de loper te slaan"]
+[FEN "1kb4r/1pp5/p1q4B/8/7P/P1P3r1/1P1R1Q2/K3R3 b KQkq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "De Tussenzet"]
+[Memo "Alle witte slagzetten zijn nutteloos.
+Na 1. Dxc3  Pxc3;  ggen winst
+Na 1. Txd1 Dxc8 (of Dxd3 met afruilen dames) 
+Na 1. Dxd1 volgt ook Dxc8
+Maar na 1.Dd8+ Kh7 staat het witte paard gedekt. 2. Txd1 levert een stuk op ! "]
+[FEN "2N4k/1p4p1/p3pr1p/P7/1P6/2qQ3P/6P1/3nR1K1 w KQkq - 0 0"]
+
+

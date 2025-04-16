@@ -1,0 +1,122 @@
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelregels"]
+[Memo "Als de beginstelling onjuist was, dan is de partij ongeldig.
+Wanneer je beiden het ermee eens bent kun je de stelling ook aanpassen en doorspelen.
+
+Rules
+When the starting position was incorect, the game is invalid.
+When you both agree you can change the position and continue. "]
+[FEN "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBKQ2R w kq - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelregels"]
+[Memo "Als beide koningen schaak staan is dat ook een illegale stelling.
+Dit is een opgave uit Stap 1. De loper moest zo worden ingeplaats dat het mat was. Dit is een illegale stelling omdat er geen voorgaande geldige witte zet is te bedenken.
+
+Rules
+When both kings are in check. It's an illegal position.
+This is an exercise from Stap 1. The bishop should been placed to create checkmate. This is an illegal position since there is no preceding valid white move !"]
+[FEN "2R4B/3n1pkp/6p1/1q6/6NP/6P1/5PK1/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelregels"]
+[Memo "Dit is ook een illegale stelling. Er is geen goede vorige zet van wit te bedenken.
+Staat de toren op b3, dan is het wel een geldige stelling.
+
+Rules
+This also is an illegal position. There is no valid previous move of white. With the rook at b3 this is a valid postion."]
+[FEN "1k6/8/2N5/1R6/8/8/8/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelregels"]
+[Memo "Dit is duidelijk een ongeldige stelling.
+
+
+Rules.
+This is obvious an illegal position."]
+[FEN "8/8/8/6k1/5Q2/7N/8/7K b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelregels"]
+[Memo "Dit ziet eruit als een ongeldige stelling, maar is het niet.
+De b-pion heeft iets op c6 geslagen.
+
+Rules
+This looks like an illegal position but is not.
+The b-pawn has captured something at c6."]
+[FEN "8/1k6/2P5/8/1R6/8/8/8 w - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelregels"]
+[Memo "Dit is een illegale stelling. Komt de pion van h4, dan gaf de loper al schaak. Komt de pion van g4 dan gaf de toren al schaak.
+
+
+Rules
+This is an illegal position. When the pawn comes from h4, the bishop already gave check. If the pawn comes from g4, the rook already gave check."]
+[FEN "7r/8/8/5b2/8/6pK/8/8 b - - 0 0"]
+
+
+[Event ""]
+[Site ""]
+[Date ""]
+[Round ""]
+[White ""]
+[Black ""]
+[Result ""]
+[Title "Spelregels"]
+[Memo "Er zijn nog meer manieren te bedenken van ongeldige stellingen.
+
+   o  Dubbelpionnen als er nog niets geslagen is.
+   o  Te veel stukken op het bord.
+   o  etc.
+
+Rules
+There are many more ways to create illegal positions.
+
+   o  Double-pawns when nothing wa captured.
+   o  Too many pieces at the board.
+   o  etc."]
+[FEN "8/8/8/8/8/8/8/8 w - - 0 1"]
+
+
