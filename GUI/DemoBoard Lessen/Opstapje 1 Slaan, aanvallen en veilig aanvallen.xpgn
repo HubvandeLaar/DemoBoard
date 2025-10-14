@@ -19,7 +19,7 @@
 [Result ""]
 [Title "Slaan !"]
 [Memo ""]
-[FEN "8/8/2b5/8/8/8/6N1/8 w KQkq - 0 0"]
+[FEN "8/8/2b5/8/8/8/6N1/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -57,6 +57,7 @@
 [Memo ""]
 [FEN "8/8/8/4k3/3Rb1q1/3nNr2/2rRKnB1/8 w KQkq - 0 0"]
 
+{[%csl #e3]}
 
 [Event ""]
 [Site ""]

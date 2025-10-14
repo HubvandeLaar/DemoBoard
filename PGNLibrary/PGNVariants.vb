@@ -1,15 +1,15 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging.Messages
 
 Public Class PGNVariants
     Inherits List(Of PGNVariant)
 
-    Public CurrentMoveIndex As Long
+    Private ReadOnly gPGNHalfMoves As PGNHalfMoves
+    Private ReadOnly Property FirstMoveOfParentVariant As Long
+    Private ReadOnly Property LastMoveOfParentVariant As Long
 
-    Private ReadOnly PGNHalfMoves As PGNHalfMoves
-    Private ReadOnly FirstMoveOfParentVariant As Long
-    Private ReadOnly LastMoveOfParentVariant As Long
+    Public Property CurrentMoveIndex As Long
 
     Public ReadOnly Property CurrentVariantIndex As Long
         Get
@@ -28,10 +28,10 @@ Public Class PGNVariants
 
     Public Sub New(pCurrentMoveIndex As Long, pPGNHalfMoves As PGNHalfMoves, Optional pDemotion As Boolean = False)
         CurrentMoveIndex = pCurrentMoveIndex
-        PGNHalfMoves = pPGNHalfMoves
+        gPGNHalfMoves = pPGNHalfMoves
 
         If pDemotion = True _
-        AndAlso PGNHalfMoves(CurrentMoveIndex).SubVariants.Count > 0 Then
+        AndAlso gPGNHalfMoves(CurrentMoveIndex).SubVariants.Count > 0 Then
             'If Demotion then ParentVariant can be demoted by pointing to the first Move
             FirstMoveOfParentVariant = CurrentMoveIndex
         Else
@@ -45,7 +45,7 @@ Public Class PGNVariants
             Exit Sub
         End If
 
-        Dim SubVariants As List(Of PGNHalfMove) = PGNHalfMoves(FirstMoveOfParentVariant).SubVariants
+        Dim SubVariants As List(Of PGNHalfMove) = gPGNHalfMoves(FirstMoveOfParentVariant).SubVariants
         For Each Move As PGNHalfMove In SubVariants
             Me.AddVariant(Move.Index, FindLastMoveOfVariant(Move.Index))
         Next Move
@@ -102,32 +102,32 @@ Public Class PGNVariants
     Public Sub UpdateHalfMoves()
         Dim NewCurrentMoveIndex As Long = CurrentMoveIndex
         Dim Moves As New List(Of PGNHalfMove)
-        Moves.AddRange(PGNHalfMoves)
-        PGNHalfMoves.Clear()
+        Moves.AddRange(gPGNHalfMoves)
+        gPGNHalfMoves.Clear()
 
         Dim ParentVariantLevel As Long = Moves(FirstMoveOfParentVariant).VariantLevel
         Dim ParentVariantNumber As Long = Moves(FirstMoveOfParentVariant).VariantNumber
 
         'Transfer not impacted part before these variants
         If Me.First.ParentFirstMoveIndex > 0 Then
-            PGNHalfMoves.AddRange(Moves.GetRange(0, Me.First.ParentFirstMoveIndex))
+            gPGNHalfMoves.AddRange(Moves.GetRange(0, Me.First.ParentFirstMoveIndex))
         Else
-            PGNHalfMoves.AddRange(Moves.GetRange(0, Me(1).ParentFirstMoveIndex))
+            gPGNHalfMoves.AddRange(Moves.GetRange(0, Me(1).ParentFirstMoveIndex))
         End If
 
         'Transfer ParentFirstMove
         If Me.First.ParentFirstMoveIndex <> -1 Then
             'New ParentVariant is Old ParentVariant
             Dim Move As PGNHalfMove = Moves(FirstMoveOfParentVariant)
-            If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = PGNHalfMoves.Count
-            PGNHalfMoves.Add(Move, False)
+            If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = gPGNHalfMoves.Count
+            gPGNHalfMoves.Add(Move, False)
         Else
             'New ParentVariant is Old SubVariant
             Dim Move As PGNHalfMove = Moves(Me.First.FromIndex)
             Move.VariantLevel = ParentVariantLevel
             Move.VariantNumber = ParentVariantNumber
-            If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = PGNHalfMoves.Count
-            PGNHalfMoves.Add(Move, False)
+            If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = gPGNHalfMoves.Count
+            gPGNHalfMoves.Add(Move, False)
         End If
 
         'Transfer SubVariants one by one
@@ -139,8 +139,8 @@ Public Class PGNVariants
                 Dim Move = Moves(PGNVariant.ParentFirstMoveIndex)
                 Move.VariantLevel += PGNVariant.VariantLevelIncrement
                 Move.VariantNumber = V
-                If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = PGNHalfMoves.Count
-                PGNHalfMoves.Add(Move, False)
+                If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = gPGNHalfMoves.Count
+                gPGNHalfMoves.Add(Move, False)
                 'Rest of Moves
                 For I As Integer = PGNVariant.FromIndex To PGNVariant.ToIndex
                     Move = Moves(I)
@@ -148,8 +148,8 @@ Public Class PGNVariants
                     If Move.VariantLevel = (ParentVariantLevel + 1) Then
                         Move.VariantNumber = V
                     End If
-                    If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = PGNHalfMoves.Count
-                    PGNHalfMoves.Add(Move, False)
+                    If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = gPGNHalfMoves.Count
+                    gPGNHalfMoves.Add(Move, False)
                 Next I
             Else
                 'Old SubVariant remains SubVariant, Only VariantNumber changes
@@ -158,8 +158,8 @@ Public Class PGNVariants
                     If Move.VariantLevel = (ParentVariantLevel + 1) Then
                         Move.VariantNumber = V
                     End If
-                    If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = PGNHalfMoves.Count
-                    PGNHalfMoves.Add(Move, False)
+                    If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = gPGNHalfMoves.Count
+                    gPGNHalfMoves.Add(Move, False)
                 Next I
             End If
         Next
@@ -169,8 +169,8 @@ Public Class PGNVariants
             'New ParentVariant is Old ParentVariant Nothing Changes
             For I As Integer = Me.First.FromIndex To Me.First.ToIndex
                 Dim Move As PGNHalfMove = Moves(I)
-                If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = PGNHalfMoves.Count
-                PGNHalfMoves.Add(Move, False)
+                If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = gPGNHalfMoves.Count
+                gPGNHalfMoves.Add(Move, False)
             Next I
         Else
             'New ParentVariant is Old SubVariant
@@ -180,50 +180,52 @@ Public Class PGNVariants
                 If Move.VariantLevel = ParentVariantLevel Then
                     Move.VariantNumber = ParentVariantNumber
                 End If
-                If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = PGNHalfMoves.Count
-                PGNHalfMoves.Add(Move, False)
+                If CurrentMoveIndex = Move.Index Then NewCurrentMoveIndex = gPGNHalfMoves.Count
+                gPGNHalfMoves.Add(Move, False)
             Next I
         End If
 
         'Transfer Not Impacted Part after the subvariants
-        If PGNHalfMoves.Count < Moves.Count Then
-            PGNHalfMoves.AddRange(Moves.GetRange(Moves.Count, PGNHalfMoves.Count - Moves.Count))
+        If gPGNHalfMoves.Count < Moves.Count Then
+            gPGNHalfMoves.AddRange(Moves.GetRange(Moves.Count, gPGNHalfMoves.Count - Moves.Count))
         End If
 
         CurrentMoveIndex = NewCurrentMoveIndex
-        PGNHalfMoves.ReNumber()
+        gPGNHalfMoves.ReNumber()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return String.Join(" ", Me)
     End Function
 
-    Private Function FindLastMoveOfVariant(pFirstMove) As Long
-        For I As Integer = pFirstMove + 1 To PGNHalfMoves.Count - 1
-            If PGNHalfMoves(I).VariantLevel < PGNHalfMoves(pFirstMove).VariantLevel Then
+    ''' <summary>Returns the Index of the Last Move within a Variant of specified Move-Index</summary>
+    Private Function FindLastMoveOfVariant(pFirstMoveIndex As Integer) As Long
+        For I As Integer = pFirstMoveIndex + 1 To gPGNHalfMoves.Count - 1
+            If gPGNHalfMoves(I).VariantLevel < gPGNHalfMoves(pFirstMoveIndex).VariantLevel Then
                 Return I - 1
             End If
-            If PGNHalfMoves(I).VariantLevel = PGNHalfMoves(pFirstMove).VariantLevel _
-            And PGNHalfMoves(I).VariantNumber <> PGNHalfMoves(pFirstMove).VariantNumber Then
+            If gPGNHalfMoves(I).VariantLevel = gPGNHalfMoves(pFirstMoveIndex).VariantLevel _
+            And gPGNHalfMoves(I).VariantNumber <> gPGNHalfMoves(pFirstMoveIndex).VariantNumber Then
                 Return I - 1
             End If
         Next
-        Return PGNHalfMoves.Count - 1
+        Return gPGNHalfMoves.Count - 1
     End Function
 
-    Private Function FindFirstMoveOfParentVariant(pCurrentMoveIndex) As Long
-        If PGNHalfMoves(pCurrentMoveIndex).VariantLevel = 0 Then 'Main Level
+    ''' <summary>Returns the HalfMoveIndex of the Parent Variant's First Move</summary>
+    Private Function FindFirstMoveOfParentVariant(pMoveIndex) As Long
+        If gPGNHalfMoves(pMoveIndex).VariantLevel = 0 Then 'Main Level
             'Exception for clicking mainlevel; Find related move with subvariants
-            For I As Integer = pCurrentMoveIndex - 1 To 0 Step -1
-                If PGNHalfMoves(I).SubVariants.Count > 0 Then
+            For I As Integer = pMoveIndex - 1 To 0 Step -1
+                If gPGNHalfMoves(I).SubVariants.Count > 0 Then
                     Return I
                 End If
             Next I
         End If
 
-        For I As Integer = pCurrentMoveIndex - 1 To 0 Step -1
-            If PGNHalfMoves(I).VariantLevel < PGNHalfMoves(pCurrentMoveIndex).VariantLevel Then
+        For I As Integer = pMoveIndex - 1 To 0 Step -1
+            If gPGNHalfMoves(I).VariantLevel < gPGNHalfMoves(pMoveIndex).VariantLevel Then
                 Return I
             End If
         Next I

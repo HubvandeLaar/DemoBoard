@@ -86,9 +86,14 @@
 		<param name="Local" value="Exit.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Export to PDF">
-		<param name="Name" value="Export to PDF">
-		<param name="Local" value="Export to PDF.htm">
+		<param name="Name" value="Export Diagrams to PDF">
+		<param name="Name" value="Export Diagrams to PDF">
+		<param name="Local" value="Export Diagrams to PDF.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Export Games to PDF">
+		<param name="Name" value="Export Games to PDF">
+		<param name="Local" value="Export Games to PDF.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="File Menu">
@@ -99,6 +104,11 @@
 		<param name="Name" value="Game Details">
 		<param name="Name" value="Game Details">
 		<param name="Local" value="Game Details.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Game Analysis">
+		<param name="Name" value="Game Analysis">
+		<param name="Local" value="Game Analysis.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Game Menu ">

@@ -1,40 +1,35 @@
-﻿Imports System.ComponentModel
-Imports ChessGlobals
+﻿Imports ChessGlobals
+Imports ChessMessaging
 Imports ChessMaterials
-Imports DemoBoard
-Imports PGNLibrary
 
 Public Class frmValidMoves
 
     Private WithEvents gfrmMainForm As frmMainForm
-    Private WithEvents gfrmBoard As frmBoard
 
     Public Event ValidMovesSelectionChanged(pSender As Object, pMove As BoardMove)
+    Public Event ValidMovesDoubleClick(pSender As Object, pMove As BoardMove)
 
     'Private gOriginalFEN As String
     Private gMoves As List(Of BoardMove)
+    Private gFEN As String
 
     Public Sub New(pfrmMainForm As frmMainForm)
         InitializeComponent()
 
         gfrmMainForm = pfrmMainForm
-        gfrmBoard = pfrmMainForm.gfrmBoard
     End Sub
 
     Private Sub gfrmMainForm_LanguageChanged(pLanguage As ChessLanguage) Handles gfrmMainForm.LanguageChanged
-        Call ChangeLanguageCurrentForm(Me)
-        UpdateValidMoves(gfrmBoard.FEN)
+        Call ApplyLanguageToCurrentForm(Me)
+        Application.DoEvents()
     End Sub
 
     Private Sub gfrmMainForm_ChessPieceStartMoving(pPiece As ChessPiece, pFromFieldName As String, pChessBoard As ChessBoard) Handles gfrmMainForm.ChessPieceStartMoving
         If gfrmMainForm.Visible = True Then
-            Me.UpdateValidMoves(pChessBoard.FEN, pPiece, pFromFieldName)
-        End If
-    End Sub
-
-    Private Sub gfrmMainForm_ChessPieceMoved(pPiece As ChessPiece, pFromFieldName As String, pToFieldName As String, pChessBoard As ChessBoard, pCaptured As Boolean, pPromotionPiece As ChessPiece) Handles gfrmMainForm.ChessPieceMoved
-        If gfrmMainForm.Visible = True Then
-            Me.UpdateValidMoves(pChessBoard.FEN)
+            If Me.Visible = True Then
+                Application.DoEvents()
+                Me.UpdateValidMoves(pChessBoard.FEN, pPiece, pFromFieldName)
+            End If
         End If
     End Sub
 
@@ -71,9 +66,10 @@ Public Class frmValidMoves
         Try
             If lstValidMoves.SelectedIndex = -1 Then
                 RaiseEvent ValidMovesSelectionChanged(pSender, Nothing)
-                Exit Sub
+            Else
+                RaiseEvent ValidMovesSelectionChanged(pSender, gMoves(lstValidMoves.SelectedIndex))
             End If
-            RaiseEvent ValidMovesSelectionChanged(pSender, gMoves(lstValidMoves.SelectedIndex))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -81,15 +77,34 @@ Public Class frmValidMoves
 
     Private Sub lstValidMoves_DoubleClick(pSender As Object, pArgs As EventArgs) Handles lstValidMoves.DoubleClick
         Try
-            If lstValidMoves.SelectedIndex = -1 Then Exit Sub
-            gfrmBoard.PerformMove(gMoves(lstValidMoves.SelectedIndex))
+            If lstValidMoves.SelectedIndex = -1 Then
+                Exit Sub
+            Else
+                RaiseEvent ValidMovesDoubleClick(pSender, gMoves(lstValidMoves.SelectedIndex))
+            End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
-    Private Sub gfrmMainForm_FENChanged(pFEN As String) Handles gfrmMainForm.FENChanged
-        UpdateValidMoves(pFEN)
+    Private Sub gfrmMainForm_BoardShown(pFEN As String) Handles gfrmMainForm.BoardShown
+        gFEN = pFEN
+        If Me.Visible = True Then
+            Me.UpdateValidMoves(pFEN)
+        End If
+    End Sub
+
+    Private Sub gfrmMainForm_MouseUp(pSender As Object, pArgs As MouseEventArgs) Handles gfrmMainForm.MouseUp
+        If Me.Visible = True Then
+            Me.UpdateValidMoves(gFEN)
+        End If
+    End Sub
+
+    Private Sub frmValidMoves_VisibleChanged(pSender As Object, pArs As EventArgs) Handles Me.VisibleChanged
+        If Me.Visible = True Then
+            Me.UpdateValidMoves(gFEN)
+        End If
     End Sub
 
     Private Sub frmValidMoves__Disposed(pSender As Object, pArgs As EventArgs) Handles Me.Disposed
@@ -97,10 +112,10 @@ Public Class frmValidMoves
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.gMoves = Nothing
-        Me.gfrmMainForm = Nothing
-        Me.gfrmBoard = Nothing
+        gMoves = Nothing
+        gfrmMainForm = Nothing
 
         MyBase.Finalize()
     End Sub
+
 End Class

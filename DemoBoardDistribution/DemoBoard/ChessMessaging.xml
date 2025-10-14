@@ -1,0 +1,564 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ChessMessaging
+</name>
+</assembly>
+<members>
+<member name="T:ChessMessaging.My.Resources.Messages">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.AddNewSubVariant">
+<summary>
+  Looks up a localized string similar to Insert move: &quot;%1&quot;, as %2th subvariant ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.AddPiece">
+<summary>
+  Looks up a localized string similar to Add %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.AddText">
+<summary>
+  Looks up a localized string similar to Add text.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.AlreadyExists">
+<summary>
+  Looks up a localized string similar to File &quot;%1&quot; already exists in &quot;%2&quot; !  Do you want to overwrite the existing file ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Are_You_Sure">
+<summary>
+  Looks up a localized string similar to Are You Sure ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.CaptureWithLowerPiece">
+<summary>
+  Looks up a localized string similar to Better capture two-fold-attacked-piece at %1 with %2 at %3.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.CheckMateIn2">
+<summary>
+  Looks up a localized string similar to Missed checkmate in 2 by %1 and %2.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.CheckMateOpponent">
+<summary>
+  Looks up a localized string similar to Opponent can checkmate using %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.ColumnRowRange">
+<summary>
+  Looks up a localized string similar to Column &quot;%1&quot;, or Row &quot;%2&quot; out of range (Has to be be 1 to 8).
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.CommentAfter">
+<summary>
+  Looks up a localized string similar to Comment (after).
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.CommentBefore">
+<summary>
+  Looks up a localized string similar to Comment (before).
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.CommentNotEmpty">
+<summary>
+  Looks up a localized string similar to CommentAfter is not empty&quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.CorrectAnswer">
+<summary>
+  Looks up a localized string similar to Well done !  The answer %1 is correct.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.DefendAgainstPinning">
+<summary>
+  Looks up a localized string similar to Pinning of %1 could hav been solved by %2.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.DeleteAllMoves">
+<summary>
+  Looks up a localized string similar to Delete all moves and add move &quot;%1&quot; ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.DeleteArrow">
+<summary>
+  Looks up a localized string similar to Delete arrow from %1 to %2.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.DeleteMarker">
+<summary>
+  Looks up a localized string similar to Delete marker at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.DeleteMove">
+<summary>
+  Looks up a localized string similar to Delete move &quot;%1&quot; and subsequent moves ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.DeletePiece">
+<summary>
+  Looks up a localized string similar to Delete %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.DeleteText">
+<summary>
+  Looks up a localized string similar to Delete text &quot;%1&quot; from %2.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.EliminateDefence">
+<summary>
+  Looks up a localized string similar to Using %1 defender %2 of %3 could be eliminated.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InCheckAfterMove">
+<summary>
+  Looks up a localized string similar to %1 is (still) in check after the move.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.IncorrectAnswer">
+<summary>
+  Looks up a localized string similar to The answer %1 is incorrect. Please try again.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.IncorrectAnswer2">
+<summary>
+  Looks up a localized string similar to The answer %1 isn&apos;t quite correct.  Please try again.  Total score increased by %2 points.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.IncorrectInitPos">
+<summary>
+  Looks up a localized string similar to Initial position of %1 is incorrect.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InsertMove">
+<summary>
+  Looks up a localized string similar to Insert move &quot;%1&quot;, and delete all subsequent moves ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InsertSubVariant">
+<summary>
+  Looks up a localized string similar to Insert move &quot;%1&quot;, as a new subvariant ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.IntendedCastling">
+<summary>
+  Looks up a localized string similar to King was moved 2 places; Assumed castling is intended.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidArrowList">
+<summary>
+  Looks up a localized string similar to Invalid arrow list format at PGN.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling1">
+<summary>
+  Looks up a localized string similar to Invalid castling; King in check before or after move.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling2">
+<summary>
+  Looks up a localized string similar to Invalid castling; King in check during the move.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling3">
+<summary>
+  Looks up a localized string similar to Invalid castling; A piece was standing at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling4">
+<summary>
+  Looks up a localized string similar to Invalid castling; King was not at intial position.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling5">
+<summary>
+  Looks up a localized string similar to Invalid castling on the King&apos;s side; A piece was standing at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling6">
+<summary>
+  Looks up a localized string similar to Invalid castling on the Queen&apos;s side; A piece was standing at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling6b">
+<summary>
+  Looks up a localized string similar to Invalid castling on the Queen&apos;s side; King doesn&apos;t go to the right field.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling7">
+<summary>
+  Looks up a localized string similar to Invalid castling; King doesn&apos;t go to the right field.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling8">
+<summary>
+  Looks up a localized string similar to Invalid castling on the King&apos;s side; Pieces were moved.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidCastling9">
+<summary>
+  Looks up a localized string similar to Invalid castling on the Queen&apos;s side; Pieces were moved.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidColor">
+<summary>
+  Looks up a localized string similar to Color &quot;%1&quot; is invalid. Should be &quot;R&quot;, &quot;G&quot;, &quot;Y&quot;, &quot;B&quot;, &quot;C&quot; or &quot;O&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidFENPiece">
+<summary>
+  Looks up a localized string similar to Invalid Piece &quot;%1&quot; in FEN.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidFieldName">
+<summary>
+  Looks up a localized string similar to Field name &quot;%1&quot; is invalid. Should be &quot;a1&quot; thru &quot;h8&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidIconName">
+<summary>
+  Looks up a localized string similar to The specified name &quot;%1&quot; is not defined as a standard Icon.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidImageName">
+<summary>
+  Looks up a localized string similar to The specified name &quot;%1&quot; is not defined as a standard Image.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidMarerkList">
+<summary>
+  Looks up a localized string similar to Invalid marker list format at PGN.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidMove">
+<summary>
+  Looks up a localized string similar to Invalid move for a %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidNAGCode">
+<summary>
+  Looks up a localized string similar to Code &quot;%1&quot; is invalid. Should be a &quot;$&quot; with valid NAG number.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidPiece">
+<summary>
+  Looks up a localized string similar to Invalid Piece &quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidQuestion">
+<summary>
+  Looks up a localized string similar to Invalid training question format at PGN.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidSymbol">
+<summary>
+  Looks up a localized string similar to Symbol &quot;%1&quot; is invalid. Should be &quot;R&quot;, &quot;G&quot;, &quot;Y&quot;, &quot;B&quot;, &quot;C&quot;, &quot;O&quot;, &quot;+&quot;, &quot;-&quot;, &quot;0&quot;, &quot;#&quot;, &quot;.&quot; or &quot;*&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidTextList">
+<summary>
+  Looks up a localized string similar to Invalid text list format at PGN.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidTQUMove">
+<summary>
+  Looks up a localized string similar to The move &quot;%1&quot; is invalid. Should be in the format &quot;x9x9&quot; specifying from field and to field.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.InvalidVariantMove">
+<summary>
+  Looks up a localized string similar to Current move is not part of a variant.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.KingNotSafe">
+<summary>
+  Looks up a localized string similar to King not yet at a safe position.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MessageNotFound">
+<summary>
+  Looks up a localized string similar to Message text with key &quot;%1&quot;  not found.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedAttackOnPinnedPiece">
+<summary>
+  Looks up a localized string similar to Missed attack on a pinned piece %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedDiscoverdAttack">
+<summary>
+  Looks up a localized string similar to Missed discovered attack %1. Head-piece %2 could attack %3 and tail-piece &amp;4 could attack %5.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedDiscoveredCheck">
+<summary>
+  Looks up a localized string similar to Missed discovered check by %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedDoubleAttack">
+<summary>
+  Looks up a localized string similar to Missed double attack on %2 and %3 after %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedDoubleCheck">
+<summary>
+  Looks up a localized string similar to Double check by %1 would have been better.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedMateIn1">
+<summary>
+  Looks up a localized string similar to %1 would have been checkmate.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedMultiAttack">
+<summary>
+  Looks up a localized string similar to Missed multiple attack on %2, %3, %4,... after %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedPinnedPieceIsBadDefender">
+<summary>
+  Looks up a localized string similar to Pinned piece at %1 is a bad defender, so %2 would have been possible.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedPinning">
+<summary>
+  Looks up a localized string similar to Could pin piece at %1 with move %2.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedProfitExchange">
+<summary>
+  Looks up a localized string similar to Profitable exchange at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedTripleAttack">
+<summary>
+  Looks up a localized string similar to Missed triple attack on %2, %3 and %4 after %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedTwoFoldAttack">
+<summary>
+  Looks up a localized string similar to Could capture a twice attacked piece at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissedUncoverdedPiece">
+<summary>
+  Looks up a localized string similar to Could capture an uncovered piece at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.MissingSpace">
+<summary>
+  Looks up a localized string similar to Missing space to divide &quot;%1&quot; into parts !.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.NAGBeforeOrAfter">
+<summary>
+  Looks up a localized string similar to Before Or After not recoginized: &quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.NoPawnAtCenter">
+<summary>
+  Looks up a localized string similar to No pawn at the center.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.NoSpaceFound">
+<summary>
+  Looks up a localized string similar to No Space found at &quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.NotCoverded">
+<summary>
+  Looks up a localized string similar to Uncovered piece at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.OfferingPieces">
+<summary>
+  Looks up a localized string similar to Opponent now has a profitable exchange at %1 with the %2.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.OfferingPieces2">
+<summary>
+  Looks up a localized string similar to Opponent can capture the isufficiently defended %2 at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.OpenPGNFile">
+<summary>
+  Looks up a localized string similar to Open PGN File.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.PGNMoveInvalid">
+<summary>
+  Looks up a localized string similar to PGN was not specific enough for Piece &quot;%1&quot; moving to &quot;%2&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Play">
+<summary>
+  Looks up a localized string similar to Play.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Position_After">
+<summary>
+  Looks up a localized string similar to Position after: %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Position_Before">
+<summary>
+  Looks up a localized string similar to Position before: %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.ReallyWrong">
+<summary>
+  Looks up a localized string similar to Sorry, but something went really wrong....
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.RedoEmpty">
+<summary>
+  Looks up a localized string similar to Redo empty.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.RedoTooltipText">
+<summary>
+  Looks up a localized string similar to Redo of changes:&quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.RooksNotConnected">
+<summary>
+  Looks up a localized string similar to Rooks not yet connected.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.SameColor">
+<summary>
+  Looks up a localized string similar to Twice or more moves of the same color; Save anyhow ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.SameColorTwice">
+<summary>
+  Looks up a localized string similar to %1 has moved twice.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.SaveChanges">
+<summary>
+  Looks up a localized string similar to Current (PGN/XPGN)-file has been changed !  Save current file first ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Setup">
+<summary>
+  Looks up a localized string similar to Setup.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Starting_Position">
+<summary>
+  Looks up a localized string similar to Starting position.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.StrangePiece">
+<summary>
+  Looks up a localized string similar to Unforseen condition with a piece named: &quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.SwitchToTraining">
+<summary>
+  Looks up a localized string similar to The game contains one or more training questions.  Switch to TRAINING mode ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.ThreatUnprofitExchange">
+<summary>
+  Looks up a localized string similar to There is a threat of an unprofitable exchange at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.Training">
+<summary>
+  Looks up a localized string similar to Training.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.TrainingQuestion">
+<summary>
+  Looks up a localized string similar to What is the best move ?.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.TwoFoldAttacked">
+<summary>
+  Looks up a localized string similar to Twice attacked piece at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UndevelopedPieces">
+<summary>
+  Looks up a localized string similar to %1 Pieces are not yet developed.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UndoEmpty">
+<summary>
+  Looks up a localized string similar to Undo empty.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UndoTooltipText">
+<summary>
+  Looks up a localized string similar to Undo of changes: &quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UnknownNAG">
+<summary>
+  Looks up a localized string similar to Unknown NAG: &quot;%1&quot;.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UnkownLanguage">
+<summary>
+  Looks up a localized string similar to Unkown Language specified to store.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UnprofitExchange">
+<summary>
+  Looks up a localized string similar to Unprofitable exchange at %1.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UnprofitTwoFoldCapture">
+<summary>
+  Looks up a localized string similar to Unprofitable capture at %2. The %1 at %2 is %3 times attacked, but also %4 times defended.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Messages.UpdateFEN">
+<summary>
+  Looks up a localized string similar to Delete all moves and update the initial position ?.
+</summary>
+</member>
+<member name="T:ChessMessaging.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:ChessMessaging.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:ChessMessaging.frmErrorMessageBox.RemoveDirectories(System.String)">
+ <summary>Returns only the FileName out of a FullFileName</summary>
+</member>
+<member name="M:ChessMessaging.Messages.MessageText(System.String,System.String,System.String,System.String,System.String,System.String)">
+ <summary>Returns the pKey Message from the Messages.resx file in CurrentLanguage.
+ It's a Shared Function, so this class needs no instance</summary>
+</member>
+</members>
+</doc>

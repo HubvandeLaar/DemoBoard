@@ -60,10 +60,11 @@ Partial Class frmSelectVariant
         resources.ApplyResources(Me.cmdOK, "cmdOK")
         Me.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOK.Name = "cmdOK"
-        Me.cmdOK.UseVisualStyleBackColor = True
+        Me.cmdOK.UseVisualStyleBackColor = False
         '
         'frmSelectVariant
         '
+        Me.AcceptButton = Me.cmdOK
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ControlBox = False

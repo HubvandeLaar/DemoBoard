@@ -1,26 +1,20 @@
 ﻿Option Explicit On
-Imports ChessGlobals
 Imports ChessMaterials
 Imports ChessGlobals.ChessColor
 
 Public Class SetupToolbar
-    Public Visible As Boolean = True
 
-    Public gMarkerColor As String = "G" 'G, Y, R, B, C, O
-
-    'NB gPieces(C, R)
+    'NB gPieces(Column, Row)
     Private ReadOnly gPieces(,) As ChessPiece = {{Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing},
                                                 {Nothing, New King(WHITE), New Queen(WHITE), New Rook(WHITE), New Bishop(WHITE), New Knight(WHITE), New Pawn(WHITE)},
                                                 {Nothing, New King(BLACK), New Queen(BLACK), New Rook(BLACK), New Bishop(BLACK), New Knight(BLACK), New Pawn(BLACK)}} 'Zerobased 
-
     Private WithEvents gCtlBoard As ctlBoard
 
+    Public Property Visible As Boolean = True
+    Public Property MarkerColor As String = "G" 'G, Y, R, B, C, O
     Public Property Left As Long
-
     Public Property Top As Long
-
     Public Property Width As Long
-
     Public Property Height() As Long
 
     Public ReadOnly Property Bounds() As Rectangle
@@ -28,7 +22,6 @@ Public Class SetupToolbar
             Return New Rectangle(Me.Left, Me.Top, Me.Width, Me.Height)
         End Get
     End Property
-
 
     Private ReadOnly Property ColumnWidth As Long
         Get
@@ -55,18 +48,18 @@ Public Class SetupToolbar
     End Property
 
     Public Sub Paint()
-        If Visible = False Then
-            gCtlBoard.picArrow.Visible = False
-            gCtlBoard.picGreen.Visible = False
-            gCtlBoard.picYellow.Visible = False
-            gCtlBoard.picRed.Visible = False
-            gCtlBoard.picBlue.Visible = False
-            gCtlBoard.picCyan.Visible = False
-            gCtlBoard.picOrange.Visible = False
-            Exit Sub
-        End If
-
         With gCtlBoard
+            If Visible = False Then
+                .picArrow.Visible = False
+                .picGreen.Visible = False
+                .picYellow.Visible = False
+                .picRed.Visible = False
+                .picBlue.Visible = False
+                .picCyan.Visible = False
+                .picOrange.Visible = False
+                Exit Sub
+            End If
+
             'Pieces
             .PaintImage(frmImages.WKing.Image, LeftPos(1), TopPos(1), IconSize, IconOffset)
             .PaintImage(frmImages.WQueen.Image, LeftPos(1), TopPos(2), IconSize, IconOffset)
@@ -89,9 +82,9 @@ Public Class SetupToolbar
             .PaintImage(frmImages.MinusSign.Image, LeftPos(2), TopPos(8), IconSize, IconOffset)
             .PaintImage(frmImages.BlueStar.Image, LeftPos(3), TopPos(8), IconSize, IconOffset)
             'Colored Markers
-            .PaintImage(frmImages.getImage(gMarkerColor & "Marker"), LeftPos(1), TopPos(9), IconSize, IconOffset)
-            .PaintImage(frmImages.getImage(gMarkerColor & "Text"), LeftPos(2), TopPos(9), IconSize, IconOffset)
-            .picArrow.Image = frmImages.getImage(gMarkerColor & "Arrow")
+            .PaintImage(frmImages.getImage(MarkerColor & "Marker"), LeftPos(1), TopPos(9), IconSize, IconOffset)
+            .PaintImage(frmImages.getImage(MarkerColor & "Text"), LeftPos(2), TopPos(9), IconSize, IconOffset)
+            .picArrow.Image = frmImages.getImage(MarkerColor & "Arrow")
             .picArrow.Left = LeftPos(3) + IconOffset : .picArrow.Top = TopPos(9) + IconOffset
             .picArrow.Visible = True : .picArrow.Size = New Size(IconSize, IconSize)
             'Colors
@@ -111,8 +104,7 @@ Public Class SetupToolbar
     End Sub
 
     Private Sub gCtlBoard_MouseDown(pSender As Object, pArgs As System.Windows.Forms.MouseEventArgs) Handles gCtlBoard.SetupToolbarMouseDown
-        Dim C As Long, R As Long
-        C = Column(pArgs.X) : R = Row(pArgs.Y)
+        Dim C As Long = Column(pArgs.X) : Dim R As Long = Row(pArgs.Y)
         If C > 3 Then Exit Sub
         Select Case R
             Case 1, 2, 3, 4, 5, 6  'Pieces
@@ -146,8 +138,8 @@ Public Class SetupToolbar
 
             Case 9  'Marker, Text, Arrow
                 Select Case C
-                    Case 1 : Call gCtlBoard.SetDragMarker(gMarkerColor, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
-                    Case 2 : Call gCtlBoard.SetDragText(gMarkerColor, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
+                    Case 1 : Call gCtlBoard.SetDragMarker(MarkerColor, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
+                    Case 2 : Call gCtlBoard.SetDragText(MarkerColor, LeftPos(C), TopPos(R), pArgs.X - LeftPos(C) - IconOffset, pArgs.Y - TopPos(R) - IconOffset)
                     Case 3  'Arrow
                     Case Else : Exit Sub
                 End Select
@@ -157,18 +149,22 @@ Public Class SetupToolbar
         End Select
     End Sub
 
+    ''' <summary>Returns the Left position of a specified Column</summary>
     Private Function LeftPos(pColumn As Long) As Long
         Return Me.Left + ((pColumn - 1) * Me.ColumnWidth)
     End Function
 
+    ''' <summary>Returns the Column number of a specified X-position</summary>
     Private Function Column(pLeft As Long) As Long
         Return Int((pLeft - Me.Left) / Me.ColumnWidth) + 1
     End Function
 
+    ''' <summary>Returns the Top position of a specified Row</summary>
     Private Function TopPos(pRow As Long) As Long
         Return (pRow - 1) * Me.RowHeight
     End Function
 
+    ''' <summary>Returns the Row of a specified Y-position</summary>
     Private Function Row(pTop As Long) As Long
         'Counting from Top to Bottom
         Return Int(pTop / Me.RowHeight) + 1

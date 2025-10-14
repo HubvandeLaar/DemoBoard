@@ -8,7 +8,7 @@
 [Title "Weggaan / Going-Away"]
 [Memo "Het paard kan zich verdedigen door weg te gaan.
 Dit heet WEGGAAN"]
-[FEN "8/8/8/2n5/8/4Q3/8/8 w KQkq - 0 0"]
+[FEN "8/8/8/2n5/8/4Q3/8/8 b KQkq - 0 0"]
 [FENGraphicals "[%csl +a4, +a6, +b7, +d7][%cal Yc5d7, Yc5a4, Yc5b7, Yc5a6]"]
 
 {[%csl +a4, +a6, +b7, +d7][%cal Yc5d7, Yc5a4, Yc5b7, Yc5a6]}
@@ -24,7 +24,7 @@ Dit heet WEGGAAN"]
 [Memo "De toren kan het paard dekken.
 Wordt het paard geslagen, dan slaat de toren terug
 Dit heet DEKKEN"]
-[FEN "6r1/8/8/2n5/8/4Q3/8/8 w KQkq - 0 0"]
+[FEN "6r1/8/8/2n5/8/4Q3/8/8 b KQkq - 0 0"]
 [FENGraphicals "[%cal Yg8c8]"]
 
 {[%cal Yg8c8]}
@@ -39,7 +39,7 @@ Dit heet DEKKEN"]
 [Title "Dekken / Covering"]
 [Memo "Als het paard naar d4 gaat, staat het paard zelf gevaarlijk aangevallen.
 Het paard kan beter naar a3"]
-[FEN "8/8/8/1b1R4/8/8/2n5/8 w KQkq - 0 0"]
+[FEN "8/8/8/1b1R4/8/8/2n5/8 b KQkq - 0 0"]
 [FENGraphicals "[%csl #c2, +a3, -d4]"]
 
 {[%csl #c2, +a3, -d4]}
@@ -84,7 +84,7 @@ Dit heet SLAAN"]
 + Weggaan / Going-Away
 + Dekken    / Covering
 + Slaan       / Capturing"]
-[FEN "8/1p6/8/2n5/8/1N6/P7/8 w KQkq - 0 0"]
+[FEN "8/1p6/8/2n5/8/1N6/P7/8 b KQkq - 0 0"]
 [FENGraphicals ""]
 
 

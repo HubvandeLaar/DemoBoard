@@ -19,7 +19,7 @@
 [Result ""]
 [Title "Verschil dame en paard"]
 [Memo "De dubbele aanval met de dame levert vaak niets op"]
-[FEN "1k1r4/8/1Q6/8/8/8/8/8 w KQkq - 0 0"]
+[FEN "1k1r4/8/1Q6/8/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -32,7 +32,7 @@
 [Title "Verschil dame en paard"]
 [Memo "De dubbele aanval met paard levert vaak toch nog wat op; zelfs als de stukken gedekt staan !
 Het paard kan op gevaarlijk plekken staan als hij maar gedekt wordt. De dame kan zich nooit op moeilijke plekken begeven."]
-[FEN "4r1k1/8/5Nq1/6P1/8/8/8/8 w KQkq - 0 0"]
+[FEN "4r1k1/8/5Nq1/6P1/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -179,7 +179,7 @@ Dan de beste dubbele aanval zoeken."]
 [Result ""]
 [Title "Dubbele aanval koning"]
 [Memo "Voorbeeld"]
-[FEN "8/8/8/8/8/rpr5/1K6/8 w KQkq - 0 0"]
+[FEN "8/8/8/8/8/rpr5/1K6/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -191,7 +191,7 @@ Dan de beste dubbele aanval zoeken."]
 [Result ""]
 [Title "Dubbele aanval koning"]
 [Memo "Voorbeeld"]
-[FEN "8/8/8/8/8/6Kb/5n2/8 w KQkq - 0 0"]
+[FEN "8/8/8/8/8/6Kb/5n2/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -227,7 +227,7 @@ Dan de beste dubbele aanval zoeken."]
 [Result ""]
 [Title "Dubbele aanval hout+veld"]
 [Memo "Aanval op de dame en een matveld waar het stikmat is."]
-[FEN "8/2r5/Q1n5/8/8/8/PP6/KN6 w KQkq - 0 0"]
+[FEN "8/2r5/Q1n5/8/8/8/PP6/KN6 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -275,7 +275,7 @@ Dan de beste dubbele aanval zoeken."]
 [Result ""]
 [Title "Dubbele aanval met twee stukken."]
 [Memo "Aanval op veld + hout dat door een ander stuk geslagen wordt."]
-[FEN "8/8/8/4bq2/6b1/4B3/4B1PP/4Q2K w KQkq - 0 0"]
+[FEN "8/8/8/4bq2/6b1/4B3/4B1PP/4Q2K b KQkq - 0 0"]
 
 
 [Event ""]

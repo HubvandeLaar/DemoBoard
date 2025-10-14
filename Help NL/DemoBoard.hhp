@@ -16,6 +16,7 @@ About.htm
 Board Style.htm
 Chess Board.htm
 Clear.htm
+Copy Game.htm
 Copy.htm
 Delete Game.htm
 Delete Move.htm
@@ -27,8 +28,10 @@ Edit Move.htm
 Edit Title and Memo.htm
 Entering Moves.htm
 Exit.htm
-Export to PDF.htm
+Export Diagrams to PDF.htm
+Export Games to PDF.htm
 File Menu.htm
+Game Analysis.htm
 Game Details.htm
 Game Menu.htm
 Go to Start.htm
@@ -44,6 +47,7 @@ Load Layout.htm
 Main Form.htm
 Menu Bar.htm
 Menu Options.htm
+MenuLocation.htm
 Mode.htm
 Move List.htm
 Move Right-click Menu.htm

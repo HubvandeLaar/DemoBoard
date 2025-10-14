@@ -1,19 +1,21 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging
 Imports PGNLibrary
+Imports PGNLibrary.PGNComment.BeforeOrAfterDiagram
 
 Public Class frmSelectVariant
 
-    Public ChoosenVariant As PGNHalfMove
-    Private Variants As List(Of PGNHalfMove)
+    Public Property ChoosenVariant As PGNHalfMove
+
+    Private gVariants As List(Of PGNHalfMove)
 
     Public Overloads Sub ShowDialog(pVariants As List(Of PGNHalfMove))
         Dim VariantsRow(3) As String
         Try
             Me.lstVariants.Items.Clear()
             Me.ChoosenVariant = Nothing
-            Me.Variants = pVariants
+            Me.gVariants = pVariants
 
             'Store Main Variant
             For Each PGNHalfMove As PGNHalfMove In pVariants
@@ -21,13 +23,14 @@ Public Class frmSelectVariant
                 If PGNHalfMove.CommentAfter Is Nothing Then
                     VariantsRow(1) = ""
                 Else
-                    VariantsRow(1) = PGNHalfMove.CommentAfter.Text(True)
+                    VariantsRow(1) = PGNHalfMove.CommentAfter.Text(REMOVEDIAGRAM)
                 End If
                 Me.lstVariants.Items.Add(New ListViewItem(VariantsRow))
             Next PGNHalfMove
             Me.lstVariants.TopItem.Selected = True
 
             MyBase.ShowDialog()
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -38,8 +41,9 @@ Public Class frmSelectVariant
         Try
             If lstVariants.SelectedItems.Count > 0 Then
                 Index = lstVariants.SelectedItems(0).Index
-                Me.ChoosenVariant = Me.Variants(Index)
+                Me.ChoosenVariant = Me.gVariants(Index)
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -50,9 +54,10 @@ Public Class frmSelectVariant
         Try
             If lstVariants.SelectedItems.Count > 0 Then
                 Index = lstVariants.SelectedItems(0).Index
-                Me.ChoosenVariant = Me.Variants(Index)
+                Me.ChoosenVariant = Me.gVariants(Index)
                 Me.Hide()
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -63,14 +68,16 @@ Public Class frmSelectVariant
         Try
             If lstVariants.SelectedItems.Count > 0 Then
                 Index = lstVariants.SelectedItems(0).Index
-                Me.ChoosenVariant = Me.Variants(Index)
+                Me.ChoosenVariant = Me.gVariants(Index)
                 Me.Hide()
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
+    ''' <summary>Catches the Keys Entered</summary>
     Protected Overrides Function ProcessCmdKey(ByRef pMsg As System.Windows.Forms.Message, pKeyData As System.Windows.Forms.Keys) As Boolean
         Select Case pKeyData
             Case Keys.Right : cmdOK_Click(Nothing, Nothing)
@@ -80,7 +87,7 @@ Public Class frmSelectVariant
     End Function
 
     Protected Overrides Sub Finalize()
-        Me.Variants = Nothing
+        Me.gVariants = Nothing
         Me.ChoosenVariant = Nothing
 
         MyBase.Finalize()

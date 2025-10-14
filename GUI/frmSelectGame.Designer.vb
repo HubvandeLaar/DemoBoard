@@ -61,8 +61,8 @@ Partial Class frmSelectGame
         '
         'lstGames
         '
-        resources.ApplyResources(Me.lstGames, "lstGames")
         Me.lstGames.AllowDrop = True
+        resources.ApplyResources(Me.lstGames, "lstGames")
         Me.lstGames.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colNumber, Me.colWhite, Me.colBlack, Me.colResult, Me.colGameDate, Me.colTitle})
         Me.lstGames.FullRowSelect = True
         Me.lstGames.GridLines = True
@@ -102,8 +102,10 @@ Partial Class frmSelectGame
         '
         'frmSelectGame
         '
+        Me.AcceptButton = Me.cmdOK
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.cmdCancel
         Me.Controls.Add(Me.cmdDown)
         Me.Controls.Add(Me.cmdUp)
         Me.Controls.Add(Me.cmdOK)

@@ -1,15 +1,14 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
 Imports System.Xml.Serialization
 
 <XmlType()>
 Public Class PGNTag
 
     <XmlAttribute()>
-    Public Key As String
+    Public Property Key As String
     <XmlAttribute()>
-    Public Value As String
+    Public Property Value As String
 
     <XmlIgnore>
     Public Property PGNString() As String
@@ -52,6 +51,7 @@ Public Class PGNTag
         'Needed for serialization
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
         Return Me.Key & " " & Me.Value
     End Function

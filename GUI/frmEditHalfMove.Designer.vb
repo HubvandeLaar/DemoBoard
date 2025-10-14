@@ -185,12 +185,14 @@ Partial Class frmEditHalfMove
         '
         Me.txtCommentBefore.AcceptsReturn = True
         resources.ApplyResources(Me.txtCommentBefore, "txtCommentBefore")
+        Me.txtCommentBefore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCommentBefore.Name = "txtCommentBefore"
         '
         'txtCommentAfter
         '
         Me.txtCommentAfter.AcceptsReturn = True
         resources.ApplyResources(Me.txtCommentAfter, "txtCommentAfter")
+        Me.txtCommentAfter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCommentAfter.Name = "txtCommentAfter"
         '
         'Label14
@@ -305,7 +307,6 @@ Partial Class frmEditHalfMove
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdCancel
-        Me.ControlBox = False
         Me.Controls.Add(Me.lblNAGs)
         Me.Controls.Add(Me.lblMarkers)
         Me.Controls.Add(Me.lblTexts)
@@ -332,6 +333,8 @@ Partial Class frmEditHalfMove
         Me.Controls.Add(Me.grpMove)
         Me.Controls.Add(Me.grpCommentBefore)
         Me.Controls.Add(Me.grpCommentAfter)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmEditHalfMove"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False

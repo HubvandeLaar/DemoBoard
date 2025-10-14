@@ -22,5 +22,11 @@ PDFLibrary
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:PDFLibrary.modLastPDF.LastPDFFolder">
+ <summary>Returns the last used folder for PDF-files</summary>
+</member>
+<member name="M:PDFLibrary.PDFDiagramsDocument.CentimetersToPoints(System.Single)">
+ <summary>Returns a distance in Points for a specified distance in Centimeters</summary>
+</member>
 </members>
 </doc>

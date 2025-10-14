@@ -1,8 +1,8 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
-Imports ChessMaterials
 Imports ChessGlobals.ChessLanguage
+Imports ChessMessaging.Messages
 Imports PGNLibrary.PGNNAG.NAGPrintPosition
 Imports System.Xml.Serialization
 
@@ -26,91 +26,76 @@ Public Class PGNNAG
     End Enum
 
     <XmlAttribute()>
-    Public Type As NAGType
+    Public Property Type As NAGType
     <XmlAttribute()>
-    Public Code As Long = 0
+    Public Property Code As Long = 0
     <XmlAttribute()>
-    Public Font As String = ""
+    Public Property FontName As String = ""
     <XmlAttribute()>
-    Public PrintPosition As NAGPrintPosition = AFTER
-
-    <XmlAttribute()>
-    Public gPGNString As String = ""
-    <XmlAttribute()>
-    Public gEnglishText As String = ""
-    <XmlAttribute()>
-    Public gDutchText As String = ""
-
-
-    ''' <summary>First position contains "$"</summary>
-    <XmlIgnore>
-    Property PGNString() As String
-        Set(pPGNString As String)
-            gPGNString = pPGNString
-            If Left(pPGNString, 1) <> "$" Then
-                Throw New NotImplementedException("Unknown Language: ")
-            End If
-            Me.StoreValues(Val(Mid(pPGNString, 2)))
-        End Set
-        Get
-            Return gPGNString
-        End Get
-    End Property
+    Public Property PrintPosition As NAGPrintPosition = AFTER
 
     <XmlIgnore>
     ReadOnly Property Text(Optional pLanguage As ChessLanguage = ENGLISH) As String
         Get
             Select Case pLanguage
                 Case ENGLISH
-                    Return gEnglishText
+                    Return EnglishText
                 Case NEDERLANDS
-                    Return gDutchText
-                    If gDutchText = "" Then Text = gEnglishText
+                    If DutchText = "" Then Return EnglishText
+                    Return DutchText
                 Case Else
-                    Throw New NotImplementedException("Unknown Language: " & pLanguage)
-                    Return ""
+                    Return EnglishText
             End Select
         End Get
     End Property
 
+    <XmlAttribute()>
+    Public Property PGNString As String = ""
+
+    <XmlAttribute()>
+    Public Property EnglishText As String = ""
+
+    <XmlAttribute()>
+    Public Property DutchText As String = ""
+
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
-        Return Me.PGNString
+        Return PGNString
     End Function
 
-    Private Sub StoreValues(pNumber As Long)
+    Public Sub StoreValues(pNumber As Long)
         'First the standard codes, independend from Language
         'See http://unicode-table.com
         Const FigurineCB As String = "FigurineCB TimeSP"
         Select Case pNumber
-            Case 0 : Me.StoreNAGText(BOTH, "")
-                'Move assessments
+            Case 0 : Me.StoreNAGText(BOTH, "")   'Move assessments
             Case 1 : Me.StoreNAGText(BOTH, "!")  'An excellent move
             Case 2 : Me.StoreNAGText(BOTH, "?")  'A brilliant move
             Case 3 : Me.StoreNAGText(BOTH, "!!") 'A bad move
             Case 4 : Me.StoreNAGText(BOTH, "??") 'A blunder
             Case 5 : Me.StoreNAGText(BOTH, "!?") 'An interesting move, probably good
             Case 6 : Me.StoreNAGText(BOTH, "?!") 'A dubious move
-            Case 7 : Me.StoreNAGCode(9633)    'The only reasonable move
-            Case 8 : Me.StoreNAGCode(9633)    'Singular move (no reasonable alternatives)
+            Case 7 : Me.StoreNAGCode(8482, FigurineCB, pText:=" The only reasonable move")
+            Case 8 : Me.StoreNAGText(ENGLISH, "Singular move (no reasonable alternatives)")
+                Me.StoreNAGText(NEDERLANDS, " enige verstandige zet")
             Case 9 : Me.StoreNAGText(ENGLISH, " Worst Move")
                 Me.StoreNAGText(NEDERLANDS, " allerslechtste zet")
                 'Positional Assessments
-            Case 10 : Me.StoreNAGText(BOTH, "=", FigurineCB)  'The chances are equal
-            Case 11 : Me.StoreNAGText(BOTH, "=", FigurineCB)  'The chances are equal
+            Case 10 : Me.StoreNAGText(BOTH, "=", FigurineCB)  ' The chances are equal
+            Case 11 : Me.StoreNAGText(BOTH, "=", FigurineCB)  ' The chances are equal
             Case 12 : Me.StoreNAGText(ENGLISH, " Equal chances, active position")
                 Me.StoreNAGText(NEDERLANDS, " gelijke kansen, actieve stelling")
-            Case 13 : Me.StoreNAGCode(8734)    'Unclear Position
-            Case 14 : Me.StoreNAGCode(10866)   'White is slightly better
-            Case 15 : Me.StoreNAGCode(10865)   'Black is slightly better
-            Case 16 : Me.StoreNAGCode(177)     'White has a moderate advantage
-            Case 17 : Me.StoreNAGCode(8723)    'Black has a moderate advantage
+            Case 13 : Me.StoreNAGCode(8734, "Calibri", pText:=" Unclear Position")
+            Case 14 : Me.StoreNAGCode(178, FigurineCB, pText:=" White is slightly better")
+            Case 15 : Me.StoreNAGCode(179, FigurineCB, pText:=" Black is slightly better")
+            Case 16 : Me.StoreNAGCode(177, FigurineCB, pText:=" White has a moderate advantage")
+            Case 17 : Me.StoreNAGCode(181, FigurineCB, pText:=" Black has a moderate advantage")
             Case 18 : Me.StoreNAGText(BOTH, "+-", FigurineCB) 'White has a decisive advantage
             Case 19 : Me.StoreNAGText(BOTH, "-+", FigurineCB) 'Black has a decisive advantage
             Case 20 : Me.StoreNAGText(BOTH, " White has a crushing advantage (Black should resign)")
             Case 21 : Me.StoreNAGText(BOTH, " Black has a crushing advantage (White should resign)")
-            Case 22 : Me.StoreNAGCode(10752)   'White is in zugzwang
-            Case 23 : Me.StoreNAGCode(10752)   'Black is in zugzwang
+            Case 22 : Me.StoreNAGCode(8225, FigurineCB, pText:=" White is in zugzwang")
+            Case 23 : Me.StoreNAGCode(8225, FigurineCB, pText:=" Black is in zugzwang")
             Case 24 : Me.StoreNAGText(BOTH, " White has a slight space advantage")
             Case 25 : Me.StoreNAGText(BOTH, " Black has a slight space advantage")
             Case 26 : Me.StoreNAGText(BOTH, " White has a moderate space advantage")
@@ -119,24 +104,24 @@ Public Class PGNNAG
             Case 29 : Me.StoreNAGText(BOTH, " Black has a decisive space advantage")
             Case 30 : Me.StoreNAGText(BOTH, " White has a slight time (development) advantage")
             Case 31 : Me.StoreNAGText(BOTH, " Black has a slight time (development) advantage")
-            Case 32 : Me.StoreNAGCode(10227)   'White has advantage in development
-            Case 33 : Me.StoreNAGCode(10227)   'Black has advantage in development
+            Case 32 : Me.StoreNAGCode(8240, FigurineCB, pText:=" White has advantage in development")
+            Case 33 : Me.StoreNAGCode(8240, FigurineCB, pText:=" Black has advantage in development")
             Case 34 : Me.StoreNAGText(BOTH, " White has a decisive time (development) advantage")
             Case 35 : Me.StoreNAGText(BOTH, " Black has a decisive time (development) advantage")
-            Case 36 : Me.StoreNAGCode(8594)    'with an attack
-            Case 37 : Me.StoreNAGCode(8594)    'with an attack
+            Case 36 : Me.StoreNAGCode(402, FigurineCB, pText:=" with an attack")
+            Case 37 : Me.StoreNAGCode(402, FigurineCB, pText:=" with an attack")
             Case 38 : Me.StoreNAGText(ENGLISH, " White has a lasting initiative")
                 Me.StoreNAGText(NEDERLANDS, " met ontwikkelingsvoorsprong voor wit")
             Case 39 : Me.StoreNAGText(ENGLISH, " Black has a lasting initiative")
                 Me.StoreNAGText(NEDERLANDS, " met ontwikkelingsvoorsprong voor zwart")
-            Case 40 : Me.StoreNAGCode(8593)    'White has the attack
-            Case 41 : Me.StoreNAGCode(8593)    'Black has the attack
-            Case 42 : Me.StoreNAGCode(176, FigurineCB) 'White has insufficient compensation for material deficit")
-            Case 43 : Me.StoreNAGCode(176, FigurineCB) 'Black has insufficient compensation for material deficit")
-            Case 44 : Me.StoreNAGCode(169, FigurineCB) 'White has sufficient compensation for material deficit")
-            Case 45 : Me.StoreNAGCode(169, FigurineCB) 'Black has sufficient compensation for material deficit")
-            Case 46 : Me.StoreNAGCode(169, FigurineCB) 'White has more than adequate compensation for material deficit")
-            Case 47 : Me.StoreNAGCode(169, FigurineCB) 'Black has more than adequate compensation for material deficit")
+            Case 40 : Me.StoreNAGCode(8218, FigurineCB, pText:=" White has the attack")
+            Case 41 : Me.StoreNAGCode(8218, FigurineCB, pText:=" Black has the attack")
+            Case 42 : Me.StoreNAGCode(176, FigurineCB, pText:=" White has insufficient compensation for material deficit")
+            Case 43 : Me.StoreNAGCode(176, FigurineCB, pText:=" Black has insufficient compensation for material deficit")
+            Case 44 : Me.StoreNAGCode(169, FigurineCB, pText:=" White has sufficient compensation for material deficit")
+            Case 45 : Me.StoreNAGCode(169, FigurineCB, pText:=" Black has sufficient compensation for material deficit")
+            Case 46 : Me.StoreNAGCode(169, FigurineCB, pText:=" White has more than adequate compensation for material deficit")
+            Case 47 : Me.StoreNAGCode(169, FigurineCB, pText:=" Black has more than adequate compensation for material deficit")
             Case 48 : Me.StoreNAGText(BOTH, " White has a slight center control advantage")
             Case 49 : Me.StoreNAGText(BOTH, " Black has a slight center control advantage")
             Case 50 : Me.StoreNAGText(BOTH, " White has a moderate center control advantage")
@@ -219,22 +204,22 @@ Public Class PGNNAG
             Case 127 : Me.StoreNAGText(BOTH, " Black has played the ending well")
             Case 128 : Me.StoreNAGText(BOTH, " White has played the ending very well")
             Case 129 : Me.StoreNAGText(BOTH, " Black has played the ending very well")
-            Case 130 : Me.StoreNAGCode(8646)    'White has slight counterplay
-            Case 131 : Me.StoreNAGCode(8646)    'Black has slight counterplay
-            Case 132 : Me.StoreNAGCode(8646)    'White has moderate counterplay
-            Case 133 : Me.StoreNAGCode(8646)    'Black has moderate counterplay
+            Case 130 : Me.StoreNAGCode(8222, FigurineCB, pText:=" White has slight counterplay")
+            Case 131 : Me.StoreNAGCode(8222, FigurineCB, pText:=" Black has slight counterplay")
+            Case 132 : Me.StoreNAGCode(8222, FigurineCB, pText:=" White has moderate counterplay")
+            Case 133 : Me.StoreNAGCode(8222, FigurineCB, pText:=" Black has moderate counterplay")
             Case 134 : Me.StoreNAGText(BOTH, " White has decisive counterplay")
             Case 135 : Me.StoreNAGText(BOTH, " Black has decisive counterplay")
                 'Time Pressure Commentaries
-            Case 136 : Me.StoreNAGCode(8220, FigurineCB) 'White has moderate time control pressure
-            Case 137 : Me.StoreNAGCode(8220, FigurineCB) 'Black has moderate time control pressure
-            Case 138 : Me.StoreNAGCode(8220, FigurineCB) 'White has severe time control pressure
-            Case 139 : Me.StoreNAGCode(8220, FigurineCB) 'Black has severe time control pressure
+            Case 136 : Me.StoreNAGCode(8220, FigurineCB, pText:=" White has moderate time control pressure")
+            Case 137 : Me.StoreNAGCode(8220, FigurineCB, pText:=" Black has moderate time control pressure")
+            Case 138 : Me.StoreNAGCode(8220, FigurineCB, pText:=" White has severe time control pressure")
+            Case 139 : Me.StoreNAGCode(8220, FigurineCB, pText:=" Black has severe time control pressure")
                 'Non-standard NAGs (ChessPad)
-            Case 140 : Me.StoreNAGCode(8710, pPrintPosition:=BEFORE)     'With the idea
+            Case 140 : Me.StoreNAGCode(8230, FigurineCB, pPrintPosition:=BEFORE, pText:="With the idea")
             Case 141 : Me.StoreNAGText(BOTH, " Aimed against ", pPrintPosition:=BEFORE)
-            Case 142 : Me.StoreNAGCode(8979, pPrintPosition:=BEFORE)    'Better is
-            Case 143 : Me.StoreNAGCode(8804, pPrintPosition:=BEFORE)    'Worse is
+            Case 142 : Me.StoreNAGCode(185, FigurineCB, pPrintPosition:=BEFORE, pText:=" Better is")
+            Case 143 : Me.StoreNAGCode(8249, FigurineCB, pPrintPosition:=BEFORE, pText:=" Worse is")
             Case 144 : Me.StoreNAGText(BOTH, " Equivalent is ", pPrintPosition:=BEFORE)
             Case 145 : Me.StoreNAGText(BOTH, "RR") 'Editorial comment
             Case 146 : Me.StoreNAGText(BOTH, "N")  'Novelty
@@ -242,60 +227,66 @@ Public Class PGNNAG
             Case 220 : Me.StoreNAGText(BOTH, " Diagram")
             Case 221 : Me.StoreNAGText(BOTH, " Diagram (from Black)")
                 '222–237  Not defined
-            Case 238 : Me.StoreNAGCode(8224, FigurineCB) 'Space advantage
-            Case 239 : Me.StoreNAGCode(8660)    'File (columns on the chessboard labeled a-h)
-            Case 240 : Me.StoreNAGCode(8663)    'Diagonal
-            Case 241 : Me.StoreNAGCode(8862)    'Center
-            Case 242 : Me.StoreNAGCode(10219)   'King-side
-            Case 243 : Me.StoreNAGCode(10218)   'Queen-side
+            Case 238 : Me.StoreNAGCode(8224, FigurineCB, pText:=" Space advantage")
+            Case 239 : Me.StoreNAGCode(8216, FigurineCB, pText:=" File (columns on the chessboard labeled a-h)")
+            Case 240 : Me.StoreNAGCode(8217, FigurineCB, pText:=" Diagonal")
+            Case 241 : Me.StoreNAGCode(8208, FigurineCB, pText:=" Center")
+            Case 242 : Me.StoreNAGCode(187, FigurineCB, pText:=" King-side")
+            Case 243 : Me.StoreNAGCode(171, FigurineCB, pText:=" Queen-side")
             Case 244 : Me.StoreNAGText(BOTH, "X")  'Weak point
-            Case 245 : Me.StoreNAGCode(8869)    'Ending
-            Case 246 : Me.StoreNAGCode(173, FigurineCB) 'bishop pair
-            Case 247 : Me.StoreNAGCode(174, FigurineCB) 'Opposite bishops
-            Case 248 : Me.StoreNAGCode(175, FigurineCB) 'Same bishops
-            Case 249 : Me.StoreNAGText(BOTH, " Connected pawns text")
-            Case 250 : Me.StoreNAGText(BOTH, " Isolated pawns text")
-            Case 251 : Me.StoreNAGText(BOTH, " Doubled pawns text")
+            Case 245 : Me.StoreNAGCode(172, FigurineCB, pText:=" Ending")
+            Case 246 : Me.StoreNAGCode(173, FigurineCB, pText:=" Bishop pair")
+            Case 247 : Me.StoreNAGCode(174, FigurineCB, pText:=" Opposite bishops")
+            Case 248 : Me.StoreNAGCode(175, FigurineCB, pText:=" Same bishops")
+            Case 249 : Me.StoreNAGText(BOTH, " Connected pawns")
+            Case 250 : Me.StoreNAGText(BOTH, " Isolated pawns")
+            Case 251 : Me.StoreNAGCode(222, FigurineCB, pText:=" Doubled pawns")
             Case 252 : Me.StoreNAGText(BOTH, " Passed pawn")
-            Case 253 : Me.StoreNAGText(BOTH, " Pawn majority text")
-            Case 254 : Me.StoreNAGCode(170, FigurineCB) ' With
-            Case 255 : Me.StoreNAGCode(186, FigurineCB) ' Without
+            Case 253 : Me.StoreNAGText(BOTH, " Pawn majority")
+            Case 254 : Me.StoreNAGCode(170, FigurineCB, pText:=" With")
+            Case 255 : Me.StoreNAGCode(186, FigurineCB, pText:=" Without")
             Case Else : Throw New NotImplementedException(MessageText("UnknownNAG", Str(pNumber)))
         End Select
     End Sub
 
     Private Sub StoreNAGText(pLanguage As ChessLanguage, pText As String,
-                                  Optional pFont As String = "Calibri",
-                                  Optional pPrintPosition As NAGPrintPosition = AFTER)
+                             Optional pFont As String = "Calibri",
+                             Optional pPrintPosition As NAGPrintPosition = AFTER)
         Type = NAGType.TEXT
-        Font = pFont
+        FontName = pFont
         PrintPosition = pPrintPosition
         Select Case pLanguage
             Case BOTH
-                gEnglishText = pText
-                gDutchText = pText
+                EnglishText = pText
+                DutchText = pText
             Case ENGLISH
-                gEnglishText = pText
+                EnglishText = pText
             Case NEDERLANDS
-                gDutchText = pText
+                DutchText = pText
         End Select
     End Sub
 
     Private Sub StoreNAGCode(pCode As Long,
-                                  Optional pFont As String = "Cambria Math",
-                                  Optional pPrintPosition As NAGPrintPosition = AFTER)
+                             pFont As String,
+                             Optional pPrintPosition As NAGPrintPosition = AFTER,
+                             Optional pText As String = "")
         Type = NAGType.CODE
         Code = pCode
-        Font = pFont
+        FontName = pFont
         PrintPosition = pPrintPosition
+        EnglishText = pText
+        DutchText = pText
     End Sub
 
     Sub New(pPGNString As String)
-        Me.PGNString = pPGNString
+        PGNString = pPGNString
+        If Left(pPGNString, 1) <> "$" Then
+            Throw New NotImplementedException("Invalid NAG: ")
+        End If
+        Me.StoreValues(Val(Mid(pPGNString, 2)))
     End Sub
 
     Sub New() 'Needed for (de)serialization
-        Me.PGNString = ""
     End Sub
 
 End Class

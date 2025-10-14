@@ -1,25 +1,31 @@
 ﻿Option Explicit On
 
-Imports ChessMaterials
 Imports System.Xml.Serialization
+Imports PGNLibrary.PGNComment.BeforeOrAfterDiagram
 
 <XmlType()>
 Public Class PGNComment
 
-    <XmlElement()>
-    Public MarkerList As PGNMarkerList = Nothing
-    <XmlElement()>
-    Public ArrowList As PGNArrowList = Nothing
-    <XmlElement()>
-    Public TextList As PGNTextList = Nothing
-    <XmlElement()>
-    Public TrainingQuestion As PGNTrainingQuestion = Nothing
+    Public Enum BeforeOrAfterDiagram
+        ORIGINAL = 0
+        BEFOREDIAGRAM = 1
+        AFTERDIAGRAM = 2
+        REMOVEDIAGRAM = 3
+    End Enum
 
-    <XmlAttribute("Text")>
-    Public mText As String = ""
+    Public Enum CommentType
+        COMMENTBEFORE
+        COMMENTAFTER
+    End Enum
 
-    Public Const PGNHeader As String = "{"
-    Public Const PGNTrailer As String = "}"
+    <XmlElement()>
+    Public Property MarkerList As PGNMarkerList = Nothing
+    <XmlElement()>
+    Public Property ArrowList As PGNArrowList = Nothing
+    <XmlElement()>
+    Public Property TextList As PGNTextList = Nothing
+    <XmlElement()>
+    Public Property TrainingQuestion As PGNTrainingQuestion = Nothing
 
     <XmlIgnore>
     Public Property XPGNString() As String
@@ -57,18 +63,18 @@ Public Class PGNComment
         Get
             Dim XPGN As String = ""
             If Me.MarkerList IsNot Nothing Then
-                XPGN = XPGN & Me.MarkerList.XPGNString
+                XPGN &= Me.MarkerList.XPGNString
             End If
             If Me.ArrowList IsNot Nothing Then
-                XPGN = XPGN & Me.ArrowList.XPGNString
+                XPGN &= Me.ArrowList.XPGNString
             End If
             If Me.TextList IsNot Nothing Then
-                XPGN = XPGN & Me.TextList.XPGNString
+                XPGN &= Me.TextList.XPGNString
             End If
             If Me.TrainingQuestion IsNot Nothing Then
-                XPGN = XPGN & Me.TrainingQuestion.PGNString
+                XPGN &= Me.TrainingQuestion.PGNString
             End If
-            XPGN = XPGN & Me.Text
+            XPGN &= Me.Text
 
             If XPGN = "" Then
                 Return ""
@@ -86,15 +92,15 @@ Public Class PGNComment
         Get
             Dim PGN As String = ""
             If Me.MarkerList IsNot Nothing Then
-                PGN = PGN & Me.MarkerList.PGNString
+                PGN &= Me.MarkerList.PGNString
             End If
             If Me.ArrowList IsNot Nothing Then
-                PGN = PGN & Me.ArrowList.PGNString
+                PGN &= Me.ArrowList.PGNString
             End If
             If Me.TrainingQuestion IsNot Nothing Then
-                PGN = PGN & Me.TrainingQuestion.PGNString
+                PGN &= Me.TrainingQuestion.PGNString
             End If
-            PGN = PGN & Me.Text
+            PGN &= Me.Text
 
             If PGN = "" Then
                 Return ""
@@ -105,18 +111,38 @@ Public Class PGNComment
     End Property
 
     <XmlIgnore>
-    Public Property Text(Optional pRevoveDiagran As Boolean = False) As String
+    Public Property Text(Optional pBeforeOrAfterDiagram As BeforeOrAfterDiagram = ORIGINAL) As String
         Set(pText As String)
-            mText = pText
+            gText = pText
         End Set
         Get
-            If pRevoveDiagran = True Then
-                Return RemoveDiagram(mText)
-            Else
-                Return mText
-            End If
+            Select Case pBeforeOrAfterDiagram
+                Case ORIGINAL
+                    Return gText
+                Case BEFOREDIAGRAM
+                    Return CommentBeforeDiagram()
+                Case AFTERDIAGRAM
+                    Return CommentAfterDiagram()
+                Case REMOVEDIAGRAM
+                    Return RemoveDiagramString()
+                Case Else
+                    Return gText
+            End Select
         End Get
     End Property
+
+    Public ReadOnly Property ContainsDiagram() As Boolean
+        Get
+            Return DiagramPosition() > 0
+        End Get
+    End Property
+
+    <XmlAttribute("Text")>
+    Private gText As String = ""
+
+    Public Const PGNHeader As String = "{"
+    Public Const PGNTrailer As String = "}"
+
 
     Public Shared Operator &(pA As PGNComment, pB As PGNComment) As PGNComment
         If pA Is Nothing Then
@@ -131,7 +157,7 @@ Public Class PGNComment
                 MarkerList = pA.MarkerList.ListString
             End If
             If pB.MarkerList IsNot Nothing Then
-                MarkerList = MarkerList + pB.MarkerList.ListString
+                MarkerList += pB.MarkerList.ListString
             End If
             If MarkerList <> "" Then
                 C.MarkerList = New PGNMarkerList(MarkerList)
@@ -142,7 +168,7 @@ Public Class PGNComment
                 ArrowList = pA.ArrowList.ListString
             End If
             If pB.ArrowList IsNot Nothing Then
-                ArrowList = ArrowList + pB.ArrowList.ListString
+                ArrowList += pB.ArrowList.ListString
             End If
             If ArrowList <> "" Then
                 C.ArrowList = New PGNArrowList(ArrowList)
@@ -153,7 +179,7 @@ Public Class PGNComment
                 TextList = pA.TextList.ListString
             End If
             If pB.TextList IsNot Nothing Then
-                TextList = TextList + pB.TextList.ListString
+                TextList += pB.TextList.ListString
             End If
             If TextList <> "" Then
                 C.TextList = New PGNTextList(TextList)
@@ -178,15 +204,14 @@ Public Class PGNComment
     Public Sub New()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.XPGNString
     End Function
 
-    'Private Functions and Methods
-
-    Private Function RemoveDiagram(pComment As String) As String
-        Dim Comment As String = pComment
+    ''' <summary>Returns the Comment String without Diagram request</summary>
+    Private Function RemoveDiagramString() As String
+        Dim Comment As String = gText
         Comment = Replace(Comment, Chr(4), " ")               'Chessbase 9
         Comment = Replace(Comment, "Diagram #", " ")          'Chessbase 10
         Comment = Replace(Comment, "Diagram [#]", " ")        'Chessbase 12
@@ -199,6 +224,70 @@ Public Class PGNComment
         Return Comment
     End Function
 
+    ''' <summary>Returns the position of the Diagram request</summary>
+    Private Function DiagramPosition() As Integer
+        Dim Position As Integer
+        Position = InStr(gText, Chr(4))
+        If Position > 0 Then Return Position
+        Position = InStr(gText, "Diagram #")
+        If Position > 0 Then Return Position
+        Position = InStr(gText, "Diagram [#]")
+        If Position > 0 Then Return Position
+        Position = InStr(gText, "Diagram  [#]")
+        If Position > 0 Then Return Position
+        Position = InStr(gText, "Diagram (#)")
+        If Position > 0 Then Return Position
+        Position = InStr(gText, "(Diagram#)")
+        If Position > 0 Then Return Position
+        Position = InStr(gText, "[#]")
+        If Position > 0 Then Return Position
+        Position = InStr(gText, "(#)")
+        Return Position
+    End Function
+
+    ''' <summary>Returns the Diagram request</summary>
+    Private Function DiagramText() As String
+        Dim Position As Integer
+        Position = InStr(gText, Chr(4))
+        If Position > 0 Then Return Chr(4)
+        Position = InStr(gText, "Diagram #")
+        If Position > 0 Then Return "Diagram #"
+        Position = InStr(gText, "Diagram [#]")
+        If Position > 0 Then Return "Diagram [#]"
+        Position = InStr(gText, "Diagram  [#]")
+        If Position > 0 Then Return "Diagram  [#]"
+        Position = InStr(gText, "Diagram (#)")
+        If Position > 0 Then Return "Diagram (#)"
+        Position = InStr(gText, "(Diagram#)")
+        If Position > 0 Then Return "(Diagram#)"
+        Position = InStr(gText, "[#]")
+        If Position > 0 Then Return "[#]"
+        Position = InStr(gText, "(#)")
+        If Position > 0 Then Return "(#)"
+        Return ""
+    End Function
+
+    ''' <summary>Returns the Comment string before the Diagram request</summary>
+    Private Function CommentBeforeDiagram() As String
+        Dim Pos As Integer = DiagramPosition()
+        If Pos > 0 Then
+            Return Left(gText, Pos - 1)
+        Else
+            Return gText
+        End If
+    End Function
+
+    ''' <summary>Returns the Comment string after the Diagram request</summary>
+    Private Function CommentAfterDiagram() As String
+        Dim Pos As Integer = DiagramPosition()
+        Dim Len As Integer = DiagramText().Length
+        If Pos > 0 Then
+            Return Mid(gText, Pos + Len + 1)
+        Else
+            Return gText
+        End If
+    End Function
+
     Protected Overrides Sub Finalize()
         Me.MarkerList = Nothing
         Me.ArrowList = Nothing
@@ -207,4 +296,5 @@ Public Class PGNComment
 
         MyBase.Finalize()
     End Sub
+
 End Class

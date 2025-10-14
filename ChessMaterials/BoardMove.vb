@@ -7,25 +7,22 @@ Imports ChessMaterials.ChessPiece
 
 Public Class BoardMove
 
-    Public Piece As ChessPiece
-    Public FromFieldName As String
-    Public ToFieldName As String
-    Public Castle As Boolean
-    Public PromotionPiece As ChessPiece
-    Public EnPassant As Boolean
-    Public Score As Integer
+    Public Property Piece As ChessPiece
+    Public Property FromFieldName As String
+    Public Property ToFieldName As String
+    Public Property Castle As Boolean
+    Public Property PromotionPiece As ChessPiece
+    Public Property EnPassant As Boolean
 
     Public Sub New(pPiece As ChessPiece, pFromFieldName As String, pToFieldName As String,
                    Optional pPromotionPiece As ChessPiece = Nothing,
-                   Optional pEnPassant As Boolean = False,
-                   Optional pScore As Integer = 0)
+                   Optional pEnPassant As Boolean = False)
         Me.Piece = pPiece
         Me.FromFieldName = pFromFieldName
         Me.ToFieldName = pToFieldName
         Me.Castle = False
         Me.PromotionPiece = pPromotionPiece
         Me.EnPassant = pEnPassant
-        Me.Score = pScore
 
         If pPiece.Type = PieceType.KING Then
             If pPiece.Color = WHITE _
@@ -44,6 +41,7 @@ Public Class BoardMove
         End If
     End Sub
 
+    ''' <summary>Returns the BoardMove in long notation</summary>
     Public Function Text(pBoardBefore As ChessBoard, pBoardAfter As ChessBoard, Optional pLanguage As ChessLanguage = ENGLISH) As String
         Dim CheckOrMate As String = ""
         If pBoardAfter.CheckMate(pBoardAfter.ActiveColor) Then
@@ -108,20 +106,23 @@ Public Class BoardMove
         End If
     End Operator
 
+    ''' <summary>Returns the ColumnNumber a=1...h=8</summary>
     Public Shared Function ColumnNr(pFieldName As String) As Integer
         Return InStr("abcdefgh", Mid(pFieldName, 1, 1))
     End Function
 
+    ''' <summary>Returns the ColumnName 1=a...8=h</summary>
     Public Shared Function ColumnName(pColumnNr As Integer) As String
         Return Mid("abcdefgh", pColumnNr, 1)
     End Function
 
+    ''' <summary>Returns the RowNumber of a FieldName</summary>
     Public Shared Function Row(pFieldName As String) As Integer
         Return Val(Mid(pFieldName, 2, 1))
     End Function
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.FromFieldName & " " & Me.ToFieldName
     End Function
 

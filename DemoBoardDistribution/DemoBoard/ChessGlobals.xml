@@ -22,8 +22,34 @@ ChessGlobals
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="F:ChessGlobals.modMessages.MessageTexts">
- <summary>Array with Muitlingual Messages using %1, %2 and %3 to insert values</summary>
+<member name="M:ChessGlobals.modChessColor.Text(ChessGlobals.modChessColor.ChessColor)">
+ <summary>ChesColor.Text returns the color in text for the specified language</summary>
+</member>
+<member name="M:ChessGlobals.modChessColor.Opponent(ChessGlobals.modChessColor.ChessColor)">
+ <summary>ChessColor.Opponent returns the color of the opponent</summary>
+</member>
+<member name="M:ChessGlobals.modChessLanguage.LoadLanguage">
+ <summary>Returns the Laguage stored at the Registry or CurrentCulture</summary>
+</member>
+<member name="M:ChessGlobals.modGlobals.RootFolder">
+ <summary>Returns the folder of the current Assembly</summary>
+</member>
+<member name="M:ChessGlobals.modGlobals.KNSBFigurine(System.Int32)">
+ <summary>Adds the KNSBFigurine from fontfile to the PrivateFontCollection.
+ And returns the KNSBFigurine as a Font.</summary>
+</member>
+<member name="M:ChessGlobals.modGlobals.KNSB(System.Int32)">
+ <summary>Adds the KNSB from fontfile to the PrivateFontCollection.
+ And returns the KNSB as a Font.</summary>
+</member>
+<member name="M:ChessGlobals.modGlobals.WithoutExtention(System.String)">
+ <summary>Returns the FileName without the Extension</summary>
+</member>
+<member name="M:ChessGlobals.modGlobals.FolderName(System.String)">
+ <summary>Returns the FolderName of a FullName file</summary>
+</member>
+<member name="M:ChessGlobals.modGlobals.Centimeters(System.Int32)">
+ <summary>Returns a distance in Centimeters for a specified distance in Pixels</summary>
 </member>
 </members>
 </doc>

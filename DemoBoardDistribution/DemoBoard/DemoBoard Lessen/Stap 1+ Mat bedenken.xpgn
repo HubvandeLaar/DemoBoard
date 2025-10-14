@@ -57,7 +57,7 @@ En waar een zwarte pion ?
 
 Witte pion op g6
 Zwarte pion ook op g6"]
-[FEN "6rk/6p1/5r2/8/8/8/8/7R w KQkq - 0 0"]
+[FEN "6rk/6p1/5r2/8/8/8/8/7R b KQkq - 0 0"]
 
 
 [Event ""]
@@ -123,7 +123,7 @@ Op b5
 Niet juist Op a4 (Pa5)
                 Op a5 (Da6)
                 Op b4 (Pxc3++)"]
-[FEN "5b1r/Qp1r2pp/6q1/3p4/2nNn3/2P5/PP4P1/1K1R3R w KQkq - 0 0"]
+[FEN "5b1r/Qp1r2pp/6q1/3p4/2nNn3/2P5/PP4P1/1K1R3R b KQkq - 0 0"]
 
 
 [Event ""]
@@ -152,7 +152,7 @@ Een toren zal schaak moeten geven.
 Oplossing 
 Zwart: Kd5 
 Wit    : Kc3, Te5, Te6"]
-[FEN "8/8/8/8/8/8/8/8 w KQkq - 0 1"]
+[FEN "8/8/8/8/8/8/8/8 b KQkq - 0 0"]
 
 {[%csl .c3, .d5, .e5, .e6]}
 

@@ -1,12 +1,12 @@
-﻿Imports System.ComponentModel
-Imports System.Security.Cryptography.X509Certificates
-Imports System.Windows.Forms.VisualStyles
+﻿Option Explicit On
+
 Imports ChessGlobals
 Imports PGNLibrary
 
 Public Class frmTitleAndMemo
 
     Private WithEvents gfrmMainform As frmMainForm
+
     Public Event DoubleClicked()
 
     Public Sub New(pfrmMainForm As frmMainForm)
@@ -20,7 +20,7 @@ Public Class frmTitleAndMemo
     End Sub
 
     Private Sub gfrmMainForm_LanguageChanged(pLanguage As ChessLanguage) Handles gfrmMainform.LanguageChanged
-        Call ChangeLanguageCurrentForm(Me)
+        Call ApplyLanguageToCurrentForm(Me)
     End Sub
 
     Private Sub gfrmMainForm_SizeChanged(pSender As Object, pArgs As EventArgs) Handles gfrmMainform.SizeChanged
@@ -30,8 +30,8 @@ Public Class frmTitleAndMemo
     End Sub
 
     Private Sub UpdateTitleAndMemo(pPGNGame As PGNGame)
-        txtTitle.Text = pPGNGame.Tags.GetPGNTag("Title")
-        txtMemo.Text = pPGNGame.Tags.GetPGNTag("Memo")
+        txtTitle.Text = pPGNGame.Tags("Title").Value
+        txtMemo.Text = pPGNGame.Tags("Memo").Value
         Me.ReArrange()
     End Sub
 
@@ -41,6 +41,7 @@ Public Class frmTitleAndMemo
         txtMemo.Height = Me.ClientSize.Height - txtTitle.Height
     End Sub
 
+    ''' <summary>Returns the Height needed for the Title to fit in a TextBox with a given Width</summary>
     Private Function TitleHeight()
         If txtTitle.Text = "" Then
             Return 0
@@ -60,7 +61,6 @@ Public Class frmTitleAndMemo
         RaiseEvent DoubleClicked()
     End Sub
 
-
     Private Sub txtTitle_GotFocus(pSender As Object, pArgs As EventArgs) Handles txtTitle.GotFocus
         txtTitle.Enabled = False
         Application.DoEvents()
@@ -74,7 +74,7 @@ Public Class frmTitleAndMemo
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.gfrmMainform = Nothing
+        gfrmMainform = Nothing
 
         MyBase.Finalize()
     End Sub

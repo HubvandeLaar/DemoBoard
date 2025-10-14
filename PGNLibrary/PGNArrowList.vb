@@ -1,6 +1,6 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging.Messages
 Imports ChessMaterials
 Imports System.Xml.Serialization
 
@@ -44,8 +44,8 @@ Public Class PGNArrowList
         Get
             Dim Elements As String = ""
             For Each Arrow As Arrow In Me
-                If Elements <> "" Then Elements = Elements & ", "
-                Elements = Elements & Arrow.PGNString()
+                If Elements <> "" Then Elements += ", "
+                Elements += Arrow.PGNString()
             Next Arrow
             Return Elements
         End Get
@@ -75,10 +75,12 @@ Public Class PGNArrowList
     Public Sub New()
     End Sub
 
+    ''' <summary>Returns True when a given comment contains an ArrowList</summary>
     Public Shared Function ContainsArrowList(pComment As String) As Boolean
         Return (pComment Like "*[[]%cal *[]]*") 'Contains *[%cal *]* 
     End Function
 
+    ''' <summary>Returns the Arrowlist string out of a given comment</summary>
     Public Shared Function GetArrowList(pComment As String) As String
         Dim P1 As Long = InStr(pComment, PGNHeader, vbBinaryCompare)
         If P1 = 0 Then
@@ -91,8 +93,8 @@ Public Class PGNArrowList
         Return Mid(pComment, P1, P2 - P1 + 1)
     End Function
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.XPGNString
     End Function
 

@@ -1,26 +1,39 @@
 ﻿Public Class EngineResult
 
-    ReadOnly Property Score As Integer
-    ReadOnly Property BestMove As EngineMove
-    ReadOnly Property Mate As String
-    ReadOnly Property Movelist As List(Of EngineMove)
+    Public Property EngineVariant As EngineVariant() '0=BestMove, 1=SecondBestMove, 2=ThirdBestMove)
 
-    Public Sub New(pScore As Integer, pBestMove As EngineMove, pMate As String, pMovelist As String)
-        Me.Score = pScore
-        Me.BestMove = pBestMove
-        Me.Mate = pMate
-        Dim Moves() As String = pMovelist.Split(" ")
-        Me.Movelist = New List(Of EngineMove)
-        For Each Move As String In Moves
-            If Move <> "" Then
-                Me.Movelist.Add(New EngineMove(Move))
-            End If
-        Next
+    Public ReadOnly Property BestMove As EngineMove
+        Get
+            Return EngineVariant(0).FirstMove()
+        End Get
+    End Property
+
+    Public ReadOnly Property Score As Integer
+        Get
+            Return EngineVariant(0).Score
+        End Get
+    End Property
+
+    Public Sub New()
+        ReDim EngineVariant(2)
+        EngineVariant(0) = New EngineVariant(Engine.ScoreType.cp, 0, 0, "")
+        EngineVariant(1) = New EngineVariant(Engine.ScoreType.cp, 0, 0, "")
+        EngineVariant(2) = New EngineVariant(Engine.ScoreType.cp, 0, 0, "")
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
-        Return "Score " & Me.Score & " BestMove " & Me.BestMove.MoveText & " pv " & String.Join(" ", Me.Movelist)
+        Return "Score " & Me.Score _
+               & " BestMove " & "  " _
+               & Me.BestMove.MoveText & [Enum].GetName(EngineVariant(0).ScoreType.GetType(), EngineVariant(0).ScoreType) & "  " _
+               & String.Join(" ", EngineVariant(0).MoveList)
     End Function
 
+    Protected Overrides Sub Finalize()
+        EngineVariant(0) = Nothing
+        EngineVariant(1) = Nothing
+        EngineVariant(2) = Nothing
+
+        MyBase.Finalize()
+    End Sub
 End Class

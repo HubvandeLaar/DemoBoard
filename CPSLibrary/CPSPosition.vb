@@ -4,13 +4,18 @@ Imports System.Xml.Serialization
 
 <XmlType("Position")>
 Public Class CPSPosition
+
     <XmlAttribute()>
-    Public Name As String
+    Public Property Name As String
+
     <XmlAttribute()>
-    Public ToPlay As String
-    Public Description As String
-    Public Arrows As New List(Of CPSArrow)
-    Public Fields As New List(Of CPSField)
+    Public Property ToPlay As String
+
+    Public Property Description As String
+
+    Public Property Arrows As New List(Of CPSArrow)
+
+    Public Property Fields As New List(Of CPSField)
 
     Protected Overrides Sub Finalize()
         Me.Arrows = Nothing
@@ -18,4 +23,5 @@ Public Class CPSPosition
 
         MyBase.Finalize()
     End Sub
+
 End Class

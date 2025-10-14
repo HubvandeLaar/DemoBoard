@@ -1,18 +1,18 @@
-﻿Imports Microsoft.Win32
+﻿Option Explicit On
+
+Imports Microsoft.Win32
 Imports System.Windows.Forms
 
 Public Module modLessonsFolder
 
     Public Property CurrentLessonsFolder As String
         Set(pLessonsFolder As String)
-            Dim SubKey As Microsoft.Win32.RegistryKey = My.Computer.Registry.CurrentUser.CreateSubKey(REGISTRYNAME)
-            SubKey.SetValue("Lessons", pLessonsFolder)
+            My.Settings.LessonsFolder = pLessonsFolder
+            My.Settings.Save()
         End Set
         Get
-            Dim Folder As String = My.Computer.Registry.CurrentUser.GetValue(REGISTRYNAME & "Lessons", "")
-            If Folder = "" _
-            OrElse IO.Directory.Exists(Folder) = False Then
-                'No (valid) registry entry
+            Dim Folder As String = My.Settings.LessonsFolder
+            If Folder = "" Then
                 Folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\DemoBoard Lessen\"
                 If IO.Directory.Exists(Folder) = False Then
                     'So use the EXE-location (as for USB-stick)
@@ -23,7 +23,18 @@ Public Module modLessonsFolder
         End Get
     End Property
 
-    Sub AssociateXPGN()
+    Public Property UseLastUsedLessonsFolder As Boolean
+        Set(pUseLastUsedLessonsFolder As Boolean)
+            My.Settings.UseLastUsedFolder = pUseLastUsedLessonsFolder
+            My.Settings.Save()
+        End Set
+        Get
+            Return My.Settings.UseLastUsedFolder
+        End Get
+    End Property
+
+    'Unused Method
+    Private Sub AssociateXPGN()
         If Registry.ClassesRoot.OpenSubKey(".xpgn") Is Nothing Then
             Exit Sub
         End If

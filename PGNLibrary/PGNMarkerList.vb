@@ -1,6 +1,6 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging.Messages
 Imports ChessMaterials
 Imports System.Xml.Serialization
 
@@ -36,8 +36,8 @@ Public Class PGNMarkerList
             For Each Marker As Marker In Me
                 Select Case Marker.Symbol
                     Case "G", "Y", "R", "B", "C", "O"
-                        If Elements <> "" Then Elements = Elements & ", "
-                        Elements = Elements & Marker.PGNString()
+                        If Elements <> "" Then Elements += ", "
+                        Elements += Marker.PGNString()
                 End Select
             Next Marker
             Return If(Elements = "", "", PGNHeader & Elements & PGNTrailer)
@@ -56,8 +56,8 @@ Public Class PGNMarkerList
         Get
             Dim Elements As String = ""
             For Each Marker As Marker In Me
-                If Elements <> "" Then Elements = Elements & ", "
-                Elements = Elements & Marker.PGNString()
+                If Elements <> "" Then Elements += ", "
+                Elements += Marker.PGNString()
             Next Marker
             Return Elements
         End Get
@@ -86,10 +86,12 @@ Public Class PGNMarkerList
     Public Sub New()
     End Sub
 
+    ''' <summary>Returns True when the given Comment contains a MarkerList</summary>
     Public Shared Function ContainsMarkerList(pComment As String) As Boolean
         Return (pComment Like "*[[]%csl *[]]*") 'Contains *[%csl *]* 
     End Function
 
+    ''' <summary>Returns the MarkerList from the given Comment</summary>
     Public Shared Function GetMarkerList(pComment As String) As String
         Dim P1 As Long = InStr(pComment, PGNHeader, vbBinaryCompare)
         If P1 = 0 Then
@@ -102,8 +104,8 @@ Public Class PGNMarkerList
         Return Mid(pComment, P1, P2 - P1 + 1)
     End Function
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.XPGNString
     End Function
 

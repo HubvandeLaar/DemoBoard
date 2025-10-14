@@ -1,16 +1,18 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging
 
 Public Class frmAddText
 
-    Public OKPressed As Boolean
+    Public Property OKPressed As Boolean
+
     Private Color As String
 
     Public Property TextColor() As String
         Set(pColor As String)
             Try
                 Color = pColor
+
             Catch pException As Exception
                 frmErrorMessageBox.Show(pException)
             End Try

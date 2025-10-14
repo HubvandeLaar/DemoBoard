@@ -1,4 +1,5 @@
-﻿Imports System.ComponentModel
+﻿Option Explicit On
+
 Imports ChessGlobals
 Imports PGNLibrary
 
@@ -8,11 +9,11 @@ Public Class frmGameDetails
 
     Public Event DoubleClicked()
 
-    Public Sub New(pfrmMainForm As frmMainForm)
+    Public Sub New(pfrmMainForm As frmMainForm, pPGNGame As PGNGame)
         InitializeComponent()
 
         gfrmMainForm = pfrmMainForm
-        Me.UpdateDetails(gfrmMainForm.PGNGame)
+        Me.UpdateDetails(pPGNGame)
     End Sub
 
     Private Sub gfrmMainForm_GameChanged(pPGNGame As PGNGame) Handles gfrmMainForm.GameChanged
@@ -20,7 +21,7 @@ Public Class frmGameDetails
     End Sub
 
     Private Sub gfrmMainForm_LanguageChanged(pLanguage As ChessLanguage) Handles gfrmMainForm.LanguageChanged
-        Call ChangeLanguageCurrentForm(Me)
+        Call ApplyLanguageToCurrentForm(Me)
     End Sub
 
     Private Sub UpdateDetails(pPGNGame As PGNGame)
@@ -32,15 +33,15 @@ Public Class frmGameDetails
             lblEvent.Text = ""
         Else
             Dim ELO As String
-            lblWhiteName.Text = pPGNGame.Tags.GetPGNTag("White")
-            ELO = pPGNGame.Tags.GetPGNTag("WhiteElo")
+            lblWhiteName.Text = pPGNGame.Tags("White").Value
+            ELO = pPGNGame.Tags("WhiteElo").Value
             lblWhiteELO.Text = If(ELO = "", "", "(" & ELO & ")")
-            lblBlackName.Text = pPGNGame.Tags.GetPGNTag("Black")
-            ELO = pPGNGame.Tags.GetPGNTag("BlackElo")
+            lblBlackName.Text = pPGNGame.Tags("Black").Value
+            ELO = pPGNGame.Tags("BlackElo").Value
             lblBlackELO.Text = If(ELO = "", "", "(" & ELO & ")")
-            lblSiteYear.Text = pPGNGame.Tags.GetPGNTag("Site") & " " _
-                             & Strings.Left(pPGNGame.Tags.GetPGNTag("Date"), 4)
-            lblEvent.Text = pPGNGame.Tags.GetPGNTag("Event")
+            lblSiteYear.Text = pPGNGame.Tags("Site").Value & " " _
+                             & Strings.Left(pPGNGame.Tags("Date").Value, 4)
+            lblEvent.Text = pPGNGame.Tags("Event").Value
         End If
     End Sub
 
@@ -57,7 +58,7 @@ Public Class frmGameDetails
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.gfrmMainForm = Nothing
+        gfrmMainForm = Nothing
 
         MyBase.Finalize()
     End Sub

@@ -4,12 +4,13 @@ Imports System.Drawing
 Imports System.Xml.Serialization
 
 Public Class Arrow
+
     <XmlAttribute()>
-    Public Color As String
+    Public Property Color As String
     <XmlAttribute()>
-    Public FromFieldName As String
+    Public Property FromFieldName As String
     <XmlAttribute()>
-    Public ToFieldName As String
+    Public Property ToFieldName As String
 
     <XmlIgnore>
     Public ReadOnly Property IconName() As String
@@ -68,6 +69,7 @@ Public Class Arrow
     Public Sub New()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
         Return Me.Color & " " & Me.FromFieldName & "-" & Me.ToFieldName
     End Function

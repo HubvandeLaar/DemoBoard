@@ -22,5 +22,14 @@ CPSLibrary
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:CPSLibrary.CPSFile.ConvertToPGN">
+ <summary>Returns a converted list of PGNGames from current CPS File</summary>
+</member>
+<member name="M:CPSLibrary.CPSFile.IsCPSFile(System.String)">
+ <summary>Returns True if specified FileName contains a CPS extension</summary>
+</member>
+<member name="M:CPSLibrary.CPSPositions.DeSerialize(System.String)">
+ <summary>Returns a CPSPosition out of a CPS File</summary>
+</member>
 </members>
 </doc>

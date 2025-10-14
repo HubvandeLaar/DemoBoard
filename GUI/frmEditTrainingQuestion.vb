@@ -1,18 +1,20 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
+Imports ChessMessaging
+Imports ChessMessaging.Messages
 Imports PGNLibrary
 
 Public Class frmEditTrainingQuestion
 
-    Public TrainingQuestion As PGNTrainingQuestion
-
-    Private RowIndex As Integer
+    Private gRowIndex As Integer
 
     'Defines what languages are used / defined / updated
-    Private EnAnswers As Boolean = False
-    Private NlAnswers As Boolean = False
-    Private NoneAnswers As Boolean = False
+    Private gEnAnswers As Boolean = False
+    Private gNlAnswers As Boolean = False
+    Private gNoneAnswers As Boolean = False
+
+    Public Property TrainingQuestion As PGNTrainingQuestion
 
     Public Overloads Sub ShowDialog(pTrainingQuestion As PGNTrainingQuestion)
         Try
@@ -20,8 +22,8 @@ Public Class frmEditTrainingQuestion
 
             If Me.TrainingQuestion Is Nothing Then
                 Me.TrainingQuestion = Nothing
-                NoneAnswers = True
-                EnAnswers = False : NlAnswers = False
+                gNoneAnswers = True
+                gEnAnswers = False : gNlAnswers = False
                 rtbQuestionEn.Text = "" : rtbQuestionNl.Text = ""
                 rtbHint1En.Text = "" : rtbHint1Nl.Text = ""
                 rtbHint2En.Text = "" : rtbHint2Nl.Text = ""
@@ -29,9 +31,9 @@ Public Class frmEditTrainingQuestion
             Else
                 For Each LocalizedQuestion As PGNTrainingLocalizedQuestion In Me.TrainingQuestion.LocalizedQuestions
                     Select Case LocalizedQuestion.Language
-                        Case "En" : EnAnswers = True
-                        Case "Nl" : NlAnswers = True
-                        Case "" : NoneAnswers = True
+                        Case "En" : gEnAnswers = True
+                        Case "Nl" : gNlAnswers = True
+                        Case "" : gNoneAnswers = True
                     End Select
                     Select Case LocalizedQuestion.Language
                         Case "En", ""
@@ -77,26 +79,26 @@ Public Class frmEditTrainingQuestion
     Private Sub tabTexts_TabIndexChanged(pSender As Object, pArgs As EventArgs) Handles tabTexts.TabIndexChanged
         Select Case tabTexts.SelectedTab.Name
             Case "tabEn"
-                If Me.EnAnswers = False _
-                And Me.NoneAnswers = False Then
-                    If Me.NlAnswers = True Then
+                If gEnAnswers = False _
+                And gNoneAnswers = False Then
+                    If gNlAnswers = True Then
                         Call CopyNlToEn()
-                        Me.EnAnswers = True
-                        Me.NoneAnswers = False
+                        gEnAnswers = True
+                        gNoneAnswers = False
                     Else
-                        Me.EnAnswers = False
-                        Me.NoneAnswers = True
+                        gEnAnswers = False
+                        gNoneAnswers = True
                     End If
                 End If
             Case "tabNl"
-                If Me.NlAnswers = False Then
-                    If Me.NoneAnswers = True _
-                    Or Me.EnAnswers = True Then
+                If gNlAnswers = False Then
+                    If gNoneAnswers = True _
+                    Or gEnAnswers = True Then
                         Call CopyEnToNl()
                     End If
-                    Me.NoneAnswers = False
-                    Me.EnAnswers = True
-                    Me.NlAnswers = True
+                    gNoneAnswers = False
+                    gEnAnswers = True
+                    gNlAnswers = True
                 End If
         End Select
     End Sub
@@ -134,7 +136,7 @@ Public Class frmEditTrainingQuestion
 
         Dim LocalizedQuestion As PGNTrainingLocalizedQuestion
 
-        If EnAnswers = True Then
+        If gEnAnswers = True Then
             LocalizedQuestion = GetLocalizedQuestion("En")
             If LocalizedQuestion Is Nothing Then
                 LocalizedQuestion = New PGNTrainingLocalizedQuestion("", "En")
@@ -147,7 +149,7 @@ Public Class frmEditTrainingQuestion
             For Each Row As DataGridViewRow In grdAnswersEn.Rows
                 If Row.IsNewRow = True Then Continue For
                 Dim Answer As New PGNTrainingAnswer(CStr(Row.Cells(0).Value), CStr(Row.Cells(2).Value), CStr(Row.Cells(1).Value), Index)
-                Index = Index + 1
+                Index += 1
                 LocalizedQuestion.Answers.Add(Answer)
             Next Row
 
@@ -159,7 +161,7 @@ Public Class frmEditTrainingQuestion
             End If
         End If
 
-        If NlAnswers = True Then
+        If gNlAnswers = True Then
             LocalizedQuestion = GetLocalizedQuestion("Nl")
             If LocalizedQuestion Is Nothing Then
                 LocalizedQuestion = New PGNTrainingLocalizedQuestion("", "Nl")
@@ -172,7 +174,7 @@ Public Class frmEditTrainingQuestion
             For Each Row As DataGridViewRow In grdAnswersNl.Rows
                 If Row.IsNewRow = True Then Continue For
                 Dim Answer As New PGNTrainingAnswer(CStr(Row.Cells(0).Value), CStr(Row.Cells(2).Value), CStr(Row.Cells(1).Value), Index)
-                Index = Index + 1
+                Index += 1
                 LocalizedQuestion.Answers.Add(Answer)
             Next Row
 
@@ -184,7 +186,7 @@ Public Class frmEditTrainingQuestion
             End If
         End If
 
-        If NoneAnswers = True Then
+        If gNoneAnswers = True Then
             LocalizedQuestion = GetLocalizedQuestion("")
             If LocalizedQuestion Is Nothing Then
                 LocalizedQuestion = New PGNTrainingLocalizedQuestion("")
@@ -199,7 +201,7 @@ Public Class frmEditTrainingQuestion
                 And Row.Cells(1).Value IsNot Nothing _
                 And Row.Cells(2).Value IsNot Nothing Then
                     Dim Answer As New PGNTrainingAnswer(CStr(Row.Cells(0).Value), CStr(Row.Cells(2).Value), CStr(Row.Cells(1).Value), Index)
-                    Index = Index + 1
+                    Index += 1
                     LocalizedQuestion.Answers.Add(Answer)
                 End If
             Next Row
@@ -230,6 +232,7 @@ Public Class frmEditTrainingQuestion
         Me.Hide()
     End Sub
 
+    ''' <summary>Returns the Question for the specified Language or Nothing when not found</summary>
     Private Function GetLocalizedQuestion(pLanguage As String) As PGNTrainingLocalizedQuestion
         For Each LocalizedQuestion As PGNTrainingLocalizedQuestion In Me.TrainingQuestion.LocalizedQuestions
             If LocalizedQuestion.Language = pLanguage Then
@@ -243,21 +246,21 @@ Public Class frmEditTrainingQuestion
         Select Case Me.tabTexts.SelectedTab.Name
             Case "TabEn"
                 If grdAnswersEn.SelectedRows.Count > 0 Then
-                    Me.RowIndex = grdAnswersEn.SelectedRows(0).Index
+                    gRowIndex = grdAnswersEn.SelectedRows(0).Index
                 Else
                     Exit Sub
                 End If
-                If Not grdAnswersEn.Rows(Me.RowIndex).IsNewRow Then
-                    grdAnswersEn.Rows.RemoveAt(Me.RowIndex)
+                If Not grdAnswersEn.Rows(gRowIndex).IsNewRow Then
+                    grdAnswersEn.Rows.RemoveAt(gRowIndex)
                 End If
             Case "TabNl"
                 If grdAnswersEn.SelectedRows.Count > 0 Then
-                    Me.RowIndex = grdAnswersEn.SelectedRows(0).Index
+                    gRowIndex = grdAnswersEn.SelectedRows(0).Index
                 Else
                     Exit Sub
                 End If
-                If Not grdAnswersNl.Rows(Me.RowIndex).IsNewRow Then
-                    grdAnswersNl.Rows.RemoveAt(Me.RowIndex)
+                If Not grdAnswersNl.Rows(gRowIndex).IsNewRow Then
+                    grdAnswersNl.Rows.RemoveAt(gRowIndex)
                 End If
         End Select
     End Sub

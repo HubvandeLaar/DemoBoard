@@ -1,26 +1,17 @@
 ﻿Option Explicit On
 
-Imports System.Drawing
 Imports ChessGlobals
-Imports ChessGlobals.ChessColor
 Imports ChessMaterials.ChessPiece
 
 Public Class ChessField
-    Public Name As String
-    Public Column As Integer
-    Public Row As Integer
-    Public Piece As ChessPiece
-    Public Marker As Marker
-    Public Text As Text
-    Public ParentBoard As ChessBoard
+    Public Property Name As String
+    Public Property Column As Integer
+    Public Property Row As Integer
+    Public Property Piece As ChessPiece
+    Public Property Marker As Marker
+    Public Property Text As Text
 
-    Public Function DarkField() As Boolean
-        If (Row + Column) Mod 2 = 0 Then
-            DarkField = True
-        Else
-            DarkField = False
-        End If
-    End Function
+    Private gParentBoard As ChessBoard
 
     Public ReadOnly Property ColumnName As String
         Get
@@ -34,6 +25,7 @@ Public Class ChessField
         End Get
     End Property
 
+    ''' <summary>Returns the Name of the Field based on a Point as used for Arrows</summary>
     Public Shared Function FieldName(pPoint As String) As String
         Dim Values() As String = pPoint.Split(";")
         Dim Column As String, Row As String
@@ -62,362 +54,84 @@ Public Class ChessField
         Return Column & Row
     End Function
 
-    Public Function DefendedBy(pColor As ChessColor) As List(Of ChessField) 'NB piece(s) from this postion
-        Return DefendedOrAttackedBy(pColor)
-    End Function
-    Public Function AttackedBy(pColor As ChessColor) As List(Of ChessField) 'NB piece(s) from this postion
-        Return DefendedOrAttackedBy(pColor)
-    End Function
-    Private Function DefendedOrAttackedBy(pColor As ChessColor) As List(Of ChessField) 'NB piece(s) from this postion
-        Dim DefendersOrAttackers As New List(Of ChessField)
-        Dim Distance As Integer, Column As Integer, Row As Integer, Piece As ChessPiece
-
-        If Me.Piece.Type = PieceType.KING Then
-            'King's defender's always come too late...
-            Return DefendersOrAttackers 'Zero
+    ''' <summary>Returns if the Field is a Dark Field</summary>
+    Public Function DarkField() As Boolean
+        If (Row + Column) Mod 2 = 0 Then
+            DarkField = True
+        Else
+            DarkField = False
         End If
-
-        'Straight upward
-        For Distance = 1 To 8
-            Column = Me.Column
-            Row = Me.Row + Distance
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-            End If
-        Next Distance
-
-        'Straight downward
-        For Distance = 1 To 8
-            Column = Me.Column
-            Row = Me.Row - Distance
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-            End If
-        Next Distance
-
-        'To the Right
-        For Distance = 1 To 8
-            Column = Me.Column + Distance
-            Row = Me.Row
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Distance
-
-        'To the Left
-        For Distance = 1 To 8
-            Column = Me.Column - Distance
-            Row = Me.Row
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.ROOK) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-            End If
-        Next Distance
-
-        'Direction Right Up
-        For Distance = 1 To 8
-            Column = Me.Column + Distance
-            Row = Me.Row + Distance
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-            End If
-        Next Distance
-
-        'Direction Right Down
-        For Distance = 1 To 8
-            Column = Me.Column + Distance
-            Row = Me.Row - Distance
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-            End If
-        Next Distance
-
-        'Direction Left Up
-        For Distance = 1 To 8
-            Column = Me.Column - Distance
-            Row = Me.Row + Distance
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-            End If
-        Next Distance
-
-        'Direction Left Down
-        For Distance = 1 To 8
-            Column = Me.Column - Distance
-            Row = Me.Row - Distance
-            If ParentBoard.Exists(Column, Row) = False Then Exit For
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing Then
-                If Piece.Color = pColor Then
-                    If Distance = 1 _
-                    And Piece.Type = PieceType.KING Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    ElseIf (Piece.Type = PieceType.QUEEN Or Piece.Type = PieceType.BISHOP) Then
-                        DefendersOrAttackers.Add(ParentBoard(Column, Row))
-                        'Continue for
-                    Else
-                        Exit For 'No more Pieces in this line
-                    End If
-                Else
-                    Exit For
-                End If
-            End If
-        Next Distance
-
-        'Pawn Left Down or Up
-        Column = Me.Column - 1
-        Row = Me.Row + If(pColor = WHITE, -1, 1)
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.PAWN) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        'Pawn Right Down or Up
-        Column = Me.Column + 1
-        Row = Me.Row + If(pColor = WHITE, -1, 1)
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.PAWN) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        'Knights
-        Column = Me.Column + 1
-        Row = Me.Row + 2
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Column = Me.Column - 1
-        Row = Me.Row + 2
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Column = Me.Column + 1
-        Row = Me.Row - 2
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Column = Me.Column - 1
-        Row = Me.Row - 2
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Column = Me.Column + 2
-        Row = Me.Row + 1
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Column = Me.Column + 2
-        Row = Me.Row - 1
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Column = Me.Column - 2
-        Row = Me.Row + 1
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Column = Me.Column - 2
-        Row = Me.Row - 1
-        If ParentBoard.Exists(Column, Row) = True Then
-            Piece = ParentBoard(Column, Row).Piece
-            If Piece IsNot Nothing _
-            AndAlso Piece.Color = pColor _
-            AndAlso (Piece.Type = PieceType.KNIGHT) Then
-                DefendersOrAttackers.Add(ParentBoard(Column, Row))
-            End If
-        End If
-
-        Return DefendersOrAttackers
     End Function
 
+
+    ''' <summary>Returns True if the field contains a Piece with specified Type and Color</summary>
+    Public Function IsPiece(pPieceType As PieceType, pColor As ChessColor) As Boolean
+        If Me.Piece Is Nothing Then Return False
+        If Me.Piece.Type <> pPieceType Then Return False
+        If Me.Piece.Color <> pColor Then Return False
+        Return True
+    End Function
+
+    ''' <summary>Returns the Fields with Pieces that attack this Field</summary>
+    Public Function AttackedBy(pColor As ChessColor) As List(Of ChessField)
+        Dim Attackers As New List(Of ChessField)
+        Dim Moves As List(Of BoardMove) = Me.gParentBoard.AllPossibleMoves(pColor)
+        For Each Move As BoardMove In Moves
+            If Move.ToFieldName = Me.Name Then
+                Attackers.Add(Me.gParentBoard(Move.FromFieldName))
+            End If
+        Next Move
+        Return Attackers
+    End Function
+
+    ''' <summary>Returns the Fields with Pieces that defend this Field</summary>
+    Public Function DefendedBy(pColor As ChessColor) As List(Of ChessField)
+        'Change color of Piece of the board, and look how many valid moves there are to this field
+        Dim Board As New ChessBoard(Me.gParentBoard.FEN)
+        Board(Me.Name).Piece = New Knight(pColor.Opponent) 'Set Opponent Piece from this field
+        Dim Defenders As New List(Of ChessField)
+        Dim Moves As List(Of BoardMove) = Board.AllPossibleMoves(pColor)
+        For Each Move As BoardMove In Moves
+            If Move.ToFieldName = Me.Name Then
+                Defenders.Add(Me.gParentBoard(Move.FromFieldName))
+            End If
+        Next Move
+        Return Defenders
+    End Function
+
+    ''' <summary>Returns the first Field with a Piece, starting from Me in specified Direction</summary>
     Public Function FirstPieceInLine(pDirection As Direction) As ChessField
         Dim C As Integer = Me.Column
         Dim R As Integer = Me.Row
-        While (Me.ParentBoard.Exists(C, R) = True _
-               AndAlso Me.ParentBoard(C, R).Piece Is Nothing)
+        While (Me.gParentBoard.Exists(C, R) = True _
+               AndAlso Me.gParentBoard(C, R).Piece Is Nothing)
             C += pDirection.ColumnIncrement
             R += pDirection.RowIncrement
         End While
-        If Me.ParentBoard.Exists(C, R) = True Then
-            Return Me.ParentBoard(C, R)
+        If Me.gParentBoard.Exists(C, R) = True Then
+            Return Me.gParentBoard(C, R)
         Else
             Return Nothing
         End If
     End Function
 
-
     Public Sub New(pColumn As Integer, pRow As Integer, pParentBoard As ChessBoard)
         Column = pColumn
         Row = pRow
         Name = Me.ColumnName & Me.RowName
-        Me.ParentBoard = pParentBoard
+        Me.gParentBoard = pParentBoard
     End Sub
 
     Protected Overrides Sub Finalize()
         Me.Piece = Nothing
         Me.Marker = Nothing
         Me.Text = Nothing
-        Me.ParentBoard = Nothing
+        Me.gParentBoard = Nothing
 
         MyBase.Finalize()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
         If Me.Piece Is Nothing Then
             Return Me.Name

@@ -1,18 +1,19 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging
+Imports ChessMessaging.Messages
 Imports PGNLibrary
 Imports ChessMaterials
 
 Class frmEditArrows
 
-    Public ArrowList As PGNArrowList
+    Private gRowIndex As Integer
 
-    Private RowIndex As Integer
+    Public Property ArrowList As PGNArrowList
 
-    Public Overloads Sub ShowDialog(pArrowList As String)
+    Public Overloads Sub ShowDialog(pArrowListXPGN As String)
         Try
-            ArrowList = New PGNArrowList(pArrowList)
+            ArrowList = New PGNArrowList(pArrowListXPGN)
             grdArrows.Rows.Clear()
             For Each Arrow As Arrow In ArrowList
                 grdArrows.Rows.Add(New String() {Arrow.Color, Arrow.FromFieldName, Arrow.ToFieldName})
@@ -29,7 +30,7 @@ Class frmEditArrows
     Private Sub grdArrows_CellValidating(pSender As Object, pArgs As DataGridViewCellValidatingEventArgs) Handles grdArrows.CellValidating
         grdArrows.Rows(pArgs.RowIndex).ErrorText = ""
 
-        ' Don't try to validate the just created  'new row' until finished editing since there
+        ' Don't try to validate the just created  'new row' until finished editing
         If grdArrows.Rows(pArgs.RowIndex).IsNewRow Then Return
 
         Select Case pArgs.ColumnIndex
@@ -48,15 +49,15 @@ Class frmEditArrows
 
     Private Sub grdArrows_CellMouseDown(pSender As Object, pArgs As DataGridViewCellMouseEventArgs) Handles grdArrows.CellMouseDown
         If pArgs.Button = MouseButtons.Right Then
-            grdArrows.Rows(pArgs.RowIndex).Selected = True
-            Me.RowIndex = pArgs.RowIndex
+            Me.grdArrows.Rows(pArgs.RowIndex).Selected = True
+            gRowIndex = pArgs.RowIndex
             mnuPopUp.Show(Me.grdArrows, pArgs.Location)
         End If
     End Sub
 
     Private Sub mnuDeleteRow_Click(pSender As Object, pArgs As EventArgs) Handles mnuDeleteRow.Click
-        If Not grdArrows.Rows(Me.RowIndex).IsNewRow Then
-            grdArrows.Rows.RemoveAt(Me.RowIndex)
+        If Not grdArrows.Rows(gRowIndex).IsNewRow Then
+            grdArrows.Rows.RemoveAt(gRowIndex)
         End If
     End Sub
 

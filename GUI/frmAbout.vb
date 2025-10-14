@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿Option Explicit On
 
 Public Class frmAbout
 

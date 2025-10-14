@@ -1,21 +1,23 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
-Imports ChessMaterials
-Imports ChessMaterials.ChessPiece
 Imports ChessGlobals.ChessColor
+Imports ChessGlobals.ChessLanguage
+Imports ChessMessaging
+Imports ChessMaterials
 
 Public Class frmPromotion
 
-    Public ChoosenPiece As ChessPiece = Nothing
-    Private Color As ChessColor
+    Private gColor As ChessColor
+
+    Public Property ChoosenPiece As ChessPiece = Nothing
 
     Public Overloads Sub ShowDialog(pColor As ChessColor)
         Try
-            If CurrentLanguage = ChessLanguage.NEDERLANDS Then
+            If CurrentLanguage = NEDERLANDS Then
                 Me.lblHeader.Text = "Selecteer een van de volgende stukken"
             End If
-            Me.Color = pColor
+            gColor = pColor
 
             If pColor = WHITE Then
                 Me.picQueen.Image = frmImages.WQueen.Image
@@ -36,28 +38,28 @@ Public Class frmPromotion
     End Sub
 
     Private Sub picQueen_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picQueen.Click
-        Me.ChoosenPiece = New Queen(Me.Color)
+        Me.ChoosenPiece = New Queen(gColor)
         Me.Hide()
     End Sub
 
     Private Sub picRook_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picRook.Click
-        Me.ChoosenPiece = New Rook(Me.Color)
+        Me.ChoosenPiece = New Rook(gColor)
         Me.Hide()
     End Sub
 
     Private Sub picBishop_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picBishop.Click
-        Me.ChoosenPiece = New Bishop(Me.Color)
+        Me.ChoosenPiece = New Bishop(gColor)
         Me.Hide()
     End Sub
 
     Private Sub picKnight_Click(pSender As System.Object, pArgs As System.EventArgs) Handles picKnight.Click
-        Me.ChoosenPiece = New Knight(Me.Color)
+        Me.ChoosenPiece = New Knight(gColor)
         Me.Hide()
     End Sub
 
     Private Sub frmPromotion_FormClosing(pSender As Object, pArgs As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         If pArgs.CloseReason = CloseReason.UserClosing Then
-            Me.ChoosenPiece = New Pawn(Me.Color)
+            Me.ChoosenPiece = New Pawn(gColor)
             Me.Hide()
             pArgs.Cancel = True
         End If
@@ -65,7 +67,7 @@ Public Class frmPromotion
 
     Protected Overrides Sub Finalize()
         Me.ChoosenPiece = Nothing
-        Me.Color = Nothing
+        gColor = Nothing
 
         MyBase.Finalize()
     End Sub

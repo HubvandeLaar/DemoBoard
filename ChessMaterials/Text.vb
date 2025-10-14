@@ -5,12 +5,14 @@ Imports System.Xml.Serialization
 
 <XmlType()>
 Public Class Text
+
     <XmlAttribute()>
-    Public Color As String
+    Public Property Color As String
     <XmlAttribute()>
-    Public FieldName As String
+    Public Property FieldName As String
+
     <XmlAttribute()>
-    Public gText As String
+    Private gText As String
 
     <XmlIgnore>
     Public Property Text As String
@@ -83,6 +85,7 @@ Public Class Text
     Public Sub New()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
         Return Me.Color & " " & Me.FieldName & " """ & Me.Text & """"
     End Function

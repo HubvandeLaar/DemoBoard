@@ -10,6 +10,8 @@
 [FEN "7k/8/8/4r3/8/2B5/K7/8 b KQkq - 0 0"]
 [FENGraphicals "[%cal Yc3h8][%ctl Gd3"Pennende stuk", Ya5"Gepend stuk", Yb8"Achterliggend stuk"]"]
 
+{[%cal Yc3h8][%ctl Gd3"Pennende stuk", Ya5"Gepend stuk", Yb8"Achterliggend
+stuk"]}
 
 [Event ""]
 [Site ""]
@@ -23,6 +25,7 @@
 [FEN "7k/8/8/4r3/8/8/K7/6B1 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gg1d4]"]
 
+{[%cal Gg1d4]}
 
 [Event ""]
 [Site ""]
@@ -36,6 +39,7 @@
 [FEN "8/6k1/8/4r3/8/8/K7/6B1 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gg1d4]"]
 
+{[%cal Gg1d4]}
 
 [Event ""]
 [Site ""]
@@ -62,6 +66,7 @@
 [FEN "3k4/8/8/8/3b4/8/K7/5R2 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gf1d1]"]
 
+{[%cal Gf1d1]}
 
 [Event ""]
 [Site ""]
@@ -75,6 +80,7 @@
 [FEN "3k4/8/3b4/8/8/8/K7/5R2 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gf1d1]"]
 
+{[%cal Gf1d1]}
 
 [Event ""]
 [Site ""]
@@ -101,6 +107,7 @@
 [FEN "3q2k1/8/8/3b4/8/7P/5PP1/5R1K w KQkq - 0 0"]
 [FENGraphicals "[%cal Yf1d1]"]
 
+{[%cal Yf1d1]}
 
 [Event ""]
 [Site ""]
@@ -114,6 +121,7 @@
 [FEN "3q2k1/4r3/8/8/8/4B2P/5PP1/5RK1 w KQkq - 0 0"]
 [FENGraphicals "[%cal Ge3g5]"]
 
+{[%cal Ge3g5]}
 
 [Event ""]
 [Site ""]
@@ -127,6 +135,7 @@
 [FEN "2k5/2b5/8/8/8/8/1B6/1KR5 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gb2e5]"]
 
+{[%cal Gb2e5]}
 
 [Event ""]
 [Site ""]
@@ -140,6 +149,7 @@
 [FEN "1k6/2n5/8/8/8/6B1/8/1K3R2 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gf1c1]"]
 
+{[%cal Gf1c1]}
 
 [Event ""]
 [Site ""]
@@ -153,4 +163,5 @@
 [FEN "6k1/5ppp/3p4/8/2n5/3R4/1PP5/1K6 w KQkq - 0 0"]
 [FENGraphicals "[%csl Yc8][%cal Gd3c3]"]
 
+{[%csl Yc8][%cal Gd3c3]}
 

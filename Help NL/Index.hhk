@@ -46,9 +46,14 @@
 		<param name="Local" value="Paste.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Export naar PDF">
-		<param name="Name" value="Export naar PDF">
-		<param name="Local" value="Export to PDF.htm">
+		<param name="Name" value="Export Diagrammen naar PDF">
+		<param name="Name" value="Export Diagrammen naar PDF">
+		<param name="Local" value="Export Diagrams to PDF.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Export Partijen naar PDF">
+		<param name="Name" value="Export Partijen naar PDF">
+		<param name="Local" value="Export Games to PDF.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Folder voor Lessen">
@@ -184,6 +189,11 @@
 		<param name="Name" value="Partij Gegevens">
 		<param name="Name" value="Partij Gegevens">
 		<param name="Local" value="Game Details.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Partij Analyse">
+		<param name="Name" value="Partij Analyse">
+		<param name="Local" value="Game Analysis.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Partij Kopiëren">

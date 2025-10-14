@@ -1,4 +1,4 @@
-
+ 
 The application is designed to be used by chess trainers.
 - As a digitial demo board
 - With quick setup using the keyboard

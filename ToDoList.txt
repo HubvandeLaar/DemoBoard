@@ -1,9 +1,99 @@
 To Do Lijstje
-	DemoBoard Lessen en Lessen in DemoBoard...
-	Analyse van de Partij (Feedback op de Stelling (met Niveau))
+	Pierre Buys nieuwe USB geven
 
 Aanpassingen
-V	File Open Dialog with initial directory set to folder of last used RecentFile
+V	Debug.Prints weer verwijderen	
+V	In de Update en ShowMoveList, etc.. Debug.Print gebruiken en testen of ze 2x gebruikt worden
+V	Nieuwe Variant wordt aangemaakt, die geopend wordt en daardoor 2e ShowMoveList
+V	Als een SubForm (MoveList en ValidMoves) niet actief is, dan ook niet updaten...; Dus wel bij Activeren...
+V	Zoeken naar gfrmMainform.g (gebruik van SubForm)
+V	SubForms luisteren niet meer rechtstreeks naar andere SubForms / Methods aanroepen
+V	frmStockfish no longer Uses frmBoard.FEN (3x)
+V	frmValidMoves wordt geupdate bij het afbreken van een zet
+V	frmValidMoves Uses frmBoard en gfrmBoard.PerformMove via Event !!
+V	Na EditMove geen update van het Board...
+V	EditMove GrafischeMarkeringen worden niet juist opgeslagen of zoo...
+V	Na DeleteMove geen MoveListUpdate.. GameChanged...
+V	Text toevoegen via mnuFieldMenu in frmBoard de Kleur gevuld voor aanroep van het scherm
+V	Bij NextGame met zettenlijst, werd de laatste letter van de eerste zet blauw !!
+V	Bij willekeurig stuk verrzetten op bord (partij met zetten) Geen vraag om variant toe te voegen
+X	CurrentMoveIndex in frmMainForm of frmMoveList zetten... (Gaat niet ivm bijv. mnuNextGame)
+V	Serializer routines in een LayoutSerializer Class gezet
+V	Event GameChanged gebruikt met de CurrentMoveIndex, zodat goede positie getoond wordt.
+V	CurrentMoveIndex naar PGNHalfMoves gezet. Dan zit de CurrentMove gewoon in de Game (Next en Previous Game komt dan bij dezelfde stelling uit) 
+V	in ctlMoveList de routine ctlMoveList_SizeChanged en call ShowMoveList() weggehaald (Performance)
+V	Nog de Keuzes, die gemaakt zijn voor Lessons Folder, toepassen bij de Dialogen
+V	Geen Registry; maar Settings Aanpassen !!! Wel My.Settings.Save() gebruikt voor Persistence
+V	frmMainForm.Load aangepast zodat Mainform pas zichtbaar wordt na frmRecentFiles
+V	frmRecentFiles1.Designer.vb appeared at the GUI folder and entry at GUI.vbproj; Both removed
+V	frmRecentFiles Uitklikken gaf dialoogvensster; is nu Leeg-Bestand
+V	SM: edit Partijgegevens alles weghalen loopt fout
+V	Met mnuNextGame, wordt de stand van de stelling niet onthouden.
+V		Undo gaat dan terug naar de Beginstelling van de Vorige Partij
+V		De andere Undo's doen het dan wel...
+V	Zoeken naar StripExtension en FolderName Komt vaker voor
+V	Zoeken naar FontCollection. KNSB en KNSBFigurine naar Global zetten...
+V	Functions iets verklaring geven
+V	Journalling niet consequent....? Kwam doordat bij een zet de HalfMove.Changed een journal entry met BeforeImage van Nothing aanmaakte
+V	DemoBoard bevat 25.000 code-regels; uitgaand van ongeveer 500 regels per maand:
+V		Komt dat neer op 50 maanden werk; dus ruim 4 jaar werk voor een Software Engineer á € 75.000,- per jaar = € 300.000,-
+X	ChessColor zou een Class kunnen worden, maar lijkt toch te veel op een normaal attribuut als Naam
+V	Serialize naar Global.. Eigen Module
+V	Check on SOLID principles
+V	Alle projecten <Assembly: CLSCompliant(True)> gemaakt
+V	gJournal moet private worden in Mainform; 
+V		Dus event TabControlChanged toevoegen in den ctlTabcontrol
+V	Training Mode alleen als er ook trainingsvragen zijn
+V	Pijl naar Rechts; volgende zet in de lijst...(als movelist zichtbaar is) Werkt nog niet... (Volgende partij)
+V	Resultaatzet toevoegen bij TAG Result toevoegen/wijzigen
+V	In zettenlijst zijn commentaren te selecteren... Event cancelen !!
+V	Door in Playmode stukken toe te voegen; wel PGNHalfMoves, maar niet de MoveList leeggemaakt;
+V	Closing ShowDialog within ShowDialog closes both forms (Bug in Windows.Forms); frmEditMove.ShowDialogs omgezet naar Show()
+V	Na EditMove van Move in Subvariant: Na Refresh van de MoveList wordt de Subvariant weer zichtbaar.
+V		De halfmove wordt zichtbaar gemaakt door bovenliggende varianten te expanden
+V	Zet in Movelist dubbelklikken is aanpassen
+V	Bij NAG toevoegen Dropdown van de mogelijke NAGs...
+V	Na NAG aanpassen is de NAG niet zichtbaar in zettenlijst
+V	Onvoordelige ruil niet melden als Stuk stuk van gelijke waarde of meer slaat !!!
+V	Use Directions in Pinning Step2Feedback...
+V	ChessCoach in Class zetten
+v	modMessages en resourdes, form etc. naar Project ChessMessages en modMessages veranderd in een Class
+V	Startup-Mode op Spelen zetten 
+V	ChessMode enum naar frmMainForm
+V	Journaling in een class zetten
+V	Undo en Redo Analyse..
+V	Gebruik van g als prefix voor global variabelen ook als ze niet public zijn...
+V	Verwijderen niet gebruikte inports
+V	Pion En-Passant werkt niet als geldige zet...
+V	Geen update geldige zetten na MovelistPositionChange...
+V	Bord leeg maken; Undo weer initial, maar redo geen leeg bord !!
+V	Directions gebruiken in de stukken. In New dan alleen de schuine of de rechte...
+V	In PGNNAG zijn interne variabelen gPGNString, gEnglishText en gDutchText merkwaardig, maar worden wel gebruikt om te serializen...
+V	Alle For loops nalopen en kijken of Declaratie van de index in de for kan
+V	Help aanpassen
+V		Chess Choach toevoegen
+V		Export Diagrammen en Partijen toevoegen
+V		Alle <LI> in <UL></UL> zetten
+V		Opnieuw compileren en de CHM toevoegen
+V	Analyse van de Partij (Feedback op de Stelling (met Niveau))
+V		Schermpje met vraag Niveau Zwart en Wit !!
+V		Bij Analyse ook Diagrammen toevoegem op de juiste plaats; met pijl van de slechte zet..
+V		Geanalyseeerde partij krijgt TAG Annotator met "DemoBoard"
+V		'Stelling na:' moet worden 'Stelling voor:'onder de diagrammen; Indien Annotator "DemoBoard"
+V	Test for exist file before opening... Friendly Errormessage.
+V	PGN toevoegen NA openen !!! ipv bij sluiten... (Save vergeten)
+V	In NewLine geen nieuwe regel toevoegen aan de bovenkant van een colom
+V	Na diagram geen extra regel toevoegen; en CommentOrVariantchange niet aanzetten.... 
+V	Probleem met voordelige ruil opgelost. Koos ipv Paard de Loper om de toren te slaan.
+V	Drie variants vanuit Stockfish toegevoegd in EngineResult
+V	Export van partijen naar PDF-formaat
+V	Bij Build worden 'DemoBoard Lessen' uit GUI gecopieerd naar 'bin Debug' of 'bin Release' (Create Distribution copieert de hele bin Release folder)
+V	De DemoBoard Lessen nagekeken op de juiste kleur (aan zet)
+V	Bij PDF-Export paginanummer toegevoegd.
+V	Bij 'Clear' van Diagram werden ook de titels en memo gewist; Method ook naar ClearDiagram hernoemd
+V	File Open Dialog with initial directory set to folder of last used for PDF files
+V	Alle meldingen in een Resource-bestand gezet (Messages.resx)
+V	File Open Dialog with initial directory set to folder of last used RecentFile fo PGN files
 V	RecentFiles tonen bij opstarten
 V	Pijltjes gebruiken om naar de volgende/vorige partij te gaan
 V	Bij Grafics ook toevoegen en weghalen met een teken
@@ -335,7 +425,7 @@ V	TrainingQuestion in aparte Modus starten, anders geen edit mogelijkheid...
 V	Bij cmdRetry ook de vraag opnieuw stellen
 V	Na Mouse-Up wordt de de zet al teruggezet. Zou in cmdRetry moeten....
 V	Op smartboard lukt het om een drag rond te laten lopen, er kan dan geen nieuwe drag worden opgestart
-V	frmTrainingQuestion Multilangual gemaakt
+V	frmTrainingQuestion Multilingual gemaakt
 V	Fontsize Tabbladen groter gemaakt
 V	Fontsize causes forms to be displayde partially. Fontsize is forwarded...
 V	Als er meerdere verianten zijn geeft NextMove de goeie variant ook aan !! (door Training als mode te zien)

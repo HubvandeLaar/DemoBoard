@@ -78,7 +78,7 @@ De b-pion heeft iets op c6 geslagen.
 Rules
 This looks like an illegal position but is not.
 The b-pawn has captured something at c6."]
-[FEN "8/1k6/2P5/8/1R6/8/8/8 w - - 0 0"]
+[FEN "8/1k6/2P5/8/1R6/8/8/8 b - - 0 0"]
 
 
 [Event ""]
@@ -94,7 +94,7 @@ The b-pawn has captured something at c6."]
 
 Rules
 This is an illegal position. When the pawn comes from h4, the bishop already gave check. If the pawn comes from g4, the rook already gave check."]
-[FEN "7r/8/8/5b2/8/6pK/8/8 b - - 0 0"]
+[FEN "7r/8/8/5b2/8/6pK/8/8 w - - 0 0"]
 
 
 [Event ""]

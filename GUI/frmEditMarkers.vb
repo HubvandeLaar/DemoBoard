@@ -1,18 +1,19 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging
+Imports ChessMessaging.Messages
 Imports PGNLibrary
 Imports ChessMaterials
 
 Public Class frmEditMarkers
 
-    Public MarkerList As PGNMarkerList
+    Private gRowIndex As Integer
 
-    Private RowIndex As Integer
+    Public Property MarkerList As PGNMarkerList
 
-    Public Overloads Sub ShowDialog(pMarkerList As String)
+    Public Overloads Sub ShowDialog(pMarkerListXPGN As String)
         Try
-            MarkerList = New PGNMarkerList(pMarkerList)
+            MarkerList = New PGNMarkerList(pMarkerListXPGN)
             grdMarkers.Rows.Clear()
             For Each Marker As Marker In MarkerList
                 grdMarkers.Rows.Add(New String() {Marker.Symbol, Marker.FieldName})
@@ -49,14 +50,14 @@ Public Class frmEditMarkers
     Private Sub grdMarkers_CellMouseDown(pSender As Object, pArgs As DataGridViewCellMouseEventArgs) Handles grdMarkers.CellMouseDown
         If pArgs.Button = MouseButtons.Right Then
             grdMarkers.Rows(pArgs.RowIndex).Selected = True
-            Me.RowIndex = pArgs.RowIndex
+            gRowIndex = pArgs.RowIndex
             mnuPopUp.Show(Me.grdMarkers, pArgs.Location)
         End If
     End Sub
 
     Private Sub mnuDeleteRow_Click(pSender As Object, pArgs As EventArgs) Handles mnuDeleteRow.Click
-        If Not grdMarkers.Rows(Me.RowIndex).IsNewRow Then
-            grdMarkers.Rows.RemoveAt(Me.RowIndex)
+        If Not grdMarkers.Rows(gRowIndex).IsNewRow Then
+            grdMarkers.Rows.RemoveAt(gRowIndex)
         End If
     End Sub
 

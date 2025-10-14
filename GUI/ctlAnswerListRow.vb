@@ -1,4 +1,7 @@
-﻿Imports ChessGlobals
+﻿Option Explicit On
+
+Imports ChessGlobals
+Imports ChessGlobals.ChessColor
 Imports PGNLibrary
 Imports PGNLibrary.PGNNAG
 Imports PGNLibrary.PGNNAG.NAGPrintPosition
@@ -18,7 +21,7 @@ Public Class ctlAnswerListRow
             If pHalfMove.Result <> "" Then
                 rtbMoveText.AppendText(pHalfMove.MoveText(CurrentLanguage))
             Else
-                rtbMoveText.AppendText(pHalfMove.MoveNr & If(pHalfMove.Color = ChessColor.WHITE, ". ", "... "))
+                rtbMoveText.AppendText(pHalfMove.MoveNr & If(pHalfMove.Color = WHITE, ". ", "... "))
                 If pHalfMove.NAGs.Count(BEFORE) > 0 Then
                     Me.PrintNAGs(pHalfMove, BEFORE)
                 End If
@@ -55,8 +58,6 @@ Public Class ctlAnswerListRow
         RaiseEvent AnswerClicked(gCorrectAnswer, gHalfMove)
     End Sub
 
-    'Private Methods and Functions
-
     Private Sub PrintNAGs(pHalfMove As PGNHalfMove, pPrintPosition As NAGPrintPosition)
         Dim NAGText As String
         For Each NAG As PGNNAG In pHalfMove.NAGs
@@ -66,14 +67,14 @@ Public Class ctlAnswerListRow
                         rtbMoveText.SelectionStart = rtbMoveText.TextLength 'Set Start to End of Text
                         rtbMoveText.AppendText(ChrW(NAG.Code))
                         rtbMoveText.SelectionLength = 1
-                        rtbMoveText.SelectionFont = New Font(NAG.Font, 14)
+                        rtbMoveText.SelectionFont = New Font(NAG.FontName, 14)
                     Case NAGType.TEXT 'Inserting the text using the default font for the current style
                         NAGText = NAG.Text(CurrentLanguage)
                         If NAGText <> "" Then
                             rtbMoveText.SelectionStart = rtbMoveText.TextLength 'Set Start to End of Text
                             Me.rtbMoveText.AppendText(NAGText & " ")
                             rtbMoveText.SelectionLength = Len(NAGText)
-                            rtbMoveText.SelectionFont = New Font(NAG.Font, rtbMoveText.Font.Size)
+                            rtbMoveText.SelectionFont = New Font(NAG.FontName, rtbMoveText.Font.Size)
                         End If
                 End Select
             End If

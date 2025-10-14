@@ -1,6 +1,6 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging.Messages
 Imports ChessMaterials
 Imports System.Xml.Serialization
 
@@ -40,8 +40,8 @@ Public Class PGNTextList
         Get
             Dim Elements As String = ""
             For Each Text As Text In Me
-                If Elements <> "" Then Elements = Elements & ", "
-                Elements = Elements & Text.PGNString()
+                If Elements <> "" Then Elements += ", "
+                Elements += Text.PGNString()
             Next Text
             Return Elements
         End Get
@@ -58,6 +58,7 @@ Public Class PGNTextList
 
     Public Sub New(Optional pString As String = "")
         MyBase.New()
+
         If pString <> "" Then
             If InStr(pString, PGNHeader, vbBinaryCompare) > 0 Then
                 Me.XPGNString = pString
@@ -70,10 +71,12 @@ Public Class PGNTextList
     Public Sub New()
     End Sub
 
+    ''' <summary>Returns True when given Comment contains a TextList</summary>
     Public Shared Function ContainsTextList(pComment As String) As Boolean
         Return (pComment Like "*[[]%ctl *[]]*") 'Contains *[%ctl *]* 
     End Function
 
+    ''' <summary>Returns the TextList-string from a given Comment</summary>
     Public Shared Function GetTextList(pComment As String) As String
         Dim P1 As Long = InStr(pComment, PGNHeader, vbBinaryCompare)
         If P1 = 0 Then
@@ -86,8 +89,8 @@ Public Class PGNTextList
         Return Mid(pComment, P1, P2 - P1 + 1)
     End Function
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.XPGNString
     End Function
 

@@ -28,7 +28,7 @@
     <ProductName>DemoBoard</ProductName>
     <PublisherName>Frisselstein BV</PublisherName>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <ApplicationVersion>4.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -43,6 +43,8 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>DemoBoard.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>MixedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -85,6 +87,10 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -163,6 +169,12 @@
     <Compile Include="frmAddText.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAnalysis.Designer.vb">
+      <DependentUpon>frmAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDockCross.Designer.vb">
       <DependentUpon>frmDockCross.vb</DependentUpon>
     </Compile>
@@ -211,10 +223,16 @@
     <Compile Include="frmEditTrainingQuestion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmExport.Designer.vb">
-      <DependentUpon>frmExport.vb</DependentUpon>
+    <Compile Include="frmExportDiagrams.Designer.vb">
+      <DependentUpon>frmExportDiagrams.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmExport.vb">
+    <Compile Include="frmExportDiagrams.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportGames.Designer.vb">
+      <DependentUpon>frmExportGames.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportGames.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImages.Designer.vb">
@@ -302,6 +320,7 @@
     <Compile Include="frmValidMoves.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LayoutSerializer.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -318,7 +337,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="modRecentFiles.vb" />
+    <Compile Include="RecentFiles.vb" />
     <Compile Include="SetupToolbar.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -366,12 +385,20 @@
       <DependentUpon>frmAddText.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAnalysis.nl.resx">
+      <DependentUpon>frmAnalysis.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAnalysis.resx">
+      <DependentUpon>frmAnalysis.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBoard.nl.resx">
       <DependentUpon>frmBoard.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBoard.resx">
       <DependentUpon>frmBoard.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDockCross.resx">
       <DependentUpon>frmDockCross.vb</DependentUpon>
@@ -379,9 +406,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditArrows.nl.resx">
       <DependentUpon>frmEditArrows.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditArrows.resx">
       <DependentUpon>frmEditArrows.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditGame.nl.resx">
       <DependentUpon>frmEditGame.vb</DependentUpon>
@@ -393,40 +422,59 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditHalfMove.nl.resx">
       <DependentUpon>frmEditHalfMove.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditHalfMove.resx">
       <DependentUpon>frmEditHalfMove.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditMarkers.nl.resx">
       <DependentUpon>frmEditMarkers.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditMarkers.resx">
       <DependentUpon>frmEditMarkers.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditNAGs.nl.resx">
       <DependentUpon>frmEditNAGs.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditNAGs.resx">
       <DependentUpon>frmEditNAGs.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditTexts.nl.resx">
       <DependentUpon>frmEditTexts.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditTexts.resx">
       <DependentUpon>frmEditTexts.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditTrainingQuestion.nl.resx">
       <DependentUpon>frmEditTrainingQuestion.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditTrainingQuestion.resx">
       <DependentUpon>frmEditTrainingQuestion.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmExport.nl.resx">
-      <DependentUpon>frmExport.vb</DependentUpon>
+    <EmbeddedResource Include="frmExportDiagrams.nl.resx">
+      <DependentUpon>frmExportDiagrams.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmExport.resx">
-      <DependentUpon>frmExport.vb</DependentUpon>
+    <EmbeddedResource Include="frmExportDiagrams.resx">
+      <DependentUpon>frmExportDiagrams.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportGames.nl.resx">
+      <DependentUpon>frmExportGames.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportGames.resx">
+      <DependentUpon>frmExportGames.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGameDetails.nl.resx">
       <DependentUpon>frmGameDetails.vb</DependentUpon>
@@ -474,12 +522,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecentFiles.nl.resx">
       <DependentUpon>frmRecentFiles.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecentFiles.resx">
       <DependentUpon>frmRecentFiles.vb</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmRecentFiles1.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStockfish.resx">
       <DependentUpon>frmStockfish.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTrainingQuestion.nl.resx">
       <DependentUpon>frmTrainingQuestion.vb</DependentUpon>
@@ -489,6 +542,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelectGame.nl.resx">
       <DependentUpon>frmSelectGame.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelectGame.resx">
       <DependentUpon>frmSelectGame.vb</DependentUpon>
@@ -515,6 +569,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmValidMoves.resx">
       <DependentUpon>frmValidMoves.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -568,136 +623,124 @@
     <Content Include="DemoBoard EN.chw">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="DemoBoard Lessen\Opstapje 1, Verdedigen.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="DemoBoard Lessen\Stap 1 Opgaven Ondersteunend Mat.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1 Opgaven Ondersteunend Mat.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="DemoBoard NL.chm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DemoBoard NL.chw">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="DemoBoard Lessen\Stap 1 Mat - kopie.xpgn">
+    <None Include="DemoBoard Lessen\Opstapje 1 Slaan, aanvallen en veilig aanvallen.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="DemoBoard Lessen\Stap 1 Mat, Pat en Remise - kopie.xpgn">
+    <None Include="DemoBoard Lessen\Opstapje 1, Verdedigen.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1 Mat, Pat en Remise.xpgn">
+    </None>
+    <None Include="DemoBoard Lessen\Opstapje 2 Rokade.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1 Mat.xpgn">
+    </None>
+    <None Include="DemoBoard Lessen\Shinkman.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1, Voordelige Ruil - kopie.xpgn">
+    </None>
+    <None Include="DemoBoard Lessen\Spelletjes.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1, Voordelige Ruil.xpgn">
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1 Gaan en Slaan en de Pion.xpgn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1 Mat, Pat en Remise.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1 Mat.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1 Opgaven Ondersteunend Mat.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1 Schaak en Mat.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1 Tweevoudige aanval.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1+ Mat bedenken.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1+ Pat Vermijden.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1+ Verdedigen tegen Mat.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1+ Vrijpion.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1, 1 en 2 Bord en Stukken.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1, 3 en 4 Pion, Aanval en Slaan.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1, 5 Verdedigen.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1, Pion.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 1, Voordelige Ruil.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Activiteit van de Stukken.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Aftrekaanval.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 De Tussenzet.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Dubbele aanval Dame.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Dubbele aanval TLPpK.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Dubbele aanval.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Gouden Regels.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Matvoering met de Toren.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Penning Oplossen.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Penning.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2 Uitschakelen Verdediging.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2+ De Opening.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2+ Mat Bedenken.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2+ Mat en Dubbelschaak.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2+ Materiaal winnen.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2+ Pionneneindspel.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoBoard Lessen\Stap 2+ Spelregels.xpgn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Frisselstein.pfx" />
-    <Content Include="DemoBoard Lessen\Opstapje 1 Slaan, aanvallen en veilig aanvallen.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Opstapje 2 Rokade.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Shinkman.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Spelletjes.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1 Gaan en Slaan en de Pion.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1 Schaak en Mat.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1 Tweevoudige aanval.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1+ Mat bedenken.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1+ Pat Vermijden.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1+ Verdedigen tegen Mat.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1+ Vrijpion.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1, 1 en 2 Bord en Stukken.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1, 3 en 4 Pion, Aanval en Slaan.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1, 5 Verdedigen.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 1, Pion.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Activiteit van de Stukken.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Aftrekaanval.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 De Tussenzet.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval Dame.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval TLPpK.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Dubbele aanval.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Gouden Regels.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Matvoering met de Toren.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Penning Oplossen.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Penning.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2 Uitschakelen Verdediging.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2+ De Opening.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2+ Mat Bedenken.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2+ Mat en Dubbelschaak.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2+ Materiaal winnen.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2+ Pionneneindspel.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DemoBoard Lessen\Stap 2+ Spelregels.xpgn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -733,9 +776,17 @@
       <Project>{125547ef-ad43-4039-b2da-c673ee249202}</Project>
       <Name>ChessMaterials</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ChessMessaging\ChessMessaging.vbproj">
+      <Project>{768f03aa-e6d9-40eb-8ae6-f5c41dc800cf}</Project>
+      <Name>ChessMessaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CPSLibrary\CPSLibrary.vbproj">
       <Project>{70d2dd08-40de-4648-bd48-3029cbd8c72d}</Project>
       <Name>CPSLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Journaling\Journaling.vbproj">
+      <Project>{50fe7764-4b58-4c6e-9eed-c645603c2711}</Project>
+      <Name>Journaling</Name>
     </ProjectReference>
     <ProjectReference Include="..\PDFLibrary\PDFLibrary.vbproj">
       <Project>{41f203dd-778b-433f-8d0a-b1ec21565557}</Project>

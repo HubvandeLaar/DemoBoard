@@ -3,6 +3,7 @@
 Imports ChessGlobals
 Imports ChessGlobals.ChessLanguage
 Imports ChessGlobals.ChessColor
+Imports ChessMessaging.Messages
 Imports System.Xml.Serialization
 
 <XmlInclude(GetType(King))>
@@ -13,8 +14,6 @@ Imports System.Xml.Serialization
 <XmlInclude(GetType(Pawn))>
 <XmlType()>
 Public Class ChessPiece
-    <XmlAttribute()>
-    Public Color As ChessColor
 
     Public Enum PieceType
         <XmlEnum()>
@@ -39,6 +38,9 @@ Public Class ChessPiece
             Return UNKNOWN
         End Get
     End Property
+
+    <XmlAttribute()>
+    Public Color As ChessColor
 
     <XmlIgnore>
     Public Overridable ReadOnly Property Name(Optional pLanguage As ChessLanguage = ENGLISH) As String
@@ -86,10 +88,12 @@ Public Class ChessPiece
         End Get
     End Property
 
+    ''' <summary>Returns all valid possible Moves</summary>
     Public Overridable Function PossibleMoves(pFromFieldName As String, pChessBoard As ChessBoard) As List(Of BoardMove)
         Return Nothing
     End Function
 
+    ''' <summary>Returns True when a Move is valid</summary>
     Public Function IsValidMove(pChessBoard As ChessBoard, pFromFieldName As String, pToFieldName As String) As Boolean
         Dim PossibleMoves As List(Of BoardMove)
         PossibleMoves = Me.PossibleMoves(pFromFieldName, pChessBoard)
@@ -101,6 +105,7 @@ Public Class ChessPiece
         Return False
     End Function
 
+    ''' <summary>Returns a New ChessPiece based upon a FEN character</summary>
     Public Shared Function CreatePiece(pFENName As String) As ChessPiece
         Select Case pFENName
             Case "K" : Return New King(WHITE)
@@ -119,6 +124,7 @@ Public Class ChessPiece
         End Select
     End Function
 
+    ''' <summary>Returns a New ChessPiece base upon a (English) Move character</summary>
     Public Shared Function CreatePiece(pMoveName As String, pColor As ChessColor) As ChessPiece
         Select Case pMoveName
             Case "K" : Return New King(pColor)
@@ -144,6 +150,7 @@ Public Class ChessPiece
         MyBase.Finalize()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
         Return Me.FullName
     End Function

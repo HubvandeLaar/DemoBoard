@@ -1,4 +1,5 @@
 ﻿Option Explicit On
+
 Imports ChessGlobals
 
 Public Class ctlTabControl
@@ -9,14 +10,17 @@ Public Class ctlTabControl
     Public Event TabPageStartDragging(pctlTabControl As ctlTabControl, pMouseLocation As Point)
     Public Event TabPageDropped(pFrom As Form)
     Public Event TabPageRemoved(pForm As Form)
+    Public Event TabPageChanged(pBeforeImage As String, pAfterImage As String)
+    Public Event TabPageDisposed(pctlTabControl As ctlTabControl)
 
-    'Needed to enable ForwardedMouseUp and ForwardedMousePanelLeave
+    'Needed to enable PanelMouseUp and PanelMouseLeave
     Public WithEvents gfrmMainForm As frmMainForm
 
-    Private MouseDownLocation As Point = Nothing
-    Private gPanelCloseIconLocation = New Point(-18, 5)
+    Private gLayoutSerializer As LayoutSerializer
+    Private gMouseDownLocation As Point = Nothing
+    Private gPanelCloseIconLocation As New Point(-18, 5)
 
-    Private BeforeImage As String = ""
+    Private gBeforeImage As String = ""
 
     Public ReadOnly Property SubForm(pIndex As Integer) As Form
         Get
@@ -102,8 +106,9 @@ Public Class ctlTabControl
     End Sub
 
     Private Sub ctlTabControl_Load(pSender As Object, pArgs As EventArgs) Handles Me.Load
-        'Needed to enable ForwardedMouseUp and ForwardedMousePanelLeave
+        'Needed to enable PanelMouseUp and PanleMouseLeave
         gfrmMainForm = frmMainForm
+        gLayoutSerializer = New LayoutSerializer(gfrmMainForm)
 
         Me.Dock = DockStyle.Fill
     End Sub
@@ -214,11 +219,12 @@ Public Class ctlTabControl
     Private Sub TabControl_MouseClick(pSender As Object, pArgs As MouseEventArgs) Handles TabControl.MouseClick
         If (TabControl.TabPages.Count > 0) Then
             If (TabCloseIconRectangle(Me.SelectedIndex).Contains(pArgs.Location)) Then
-                BeforeImage = gfrmMainForm.SerializeLayout()
-                Dim TabPage As TabPage = Me.TabControl.TabPages(Me.SelectedIndex)
-                RemoveTab(TabPage)
+                gBeforeImage = gLayoutSerializer.SerializeLayout()
 
-                gfrmMainForm.gJournaling.SaveImage("Layout", BeforeImage, gfrmMainForm.SerializeLayout())
+                Dim TabPage As TabPage = Me.TabControl.TabPages(Me.SelectedIndex)
+                Call RemoveTab(TabPage)
+
+                RaiseEvent TabPageChanged(gBeforeImage, gLayoutSerializer.SerializeLayout())
             End If
         End If
     End Sub
@@ -226,12 +232,12 @@ Public Class ctlTabControl
     Private Sub TabControl_MouseDown(pSender As Object, pArgs As MouseEventArgs) Handles TabControl.MouseDown
         If pArgs.Button = MouseButtons.Left Then
             If (TabTitleRectangle(Me.SelectedIndex).Contains(pArgs.Location)) Then
-                MouseDownLocation = pArgs.Location
+                gMouseDownLocation = pArgs.Location
             Else
-                MouseDownLocation = Nothing
+                gMouseDownLocation = Nothing
             End If
 
-            BeforeImage = gfrmMainForm.SerializeLayout()
+            gBeforeImage = gLayoutSerializer.SerializeLayout()
         End If
     End Sub
 
@@ -250,9 +256,9 @@ Public Class ctlTabControl
         End If
 
         If (TabControl.TabPages.Count > 0) Then
-            If MouseDownLocation <> Nothing And pArgs.Button = MouseButtons.Left Then
-                If Distance(pArgs.Location, MouseDownLocation) > 5 Then
-                    MouseDownLocation = Nothing
+            If gMouseDownLocation <> Nothing And pArgs.Button = MouseButtons.Left Then
+                If Distance(pArgs.Location, gMouseDownLocation) > 5 Then
+                    gMouseDownLocation = Nothing
                     Dim MouseLocation As New Point(Me.PointToScreen(pArgs.Location))
                     RaiseEvent TabPageStartDragging(Me, MouseLocation)
                 Else
@@ -260,13 +266,13 @@ Public Class ctlTabControl
                     Exit Sub
                 End If
             Else
-                MouseDownLocation = Nothing
+                gMouseDownLocation = Nothing
             End If
         End If
     End Sub
 
     ''' <summary>
-    ''' MousUp event is forwarded to frmMainForm to Raise an ForwardedMousUp event to ALL ctlTabControls
+    ''' MousUp event is forwarded to frmMainForm to Raise an PanelMousUp event to ALL ctlTabControls
     ''' </summary>
     Private Sub TabControl_MouseUp(pSender As Object, pArgs As MouseEventArgs) Handles TabControl.MouseUp
         If Me.IsDisposed = True Then
@@ -304,10 +310,10 @@ Public Class ctlTabControl
     ''' <summary>
     ''' A MouseUp event is only detected by the control with the previous MouseDown.
     ''' To solve this, The control with the previous MouseDown fires a MouseUp event.
-    ''' The frmMainForm catches this event and raises a ForwardedMouseUp to all ctlTabControls.
+    ''' The frmMainForm catches this event and raises a PanelMouseUp to all ctlTabControls.
     ''' Each ctlTabControl checks to see if this event was intended for him.
     ''' </summary>
-    Private Sub gParentForm_ForwardedMouseUp(pDragPanel As Panel, pDockStyle As DockStyle, pMouseLocation As Point) Handles gfrmMainForm.ForwardedMouseUp
+    Private Sub gParentForm_PanelMouseUp(pDragPanel As Panel, pDockStyle As DockStyle, pMouseLocation As Point) Handles gfrmMainForm.PanelMouseUp
 
         If pDragPanel.Visible = False _
         Or pDragPanel.Controls.Count = 0 Then
@@ -320,8 +326,7 @@ Public Class ctlTabControl
             If TabRectangle(Index).Contains(pMouseLocation) Then
                 Dim Form As Form = pDragPanel.Controls(0)
                 AddTabPage(pDragPanel, Index)
-
-                gfrmMainForm.gJournaling.SaveImage("Layout", BeforeImage, gfrmMainForm.SerializeLayout())
+                RaiseEvent TabPageChanged(gBeforeImage, gLayoutSerializer.SerializeLayout())
                 RaiseEvent TabPageDropped(Form)
                 Exit Sub
             End If
@@ -333,7 +338,7 @@ Public Class ctlTabControl
                 Dim Form As Form = pDragPanel.Controls(0)
                 AddTabPage(pDragPanel)
 
-                gfrmMainForm.gJournaling.SaveImage("Layout", BeforeImage, gfrmMainForm.SerializeLayout())
+                RaiseEvent TabPageChanged(gBeforeImage, gLayoutSerializer.SerializeLayout())
                 RaiseEvent TabPageDropped(Form)
                 Exit Sub
             End If
@@ -344,7 +349,7 @@ Public Class ctlTabControl
             Dim Form As Form = pDragPanel.Controls(0)
             AddTabPage(pDragPanel)
 
-            gfrmMainForm.gJournaling.SaveImage("Layout", BeforeImage, gfrmMainForm.SerializeLayout())
+            RaiseEvent TabPageChanged(gBeforeImage, gLayoutSerializer.SerializeLayout())
             RaiseEvent TabPageDropped(Form)
             Exit Sub
         End If
@@ -357,7 +362,7 @@ Public Class ctlTabControl
     ''' when the MousePointer leaves the rectangle of the gDockingCrossTabControl.
     ''' Each ctlTabControl checks to see if this event was intended for him.
     ''' </summary>
-    Private Sub gParentForm_ForwardedMousePanelLeave(pMouseLocation As Point) Handles gfrmMainForm.ForwardedMousePanelLeave
+    Private Sub gParentForm_PanelMouseLeave(pMouseLocation As Point) Handles gfrmMainForm.PanelMouseLeave
         Dim TabRectangle = Me.TabControl.RectangleToScreen(TabControl.DisplayRectangle)
         If TabRectangle.Contains(pMouseLocation) Then
             RaiseEvent MouseEnter(Me)
@@ -365,14 +370,12 @@ Public Class ctlTabControl
     End Sub
 
     Private Sub ctlTabControl_Disposed(pSender As Object, pArgs As EventArgs) Handles Me.Disposed
-        gfrmMainForm.RemoveHandlers(Me)
+        RaiseEvent TabPageDisposed(Me)
         gfrmMainForm = Nothing
         For Index As Integer = Me.TabControl.TabCount - 1 To 0 Step -1
             Me.TabControl.TabPages(Index).Dispose()
         Next Index
     End Sub
-
-    'Private Subs and Functions ==============================
 
     Private Sub DrawBackGround(pSender As Object, pTabIndex As Integer)
         Dim TabRectangle As Rectangle = Me.TabControl.GetTabRect(pTabIndex)
@@ -386,7 +389,7 @@ Public Class ctlTabControl
     Private Sub DrawText(pTabControl As TabControl, pTabIndex As Integer)
         Dim TabRectangle As Rectangle = pTabControl.GetTabRect(pTabIndex)
         TabRectangle.Offset(2, 2)
-        Dim TitleBrush As Brush = New SolidBrush(Color.Black)
+        Dim TitleBrush As New SolidBrush(Color.Black)
         Dim Title As String = pTabControl.TabPages(pTabIndex).Text
         pTabControl.CreateGraphics.DrawString(Title, pTabControl.Font, TitleBrush, New PointF(TabRectangle.X, TabRectangle.Y))
     End Sub
@@ -406,38 +409,45 @@ Public Class ctlTabControl
                                              gPanelCloseIconLocation.Y, TabRectangle.Height - (TabRectangle.Y * 2), TabRectangle.Height - (TabRectangle.Y * 2))
     End Sub
 
+    ''' <summary>Returns the distance between two points according to Pythagoras</summary>
     Private Function Distance(pPoint1 As Point, pPoint2 As Point) As Integer
         Return Math.Sqrt((pPoint1.X - pPoint2.X) * (pPoint1.X - pPoint2.X) + (pPoint1.Y - pPoint2.Y) * (pPoint1.Y - pPoint2.Y))
     End Function
 
+    ''' <summary>Returns the rectangle of the close icon</summary>
     Private Function TabCloseIconRectangle(pIndex As Integer) As Rectangle
         Dim TabRectangle As Rectangle = Me.TabControl.GetTabRect(pIndex)
         Return New Rectangle(TabRectangle.X + TabRectangle.Width + gPanelCloseIconLocation.X, gPanelCloseIconLocation.Y,
                              TabRectangle.Height - (TabRectangle.Y * 2), TabRectangle.Height - (TabRectangle.Y * 2))
     End Function
 
+    ''' <summary>Returns the rectangle of the Tab Title</summary>
     Private Function TabTitleRectangle(pIndex As Integer) As Rectangle
         Dim TabRectangle As Rectangle = Me.TabControl.GetTabRect(pIndex)
         Return New Rectangle(TabRectangle.X, TabRectangle.Y,
                              TabRectangle.Width + gPanelCloseIconLocation.X, TabRectangle.Height)
     End Function
 
+    ''' <summary>Returns the rectangle of the free area after the tabs</summary>
     Private Function EndOfTabAreaRectangle() As Rectangle
         Dim TabRectangle As Rectangle
         TabRectangle = Me.TabControl.GetTabRect(Me.TabControl.TabPages.Count - 1)
-        TabRectangle.X = TabRectangle.X + TabRectangle.Width
+        TabRectangle.X += TabRectangle.Width
         TabRectangle.Width = Me.TabControl.Width - TabRectangle.X
         Return Me.TabControl.RectangleToScreen(TabRectangle)
     End Function
 
+    ''' <summary>Returns the rectangle of the Form</summary>
     Private Function FormRectangle() As Rectangle
         Return Me.TabControl.RectangleToScreen(Me.TabControl.ClientRectangle)
     End Function
 
+    ''' <summary>Returns the rectangle of tab</summary>
     Private Function TabRectangle(pIndex As Integer) As Rectangle
         Return Me.TabControl.RectangleToScreen(Me.TabControl.GetTabRect(pIndex))
     End Function
 
+    ''' <summary>Returns the retangle of the tab</summary>
     Public Function GetTabRect(pIndex As Integer) As Rectangle
         Return Me.TabControl.GetTabRect(pIndex)
     End Function

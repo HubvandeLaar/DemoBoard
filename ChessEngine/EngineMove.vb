@@ -20,8 +20,8 @@
         End If
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.MoveText
     End Function
 

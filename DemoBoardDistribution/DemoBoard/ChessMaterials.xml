@@ -22,9 +22,141 @@ ChessMaterials
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:ChessMaterials.Bishop.PossibleMoves(System.String,ChessMaterials.ChessBoard)">
+ <summary>Returns all valid possible moves</summary>
+</member>
+<member name="M:ChessMaterials.BoardMove.Text(ChessMaterials.ChessBoard,ChessMaterials.ChessBoard,ChessGlobals.modChessLanguage.ChessLanguage)">
+ <summary>Returns the BoardMove in long notation</summary>
+</member>
+<member name="M:ChessMaterials.BoardMove.ColumnNr(System.String)">
+ <summary>Returns the ColumnNumber a=1...h=8</summary>
+</member>
+<member name="M:ChessMaterials.BoardMove.ColumnName(System.Int32)">
+ <summary>Returns the ColumnName 1=a...8=h</summary>
+</member>
+<member name="M:ChessMaterials.BoardMove.Row(System.String)">
+ <summary>Returns the RowNumber of a FieldName</summary>
+</member>
+<member name="M:ChessMaterials.BoardMove.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.GetEnumerator">
+ <summary>Enables For...Each loops on ths Board Fields</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.Exists(ChessMaterials.ChessField)">
+ <summary>Returns True when gField exists on this board</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.Exists(System.Int64,System.Int64)">
+ <summary>Returns True if a field (Column, Row) exists on the board</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.IsPiece(ChessMaterials.ChessField,ChessMaterials.ChessPiece.PieceType,ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns True when the specified PieceType of Color is at the requested Field</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.PerformMove(ChessMaterials.BoardMove)">
+ <summary>Performs the Move and returns True when this was possible (no check on check etc...!)</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.BriefNotationFieldName(ChessMaterials.ChessPiece,System.String,System.String)">
+ <summary>Returns (parts of) the FromFieldName as needed for Brief Notation</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.FindPiece(ChessMaterials.ChessPiece,System.String,System.String,System.String)">
+ <summary>Returns Nothing or the first possible FromField where a piece is found, 
+ meeting requested PieceType, Color, FromColumn and/or FromRow 
+ and capable to go to the ToField</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.FindPiece(ChessMaterials.ChessPiece.PieceType,ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns all Fields with a piece meeting the requirements</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.AllPossibleMoves(ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns a list of all valid possible Moves</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.IsIntendedCastling(ChessMaterials.BoardMove)">
+ <summary>Children not always Castle correctly. 
+ So, sometimes it's a valid Castling and somthing that looks like it</summary>
+</member>
 <member name="M:ChessMaterials.ChessBoard.InCheck(ChessGlobals.modChessColor.ChessColor)">
  <summary>To Test if the KING is In Check
  Faster than getting all opponent moves and see if king is a target</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.InCheckAfterMove(ChessMaterials.BoardMove,ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns True when king with specified Color is in check after the Move</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.CheckMate(ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns True when it's CheckMate for specified Color</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.CanCheckMate">
+ <summary>Returns the Move or Nothing if there is a valid Move that can CheckMate</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.FindKing(ChessGlobals.modChessColor.ChessColor)">
+ <summary>Return the Field of the King with specified Color</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.ShortCastlingAllowed(System.String)">
+ <summary>Return if it is allowed to Castle on the Short side</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.LongCastlingAllowed(System.String)">
+ <summary>Returns if it is allowed to Castle on the Long side</summary>
+</member>
+<member name="M:ChessMaterials.ChessBoard.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessMaterials.ChessField.FieldName(System.String)">
+ <summary>Returns the Name of the Field based on a Point as used for Arrows</summary>
+</member>
+<member name="M:ChessMaterials.ChessField.DarkField">
+ <summary>Returns if the Field is a Dark Field</summary>
+</member>
+<member name="M:ChessMaterials.ChessField.IsPiece(ChessMaterials.ChessPiece.PieceType,ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns True if the field contains a Piece with specified Type and Color</summary>
+</member>
+<member name="M:ChessMaterials.ChessField.AttackedBy(ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns the Fields with Pieces that attack this Field</summary>
+</member>
+<member name="M:ChessMaterials.ChessField.DefendedBy(ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns the Fields with Pieces that defend this Field</summary>
+</member>
+<member name="M:ChessMaterials.ChessField.FirstPieceInLine(ChessMaterials.Direction)">
+ <summary>Returns the first Field with a Piece, starting from Me in specified Direction</summary>
+</member>
+<member name="M:ChessMaterials.ChessField.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessMaterials.ChessPiece.PossibleMoves(System.String,ChessMaterials.ChessBoard)">
+ <summary>Returns all valid possible Moves</summary>
+</member>
+<member name="M:ChessMaterials.ChessPiece.IsValidMove(ChessMaterials.ChessBoard,System.String,System.String)">
+ <summary>Returns True when a Move is valid</summary>
+</member>
+<member name="M:ChessMaterials.ChessPiece.CreatePiece(System.String)">
+ <summary>Returns a New ChessPiece based upon a FEN character</summary>
+</member>
+<member name="M:ChessMaterials.ChessPiece.CreatePiece(System.String,ChessGlobals.modChessColor.ChessColor)">
+ <summary>Returns a New ChessPiece base upon a (English) Move character</summary>
+</member>
+<member name="M:ChessMaterials.ChessPiece.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessMaterials.King.PossibleMoves(System.String,ChessMaterials.ChessBoard)">
+ <summary>Returns all valid possible moves</summary>
+</member>
+<member name="M:ChessMaterials.Knight.PossibleMoves(System.String,ChessMaterials.ChessBoard)">
+ <summary>Returns all valid possible moves</summary>
+</member>
+<member name="M:ChessMaterials.Pawn.PossibleMoves(System.String,ChessMaterials.ChessBoard)">
+ <summary>Returns all valid possible moves</summary>
+</member>
+<member name="M:ChessMaterials.Arrow.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessMaterials.Marker.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessMaterials.Text.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessMaterials.Queen.PossibleMoves(System.String,ChessMaterials.ChessBoard)">
+ <summary>Returns all valid possible moves</summary>
+</member>
+<member name="M:ChessMaterials.Rook.PossibleMoves(System.String,ChessMaterials.ChessBoard)">
+ <summary>Returns all valid possible moves</summary>
 </member>
 </members>
 </doc>

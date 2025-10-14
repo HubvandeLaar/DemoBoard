@@ -8,24 +8,16 @@ Public Class PGNTags
 
     Default Public Overloads ReadOnly Property Item(pPGNTagKey) As PGNTag
         Get
-            For Each PGNTag In Me
-                If PGNTag.Key = pPGNTagKey Then
-                    Return PGNTag
-                End If
+            For Each Tag In Me
+                If Tag.Key = pPGNTagKey Then Return Tag
             Next
-            Return Nothing
+            Return New PGNTag(pPGNTagKey, "")
         End Get
     End Property
 
-    Function GetPGNTag(pKey As String) As String
-        For Each Tag As PGNTag In Me
-            If Tag.Key = pKey Then Return Tag.Value
-        Next
-        Return ""
-    End Function
-
-    Overloads Function Add(pPGNTag As String) As PGNTag
-        Dim PGNTag As New PGNTag(pPGNTag)
+    ''' <summary>Adds a New (or updates matching) PGNTag from a PGNString</summary>
+    Overloads Function Add(pPGNString As String) As PGNTag
+        Dim PGNTag As New PGNTag(pPGNString)
         If Me.Exists(Function(Item) Item.Key = PGNTag.Key) Then
             Me(PGNTag.Key).Value = PGNTag.Value
             Return Me(PGNTag.Key)
@@ -35,6 +27,7 @@ Public Class PGNTags
         End If
     End Function
 
+    ''' <summary>Adds a New (or updates matching) PGNTag from given Key and Value</summary>
     Overloads Function Add(pPGNTagKey As String, pPGNTagValue As String) As PGNTag
         Dim PGNTag As PGNTag
         For Each PGNTag In Me
@@ -63,22 +56,6 @@ Public Class PGNTags
         Me.Add("Memo", "")
     End Sub
 
-    'Public Property JournalImage As String
-    '    Set(pJournalImage As String)
-    '        Dim Elements() As String = pJournalImage.Split("<:>")
-    '        For Each Element In Elements
-    '            Me.Add(Element)
-    '        Next Element
-    '    End Set
-    '    Get
-    '        Dim Elements As String = ""
-    '        For Each TAG As PGNTag In Me
-    '            Elements = Elements & If(Elements = "", "", "<:>") & TAG.PGNString
-    '        Next TAG
-    '        Return Elements
-    '    End Get
-    'End Property
-
     Public Sub New(pInitial As Boolean)
         If pInitial = True Then
             Me.Clear()
@@ -88,8 +65,8 @@ Public Class PGNTags
     Public Sub New()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return String.Join(" ", Me)
     End Function
 

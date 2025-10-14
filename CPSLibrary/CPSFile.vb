@@ -7,14 +7,13 @@ Imports PGNLibrary
 
 <XmlType("File")>
 Public Class CPSFile
-    Public FullFileName As String
-    Public Positions As New CPSPositions()
+    Public Property FullFileName As String
+    Public Property Positions As New CPSPositions()
 
     Public ReadOnly Property FileName As String
         Get
-            Dim P1 As Long, P2 As Long
-            P1 = InStrRev(Me.FullFileName, "/")
-            P2 = InStrRev(Me.FullFileName, "\")
+            Dim P1 As Long = InStrRev(Me.FullFileName, "/")
+            Dim P2 As Long = InStrRev(Me.FullFileName, "\")
             Return Mid(Me.FullFileName, Math.Max(P1, P2) + 1)
         End Get
     End Property
@@ -24,16 +23,17 @@ Public Class CPSFile
         Positions = CPSPositions.DeSerialize(pFileName)
     End Sub
 
+    ''' <summary>Returns a converted list of PGNGames from current CPS File</summary>
     Public Function ConvertToPGN() As PGNGames
         Dim ChessBoard As New ChessBoard()
-        Dim PGNGames = New PGNGames()
+        Dim PGNGames As New PGNGames()
         For Each Position As CPSPosition In Me.Positions.PositionList
             ChessBoard.Clear()
             Dim PGNGame As PGNGame = PGNGames.Add()
             PGNGame.Tags.Add("Title", Position.Name)
             PGNGame.Tags.Add("Memo", Position.Description)
             For Each Arrow As CPSArrow In Position.Arrows
-                Dim NewArrow = New Arrow(Arrow.PGNColor(), ChessField.FieldName(Arrow.StartPoint), ChessField.FieldName(Arrow.EndPoint))
+                Dim NewArrow As New Arrow(Arrow.PGNColor(), ChessField.FieldName(Arrow.StartPoint), ChessField.FieldName(Arrow.EndPoint))
                 If NewArrow.FromFieldName = NewArrow.ToFieldName Then Continue For
                 If PGNGame.HalfMoves.FENComment Is Nothing Then
                     PGNGame.HalfMoves.FENComment = New PGNComment("")
@@ -91,6 +91,16 @@ Public Class CPSFile
     Public Sub Save(pFileName As String)
         Positions.Serialize(pFileName)
     End Sub
+
+    ''' <summary>Returns True if specified FileName contains a CPS extension</summary>
+    Public Shared Function IsCPSFile(pFileName As String) As Boolean
+        If LCase(pFileName) Like "*.cps" Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
 
     Public Sub New(pFileName As String)
         Me.Open(pFileName)

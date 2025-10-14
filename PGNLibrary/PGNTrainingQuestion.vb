@@ -2,6 +2,7 @@
 
 Imports ChessGlobals
 Imports ChessGlobals.ChessLanguage
+Imports ChessMessaging.Messages
 Imports System.Text.RegularExpressions
 Imports System.Xml.Serialization
 
@@ -12,7 +13,7 @@ Public Class PGNTrainingQuestion
     Public Const PGNTrailer As String = "]"
 
     <XmlElement()>
-    Public LocalizedQuestions As New List(Of PGNTrainingLocalizedQuestion)
+    Public Property LocalizedQuestions As New List(Of PGNTrainingLocalizedQuestion)
 
     <XmlIgnore>
     Public Property PGNString() As String
@@ -49,17 +50,19 @@ Public Class PGNTrainingQuestion
         Get
             Dim Elements As String = ""
             For Each Question As PGNTrainingLocalizedQuestion In LocalizedQuestions
-                If Elements <> "" Then Elements = Elements & ","
-                Elements = Elements & Question.PGNString()
+                If Elements <> "" Then Elements &= ","
+                Elements &= Question.PGNString()
             Next
             Return Elements
         End Get
     End Property
 
+    ''' <summary>Returns True when given Comment contains a TrainingQuestion</summary>
     Public Shared Function ContainsTrainingQuestion(pComment As String) As Boolean
         Return (pComment Like "*[[]%tqu *[]]*") 'Contains *[%tqu *]* 
     End Function
 
+    ''' <summary>Returns the TrainingQuestion from a given Comment</summary>
     Public Shared Function GetPGNQuestion(pComment As String) As String
         Dim P1 As Long = InStr(pComment, PGNHeader, vbBinaryCompare)
         If P1 = 0 Then
@@ -75,6 +78,7 @@ Public Class PGNTrainingQuestion
         Return Mid(pComment, P1, P2 - P1 + 1)
     End Function
 
+    ''' <summary>Returns the Question matching the given or Current Language</summary>
     Public Function GetLocalizedQuestion(Optional ByVal pLanguage As String = "")
         If pLanguage = "" Then
             Select Case CurrentLanguage
@@ -113,12 +117,13 @@ Public Class PGNTrainingQuestion
     Public Sub New()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.PGNString
     End Function
 
-    Private Function TrimCommasAndSpaces(pText As String) As String
+    ''' <summary>Removes starting or trailing spaces and commas from a given Text</summary>
+    Private Shared Function TrimCommasAndSpaces(pText As String) As String
         Dim Text As String = pText
         While (Left(Text, 1) = "," Or Left(Text, 1) = " ")
             Text = Mid(Text, 2)

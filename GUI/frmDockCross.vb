@@ -1,13 +1,15 @@
-﻿Public Class frmDockCross
+﻿Option Explicit On
 
-    Public DockStyle As DockStyle
+Public Class frmDockCross
 
-    Private gInActiveColor As Color = Color.FromArgb(255, 234, 113) 'Color.Beige
-    Private gActiveColor As Color = Color.Gold
+    Private ReadOnly gInActiveColor As Color = Color.FromArgb(255, 234, 113) 'Color.Beige
+    Private ReadOnly gActiveColor As Color = Color.Gold
+
+    Public Property DockStyle As DockStyle
 
     Public Sub CenterForm(pctlTabControl As ctlTabControl)
         With pctlTabControl.Parent.ClientRectangle
-            Dim DockingLocation = New Point(.Left + (.Width - Me.Width) / 2,
+            Dim DockingLocation As New Point(.Left + (.Width - Me.Width) / 2,
                                                          .Top + (.Height - Me.Height) / 2)
             Me.Location = pctlTabControl.Parent.PointToScreen(DockingLocation)
         End With
@@ -60,6 +62,7 @@
         Me.Refresh()
     End Sub
 
+    ''' <summary>Returns True when Point lies within the Boudaries of the Control</summary>
     Private Function WithinBoundary(pControl As Control, pPoint As Point) As Boolean
         If pPoint.X >= pControl.Left And pPoint.X <= (pControl.Left + pControl.Width) _
         And pPoint.Y >= pControl.Top And pPoint.Y <= (pControl.Top + pControl.Height) Then

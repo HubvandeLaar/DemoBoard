@@ -1,7 +1,5 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
-
 Public Class EngineResults
 
     Public ReadOnly Property Score As Integer 'In Centipoints

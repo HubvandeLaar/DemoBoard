@@ -4,16 +4,21 @@ Imports System.Xml.Serialization
 
 <XmlType("Arrow")>
 Public Class CPSArrow
+
     <XmlAttribute()>
-    Public StartPoint As String
+    Public Property StartPoint As String
+
     <XmlAttribute()>
-    Public EndPoint As String
+    Public Property EndPoint As String
+
     <XmlAttribute()>
-    Public Brush As String
+    Public Property Brush As String
+
     <XmlAttribute()>
-    Public BorderBrush As String
+    Public Property BorderBrush As String
+
     <XmlAttribute()>
-    Public Stroke As String
+    Public Property Stroke As String
 
     Public ReadOnly Property PGNColor()
         Get

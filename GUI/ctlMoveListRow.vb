@@ -1,8 +1,11 @@
-﻿Imports ChessGlobals
+﻿Option Explicit On
+
+Imports ChessGlobals
 Imports ChessGlobals.ChessColor
 Imports PGNLibrary
 Imports PGNLibrary.PGNNAG
 Imports PGNLibrary.PGNNAG.NAGPrintPosition
+Imports PGNLibrary.PGNComment.BeforeOrAfterDiagram
 
 Public Class ctlMoveListRow
 
@@ -16,6 +19,7 @@ Public Class ctlMoveListRow
 
     Public Event RightClicked(pSender As ctlMoveListRow, pHalfMove As PGNHalfMove)
     Public Event Clicked(pSender As ctlMoveListRow, pHalfMove As PGNHalfMove)
+    Public Event DoubleClicked(pSender As ctlMoveListRow, pHalfMove As PGNHalfMove)
     Public Event ExpandClicked(pSender As ctlMoveListRow)
     Public Event CollapseClicked(pSender As ctlMoveListRow)
 
@@ -114,7 +118,7 @@ Public Class ctlMoveListRow
             End If
             If gBlackHalfMove IsNot Nothing _
             AndAlso gBlackHalfMove.CommentBefore.Text <> "" Then
-                Throw New Exception("CommentBefore already belongs to BlackMove !")
+                Throw New ArgumentOutOfRangeException("CommentBefore already belongs to BlackMove !")
             End If
 
             'Setting Expandablebility and initial Visibility
@@ -150,7 +154,7 @@ Public Class ctlMoveListRow
             If pWhiteHalfMove.CommentBefore Is Nothing Then
                 rtbCommentBefore.Text = ""
             Else
-                rtbCommentBefore.Text = pWhiteHalfMove.CommentBefore.Text(True)
+                rtbCommentBefore.Text = pWhiteHalfMove.CommentBefore.Text(REMOVEDIAGRAM)
             End If
 
             rtbMoveNumber.Clear()
@@ -183,7 +187,7 @@ Public Class ctlMoveListRow
             If pWhiteHalfMove.CommentAfter Is Nothing Then
                 rtbCommentAfter.Text = ""
             Else
-                rtbCommentAfter.Text = pWhiteHalfMove.CommentAfter.Text(True)
+                rtbCommentAfter.Text = pWhiteHalfMove.CommentAfter.Text(REMOVEDIAGRAM)
             End If
 
             Me.ReArrange()
@@ -208,7 +212,7 @@ Public Class ctlMoveListRow
             If gWhiteHalfMove IsNot Nothing _
             AndAlso gWhiteHalfMove.CommentAfter IsNot Nothing _
             AndAlso gWhiteHalfMove.CommentAfter.Text <> "" Then
-                Throw New Exception("CommentAfter already belongs to WhiteMove !")
+                Throw New ArgumentOutOfRangeException("CommentAfter already belongs to WhiteMove !")
             End If
 
             'Setting Expandability and initial Visibility
@@ -222,7 +226,7 @@ Public Class ctlMoveListRow
                     'VariantLevel an Number are different, so first move on the row 
                     If Me.Expandable = True Then
                         'Already expandable because of WhiteMove
-                        Throw New Exception("Two expanble moves in one Listrow !")
+                        Throw New ArgumentOutOfRangeException("Two expanble moves in one Listrow !")
                     End If
                     Me.Expandable = True
                     If pBlackHalfMove.VariantLevel = 1 Then
@@ -246,7 +250,7 @@ Public Class ctlMoveListRow
             If pBlackHalfMove.CommentBefore Is Nothing Then
                 rtbCommentBefore.Text = ""
             Else
-                rtbCommentBefore.Text = pBlackHalfMove.CommentBefore.Text(True)
+                rtbCommentBefore.Text = pBlackHalfMove.CommentBefore.Text(REMOVEDIAGRAM)
             End If
 
             rtbMoveNumber.Clear()
@@ -278,7 +282,7 @@ Public Class ctlMoveListRow
             If pBlackHalfMove.CommentAfter Is Nothing Then
                 rtbCommentAfter.Text = ""
             Else
-                rtbCommentAfter.Text = pBlackHalfMove.CommentAfter.Text(True)
+                rtbCommentAfter.Text = pBlackHalfMove.CommentAfter.Text(REMOVEDIAGRAM)
             End If
 
             Me.ReArrange()
@@ -326,7 +330,7 @@ Public Class ctlMoveListRow
 
     Private Sub UpdateFigurines(pMoveText As RichTextBox, pFontSize As Single)
         Dim Font As Font = KNSBFigurine(pFontSize)
-        For I = 0 To pMoveText.TextLength - 1
+        For I As Integer = 0 To pMoveText.TextLength - 1
             pMoveText.Select(I, 1)
             If pMoveText.SelectionFont.Name <> pMoveText.Font.Name Then
                 Continue For
@@ -342,6 +346,7 @@ Public Class ctlMoveListRow
     Public Sub New(pHalfMove As PGNHalfMove)
         ' This call is required by the designer.
         InitializeComponent()
+
         Me.rtbCommentBefore.Clear()
         Me.rtbWhiteMoveText.Clear()
         Me.rtbBlackMoveText.Clear()
@@ -358,6 +363,7 @@ Public Class ctlMoveListRow
         End If
     End Sub
 
+    ''' <summary>Determines if the Black HalfMove fits at the right half area of a MoveListRow</summary>
     Public Function BlackMoveFits(pHalfMove As PGNHalfMove) As Boolean
         If pHalfMove.Result <> "" Then
             Return False
@@ -386,14 +392,14 @@ Public Class ctlMoveListRow
                         pMoveText.SelectionStart = pMoveText.TextLength 'Set Start to End of Text
                         pMoveText.AppendText(ChrW(NAG.Code))
                         pMoveText.SelectionLength = 1
-                        pMoveText.SelectionFont = New Font(NAG.Font, 14)
+                        pMoveText.SelectionFont = New Font(NAG.FontName, 14)
                     Case NAGType.TEXT 'Inserting the text using the default font for the current style
                         NAGText = NAG.Text(CurrentLanguage)
                         If NAGText <> "" Then
                             pMoveText.SelectionStart = pMoveText.TextLength 'Set Start to End of Text
                             pMoveText.AppendText(NAGText & " ")
                             pMoveText.SelectionLength = Len(NAGText)
-                            pMoveText.SelectionFont = New Font(NAG.Font, pMoveText.Font.Size)
+                            pMoveText.SelectionFont = New Font(NAG.FontName, pMoveText.Font.Size)
                         End If
                 End Select
             End If
@@ -492,23 +498,44 @@ Public Class ctlMoveListRow
 
     Private Sub rtbWhiteMoveText_Click(pSender As Object, pArgs As EventArgs) Handles rtbWhiteMoveText.Click
         If gWhiteHalfMove IsNot Nothing Then
-            RaiseEvent Clicked(Me, Me.WhiteHalfMove)
+            RaiseEvent Clicked(Me, gWhiteHalfMove)
         End If
     End Sub
 
     Private Sub rtbBlackMoveText_Click(pSender As Object, pArgs As EventArgs) Handles rtbBlackMoveText.Click
         If gBlackHalfMove IsNot Nothing Then
-            RaiseEvent Clicked(Me, Me.BlackHalfMove)
+            RaiseEvent Clicked(Me, gBlackHalfMove)
         End If
     End Sub
 
+    Private Sub rtbWhiteMoveText_DoubleClick(pSender As Object, pArgs As EventArgs) Handles rtbWhiteMoveText.DoubleClick
+        If gWhiteHalfMove IsNot Nothing Then
+            RaiseEvent DoubleClicked(Me, gWhiteHalfMove)
+        End If
+    End Sub
+
+    Private Sub rtbBlackMoveText_DoubleClick(pSender As Object, pArgs As EventArgs) Handles rtbBlackMoveText.DoubleClick
+        If gBlackHalfMove IsNot Nothing Then
+            RaiseEvent DoubleClicked(Me, gBlackHalfMove)
+        End If
+    End Sub
+
+    ''' <summary>Returns the Heigth needed for a Text in a RichTextBox with a given Width</summary>
     Private Function RichTextBoxHeight(pRichTextBox As RichTextBox)
         If pRichTextBox.Text = "" Then
             Return 0
         End If
-        Dim RichTextBoxSize As Size = New Size(pRichTextBox.Width, Int32.MaxValue)
+        Dim RichTextBoxSize As New Size(pRichTextBox.Width, Int32.MaxValue)
         RichTextBoxSize = TextRenderer.MeasureText(pRichTextBox.Text, pRichTextBox.Font, RichTextBoxSize, TextFormatFlags.WordBreak)
         Return RichTextBoxSize.Height
     End Function
+
+    Private Sub rtbCommentBefore_GotFocus(pSender As Object, pArgs As EventArgs) Handles rtbCommentBefore.GotFocus
+        rtbBlackMoveText.Select()
+    End Sub
+
+    Private Sub rtbCommentAfter_GotFocus(pSender As Object, pArgs As EventArgs) Handles rtbCommentAfter.GotFocus
+        rtbBlackMoveText.Select()
+    End Sub
 
 End Class

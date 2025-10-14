@@ -1,21 +1,51 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
+Imports ChessGlobals.ChessColor
+Imports ChessMessaging
+Imports ChessMessaging.Messages
+Imports PGNLibrary.PGNTrainingQuestion
 Imports System.Xml.Serialization
 
 <XmlType()>
 Public Class PGNHalfMoves
     Inherits List(Of PGNHalfMove)
 
-    Public Event Changed(pPGNHalfMove As PGNHalfMove)
+    Private HalfMoveIndex As String = ""
+
+    'Public Event Changed(pPGNHalfMove As PGNHalfMove)
+    'Public Event CurrentHalfMoveChanged(pCurrentHalfMove As PGNHalfMove)
+
+    <XmlIgnore>
+    Public Property FENComment As PGNComment
+
+    <XmlIgnore>
+    Public ReadOnly Property CurrentHalfMove As PGNHalfMove
+        Get
+            If HalfMoveIndex = "" _
+            Or Val(HalfMoveIndex) < 0 _
+            Or Val(HalfMoveIndex) > Me.Count - 1 Then
+                Return Nothing
+            Else
+                Return Me(Val(HalfMoveIndex))
+            End If
+        End Get
+    End Property
 
     '<XmlAttribute()>
-    <XmlIgnore>
-    Public FENComment As PGNComment
+    Public Property CurrentHalfMoveIndex As String
+        Set(pCurrentHalfMoveIndex As String)
+            Me.HalfMoveIndex = pCurrentHalfMoveIndex
+            'RaiseEvent CurrentHalfMoveChanged(CurrentHalfMove)
+        End Set
+        Get
+            Return Me.HalfMoveIndex
+        End Get
+    End Property
 
     <XmlIgnore>
-    Public Property PGNString()
-        Set(pPGNString)
+    Public Property PGNString() As String
+        Set(pPGNString As String)
             Me.XPGNString = pPGNString
         End Set
         Get
@@ -99,8 +129,8 @@ Public Class PGNHalfMoves
     End Property
 
     <XmlIgnore>
-    Public Property XPGNString()
-        Set(pXPGNString)  'Also works when PGNString is offered as input
+    Public Property XPGNString() As String
+        Set(pXPGNString As String)  'Also works when PGNString is offered as input
             Try
                 'SAN (Standard Algebraic Notation) With extensions
                 Dim P As Long, Q As Long
@@ -115,7 +145,7 @@ Public Class PGNHalfMoves
                 CurrentHalfMove = Nothing
                 Me.Clear(pRaiseEvent:=False)
                 Me.FENComment = Nothing
-                VariantLevel = 0 : ReDim VariantNumber(0) : VariantNumber(0) = 1
+                VariantLevel = 0 : ReDim VariantNumber(0) : VariantNumber(0) = 0
                 SavedComment = "" : MoveNr(VariantLevel) = "" : MoveText = "" : NAG = "" : Color = ChessColor.UNKNOWN
                 P = 1
                 While P <= Len(pXPGNString)
@@ -142,7 +172,7 @@ Public Class PGNHalfMoves
                             End If
                             SavedComment = "" : NewComment = ""
                         ElseIf SavedComment <> "" Then 'Savedcomment belongs probably to previous Halfmove
-                            If PGNTrainingQuestion.ContainsTrainingQuestion(SavedComment) Then
+                            If ContainsTrainingQuestion(SavedComment) Then
                                 'Somtimes comments are split although belonging to same move
                                 'TrainigQuestion belongs in CommentBefore of next move
                                 NewComment = SavedComment & " " & NewComment
@@ -183,24 +213,24 @@ Public Class PGNHalfMoves
                             If CurrentHalfMove Is Nothing Then Throw New DataMisalignedException(MessageText("ReallyWrong"))
                             CurrentHalfMove.CommentAfter = New PGNComment(SavedComment) : SavedComment = ""
                         End If
-                        VariantLevel = VariantLevel - 1
+                        VariantLevel -= 1
                         P += 1
 
                     ElseIf Mid$(pXPGNString, P, 2) Like "#." Then
                         MoveNr(VariantLevel) = Mid(pXPGNString, P, 2)
-                        Color = ChessColor.WHITE
+                        Color = WHITE
                         P += 2
                     ElseIf Mid$(pXPGNString, P, 3) Like "##." Then
                         MoveNr(VariantLevel) = Mid(pXPGNString, P, 3)
-                        Color = ChessColor.WHITE
+                        Color = WHITE
                         P += 3
                     ElseIf Mid$(pXPGNString, P, 4) Like "###." Then
                         MoveNr(VariantLevel) = Mid(pXPGNString, P, 4)
-                        Color = ChessColor.WHITE
+                        Color = WHITE
                         P += 4
 
                     ElseIf Mid$(pXPGNString, P, 2) = ".." Then
-                        Color = ChessColor.BLACK
+                        Color = BLACK
                         P += 2
 
                     ElseIf Mid$(pXPGNString, P, 1) = "$" Then 'NAG, always belongs to previous Halfmove
@@ -227,7 +257,7 @@ Public Class PGNHalfMoves
                                                  VariantLevel, VariantNumber(VariantLevel),
                                                  pRaiseEvent:=False)
                         CurrentHalfMove.Index = Me.Count
-                        SavedComment = "" : MoveText = "" : Color = ChessColor.UNKNOWN
+                        SavedComment = "" : MoveText = "" : Color = UNKNOWN
                         P = Q
 
                     Else  'The actual move
@@ -261,7 +291,8 @@ Public Class PGNHalfMoves
 
                 Me.ReNumber()
 
-                RaiseEvent Changed(Nothing)
+                'RaiseEvent Changed(Nothing)
+
             Catch pException As Exception
                 frmErrorMessageBox.Show(pException)
             End Try
@@ -312,10 +343,10 @@ Public Class PGNHalfMoves
                     End If
 
                     'Enforce MoveNr and "..." when previous move also was black
-                    If HalfMove.Color = ChessColor.BLACK Then
+                    If HalfMove.Color = BLACK Then
                         If HalfMove.PreviousHalfMove Is Nothing Then
                             AfterCommentOrVariantChange = True
-                        ElseIf HalfMove.PreviousHalfMove.Color = ChessColor.BLACK Then
+                        ElseIf HalfMove.PreviousHalfMove.Color = BLACK Then
                             AfterCommentOrVariantChange = True
                         End If
                     End If
@@ -358,8 +389,7 @@ Public Class PGNHalfMoves
     <XmlIgnore>
     Public ReadOnly Property FirstHalfMove() As PGNHalfMove
         Get
-            Dim I As Long
-            For I = 0 To Me.Count - 1
+            For I As Long = 0 To Me.Count - 1
                 If Me(I).Result = "" Then
                     Return Me(I)
                 End If
@@ -371,8 +401,7 @@ Public Class PGNHalfMoves
     <XmlIgnore>
     Public ReadOnly Property LastHalfMove() As PGNHalfMove
         Get
-            Dim I As Long
-            For I = Me.Count - 1 To 0 Step -1
+            For I As Long = Me.Count - 1 To 0 Step -1
                 If Me(I).VariantLevel = 0 _
                 And Me(I).Result = "" Then
                     Return Me(I)
@@ -382,6 +411,7 @@ Public Class PGNHalfMoves
         End Get
     End Property
 
+    ''' <summary>Returns a List of possible HalfMoves (NB Given HalfMove can be Nothing)</summary>
     Public Function NextHalfMoves(pPGNHalfMove As PGNHalfMove) As List(Of PGNHalfMove)
         Dim Variants As List(Of PGNHalfMove)
         Dim NextMove As PGNHalfMove
@@ -400,36 +430,7 @@ Public Class PGNHalfMoves
         Return Variants
     End Function
 
-    Public Function CollectVariants(pFirstHalfMove As PGNHalfMove, Optional pWithSubVariants As Boolean = False) As List(Of PGNHalfMove)
-        Dim VariantMoves As New List(Of PGNHalfMove) From {pFirstHalfMove}
-
-        For I = pFirstHalfMove.Index + 1 To Me.Count - 1
-            With Me(I)
-                If .Result <> "" Then
-                    Exit For
-                End If
-                Select Case .VariantLevel
-                    Case < pFirstHalfMove.VariantLevel
-                        Exit For
-                    Case > pFirstHalfMove.VariantLevel
-                        If pWithSubVariants = True Then
-                            VariantMoves.Add(Me(I))
-                        Else
-                            Continue For
-                        End If
-                    Case = pFirstHalfMove.VariantLevel
-                        If .VariantNumber = pFirstHalfMove.VariantNumber Then
-                            VariantMoves.Add(Me(I))
-                        Else
-                            Exit For
-                        End If
-                End Select
-            End With
-        Next I
-
-        Return VariantMoves
-    End Function
-
+    ''' <summary>Returns the Previous HalfMove of a specified HalfMove</summary>
     Public Function PreviousHalfMove(pPGNHalfMove As PGNHalfMove) As PGNHalfMove
         Dim PreviousMove As PGNHalfMove
         If pPGNHalfMove Is Nothing Then Return Nothing
@@ -446,9 +447,8 @@ Public Class PGNHalfMoves
     End Function
 
     ''' <summary>Returns next HalfMove matching pVariantLevel and pVariantNumber</summary>
-    Private Function FindNextHalfMove(pPGNHalfMove As PGNHalfMove, pVariantLevel As Long, pVariantNumber As Long) As PGNHalfMove
-        Dim I As Long
-        For I = pPGNHalfMove.Index + 1 To Me.Count - 1
+    Public Function FindNextHalfMove(pPGNHalfMove As PGNHalfMove, pVariantLevel As Long, pVariantNumber As Long) As PGNHalfMove
+        For I As Long = pPGNHalfMove.Index + 1 To Me.Count - 1
             With Me(I)
                 If .Result = "" Then
                     If (.VariantLevel < pVariantLevel) Then 'intermediate higher Variant found
@@ -466,8 +466,7 @@ Public Class PGNHalfMoves
 
     ''' <summary>Returns the index of the next move matching these criteria</summary>
     Private Function FindPreviousHalfMove(pPGNHalfMove As PGNHalfMove, Optional pVariantLevel As Long = -1, Optional pVariantNumber As Long = -1) As PGNHalfMove
-        Dim I As Long
-        For I = pPGNHalfMove.Index - 1 To 0 Step -1
+        For I As Long = pPGNHalfMove.Index - 1 To 0 Step -1
             With Me(I)
                 If .Result = "" Then
                     If (pVariantLevel <> -1 And .VariantLevel < pVariantLevel) Then 'intermediate higher Variant found
@@ -483,6 +482,7 @@ Public Class PGNHalfMoves
         Return Nothing
     End Function
 
+    ''' <summary>Collects Moves to Play From a specified HalfMove</summary>
     Public Function CollectMoves(pFromHalfMove As PGNHalfMove) As List(Of PGNHalfMove)
         Dim MovesToPlay As New List(Of PGNHalfMove)
         Dim NextMoves As List(Of PGNHalfMove)
@@ -505,6 +505,7 @@ Public Class PGNHalfMoves
         Return MovesToPlay
     End Function
 
+    ''' <summary>Collect Moves to Play From a specified HalfMove To a specified HalfMove</summary>
     Public Function CollectMoves(pFromHalfMove As PGNHalfMove, pToHalfMove As PGNHalfMove) As List(Of PGNHalfMove)
         Dim MovesToPlay As New List(Of PGNHalfMove)
         'Collect the last move and moves leading to this position
@@ -519,9 +520,9 @@ Public Class PGNHalfMoves
 
     ''' <summary>Determine FirstMove within a specific Variant</summary>
     Public Function FirstMoveInVariant(pPGNHalfMove As PGNHalfMove) As PGNHalfMove
-        Dim I As Long, FirstMove As PGNHalfMove = pPGNHalfMove
+        Dim FirstMove As PGNHalfMove = pPGNHalfMove
         If pPGNHalfMove IsNot Nothing Then
-            For I = pPGNHalfMove.Index - 1 To 0 Step -1
+            For I As Long = pPGNHalfMove.Index - 1 To 0 Step -1
                 With Me(I)
                     If .VariantLevel < pPGNHalfMove.VariantLevel Then Exit For
                     If .VariantLevel = pPGNHalfMove.VariantLevel _
@@ -535,40 +536,42 @@ Public Class PGNHalfMoves
 
     Public Overloads Sub Clear(Optional pRaiseEvent As Boolean = True)
         MyBase.Clear()
+        Me.CurrentHalfMoveIndex = ""
 
-        If pRaiseEvent Then
-            RaiseEvent Changed(Nothing)
-        End If
+        'If pRaiseEvent Then
+        '    RaiseEvent Changed(Nothing)
+        'End If
     End Sub
 
+    ''' <summary>Adds a New HalfMove with specified attributed</summary>
     Public Overloads Function Add(pCommentBefore As String, pMoveNr As String, pMoveText As String, pColor As ChessColor,
                                   Optional pVariantLevel As Long = 0, Optional pVariantNumber As Long = 0,
                                   Optional pRaiseEvent As Boolean = True) As PGNHalfMove
-        Dim HalfMove = New PGNHalfMove(Me, pCommentBefore, pMoveNr, pMoveText, pColor, pVariantLevel, pVariantNumber)
-        HalfMove.Index = Me.Count
+        Dim HalfMove As New PGNHalfMove(Me, pCommentBefore, pMoveNr, pMoveText, pColor, pVariantLevel, pVariantNumber)
         Me.Add(HalfMove, pRaiseEvent:=False)
         Me.ReNumber()
 
-        If pRaiseEvent Then
-            RaiseEvent Changed(HalfMove)
-        End If
+        'If pRaiseEvent Then
+        '    RaiseEvent Changed(HalfMove)
+        'End If
         Return HalfMove
     End Function
 
+    ''' <summary>Adds a given HalfMove</summary>
     Public Overloads Function Add(pHalfMove As PGNHalfMove, Optional pRaiseEvent As Boolean = True) As PGNHalfMove
         pHalfMove.Index = Me.Count
         MyBase.Add(pHalfMove)
         Me.ReNumber()
 
-        If pRaiseEvent Then
-            RaiseEvent Changed(pHalfMove)
-        End If
+        'If pRaiseEvent Then
+        '    RaiseEvent Changed(pHalfMove)
+        'End If
         Return pHalfMove
     End Function
 
     ''' <summary>Insert a new move into the MoveList</summary>
     ''' <returns>Returns True when move was added</returns>
-    Public Overloads Function Insert(ByRef pHalfMove As PGNHalfMove, pCurrentHalfMove As PGNHalfMove) As Boolean
+    Public Overloads Function Insert(pHalfMove As PGNHalfMove, pCurrentHalfMove As PGNHalfMove) As Boolean
         Dim NextMoves As List(Of PGNHalfMove), ContinuingMoves As List(Of PGNHalfMove)
         NextMoves = Me.NextHalfMoves(pCurrentHalfMove)
 
@@ -578,14 +581,14 @@ Public Class PGNHalfMoves
                 'If MsgBox(MessageText("SameColor"), MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2) <> MsgBoxResult.Yes Then
                 '    Return False
                 'End If
-                If pHalfMove.Color = ChessColor.BLACK Then 'White moves are incremented automatically
+                If pHalfMove.Color = BLACK Then 'White moves are incremented automatically
                     pHalfMove.MoveNr += 1
                 End If
-                pHalfMove.VariantLevel = pCurrentHalfMove.VariantLevel
-                pHalfMove.VariantNumber = pCurrentHalfMove.VariantNumber
-                Me.InsertAfter(pCurrentHalfMove.Index, pHalfMove)
+                Dim Halfmove = InsertAfter(pCurrentHalfMove.Index, pHalfMove)
+                Halfmove.VariantLevel = pCurrentHalfMove.VariantLevel
+                Halfmove.VariantNumber = pCurrentHalfMove.VariantNumber
 
-                RaiseEvent Changed(pHalfMove)
+                'RaiseEvent Changed(pHalfMove)
                 Return True
             End If
         End If
@@ -602,7 +605,7 @@ Public Class PGNHalfMoves
                 Me.InsertAfter(pCurrentHalfMove.Index, pHalfMove)
             End If
 
-            RaiseEvent Changed(pHalfMove)
+            'RaiseEvent Changed(pHalfMove)
             Return True
         End If
 
@@ -623,7 +626,7 @@ Public Class PGNHalfMoves
                 Me.InsertBefore(ContinuingMoves(0).Index, pHalfMove)
             End If
 
-            RaiseEvent Changed(pHalfMove)
+            'RaiseEvent Changed(pHalfMove)
             Return True
         End If
 
@@ -642,14 +645,15 @@ Public Class PGNHalfMoves
                 Me.DeleteVariantAfter(pHalfMove)
             End If
 
-            RaiseEvent Changed(pHalfMove)
+            'RaiseEvent Changed(pHalfMove)
             Return True
         End If
 
         Return False
     End Function
 
-    Private Function InsertBefore(pMoveIndex As Long, pHalfMove As PGNHalfMove) As PGNHalfMove
+    ''' <summary>Inserts a given HalfMove at the specified Index</summary>
+    Public Function InsertBefore(pMoveIndex As Long, pHalfMove As PGNHalfMove) As PGNHalfMove
         If pMoveIndex > Me.Count - 1 Then
             pHalfMove.Index = Me.Count
             Me.Add(pHalfMove, pRaiseEvent:=False)
@@ -661,6 +665,7 @@ Public Class PGNHalfMoves
         Return pHalfMove
     End Function
 
+    ''' <summary>Inserts a given HalfMove after a specified Index</summary>
     Private Function InsertAfter(pMoveIndex As Long, pHalfMove As PGNHalfMove) As PGNHalfMove
         If pMoveIndex >= Me.Count - 1 Then
             pHalfMove.Index = Me.Count
@@ -673,16 +678,30 @@ Public Class PGNHalfMoves
         Return pHalfMove
     End Function
 
-    ''' <summary>Update indexes stored at Halfmove</summary>
+    ''' <summary>Removes the Result Move at the end of the list</summary>
+    Public Sub RemoveResult()
+        If Me.Count > 0 _
+        AndAlso Me.Last.Result <> "" Then
+            Me.Remove(Me.Last)
+        End If
+    End Sub
+
+    ''' <summary>Creates a New Result Move</summary>
+    Public Sub UpdateResult(pResult As String)
+        If pResult = "" Then Exit Sub
+        Dim HalfMove As New PGNHalfMove(Me, pResult:=pResult)
+        Me.Add(HalfMove)
+    End Sub
+
+    ''' <summary>Update Indexes stored at Halfmove</summary>
     Public Sub ReNumber()
-        Dim I As Long
-        For I = 0 To Me.Count - 1
+        For I As Long = 0 To Me.Count - 1
             Me(I).Index = I
             Me(I).gHalfMoves = Me
         Next
     End Sub
 
-    ''' <summary> Delete this and remaining moves in Variant starting with pHalfMove </summary>
+    ''' <summary>Delete specified and subsequent HalfMoves in a Variant</summary>
     Public Sub DeleteVariantFrom(pHalfMove As PGNHalfMove)
         Dim I As Integer, VariantLevel As Long, VariantNumber As Long
         If pHalfMove Is Nothing Then Exit Sub
@@ -697,7 +716,7 @@ Public Class PGNHalfMoves
         Loop
         Me.ReNumber()
 
-        RaiseEvent Changed(Nothing)
+        'RaiseEvent Changed(Nothing)
     End Sub
 
     ''' <summary>Remove remaining moves from current (sub-) variant</summary>
@@ -717,7 +736,7 @@ Public Class PGNHalfMoves
         Loop
         Me.ReNumber()
 
-        RaiseEvent Changed(Nothing)
+        'RaiseEvent Changed(Nothing)
     End Sub
 
     Private Overloads Sub Remove(pIndexKey As Object)
@@ -874,16 +893,14 @@ Public Class PGNHalfMoves
         Next
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
-        Return Me.XPGNString
+        Return "CurrentMoveIndex: " & CurrentHalfMoveIndex & " " & Me.XPGNString
     End Function
 
-    'Private Methods and Functions 
-
+    ''' <summary>Returns the First NonNumeric position within the MoveList starting with a given StartPos </summary>
     Private Function FirstNonNumeric(pStartPos As Long, pMoveList As String) As Long
-        Dim P As Long
-        For P = pStartPos To Len(pMoveList)
+        For P As Long = pStartPos To Len(pMoveList)
             Select Case Mid(pMoveList, P, 1)
                 Case "0" To "9"
                 Case Else : Return P
@@ -892,6 +909,7 @@ Public Class PGNHalfMoves
         Return 0
     End Function
 
+    ''' <summary>Returns the First Space or Bracket within the MoveList starting at StartPos</summary>
     Private Function FirstSpaceOrBracket(pStartPos As Long, pMoveList As String) As Long
         Dim P As Long
         For P = pStartPos To Len(pMoveList)

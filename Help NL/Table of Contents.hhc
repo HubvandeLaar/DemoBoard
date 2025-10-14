@@ -73,7 +73,7 @@
 				<param name="Local" value="Panels.htm">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Status Balk">
+				<param name="Name" value="Statusbalk">
 				<param name="Local" value="Status Bar.htm">
 				</OBJECT>
 		</UL>

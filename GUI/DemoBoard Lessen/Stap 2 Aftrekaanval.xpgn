@@ -10,6 +10,7 @@
 [FEN "8/8/1q6/8/8/8/8/1R6 w KQkq - 0 0"]
 [FENGraphicals "[%cal Yb1b6]"]
 
+{[%cal Yb1b6]}
 
 [Event ""]
 [Site ""]
@@ -23,6 +24,7 @@
 [FEN "8/8/1q6/8/1N6/8/8/1R6 w KQkq - 0 0"]
 [FENGraphicals "[%cal Yb1b6][%ctl Yc6"Aanvalsdoel", Yc4"Kopstuk", Yc1"Staartstuk"]"]
 
+{[%cal Yb1b6][%ctl Yc6"Aanvalsdoel", Yc4"Kopstuk", Yc1"Staartstuk"]}
 
 [Event ""]
 [Site ""]
@@ -36,6 +38,7 @@
 [FEN "8/8/1q6/8/1B6/8/8/1R6 w KQkq - 0 0"]
 [FENGraphicals "[%cal Yb1b6]"]
 
+{[%cal Yb1b6]}
 
 [Event ""]
 [Site ""]
@@ -51,6 +54,7 @@ De Atrekaanval is een soort Dubbele Aanval"]
 [FEN "8/8/1q3k2/8/1B6/8/8/1R6 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gb4e7]"]
 
+{[%cal Gb4e7]}
 
 [Event ""]
 [Site ""]
@@ -64,6 +68,7 @@ De Atrekaanval is een soort Dubbele Aanval"]
 [FEN "8/8/1N6/1Q6/8/8/8/8 w KQkq - 0 0"]
 [FENGraphicals "[%cal Yb5b7]"]
 
+{[%cal Yb5b7]}
 
 [Event ""]
 [Site ""]
@@ -77,6 +82,7 @@ De Atrekaanval is een soort Dubbele Aanval"]
 [FEN "8/8/8/8/8/2R5/1B6/8 w KQkq - 0 0"]
 [FENGraphicals "[%cal Yb2f6]"]
 
+{[%cal Yb2f6]}
 
 [Event ""]
 [Site ""]
@@ -90,6 +96,7 @@ De Atrekaanval is een soort Dubbele Aanval"]
 [FEN "8/6pr/8/8/8/8/8/8 w KQkq - 0 0"]
 [FENGraphicals "[%cal Yh7d7]"]
 
+{[%cal Yh7d7]}
 
 [Event ""]
 [Site ""]
@@ -103,6 +110,7 @@ De Atrekaanval is een soort Dubbele Aanval"]
 [FEN "8/8/8/8/8/5P2/6B1/8 w KQkq - 0 0"]
 [FENGraphicals "[%cal Yg2c6]"]
 
+{[%cal Yg2c6]}
 
 [Event ""]
 [Site ""]
@@ -117,6 +125,7 @@ combineren dit is Hout + Koning"]
 [FEN "8/8/8/1k6/8/8/R1Pq4/8 w KQkq - 0 0"]
 [FENGraphicals "[%cal Gc2c4]"]
 
+{[%cal Gc2c4]}
 
 [Event ""]
 [Site ""]
@@ -130,6 +139,7 @@ combineren dit is Hout + Koning"]
 [FEN "5r2/7q/8/8/7N/8/8/6RR w KQkq - 0 0"]
 [FENGraphicals "[%cal Gh4g6]"]
 
+{[%cal Gh4g6]}
 
 [Event ""]
 [Site ""]
@@ -143,6 +153,7 @@ combineren dit is Hout + Koning"]
 [FEN "k7/pp6/8/8/r7/1R6/2B5/8 w KQkq - 0 0"]
 [FENGraphicals "[%cfl Rc8][%cal Gb3c3]"]
 
+{[%csl Rc8][%cal Gb3c3][%cfl Rc8]}
 
 [Event ""]
 [Site ""]
@@ -157,6 +168,7 @@ staartstuk kan een veld aanvallen"]
 [FEN "5r2/8/5b1R/8/8/8/6PP/7K w KQkq - 0 0"]
 [FENGraphicals "[%csl Rf1][%cal Gf6g7]"]
 
+{[%csl Rf1][%cal Gf6g7]}
 
 [Event ""]
 [Site ""]

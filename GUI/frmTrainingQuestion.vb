@@ -1,12 +1,11 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
-Imports ChessMaterials
+Imports ChessMessaging
+Imports ChessMessaging.Messages
 Imports PGNLibrary
 
 Public Class frmTrainingQuestion
-
-    '    Public ButtonPressed As String = ""  '(Retry, Next)
 
     Private gTrainingHalfMove As PGNHalfMove
     Private gLocalizedQuestion As PGNTrainingLocalizedQuestion
@@ -137,6 +136,7 @@ Public Class frmTrainingQuestion
         End Try
     End Sub
 
+    ''' <summary>Returns True when a HalfMove matches the performed move (Piece, From, To, Promotion)</summary>
     Private Function Compare(pMove As PGNHalfMove, pPiece As String, pFromFieldName As String, pToFieldName As String, pPromotionPiece As String) As Boolean
         'Compare Castlings
         If pMove.Castling <> "" Then
@@ -178,6 +178,7 @@ Public Class frmTrainingQuestion
         Return True
     End Function
 
+    ''' <summary>Return the Subvariant matching the performed move (Piece, From, To, Promotion)</summary>
     Private Function FindSubVariant(pPiece As String, pFromFieldName As String, pToFieldName As String, pPromotionPiece As String) As PGNHalfMove
         For Each Move As PGNHalfMove In gTrainingHalfMove.SubVariants
             If Move.Piece.MoveName = pPiece _
@@ -196,7 +197,7 @@ Public Class frmTrainingQuestion
             SetModeLess()
             Me.Hide()
             gTotalScore += gScore 'Now really add to Total
-            RaiseEvent NextPressed(Me.gTrainingHalfMove)
+            RaiseEvent NextPressed(gTrainingHalfMove)
 
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
@@ -249,15 +250,15 @@ Public Class frmTrainingQuestion
     End Sub
 
     Private Sub gfrmMainform_LanguageChanged(pLanguage As ChessLanguage) Handles gfrmMainform.LanguageChanged
-        Call ChangeLanguageCurrentForm(Me)
+        Call ApplyLanguageToCurrentForm(Me)
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.gTrainingHalfMove = Nothing
-        Me.gLocalizedQuestion = Nothing
-        Me.gCorrectAnswer = Nothing
-        Me.gIncorrectSubVariant = Nothing
-        Me.gfrmMainform = Nothing
+        gTrainingHalfMove = Nothing
+        gLocalizedQuestion = Nothing
+        gCorrectAnswer = Nothing
+        gIncorrectSubVariant = Nothing
+        gfrmMainform = Nothing
 
         MyBase.Finalize()
     End Sub

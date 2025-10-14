@@ -1,47 +1,47 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging
 Imports PGNLibrary
-Imports ChessMaterials
 
 Public Class frmEditGame
 
-    Public PGNGame As PGNGame
-    Public OKPressed As Boolean
+    Private gPGNGame As PGNGame
+
+    Public Property OKPressed As Boolean
 
     Public Overloads Sub ShowDialog(pPGNGame As PGNGame)
         Dim TagText(1) As String '2 Columns
         Try
-            PGNGame = pPGNGame
+            gPGNGame = pPGNGame
             OKPressed = False
 
             grdTAGs.Rows.Clear()
-            For Each Tag As PGNTag In PGNGame.Tags
+            For Each Tag As PGNTag In gPGNGame.Tags
                 TagText(0) = Tag.Key
                 TagText(1) = Tag.Value
                 grdTAGs.Rows.Add(TagText)
             Next Tag
 
-            If PGNGame.HalfMoves Is Nothing _
-            OrElse PGNGame.HalfMoves.FENComment Is Nothing Then
+            If gPGNGame.HalfMoves Is Nothing _
+            OrElse gPGNGame.HalfMoves.FENComment Is Nothing Then
                 lblMarkers.Text = ""
                 lblArrows.Text = ""
                 lblTexts.Text = ""
             Else
-                If PGNGame.HalfMoves.FENComment.MarkerList Is Nothing Then
+                If gPGNGame.HalfMoves.FENComment.MarkerList Is Nothing Then
                     lblMarkers.Text = ""
                 Else
-                    lblMarkers.Text = PGNGame.HalfMoves.FENComment.MarkerList.XPGNString
+                    lblMarkers.Text = gPGNGame.HalfMoves.FENComment.MarkerList.XPGNString
                 End If
-                If PGNGame.HalfMoves.FENComment.ArrowList Is Nothing Then
+                If gPGNGame.HalfMoves.FENComment.ArrowList Is Nothing Then
                     lblArrows.Text = ""
                 Else
-                    lblArrows.Text = PGNGame.HalfMoves.FENComment.ArrowList.XPGNString
+                    lblArrows.Text = gPGNGame.HalfMoves.FENComment.ArrowList.XPGNString
                 End If
-                If PGNGame.HalfMoves.FENComment.TextList Is Nothing Then
+                If gPGNGame.HalfMoves.FENComment.TextList Is Nothing Then
                     lblTexts.Text = ""
                 Else
-                    lblTexts.Text = PGNGame.HalfMoves.FENComment.TextList.XPGNString
+                    lblTexts.Text = gPGNGame.HalfMoves.FENComment.TextList.XPGNString
                 End If
             End If
 
@@ -57,34 +57,38 @@ Public Class frmEditGame
         Try
             OKPressed = True
 
+            gPGNGame.HalfMoves.RemoveResult()
             'Update PGNGame
-            PGNGame.Tags.Clear()
+            gPGNGame.Tags.Clear()
             For Each Row As DataGridViewRow In grdTAGs.Rows
-                PGNGame.Tags.Add(Row.Cells(0).Value, Row.Cells(1).Value)
+                gPGNGame.Tags.Add(Row.Cells(0).Value, Row.Cells(1).Value)
+                If Row.Cells(0).Value = "Result" Then
+                    gPGNGame.HalfMoves.UpdateResult(Row.Cells(1).Value)
+                End If
             Next Row
 
             If lblMarkers.Text = "" _
             And lblArrows.Text = "" _
             And lblTexts.Text = "" Then
-                PGNGame.HalfMoves.FENComment = Nothing
+                gPGNGame.HalfMoves.FENComment = Nothing
             Else
-                If PGNGame.HalfMoves.FENComment Is Nothing Then
-                    PGNGame.HalfMoves.FENComment = New PGNComment("")
+                If gPGNGame.HalfMoves.FENComment Is Nothing Then
+                    gPGNGame.HalfMoves.FENComment = New PGNComment("")
                 End If
                 If lblMarkers.Text = "" Then
-                    PGNGame.HalfMoves.FENComment.MarkerList = Nothing
+                    gPGNGame.HalfMoves.FENComment.MarkerList = Nothing
                 Else
-                    PGNGame.HalfMoves.FENComment.MarkerList = New PGNMarkerList(lblMarkers.Text)
+                    gPGNGame.HalfMoves.FENComment.MarkerList = New PGNMarkerList(lblMarkers.Text)
                 End If
                 If lblArrows.Text = "" Then
-                    PGNGame.HalfMoves.FENComment.ArrowList = Nothing
+                    gPGNGame.HalfMoves.FENComment.ArrowList = Nothing
                 Else
-                    PGNGame.HalfMoves.FENComment.ArrowList = New PGNArrowList(lblArrows.Text)
+                    gPGNGame.HalfMoves.FENComment.ArrowList = New PGNArrowList(lblArrows.Text)
                 End If
                 If lblTexts.Text = "" Then
-                    PGNGame.HalfMoves.FENComment.TextList = Nothing
+                    gPGNGame.HalfMoves.FENComment.TextList = Nothing
                 Else
-                    PGNGame.HalfMoves.FENComment.TextList = New PGNTextList(lblTexts.Text)
+                    gPGNGame.HalfMoves.FENComment.TextList = New PGNTextList(lblTexts.Text)
                 End If
             End If
 
@@ -102,9 +106,11 @@ Public Class frmEditGame
 
     Private Sub lblMarkers_Click(pSender As Object, pArgs As EventArgs) Handles lblMarkers.Click
         Try
-            Dim EditMarkers = New frmEditMarkers()
-            EditMarkers.ShowDialog(lblMarkers.Text)
-            lblMarkers.Text = EditMarkers.MarkerList.PGNString
+            Using frmEditMarkers = New frmEditMarkers()
+                frmEditMarkers.ShowDialog(lblMarkers.Text)
+                lblMarkers.Text = frmEditMarkers.MarkerList.PGNString
+            End Using
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -112,9 +118,10 @@ Public Class frmEditGame
 
     Private Sub lblArrows_Click(pSender As Object, pArgs As EventArgs) Handles lblArrows.Click
         Try
-            Dim EditArrows = New frmEditArrows()
-            EditArrows.ShowDialog(lblArrows.Text)
-            lblArrows.Text = EditArrows.ArrowList.PGNString
+            Using frmEditArrows = New frmEditArrows()
+                frmEditArrows.ShowDialog(lblArrows.Text)
+                lblArrows.Text = frmEditArrows.ArrowList.PGNString
+            End Using
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -122,14 +129,16 @@ Public Class frmEditGame
 
     Private Sub lblTexts_Click(pSender As Object, pArgs As EventArgs) Handles lblTexts.Click
         Try
-            Dim EditTexts = New frmEditTexts()
-            EditTexts.ShowDialog(lblTexts.Text)
-            lblTexts.Text = EditTexts.TextList.XPGNString
+            Using frmEditTexts = New frmEditTexts()
+                frmEditTexts.ShowDialog(lblTexts.Text)
+                lblTexts.Text = frmEditTexts.TextList.XPGNString
+            End Using
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
+    ''' <summary>Returns the Value from the grdTags-Grid of a specific TAG-Key</summary>
     Private Function GetRowValue(pKey As String) As String
         For Each Row As DataGridViewRow In grdTAGs.Rows
             If Row.Cells(0).Value = pKey Then
@@ -140,7 +149,7 @@ Public Class frmEditGame
     End Function
 
     Protected Overrides Sub Finalize()
-        Me.PGNGame = Nothing
+        gPGNGame = Nothing
 
         MyBase.Finalize()
     End Sub

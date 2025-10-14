@@ -1,21 +1,20 @@
 ﻿Option Explicit On
 
-Imports System.Text.RegularExpressions
-Imports ChessGlobals
 Imports System.Xml.Serialization
 
 <XmlType()>
 Public Class PGNTrainingLocalizedQuestion
+
     <XmlAttribute()>
-    Public Language As String 'Optional
+    Public Property Language As String 'Optional
     <XmlAttribute()>
-    Public Question As String
+    Public Property Question As String
     <XmlAttribute()>
-    Public Hint1 As String
+    Public Property Hint1 As String
     <XmlAttribute()>
-    Public Hint2 As String
+    Public Property Hint2 As String
     <XmlElement()>
-    Public Answers As New List(Of PGNTrainingAnswer)
+    Public Property Answers As New List(Of PGNTrainingAnswer)
 
     Public ReadOnly Property CorrectAnswer As PGNTrainingAnswer
         Get
@@ -30,45 +29,6 @@ Public Class PGNTrainingLocalizedQuestion
             Return BestAnswer
         End Get
     End Property
-
-    Public Sub New(pPGNString As String, Optional pLanguage As String = "")
-        Me.Language = pLanguage
-        Me.PGNString = pPGNString
-    End Sub
-
-    Public Sub New()
-    End Sub
-
-    Private Function SplitCSV(pText) As List(Of String)
-        Dim P As Integer = 1, Q As Integer
-        Dim Text As New List(Of String)
-        While P <= Len(pText)
-            Select Case Mid(pText, P, 1)
-                Case " ", "," 'skip spaces and comma's between values
-                    P = P + 1
-                    Continue While
-                Case """"
-                    Q = InStr(P + 1, pText, """,")
-                    If Q > 0 Then
-                        Text.Add(Mid(pText, P + 1, Q - P - 1))
-                        P = Q + 2 'Skip Quote and comma
-                    Else
-                        Text.Add(Mid(pText, P + 1))
-                        P = Integer.MaxValue
-                    End If
-                Case Else 'Probably Move or number
-                    Q = InStr(P + 1, pText, ",")
-                    If Q > 0 Then
-                        Text.Add(Mid(pText, P, Q - P))
-                        P = Q + 1 'Skip Comma
-                    Else
-                        Text.Add(Mid(pText, P))
-                        P = Integer.MaxValue
-                    End If
-            End Select
-        End While
-        Return Text '.ToArray()
-    End Function
 
     <XmlIgnore>
     Public Property PGNString() As String
@@ -95,6 +55,47 @@ Public Class PGNTrainingLocalizedQuestion
         End Get
     End Property
 
+    Public Sub New(pPGNString As String, Optional pLanguage As String = "")
+        Me.Language = pLanguage
+        Me.PGNString = pPGNString
+    End Sub
+
+    Public Sub New()
+    End Sub
+
+    ''' <summary>Splits a CSV-string into a List of strings</summary>
+    Private Function SplitCSV(pText) As List(Of String)
+        Dim P As Integer = 1, Q As Integer
+        Dim Text As New List(Of String)
+        While P <= Len(pText)
+            Select Case Mid(pText, P, 1)
+                Case " ", "," 'skip spaces and comma's between values
+                    P += 1
+                    Continue While
+                Case """"
+                    Q = InStr(P + 1, pText, """,")
+                    If Q > 0 Then
+                        Text.Add(Mid(pText, P + 1, Q - P - 1))
+                        P = Q + 2 'Skip Quote and comma
+                    Else
+                        Text.Add(Mid(pText, P + 1))
+                        P = Integer.MaxValue
+                    End If
+                Case Else 'Probably Move or number
+                    Q = InStr(P + 1, pText, ",")
+                    If Q > 0 Then
+                        Text.Add(Mid(pText, P, Q - P))
+                        P = Q + 1 'Skip Comma
+                    Else
+                        Text.Add(Mid(pText, P))
+                        P = Integer.MaxValue
+                    End If
+            End Select
+        End While
+        Return Text '.ToArray()
+    End Function
+
+    ''' <summary>Removes the Qoutes from a string</summary>
     Private Function TrimQuotes(pText As String) As String
         Dim Text As String = Trim(pText)
         If Left(Text, 1) = """" Then
@@ -110,8 +111,8 @@ Public Class PGNTrainingLocalizedQuestion
         MyBase.Finalize()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return Me.PGNString
     End Function
 

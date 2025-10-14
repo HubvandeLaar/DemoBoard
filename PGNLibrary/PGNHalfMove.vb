@@ -11,41 +11,44 @@ Imports System.Xml.Serialization
 Public Class PGNHalfMove
 
     <XmlAttribute()>
-    Public Color As ChessColor
+    Public Property Color As ChessColor
     <XmlElement()>
-    Public NAGs As New PGNNAGs()
+    Public Property NAGs As New PGNNAGs()
 
     <XmlAttribute()>
-    Public VariantLevel As Long
+    Public Property VariantLevel As Long
     <XmlAttribute()>
-    Public VariantNumber As Long
+    Public Property VariantNumber As Long
 
     <XmlAttribute()>
-    Public Index As Long
+    Public Property Index As Long
 
     <XmlAttribute()>
-    Public Result As String
+    Public Property MoveNr As Long
     <XmlAttribute()>
-    Public Castling As String
+    Public Property Castling As String
     <XmlElement()>
-    Public Piece As ChessPiece
+    Public Property Piece As ChessPiece
     <XmlAttribute()>
-    Public ToFieldName As String
+    Public Property ToFieldName As String
     <XmlAttribute()>
-    Public Capture As String
+    Public Property Capture As String
     <XmlAttribute()>
-    Public Rest As String 'ep, pat/stalemate, QRBN (promotion), + or #
+    Public Property Result As String
     <XmlAttribute()>
-    Public FromColumnName As String, FromRowName As String
+    Public Property Rest As String 'ep, pat/stalemate, QRBN (promotion), + or #
+    <XmlAttribute()>
+    Public Property FromColumnName As String
+    <XmlAttribute()>
+    Public Property FromRowName As String
 
     <XmlElement()>
-    Public CommentBefore As PGNComment = Nothing
+    Public Property CommentBefore As PGNComment = Nothing
     <XmlElement()>
-    Public CommentAfter As PGNComment = Nothing
+    Public Property CommentAfter As PGNComment = Nothing
+
     <XmlIgnore>
     Public gHalfMoves As PGNHalfMoves
-    <XmlAttribute()>
-    Public gMoveNr As Long
 
     <XmlIgnore>
     Property MoveText(Optional pLanguage As ChessLanguage = ENGLISH) As String
@@ -153,27 +156,17 @@ Public Class PGNHalfMove
     End Property
 
     <XmlIgnore>
-    Public Property MoveNr() As Long
-        Set(pMoveNr As Long)
-            gMoveNr = pMoveNr
-        End Set
-        Get
-            Return gMoveNr
-        End Get
-    End Property
-
-    <XmlIgnore>
     Public Property MoveNrString(Optional pIncludeDummyWhiteMove As Boolean = False) As String
         Set(pMoveNrString As String)
-            gMoveNr = Val(pMoveNrString)
+            MoveNr = Val(pMoveNrString)
         End Set
         Get
             Select Case Me.Color
                 Case WHITE
-                    Return Strings.Format(gMoveNr) & ". "
+                    Return Strings.Format(MoveNr) & ". "
                 Case BLACK
                     If pIncludeDummyWhiteMove = True Then
-                        Return Strings.Format(gMoveNr) & "... "
+                        Return Strings.Format(MoveNr) & "... "
                     Else
                         Return "" 'Black move directly after White Move needs no number
                     End If
@@ -210,6 +203,7 @@ Public Class PGNHalfMove
             Me.CommentBefore = New PGNComment(Image.Element("CommentBefore").Value)
             Me.MoveNrString = Image.Element("MoveNr").Value
             Me.MoveText = Image.Element("MoveText").Value
+            Me.NAGs = New PGNNAGs(Image.Element("NAGs").Value)
             Me.CommentAfter = New PGNComment(Image.Element("CommentAfter").Value)
         End Set
         Get 'Needed to store Before and After Image in Journaling
@@ -217,8 +211,31 @@ Public Class PGNHalfMove
             Image.Add(New XElement("CommentBefore", If(Me.CommentBefore Is Nothing, "", Me.CommentBefore.XPGNString)))
             Image.Add(New XElement("MoveNr", Me.MoveNrString(True)))
             Image.Add(New XElement("MoveText", Me.MoveText()))
+            Image.Add(New XElement("NAGs", Me.NAGs.PGNString))
             Image.Add(New XElement("CommentAfter", If(Me.CommentAfter Is Nothing, "", Me.CommentAfter.XPGNString)))
             Return Image.ToString()
+        End Get
+    End Property
+
+    <XmlIgnore>
+    Public ReadOnly Property ToColumn() As String
+        Get
+            If ToFieldName = "" Then
+                Return ""
+            Else
+                Return Left(ToFieldName, 1)
+            End If
+        End Get
+    End Property
+
+    <XmlIgnore>
+    Public ReadOnly Property ToRow() As String
+        Get
+            If ToFieldName = "" Then
+                Return ""
+            Else
+                Return Right(ToFieldName, 1)
+            End If
         End Get
     End Property
 
@@ -243,28 +260,6 @@ Public Class PGNHalfMove
             If Me.CommentAfter Is Nothing _
             OrElse Me.CommentAfter.MarkerList Is Nothing Then Return ""
             Return Me.CommentAfter.MarkerList.ListString
-        End Get
-    End Property
-
-    <XmlIgnore>
-    Public ReadOnly Property ToColumn() As String
-        Get
-            If ToFieldName = "" Then
-                Return ""
-            Else
-                Return Left(ToFieldName, 1)
-            End If
-        End Get
-    End Property
-
-    <XmlIgnore>
-    Public ReadOnly Property ToRow() As String
-        Get
-            If ToFieldName = "" Then
-                Return ""
-            Else
-                Return Right(ToFieldName, 1)
-            End If
         End Get
     End Property
 
@@ -317,6 +312,17 @@ Public Class PGNHalfMove
     End Property
 
     <XmlIgnore>
+    Public ReadOnly Property HasTrainingQuestion() As Boolean
+        Get
+            If Me.TrainingQuestion Is Nothing Then
+                Return False
+            Else
+                Return True
+            End If
+        End Get
+    End Property
+
+    <XmlIgnore>
     Public Property TrainingQuestion As PGNTrainingQuestion
         Get
             If Me.CommentBefore Is Nothing Then Return Nothing
@@ -346,14 +352,14 @@ Public Class PGNHalfMove
     End Property
 
     <XmlIgnore>
-    Public ReadOnly Property IsFirstMoveInVariant()
+    Public ReadOnly Property IsFirstMoveInVariant() As Boolean
         Get
             Dim PreviousHalfMove As PGNHalfMove = Me.PreviousHalfMove
             If PreviousHalfMove Is Nothing Then
                 'First Move in Variant of first Main move List
                 Return True
             ElseIf Me.VariantLevel <> PreviousHalfMove.VariantLevel _
-                Or Me.VariantNumber <> PreviousHalfMove.VariantNumber Then
+            Or Me.VariantNumber <> PreviousHalfMove.VariantNumber Then
                 'First Move in Variant
                 Return True
             Else
@@ -363,7 +369,7 @@ Public Class PGNHalfMove
     End Property
 
     <XmlIgnore>
-    Public ReadOnly Property FirstMoveInVariant()
+    Public ReadOnly Property FirstMoveInVariant() As PGNHalfMove
         Get
             Return gHalfMoves.FirstMoveInVariant(Me)
         End Get
@@ -373,8 +379,8 @@ Public Class PGNHalfMove
     Public ReadOnly Property SubVariants() As List(Of PGNHalfMove)
         Get
             Dim Variants As New List(Of PGNHalfMove)
-            Dim P As Long, LastVariantNumber As Long
-            For P = Me.Index + 1 To gHalfMoves.Count - 1
+            Dim LastVariantNumber As Long
+            For P As Long = Me.Index + 1 To gHalfMoves.Count - 1
                 With gHalfMoves(P)
                     If .VariantLevel = Me.VariantLevel _
                     And .VariantNumber = Me.VariantNumber Then
@@ -396,6 +402,7 @@ Public Class PGNHalfMove
         End Get
     End Property
 
+    ''' <summary>Returns this HalfMove as a BoardMove</summary>
     Public Function BoardMove(pChessBoard As ChessBoard) As BoardMove
         Dim Field As ChessField, FromField As ChessField
         If Me.Color = ChessColor.UNKNOWN Then
@@ -416,14 +423,14 @@ Public Class PGNHalfMove
                                                                    pPromotionPiece:=PromotionPiece())
     End Function
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
-        'For debugging puposes 
         Return MoveNrString(True) & Me.MoveText()
     End Function
 
     Public Sub New(Optional pHalfMoves As PGNHalfMoves = Nothing, Optional pCommentBefore As String = "",
                    Optional pMoveNr As String = "", Optional pMoveText As String = "", Optional pColor As ChessColor = UNKNOWN,
-                   Optional pVariantLevel As Long = 0, Optional pVariantNumber As Long = 1)
+                   Optional pVariantLevel As Long = 0, Optional pVariantNumber As Long = 1, Optional pResult As String = "")
         gHalfMoves = pHalfMoves
         If pCommentBefore = "" Then
             Me.CommentBefore = Nothing
@@ -433,6 +440,7 @@ Public Class PGNHalfMove
         Me.CommentAfter = Nothing
         Me.MoveNrString = pMoveNr
         Me.Color = pColor
+        Me.Result = pResult
         Me.MoveText = pMoveText
         Me.VariantLevel = pVariantLevel
         Me.VariantNumber = pVariantNumber
@@ -456,17 +464,17 @@ Public Class PGNHalfMove
         Me.Rest = ""
         If pPiece.Type = PieceType.PAWN _
         AndAlso pToFieldName = pChessBoard.EpFieldName Then
-            Me.Rest = Me.Rest & "ep"
+            Me.Rest &= "ep"
         End If
         If pPiece.Type = PieceType.PAWN _
         AndAlso pPromotionPiece IsNot Nothing Then
-            Me.Rest = Me.Rest & pPromotionPiece.MoveName()
+            Me.Rest &= pPromotionPiece.MoveName()
         End If
         If pChessBoard.InCheck(pPiece.Color.Opponent) = True Then
             If pChessBoard.CheckMate(pPiece.Color.Opponent) = True Then
-                Me.Rest = Me.Rest & "#"
+                Me.Rest &= "#"
             Else
-                Me.Rest = Me.Rest & "+"
+                Me.Rest &= "+"
             End If
         End If
 
@@ -526,6 +534,7 @@ Public Class PGNHalfMove
     End Sub
 
     Public Sub New()
+
     End Sub
 
     Protected Overrides Sub Finalize()

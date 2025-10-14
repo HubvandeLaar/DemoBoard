@@ -1,18 +1,19 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging
+Imports ChessMessaging.Messages
 Imports PGNLibrary
 Imports ChessMaterials
 
 Class frmEditTexts
 
-    Public TextList As PGNTextList
+    Private gRowIndex As Integer
 
-    Private RowIndex As Integer
+    Public Property TextList As PGNTextList
 
-    Public Overloads Sub ShowDialog(pTextList As String)
+    Public Overloads Sub ShowDialog(pTextListXPGN As String)
         Try
-            TextList = New PGNTextList(pTextList)
+            TextList = New PGNTextList(pTextListXPGN)
             grdTexts.Rows.Clear()
             For Each Text As Text In TextList
                 grdTexts.Rows.Add(New String() {Text.Color, Text.FieldName, Text.Text})
@@ -49,14 +50,14 @@ Class frmEditTexts
     Private Sub grdTexts_CellMouseDown(pSender As Object, pArgs As DataGridViewCellMouseEventArgs) Handles grdTexts.CellMouseDown
         If pArgs.Button = MouseButtons.Right Then
             grdTexts.Rows(pArgs.RowIndex).Selected = True
-            Me.RowIndex = pArgs.RowIndex
+            gRowIndex = pArgs.RowIndex
             mnuPopUp.Show(Me.grdTexts, pArgs.Location)
         End If
     End Sub
 
     Private Sub mnuDeleteRow_Click(pSender As Object, pArgs As EventArgs) Handles mnuDeleteRow.Click
-        If Not grdTexts.Rows(Me.RowIndex).IsNewRow Then
-            grdTexts.Rows.RemoveAt(Me.RowIndex)
+        If Not grdTexts.Rows(gRowIndex).IsNewRow Then
+            grdTexts.Rows.RemoveAt(gRowIndex)
         End If
     End Sub
 

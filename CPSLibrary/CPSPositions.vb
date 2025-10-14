@@ -4,16 +4,21 @@ Imports System.Xml.Serialization
 
 <XmlRoot("Positions")>
 Public Class CPSPositions
+
     <XmlAttribute()>
-    Public Name As String
+    Public Property Name As String
+
     <XmlAttribute()>
-    Public Institute As String
+    Public Property Institute As String
+
     <XmlAttribute()>
-    Public Theme As String
+    Public Property Theme As String
+
     <XmlAttribute()>
-    Public Student As String
+    Public Property Student As String
+
     <XmlElement("Position")>
-    Public PositionList As New List(Of CPSPosition)
+    Public Property PositionList As New List(Of CPSPosition)
 
     Public Sub Serialize(pFileName As String)
         Dim XMLNameSpace As New XmlSerializerNamespaces()
@@ -24,6 +29,7 @@ Public Class CPSPositions
         Writer.Close()
     End Sub
 
+    ''' <summary>Returns a CPSPosition out of a CPS File</summary>
     Public Shared Function DeSerialize(pFileName As String) As CPSPositions
         Dim XMLNameSpace As New XmlSerializerNamespaces()
         XMLNameSpace.Add("", "")
@@ -39,5 +45,6 @@ Public Class CPSPositions
 
         MyBase.Finalize()
     End Sub
+
 End Class
 

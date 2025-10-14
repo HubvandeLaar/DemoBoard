@@ -1,12 +1,14 @@
 ﻿Option Explicit On
+
 Imports System.Xml.Serialization
 
 <XmlType()>
 Public Class Marker
+
     <XmlAttribute()>
-    Public Symbol As String
+    Public Property Symbol As String
     <XmlAttribute()>
-    Public FieldName As String
+    Public Property FieldName As String
 
     <XmlIgnore>
     Public ReadOnly Property IconName() As String
@@ -65,6 +67,7 @@ Public Class Marker
     Public Sub New()
     End Sub
 
+    ''' <summary>For debugging purposes</summary>
     Public Overrides Function ToString() As String
         Return Me.Symbol & " " & Me.FieldName
     End Function

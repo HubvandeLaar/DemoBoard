@@ -65,6 +65,7 @@ Partial Class ctlMoveListRow
         '
         Me.rtbWhiteMoveText.BackColor = System.Drawing.SystemColors.Info
         Me.rtbWhiteMoveText.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.rtbWhiteMoveText.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.rtbWhiteMoveText.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rtbWhiteMoveText.Location = New System.Drawing.Point(60, 22)
         Me.rtbWhiteMoveText.Name = "rtbWhiteMoveText"
@@ -106,6 +107,7 @@ Partial Class ctlMoveListRow
         '
         Me.rtbBlackMoveText.BackColor = System.Drawing.SystemColors.Info
         Me.rtbBlackMoveText.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.rtbBlackMoveText.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.rtbBlackMoveText.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rtbBlackMoveText.Location = New System.Drawing.Point(146, 22)
         Me.rtbBlackMoveText.Name = "rtbBlackMoveText"

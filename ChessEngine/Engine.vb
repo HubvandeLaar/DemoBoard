@@ -5,31 +5,44 @@
 
 Imports System.IO
 Imports System.Reactive.Linq
+Imports System.Text.RegularExpressions
+Imports System.Windows 'for .Forms
 
 Public Class Engine
-    Private strmReader As StreamReader
-    Private strmWriter As StreamWriter
-    Private WithEvents EngineProcess As Process
-    Private EngineListener As IDisposable
 
-    Public Event Message(pMessage As String)
+    Public Enum ScoreType
+        cp         'Centipoints
+        mate       'Checkmate
+        upperbound 'Score is upperbound
+        lowerbound 'Score is lowerbound
+    End Enum
+
+    Public Event BestMoveMessage(pBestMove As String, pMessage As String)
+    Public Event InfoMessage(pDepth As Integer, pIndex As Integer, pScoreType As ScoreType, pScore As Integer, pMoves As String)
+    Public Event InfoStringMessage(pMessage As String)
+    Public Event ErrorMessage(pMessage As String)
+
+    Private gstrmReader As StreamReader
+    Private gstrmWriter As StreamWriter
+    Private WithEvents gEngineProcess As Process
+    Private gEngineListener As IDisposable
 
     Public Sub StartEngine()
         Dim EngineFile As New FileInfo(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "stockfish_12_32bit.exe"))
         If EngineFile.Exists _
         AndAlso EngineFile.Extension = ".exe" Then
-            EngineProcess = New Process
-            EngineProcess.StartInfo.FileName = EngineFile.FullName
-            EngineProcess.StartInfo.UseShellExecute = False
-            EngineProcess.StartInfo.RedirectStandardInput = True
-            EngineProcess.StartInfo.RedirectStandardOutput = True
-            EngineProcess.StartInfo.RedirectStandardError = True
-            EngineProcess.StartInfo.CreateNoWindow = True
-            EngineProcess.Start()
-            strmWriter = EngineProcess.StandardInput
-            strmReader = EngineProcess.StandardOutput
+            gEngineProcess = New Process
+            gEngineProcess.StartInfo.FileName = EngineFile.FullName
+            gEngineProcess.StartInfo.UseShellExecute = False
+            gEngineProcess.StartInfo.RedirectStandardInput = True
+            gEngineProcess.StartInfo.RedirectStandardOutput = True
+            gEngineProcess.StartInfo.RedirectStandardError = True
+            gEngineProcess.StartInfo.CreateNoWindow = True
+            gEngineProcess.Start()
+            gstrmWriter = gEngineProcess.StandardInput
+            gstrmReader = gEngineProcess.StandardOutput
 
-            EngineListener = Observable.Timer(TimeSpan.Zero, TimeSpan.FromMilliseconds(1)).Subscribe(Sub() ReadEngineMessages())
+            gEngineListener = Observable.Timer(TimeSpan.Zero, TimeSpan.FromMilliseconds(1)).Subscribe(Sub() ReadEngineMessages())
 
             SendCommand("uci")
             SendCommand("isready")
@@ -39,26 +52,26 @@ Public Class Engine
     End Sub
 
     Public Sub StopEngine()
-        If EngineProcess IsNot Nothing _
-        AndAlso EngineProcess.HasExited = False Then
+        If gEngineProcess IsNot Nothing _
+        AndAlso gEngineProcess.HasExited = False Then
             SendCommand("stop")
-            System.Windows.Forms.Application.DoEvents()
-            EngineListener.Dispose()
+            Forms.Application.DoEvents()
+            gEngineListener.Dispose()
             Try
-                strmReader.Close()
-                strmWriter.Close()
-                System.Windows.Forms.Application.DoEvents()
-                EngineProcess.Kill()
+                gstrmReader.Close()
+                gstrmWriter.Close()
+                Forms.Application.DoEvents()
+                gEngineProcess.Kill()
             Catch
             Finally
-                System.Windows.Forms.Application.DoEvents()
-                EngineProcess.Dispose()
+                Forms.Application.DoEvents()
+                gEngineProcess.Dispose()
             End Try
         End If
     End Sub
 
     Public Sub EvaluateFEN(pFEN As String)
-        SendCommand("setoption name MultiPV value 1")
+        SendCommand("setoption name MultiPV value 3") '3 variants
         SendCommand("setoption name Use NNUE value false")
         SendCommand("ucinewgame")
         SendCommand("position fen " & pFEN)
@@ -66,13 +79,14 @@ Public Class Engine
     End Sub
 
     Public Sub Best3Variants(pFEN)
-        SendCommand("setoption name MultiPV value 3")
+        SendCommand("setoption name MultiPV value 3") '3 variants
         SendCommand("setoption name Use NNUE value false")
         SendCommand("ucinewgame")
         SendCommand("position fen " & pFEN)
         SendCommand("go movetime 2000") '2 seconds or infinite") 
     End Sub
 
+    ''' <summary>Returns True if StockFish found Mate in #x</summary>
     Public Function CheckMate(pMessage) As Boolean
         If pMessage.Contains("ponder") Then
             CheckMate = False
@@ -82,29 +96,54 @@ Public Class Engine
     End Function
 
     Private Sub SendCommand(pCommand As String)
-        If strmWriter IsNot Nothing Then
+        If gstrmWriter IsNot Nothing Then
             'Debug.Print(">" & pCommand)
-            strmWriter.WriteLine(pCommand)
+            gstrmWriter.WriteLine(pCommand)
         End If
     End Sub
 
     Private Sub ReadEngineMessages()
-        Dim Message = strmReader.ReadLine()
-        If Message <> String.Empty Then
+        Dim Message = gstrmReader.ReadLine()
+        If Message IsNot Nothing _
+        AndAlso Message <> String.Empty Then
             'Debug.Print("<" & Message)
-            RaiseEvent Message(Message)
+
+            If Message.StartsWith("info string") Then
+                RaiseEvent InfoStringMessage(Message)
+
+            ElseIf Message.StartsWith("info") Then
+                Dim Match As Match = Regex.Match(Message, "depth (\d+) .*?multipv (\d+) .*?score (cp|mate|lowerbound|upperbound) (-?\d+) .*?pv (.*?)$")
+                If Match.Success = False Then Exit Sub
+                Dim ScoreType As ScoreType = [Enum].Parse(ScoreType.GetType(), Match.Groups(3).Value)
+                RaiseEvent InfoMessage(pDepth:=Val(Match.Groups(1).Value),
+                                       pIndex:=Val(Match.Groups(2).Value),
+                                       pScoreType:=ScoreType,
+                                       pScore:=Val(Match.Groups(4).Value),
+                                       pMoves:=Match.Groups(5).Value)
+                Exit Sub
+
+            ElseIf Message.StartsWith("bestmove") Then
+                RaiseEvent BestMoveMessage(Message.Split(" ")(1), Message)
+                Exit Sub
+
+            ElseIf Message.StartsWith("Error") Then
+                RaiseEvent ErrorMessage(Message)
+                Exit Sub
+
+            End If
+
         End If
     End Sub
 
-    Private Sub Process_ErrorDataReceived(pSender As Object, pArgs As DataReceivedEventArgs) Handles EngineProcess.ErrorDataReceived
-        RaiseEvent Message("Error: " & pArgs.Data)
+    Private Sub gEngineProcess_ErrorDataReceived(pSender As Object, pArgs As DataReceivedEventArgs) Handles gEngineProcess.ErrorDataReceived
+        RaiseEvent ErrorMessage("Error: " & pArgs.Data)
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.EngineProcess = Nothing
-        Me.strmReader = Nothing
-        Me.strmWriter = Nothing
-        Me.EngineListener = Nothing
+        gEngineProcess = Nothing
+        gstrmReader = Nothing
+        gstrmWriter = Nothing
+        gEngineListener = Nothing
 
         MyBase.Finalize()
     End Sub

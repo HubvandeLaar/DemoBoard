@@ -1,9 +1,6 @@
 ﻿Option Explicit On
 
-Imports System.Text
 Imports System.Reflection
-Imports Microsoft.VisualBasic.FileIO.FileSystem
-Imports System.Runtime.InteropServices
 
 Public Class AssemblyInfo
     Public Property ID As String
@@ -39,7 +36,6 @@ Module LifeCycle
         Dim Types() As Type = Assembly.GetTypes()
         For Each TypeInfo As Type In Types
             If TypeInfo.IsPublic = True Then
-                Debug.Print(TypeInfo.FullName)
                 ListClass(TypeInfo.Name)
                 'Writer.WriteLine("<tr><td style='font-family:""Webdings"";color:Yellow'><b>2</b></td>")
                 'Writer.WriteLine("  <td><a href=""" & TypeInfo.Name & ".htm"">" & TypeInfo.Name & "</a></td>")

@@ -1,4 +1,6 @@
-﻿Imports PGNLibrary
+﻿Option Explicit On
+
+Imports PGNLibrary
 
 Public Class ctlAnswerList
 
@@ -53,8 +55,9 @@ Public Class ctlAnswerList
         RaiseEvent AnswerClicked(pCorrectAnswer, pHalfMove)
     End Sub
 
+    ''' <summary>Shuffle the possible answers</summary>
     Private Function Shuffle(Of tItem)(pList As List(Of tItem)) As List(Of tItem)
-        Dim RandomNumber As Random = New Random()
+        Dim RandomNumber As New Random()
         Shuffle = pList.OrderBy(Function(pParm) RandomNumber.Next()).ToList()
     End Function
 

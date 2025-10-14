@@ -133,7 +133,7 @@ In Stap 2 noemen we dat AANVALSDOELEN.
 [Result ""]
 [Title "Dubbele Aanval"]
 [Memo "Koning + Hout"]
-[FEN "8/8/8/8/6Nq/8/7K/8 w KQkq - 0 0"]
+[FEN "8/8/8/8/6Nq/8/7K/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -173,7 +173,7 @@ In Stap 2 noemen we dat AANVALSDOELEN.
 [Memo ""]
 [FEN "8/8/8/8/7B/8/8/5K2 w KQkq - 0 0"]
 
-{[%csl .h1, .h3, .c4]}
+{[%csl .h1, .h3, .c4, -f4]}
 
 [Event ""]
 [Site ""]
@@ -186,7 +186,7 @@ In Stap 2 noemen we dat AANVALSDOELEN.
 [Memo ""]
 [FEN "6k1/8/8/6n1/8/8/8/8 w KQkq - 0 0"]
 
-{[%csl .g6, .d8]}
+{[%csl -d5, .g6, .d8]}
 
 [Event ""]
 [Site ""]
@@ -199,7 +199,7 @@ In Stap 2 noemen we dat AANVALSDOELEN.
 [Memo ""]
 [FEN "8/8/8/8/8/8/3R4/K7 b KQkq - 0 0"]
 
-{[%csl .c1, .e1, .a5]}
+{[%csl .c1, .e1, -c3, -a5]}
 
 [Event ""]
 [Site ""]
@@ -222,7 +222,7 @@ In Stap 2 noemen we dat AANVALSDOELEN.
 [Result ""]
 [Title "Dubbele Aanval"]
 [Memo "Waar moet de dame naar toe ?"]
-[FEN "8/5q2/8/8/8/7K/4R3/8 w KQkq - 0 0"]
+[FEN "8/5q2/8/8/8/7K/4R3/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -248,7 +248,7 @@ In Stap 2 noemen we dat AANVALSDOELEN.
 [Memo "Ook een goede dubbele aanval,
 maar de stukken kunnen elkaar wel dekken.
 Toch gaat er één verloren !"]
-[FEN "7R/8/5q2/8/5N2/8/8/8 w KQkq - 0 0"]
+[FEN "7R/8/5q2/8/5N2/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]

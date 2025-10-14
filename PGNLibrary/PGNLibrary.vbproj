@@ -135,6 +135,14 @@
       <Project>{125547ef-ad43-4039-b2da-c673ee249202}</Project>
       <Name>ChessMaterials</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ChessMessaging\ChessMessaging.vbproj">
+      <Project>{768f03aa-e6d9-40eb-8ae6-f5c41dc800cf}</Project>
+      <Name>ChessMessaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Journaling\Journaling.vbproj">
+      <Project>{50fe7764-4b58-4c6e-9eed-c645603c2711}</Project>
+      <Name>Journaling</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -120,6 +120,7 @@ Partial Class frmAbout
         Me.ResumeLayout(False)
 
     End Sub
+
     Friend WithEvents cmdOK As Button
     Friend WithEvents lblDisclaimer As Label
     Friend WithEvents lblApplicationTitle As Label

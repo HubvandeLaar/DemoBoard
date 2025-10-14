@@ -113,7 +113,7 @@ Het zwarte paard kan nergens heen.
 Restrict mobility
 The white bishop restricts mobility of the knight.
 The black knight has no place to go to."]
-[FEN "8/8/n2B4/8/8/8/8/8 w KQkq - 0 0"]
+[FEN "8/8/n2B4/8/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]

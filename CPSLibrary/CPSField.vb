@@ -4,10 +4,14 @@ Imports System.Xml.Serialization
 
 <XmlType("Field")>
 Public Class CPSField
+
     <XmlAttribute()>
-    Public Name As String
+    Public Property Name As String
+
     <XmlAttribute()>
-    Public Piece As String
+    Public Property Piece As String
+
     <XmlAttribute()>
-    Public Color As String
+    Public Property Color As String
+
 End Class

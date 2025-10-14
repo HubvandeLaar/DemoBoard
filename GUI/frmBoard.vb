@@ -1,17 +1,17 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
-Imports ChessGlobals.ChessMode
 Imports ChessGlobals.ChessColor
 Imports ChessMaterials
+Imports ChessMessaging
+Imports ChessMessaging.Messages
 Imports PGNLibrary
-Imports System.ComponentModel
 
 Public Class frmBoard
 
     Private WithEvents gfrmMainForm As frmMainForm
 
-    Public Event FENChanged(pFEN As String)
+    Public Event FENChanged(pFEN As String) 'By User-triggered changes on the Board
     Public Event MovePlayed(pHalfMove As PGNHalfMove)
     Public Event ChessPieceStartMoving(pPiece As ChessPiece, pFromFieldName As String, pChessBoard As ChessBoard)
     Public Event ChessPieceMoved(pPiece As ChessPiece, pFromFieldName As String, pToFieldName As String,
@@ -21,8 +21,8 @@ Public Class frmBoard
     Public Event TextListChanged(pHalfMove As PGNHalfMove, pTextString As String)
     Public Event BoardShown(pFEN As String)
 
-    Public gCurrentFieldName As String 'Needed to save Current Field when Right-Click menu is shown
-    Public gCurrentHalfMove As PGNHalfMove 'Being updated by MoveList PositionChanged
+    Public Property CurrentFieldName As String 'Needed to save Current Field when Right-Click menu is shown
+    Public Property CurrentHalfMove As PGNHalfMove 'Being updated by MoveList PositionChanged
 
     Public Property FEN As String
         Set(pFEN As String)
@@ -88,11 +88,10 @@ Public Class frmBoard
         Call ctlBoard.SaveAsJPG(pFileName)
     End Sub
 
-    Public Function getBitMap() As Bitmap
+    ''' <summary>Return the BitMap created by ctlBoard</summary>
+    Private Function getBitMap() As Bitmap
         Return ctlBoard.getBitMap
     End Function
-
-    'Private Methods and Functions
 
     Private Sub ctlBoard_ActiveColorChanged(pSender As Object, pActiveColor As ChessColor, pChessBoard As ChessBoard) Handles ctlBoard.ActiveColorChanged
         Try
@@ -104,7 +103,6 @@ Public Class frmBoard
 
     ''' <summary>When a piece has been moved from the SetupToolBar on to the board</summary>
     Private Sub ctlBoard_NewChessPiece(pPiece As ChessPiece, pToFieldName As String, pChessBoard As ChessBoard) Handles ctlBoard.NewChessPiece
-        'So Setup-mode and FEN needs to be updated
         Try
             RaiseEvent FENChanged(ctlBoard.FEN)
 
@@ -161,8 +159,9 @@ Public Class frmBoard
             AndAlso HalfMove.CommentBefore.Text <> "" Then
                 MsgBox(HalfMove.CommentBefore.Text, MsgBoxStyle.OkOnly, MessageText("CommentBefore"))
             End If
+
             Me.PlayMove(HalfMove)
-            RaiseEvent MovePlayed(HalfMove)
+
             If HalfMove.CommentAfter IsNot Nothing Then
                 If HalfMove.CommentAfter.Text <> "" Then
                     MsgBox(HalfMove.CommentAfter.Text, MsgBoxStyle.OkOnly, MessageText("CommentAfter"))
@@ -181,15 +180,14 @@ Public Class frmBoard
 
     Public Sub PlayMove(pHalfMove As PGNHalfMove)
         ctlBoard.PlayMove(pHalfMove)
-    End Sub
 
-    Public Sub PlayMove(pFromFieldName As String, pToFieldName As String)
-        ctlBoard.PlayMove(pFromFieldName, pToFieldName)
+        RaiseEvent MovePlayed(pHalfMove)
     End Sub
 
     Private Sub ctlBoard_FieldMarkerListChanged(pSender As Object, pMarkerString As String) Handles ctlBoard.FieldMarkerListChanged
         Try
-            RaiseEvent FieldMarkerListChanged(gCurrentHalfMove, pMarkerString)
+            RaiseEvent FieldMarkerListChanged(CurrentHalfMove, pMarkerString)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -197,7 +195,8 @@ Public Class frmBoard
 
     Private Sub ctlBoard_ArrowListChanged(pSender As Object, pArrowString As String) Handles ctlBoard.ArrowListChanged
         Try
-            RaiseEvent ArrowListChanged(gCurrentHalfMove, pArrowString)
+            RaiseEvent ArrowListChanged(CurrentHalfMove, pArrowString)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -205,7 +204,8 @@ Public Class frmBoard
 
     Private Sub ctlBoard_TextListChanged(pSender As Object, pTextString As String) Handles ctlBoard.TextListChanged
         Try
-            RaiseEvent TextListChanged(gCurrentHalfMove, pTextString)
+            RaiseEvent TextListChanged(CurrentHalfMove, pTextString)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -214,6 +214,7 @@ Public Class frmBoard
     Private Sub CtlBoard_MouseRightClickOnField(pSender As Object, pArgs As System.Windows.Forms.MouseEventArgs, pFieldName As String) Handles ctlBoard.MouseRightClickOnField
         Try
             Me.mnuFieldMenuUpdate(pSender, pArgs, pFieldName)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -280,6 +281,7 @@ Public Class frmBoard
             Next Text
 
             mnuFieldMenu.Show(MousePosition)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -287,45 +289,57 @@ Public Class frmBoard
 
     ''' <summary>Called from mnuFieldMenuUpdate</summary>
     Private Sub AddPieceMenuItem(pFieldMenu As System.Windows.Forms.ContextMenuStrip, pPiece As ChessPiece, pFieldName As String)
-        Dim MenuItem As ToolStripItem, Image As Image
-        Image = frmImages.getImage(pPiece.IconName)
-        MenuItem = pFieldMenu.Items.Add(MessageText("AddPiece", pPiece.FullName(CurrentLanguage)), Image)
-        MenuItem.Tag = pPiece
-        gCurrentFieldName = pFieldName
+        Try
+            Dim MenuItem As ToolStripItem, Image As Image
+            mnuFieldMenu.Hide()
+            Image = frmImages.getImage(pPiece.IconName)
+            MenuItem = pFieldMenu.Items.Add(MessageText("AddPiece", pPiece.FullName(CurrentLanguage)), Image)
+            MenuItem.Tag = pPiece
+
+            CurrentFieldName = pFieldName
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuFieldMenu_ItemClicked(pSender As Object, pArgs As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles mnuFieldMenu.ItemClicked
         Try
+            mnuFieldMenu.Hide()
             If pArgs.ClickedItem.Text = MessageText("AddText") Then
-                frmAddText.ShowDialog()
-                If frmAddText.OKPressed = True Then
-                    Dim TextList = New PGNTextList(ctlBoard.TextString) From
+                Using frmAddText = New frmAddText()
+                    frmAddText.TextColor = ctlBoard.SetupToolbar.MarkerColor
+                    frmAddText.ShowDialog()
+                    If frmAddText.OKPressed = True Then
+                        Dim TextList As New PGNTextList(ctlBoard.TextString) From
                         {New Text(frmAddText.TextColor, pArgs.ClickedItem.Tag, frmAddText.txtText.Text)}
-                    ctlBoard.TextString = TextList.ListString
-                    RaiseEvent TextListChanged(gCurrentHalfMove, TextList.ListString)
-                End If
+                        ctlBoard.TextString = TextList.ListString
+                        RaiseEvent TextListChanged(CurrentHalfMove, TextList.ListString)
+                    End If
+                End Using
             ElseIf TypeOf pArgs.ClickedItem.Tag Is ChessPiece Then
-                ctlBoard.AddPiece(pArgs.ClickedItem.Tag, gCurrentFieldName)
+                ctlBoard.AddPiece(pArgs.ClickedItem.Tag, CurrentFieldName)
                 RaiseEvent FENChanged(ctlBoard.FEN)
             ElseIf TypeOf pArgs.ClickedItem.Tag Is Marker Then
-                Dim FieldMarkerList = New PGNMarkerList(ctlBoard.MarkerString)
+                Dim FieldMarkerList As New PGNMarkerList(ctlBoard.MarkerString)
                 FieldMarkerList.Remove(pArgs.ClickedItem.Tag)
                 ctlBoard.MarkerString = FieldMarkerList.ListString
-                RaiseEvent FieldMarkerListChanged(gCurrentHalfMove, FieldMarkerList.ListString)
+                RaiseEvent FieldMarkerListChanged(CurrentHalfMove, FieldMarkerList.ListString)
             ElseIf TypeOf pArgs.ClickedItem.Tag Is Arrow Then
-                Dim Arrowlist = New PGNArrowList(ctlBoard.ArrowString)
+                Dim Arrowlist As New PGNArrowList(ctlBoard.ArrowString)
                 Arrowlist.Remove(pArgs.ClickedItem.Tag)
                 ctlBoard.ArrowString = Arrowlist.ListString
-                RaiseEvent ArrowListChanged(gCurrentHalfMove, Arrowlist.ListString)
+                RaiseEvent ArrowListChanged(CurrentHalfMove, Arrowlist.ListString)
             ElseIf TypeOf pArgs.ClickedItem.Tag Is Text Then
-                Dim TextList = New PGNTextList(ctlBoard.TextString)
+                Dim TextList As New PGNTextList(ctlBoard.TextString)
                 TextList.Remove(pArgs.ClickedItem.Tag)
                 ctlBoard.TextString = TextList.ListString
-                RaiseEvent TextListChanged(gCurrentHalfMove, TextList.ListString)
+                RaiseEvent TextListChanged(CurrentHalfMove, TextList.ListString)
             ElseIf pArgs.ClickedItem.Text Like MessageText("DeletePiece", "*") Then 'Where place of piece should come, now comes a "*"  
                 ctlBoard.DeletePiece(pArgs.ClickedItem.Tag)
                 RaiseEvent FENChanged(ctlBoard.FEN)
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -338,17 +352,17 @@ Public Class frmBoard
     End Sub
 
     Private Sub gfrmMainForm_GameChanged(pPGNGame As PGNGame) Handles gfrmMainForm.GameChanged
-        gCurrentHalfMove = Nothing
-        Me.ShowBoard(pPGNGame)
+        CurrentHalfMove = pPGNGame.HalfMoves.CurrentHalfMove
+        Me.ShowBoard(pPGNGame, CurrentHalfMove)
     End Sub
 
     Private Sub gfrmMainForm_MoveListPositionChanged(pPGNGame As PGNGame, pCurrentHalfMove As PGNHalfMove) Handles gfrmMainForm.MoveListPositionChanged
-        gCurrentHalfMove = pCurrentHalfMove
+        CurrentHalfMove = pCurrentHalfMove
         Me.ShowBoard(pPGNGame, pCurrentHalfMove)
     End Sub
 
     Private Sub gfrmMainForm_HalfMoveChanged(pPGNGame As PGNGame, pCurrentHalfMove As PGNHalfMove) Handles gfrmMainForm.HalfMoveChanged
-        gCurrentHalfMove = pCurrentHalfMove
+        CurrentHalfMove = pCurrentHalfMove
         Me.ShowBoard(pPGNGame, pCurrentHalfMove)
     End Sub
 
@@ -359,14 +373,12 @@ Public Class frmBoard
     End Sub
 
     Private Sub gfrmMainForm_LanguageChanged(pLanguage As ChessLanguage) Handles gfrmMainForm.LanguageChanged
-        Call ChangeLanguageCurrentForm(Me)
+        Call ApplyLanguageToCurrentForm(Me)
     End Sub
 
     Private Sub gfrmMainForm_BoardKeyDown(pMsg As Message, pKeyData As Keys) Handles gfrmMainForm.BoardKeyDown
         Call ctlBoard.KeyEntered(pMsg, pKeyData)
     End Sub
-
-    'Private Methods and Functions ===========================
 
     Private Sub ShowBoard(pPGNGame As PGNGame, Optional pCurrentHalfMove As PGNHalfMove = Nothing)
         Dim FEN As String
@@ -380,7 +392,12 @@ Public Class frmBoard
         ctlBoard.MarkerString = pPGNGame.HalfMoves.MarkerListString(pCurrentHalfMove)
         ctlBoard.ArrowString = pPGNGame.HalfMoves.ArrowListString(pCurrentHalfMove)
         ctlBoard.TextString = pPGNGame.HalfMoves.TextListString(pCurrentHalfMove)
+
         RaiseEvent BoardShown(FEN)
+    End Sub
+
+    Private Sub ctlBoard_MoveAborted(pFEN As String) Handles ctlBoard.MoveAborted
+        RaiseEvent BoardShown(FEN) 'To update ValidMoves with previous position
     End Sub
 
     Private Sub frmBoard_Disposed(pSender As Object, pArgs As EventArgs) Handles Me.Disposed
@@ -388,9 +405,10 @@ Public Class frmBoard
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.gfrmMainForm = Nothing
-        Me.gCurrentHalfMove = Nothing
+        gfrmMainForm = Nothing
+        CurrentHalfMove = Nothing
 
         MyBase.Finalize()
     End Sub
+
 End Class

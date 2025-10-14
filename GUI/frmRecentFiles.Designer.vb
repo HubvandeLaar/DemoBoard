@@ -35,17 +35,17 @@ Partial Class frmRecentFiles
         '
         'cmdNew
         '
+        Me.cmdNew.BackColor = System.Drawing.Color.Navy
         resources.ApplyResources(Me.cmdNew, "cmdNew")
-        Me.cmdNew.BackColor = System.Drawing.Color.MidnightBlue
         Me.cmdNew.ForeColor = System.Drawing.Color.White
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.UseVisualStyleBackColor = False
         '
         'cmdOpen
         '
-        resources.ApplyResources(Me.cmdOpen, "cmdOpen")
-        Me.cmdOpen.BackColor = System.Drawing.Color.MidnightBlue
+        Me.cmdOpen.BackColor = System.Drawing.Color.Navy
         Me.cmdOpen.CausesValidation = False
+        resources.ApplyResources(Me.cmdOpen, "cmdOpen")
         Me.cmdOpen.ForeColor = System.Drawing.Color.White
         Me.cmdOpen.Name = "cmdOpen"
         Me.cmdOpen.UseVisualStyleBackColor = False

@@ -6,13 +6,14 @@ Imports System.IO
 Public Class PreviewDocument
     Inherits Printing.PrintDocument
 
-    Public PageHeader As String = ""
-    Public PageNumber As Long = 0
-    Public DiagramsPerPage As Integer = 12 ', 9, 6 or 4
-    Public PageMarge As Long = CentimetersToPoints(1.5)   'cm
-    Public ColumnMarge As Long = CentimetersToPoints(0.5) 'cm
-    Public HeaderHeight As Long = CentimetersToPoints(1.5)   'cm
-    Public FooterMarge As Long = CentimetersToPoints(1.5) 'cm
+    Public Property PageHeader As String = ""
+    Public Property PageNumber As Integer = 0
+    Public Property DiagramsPerPage As Integer = 12 ', 9, 6 or 4
+
+    Private ReadOnly PageMarge As Long = CentimetersToPoints(1.5)   'cm
+    Private ReadOnly ColumnMarge As Long = CentimetersToPoints(0.5) 'cm
+    Private ReadOnly HeaderHeight As Long = CentimetersToPoints(1.5)   'cm
+    Private ReadOnly FooterMarge As Long = CentimetersToPoints(1.5) 'cm
 
     Public ReadOnly Property ExerciseWidth(pPageWidth As Integer) As Long
         Get
@@ -30,10 +31,7 @@ Public Class PreviewDocument
 
     Public ReadOnly Property ExerciseRect(pPageBounds As Rectangle, pGameIndex As Long) As Rectangle
         Get
-            Dim PageIndex As Long = pGameIndex 'Could be on second page and be nr 15
-            While (PageIndex > DiagramsPerPage)
-                PageIndex -= DiagramsPerPage
-            End While
+            Dim PageIndex As Long = pGameIndex Mod DiagramsPerPage 'Could be on second page
             Dim PageRow = 1 + Int((PageIndex - 1) / NumberOfColumns(DiagramsPerPage))
             Dim PageCol = 1 + ((PageIndex - 1) Mod NumberOfColumns(DiagramsPerPage))
             Dim Left As Long = PageMarge + ((ExerciseWidth(pPageBounds.Width) + ColumnMarge) * (PageCol - 1))
@@ -45,15 +43,18 @@ Public Class PreviewDocument
     End Property
 
     Sub InsertPageHeader(pPageHeader As String, pGraphics As Graphics, pPageBounds As Rectangle)
-        Dim HeaderRect As Rectangle = New Rectangle(New Point(PageMarge, PageMarge), New Size(pPageBounds.Width - (PageMarge * 2), HeaderHeight))
+        Dim HeaderRect As New Rectangle(New Point(PageMarge, PageMarge), New Size(pPageBounds.Width - (PageMarge * 2), HeaderHeight))
         pGraphics.DrawString(pPageHeader, New Font("Calibri", 24), Brushes.Black, HeaderRect)
+        'And PageNumber (not yet incremented)
+        Dim PageNumberRect As New Rectangle(New Point(PageMarge, pPageBounds.Height - PageMarge), New Size(pPageBounds.Width - (PageMarge * 2), PageMarge))
+        pGraphics.DrawString(Format(PageNumber + 1), New Font("Calibri", 12), Brushes.Black, PageNumberRect)
     End Sub
 
     Sub InsertDiagram(pGraphics As Graphics, pPageBounds As Rectangle, pGameIndex As Long, pDiagram As Bitmap, pBottomText As String, pFontSize As Double)
         Dim Exercise As Rectangle = ExerciseRect(pPageBounds, ((pGameIndex - 1) Mod DiagramsPerPage) + 1)
 
         'Create Bitmap Stream
-        Dim Stream As MemoryStream = New MemoryStream()
+        Dim Stream As New MemoryStream()
         pDiagram.Save(Stream, System.Drawing.Imaging.ImageFormat.Jpeg) 'save bitmap into memory stream In jpeg format
 
         'Insert Diagram with the right AspectRatio
@@ -62,7 +63,7 @@ Public Class PreviewDocument
         pGraphics.DrawImage(Image.FromStream(Stream), DiagramRect)
 
         'Draw Bottom Text
-        Dim TextRect As Rectangle = New Rectangle(Exercise.Left, Exercise.Top + DiagramRect.Height, Exercise.Width, Exercise.Height - DiagramRect.Height + ColumnMarge)
+        Dim TextRect As New Rectangle(Exercise.Left, Exercise.Top + DiagramRect.Height, Exercise.Width, Exercise.Height - DiagramRect.Height + ColumnMarge)
         pGraphics.DrawString(pBottomText, New Font("Calibri", pFontSize), Brushes.Black, TextRect)
 
         'Draw Exercise outline
@@ -71,11 +72,11 @@ Public Class PreviewDocument
         Stream.Close()
     End Sub
 
-    Public Shared Function CentimetersToPoints(pCentimeters As Single) As Long
+    Public Function CentimetersToPoints(pCentimeters As Single) As Long
         Return pCentimeters * 39.38
     End Function
 
-    Private Sub PreviewDoc_BeginPrint(sender As Object, e As PrintEventArgs) Handles Me.BeginPrint
+    Private Sub PreviewDoc_BeginPrint(pSender As Object, pArgs As PrintEventArgs) Handles Me.BeginPrint
         PageNumber = 0
     End Sub
 
@@ -86,7 +87,7 @@ Public Class PreviewDocument
             Case 6 : Return 3
             Case 4 : Return 2
             Case Else
-                Throw New Exception(String.Format("Diagrams per page not 12, 9, 6 or 4 but {0} specified.", DiagramsPerPage))
+                Throw New ArgumentOutOfRangeException(String.Format("Diagrams per page not 12, 9, 6 or 4 but {0} specified.", DiagramsPerPage))
         End Select
     End Function
 
@@ -97,7 +98,7 @@ Public Class PreviewDocument
             Case 6 : Return 2
             Case 4 : Return 2
             Case Else
-                Throw New Exception(String.Format("Diagrams per page not 12, 9, 6 or 4 but {0} specified.", DiagramsPerPage))
+                Throw New ArgumentOutOfRangeException(String.Format("Diagrams per page not 12, 9, 6 or 4 but {0} specified.", DiagramsPerPage))
         End Select
     End Function
 

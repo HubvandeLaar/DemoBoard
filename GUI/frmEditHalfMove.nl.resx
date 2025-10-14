@@ -154,17 +154,11 @@
   <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 42</value>
   </data>
-  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
-  </data>
   <data name="Label4.Text" xml:space="preserve">
     <value>Variant nummer</value>
   </data>
   <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 67</value>
-  </data>
-  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 16</value>
   </data>
   <data name="Label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 69</value>
@@ -177,9 +171,6 @@
   </data>
   <data name="Label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 93</value>
-  </data>
-  <data name="Label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 16</value>
   </data>
   <data name="Label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 308</value>
@@ -274,9 +265,6 @@
   <data name="lblArrows.Location" type="System.Drawing.Point, System.Drawing">
     <value>160, 330</value>
   </data>
-  <data name="grpMove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 2</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmdEditNAGs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -293,8 +281,8 @@
   <data name="cmdEditNAGs.Text" xml:space="preserve">
     <value>Wijzig</value>
   </data>
-  <data name="grpCommentBefore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 116</value>
+  <data name="grpMove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 2</value>
   </data>
   <data name="cmdEditTrainingQuestion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -308,8 +296,8 @@
   <data name="cmdEditTrainingQuestion.Text" xml:space="preserve">
     <value>Wijzig</value>
   </data>
-  <data name="grpCommentAfter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 238</value>
+  <data name="grpCommentBefore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 116</value>
   </data>
   <data name="cmdEditTextList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -347,6 +335,9 @@
   <data name="cmdEditMarkerList.Text" xml:space="preserve">
     <value>Wijzig</value>
   </data>
+  <data name="grpCommentAfter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 238</value>
+  </data>
   <data name="lblTexts.Location" type="System.Drawing.Point, System.Drawing">
     <value>160, 356</value>
   </data>
@@ -364,5 +355,8 @@
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Zet Aanpassen</value>
   </data>
 </root>

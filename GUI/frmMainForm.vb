@@ -1,38 +1,46 @@
 ﻿Option Explicit On
 
+Imports System.ComponentModel
 Imports ChessGlobals
-Imports ChessGlobals.ChessMode
 Imports ChessGlobals.ChessColor
 Imports ChessGlobals.ChessLanguage
 Imports ChessMaterials
-Imports PGNLibrary
+Imports ChessMessaging
+Imports ChessMessaging.Messages
 Imports CPSLibrary
-Imports System.ComponentModel
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
+Imports DemoBoard.frmMainForm.ChessMode
+Imports PGNLibrary
 
 Public Class frmMainForm
+
+    Public Enum ChessMode
+        SETUP = 0
+        PLAY = 1
+        TRAINING = 2
+    End Enum
+
     Public WithEvents gfrmBoard As frmBoard
     Public WithEvents gfrmStockfish As frmStockfish
     Public WithEvents gfrmMoveList As frmMoveList
     Public WithEvents gfrmValidMoves As frmValidMoves
     Public WithEvents gfrmGameDetails As frmGameDetails
     Public WithEvents gfrmTitleAndMemo As frmTitleAndMemo
-    Public WithEvents gfrmDockCross As frmDockCross
 
-    Public WithEvents gfrmEditGame As frmEditGame
-    Public WithEvents gfrmEditTitleAndMemo As frmEditTitleAndMemo
-    Public WithEvents gfrmTrainingQuestion As frmTrainingQuestion = Nothing
+    Private WithEvents gfrmDockCross As frmDockCross
+    Private WithEvents gfrmTrainingQuestion As frmTrainingQuestion = Nothing
 
-    Public WithEvents gJournaling As New Journaling()
+    Private WithEvents gJournal As New Journaling.Journal()
 
+    Private gLayoutSerializer As New LayoutSerializer(Me)
+    Private gRecentFiles As New RecentFiles()
     Private gPGNFile As PGNFile
-    Private WithEvents gPGNGame As PGNGame
+    Private gPGNGame As PGNGame
 
     Public Event ModeChanged(pMode As ChessMode)
     Public Event LanguageChanged(pLanguage As ChessLanguage)
     Public Event GameChanged(pPGNGame As PGNGame)
     Public Event ChessPieceStartMoving(pPiece As ChessPiece, pFromFieldName As String, pChessBoard As ChessBoard)
-    Public Event ChessPieceMoved(pPiece As ChessPiece, pFromFieldName As String, pToFieldName As String, pChessBoard As ChessBoard, pCaptured As Boolean, pPromotionPiece As ChessPiece)
+    Public Event ChessPieceMoved(pPiece As ChessPiece, pFromFieldName As String, pToFieldName As String, pChessBoard As ChessBoard, pCaptured As Boolean, pPromotionPiece As ChessPiece, pHalfMove As PGNHalfMove)
     Public Event MoveListPositionChanged(pPGNGame As PGNGame, pCurrentHalfMove As PGNHalfMove)
     Public Event HalfMoveChanged(pPGNGame As PGNGame, pCurrentHalfMove As PGNHalfMove)
     Public Event ColorBoardChanged(pColorBoard As Boolean)
@@ -40,6 +48,7 @@ Public Class frmMainForm
     Public Event BoardKeyDown(pMsg As Message, pKeyData As Keys)
     Public Event FENChanged(pFEN As String)
     Public Event MovePlayed(pHalfMove As PGNHalfMove)
+    Public Event BoardShown(pFEN As String)
 
     Public Property Mode() As ChessMode
         Set(pMode As ChessMode)
@@ -61,12 +70,10 @@ Public Class frmMainForm
                 Case TRAINING
                     mnuMode.Text = MessageText("Training")
                     RaiseEvent ModeChanged(pMode)
-                    Dim TrainingHalfMove As PGNHalfMove = gPGNGame.NextHalfMoveWithTrainingQuestion()
+                    Dim TrainingHalfMove As PGNHalfMove = PGNGame.NextHalfMoveWithTrainingQuestion()
                     If TrainingHalfMove IsNot Nothing Then
                         Me.StartTraining(TrainingHalfMove)
                     End If
-                Case Else
-                    Throw New ArgumentOutOfRangeException("Invalid Mode !")
             End Select
         End Set
         Get
@@ -78,41 +85,42 @@ Public Class frmMainForm
                 Case MessageText("Training")
                     Return TRAINING
                 Case Else
-                    Throw New ArgumentOutOfRangeException("Invalid Mode !")
+                    Return PLAY
             End Select
         End Get
     End Property
 
-    Public Property PGNFile As PGNFile
+    Private Property PGNFile As PGNFile
         Set(pPGNFile As PGNFile)
             gPGNFile = pPGNFile
             If Me.PGNFile.PGNGames.Count > 0 Then
-                mnuSelectGame.Enabled = True
                 Me.PGNGame = Me.PGNFile.PGNGames(0)
             Else
-                mnuSelectGame.Enabled = False
                 Me.PGNGame = Me.PGNFile.PGNGames.Add()
             End If
+
+            mnuSelectGame.Enabled = (Me.PGNFile.PGNGames.Count > 1)
         End Set
         Get
             Return gPGNFile
         End Get
     End Property
 
-    Public Property PGNGame As PGNGame
+    Private Property PGNGame As PGNGame
         Set(pPGNGame As PGNGame)
             gPGNGame = pPGNGame
-            mnuGameNumber.Text = Strings.Format(gPGNGame.Index + 1) & "/" & Strings.Format(Me.PGNFile.PGNGames.Count)
-            mnuPreviousGame.Enabled = (gPGNGame.Index > 0)
-            mnuNextGame.Enabled = (gPGNGame.Index < Me.PGNFile.PGNGames.Count - 1)
+
+            mnuGameNumber.Text = Strings.Format(pPGNGame.Index + 1) & "/" & Strings.Format(Me.PGNFile.PGNGames.Count)
+            mnuPreviousGame.Enabled = (pPGNGame.Index > 0)
+            mnuNextGame.Enabled = (pPGNGame.Index < Me.PGNFile.PGNGames.Count - 1)
 
             Dim TrainingHalfMove As PGNHalfMove = pPGNGame.NextHalfMoveWithTrainingQuestion()
             If TrainingHalfMove IsNot Nothing Then
-                If Me.Mode = TRAINING Then
-                    Me.StartTraining(TrainingHalfMove)
+                If Mode = TRAINING Then
+                    Call StartTraining(TrainingHalfMove)
                     Exit Property
                 ElseIf MsgBox(MessageText("SwitchToTraining"), vbYesNo) = vbYes Then
-                    Me.Mode = TRAINING
+                    Mode = TRAINING
                     'Automatically triggers Me.StartTraining(TrainingHalfMove)
                     Exit Property
                 End If
@@ -139,106 +147,137 @@ Public Class frmMainForm
                 frmMainForm_SizeChanged(Nothing, Nothing)
                 Exit Property
             End If
-            Throw New Exception("Invalid Menu Location")
+            Throw New ArgumentOutOfRangeException("Invalid Menu Location")
         End Set
         Get
             Return mnuMenuStrip.Dock
         End Get
     End Property
 
-
 #Region "Menu Options"
 
     Private Sub mnuUndo_Click(pSender As Object, pArgs As EventArgs) Handles mnuUndo.Click
-        gJournaling.Undo()
+        Try
+            gJournal.Undo()
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuRedo_Click(pSender As Object, pArgs As EventArgs) Handles mnuRedo.Click
-        gJournaling.Redo()
+        Try
+            gJournal.Redo()
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuNew_Click(pSender As Object, pArgs As EventArgs) Handles mnuNew.Click
-        If PGNFileModified() = True Then
-            If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
-                mnuSave_Click(Nothing, Nothing)
-            End If
-        End If
-
-        Me.OpenFile()
-
-        gJournaling.Clear()
-    End Sub
-
-    Public Sub mnuOpen_Click(pSender As Object, pArgs As EventArgs) Handles mnuOpen.Click
         Try
-            Dim Dialog As New OpenFileDialog
-
-            If PGNFileModified() = True Then
+            If gJournal.PGNFileModified() = True Then
                 If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
                     mnuSave_Click(Nothing, Nothing)
                 End If
             End If
 
-            Dialog.AutoUpgradeEnabled = True
-            Dialog.Filter = "Chess files (*.xpgn, *.pgn, *.cps)|*.xpgn; *.pgn; *.cps|Extended PGN files (*.xpgn)|*.xpgn|PGN files (*.pgn)|*.pgn|ChesserDemo files (*.cps)|*.cps|All files (*.*)|*.*"
-            Dialog.FilterIndex = 1
-            Dialog.InitialDirectory = modRecentFiles.LastFolder()
-            Dialog.Multiselect = False
-            Dialog.Title = MessageText("OpenPGNFile")
-            Dialog.ShowDialog(Me)
-            If Dialog.FileName <> "" Then
-                OpenFile(Dialog.FileName)
+            Application.DoEvents()
+            Me.PGNFile = New PGNFile()
+
+            gJournal.Clear()
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
+    End Sub
+
+    Private Sub mnuOpen_Click(pSender As Object, pArgs As EventArgs) Handles mnuOpen.Click
+        Try
+            Using Dialog As New OpenFileDialog
+
+                If gJournal.PGNFileModified() = True Then
+                    If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
+                        mnuSave_Click(Nothing, Nothing)
+                    End If
+                End If
+
+                Dialog.AutoUpgradeEnabled = True
+                Dialog.Filter = "Chess files (*.xpgn, *.pgn, *.cps)|*.xpgn; *.pgn; *.cps|Extended PGN files (*.xpgn)|*.xpgn|PGN files (*.pgn)|*.pgn|ChesserDemo files (*.cps)|*.cps|All files (*.*)|*.*"
+                Dialog.FilterIndex = 1
+                If UseLastUsedLessonsFolder = True Then
+                    Dialog.InitialDirectory = gRecentFiles.LastFolder()
+                Else
+                    Dialog.InitialDirectory = CurrentLessonsFolder
+                End If
+                Dialog.Multiselect = False
+                Dialog.Title = MessageText("OpenPGNFile")
+                Dialog.ShowDialog(Me)
+                If Dialog.FileName <> "" Then
+                    OpenFile(Dialog.FileName)
+                Else
+                    If PGNFile Is Nothing Then
+                        Me.PGNFile = New PGNFile()
+                        Me.PGNGame = Me.PGNFile.PGNGames.First
+                    End If
+                End If
+            End Using
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
+    End Sub
+
+    Private Sub OpenFile(pFileName As String)
+        Try
+            Cursor = Cursors.WaitCursor
+            Application.DoEvents()
+
+            If CPSFile.IsCPSFile(pFileName) Then
+                Dim CPSFile As New CPSFile(pFileName)
+                Me.PGNFile = New PGNFile With {
+                    .PGNGames = CPSFile.ConvertToPGN()}
+            Else 'pgn, xpgn
+                Me.PGNFile = New PGNFile(pFileName)
             End If
+
+            Me.Text = Me.PGNFile.FileName
+            gRecentFiles.Add(pFileName)
+
+            gJournal.Clear()
+            Cursor = Cursors.Default
 
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
         End Try
-    End Sub
-
-    Public Sub OpenFile(Optional pFileName As String = "")
-        Cursor = Cursors.WaitCursor
-        Application.DoEvents()
-        If pFileName = "" Then
-            Me.PGNFile = New PGNFile()
-        ElseIf pFileName Like "*.cps" Then
-            Dim CPSFile As New CPSFile(pFileName)
-            Me.Text = CPSFile.FileName
-            Me.PGNFile = New PGNFile With {.PGNGames = CPSFile.ConvertToPGN()}
-            modRecentFiles.Add(pFileName)
-        Else
-            Me.PGNFile = New PGNFile(pFileName)
-            Me.Text = Me.PGNFile.FileName
-            modRecentFiles.Add(pFileName)
-        End If
-
-        gJournaling.Clear()
-        Cursor = Cursors.Default
     End Sub
 
     Private Sub mnuSave_Click(pSender As Object, pArgs As EventArgs) Handles mnuSave.Click
         Try
-            With dlgSaveFile
-                .CheckFileExists = False
-                .CheckPathExists = True
-                .DefaultExt = ".xpgn"
-                .InitialDirectory = CurrentLessonsFolder
-                .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\DemoBoard Lessen\"
-                .FileName = Me.PGNFile.FileName 'Default filename 
-                .Filter = "Extended PGN file (*.xpgn)|*.xpgn|PGN file (*.pgn)|*.pgn"
-                .ShowDialog()
-                If .FileName = "" Then Exit Sub
-            End With
-
-            Cursor = Cursors.WaitCursor
-            Application.DoEvents()
-            Me.PGNFile.FullFileName = dlgSaveFile.FileName
-            Me.Text = Me.PGNFile.FileName
-            Me.PGNFile.SaveAs()
-            Cursor = Cursors.Default
-            modRecentFiles.Add(dlgSaveFile.FileName)
-
-            gJournaling.Clear()
+            Using Dialog As New SaveFileDialog
+                Dialog.CheckFileExists = False
+                Dialog.CheckPathExists = True
+                Dialog.DefaultExt = ".xpgn"
+                If UseLastUsedLessonsFolder = True Then
+                    Dialog.InitialDirectory = gRecentFiles.LastFolder()
+                Else
+                    Dialog.InitialDirectory = CurrentLessonsFolder
+                End If
+                Dialog.FileName = Me.PGNFile.FileName 'Default filename 
+                Dialog.Filter = "Extended PGN file (*.xpgn)|*.xpgn|PGN file (*.pgn)|*.pgn"
+                If Dialog.ShowDialog() = DialogResult.OK Then
+                    Cursor = Cursors.WaitCursor
+                    Application.DoEvents()
+                    Me.PGNFile.SaveAs(Dialog.FileName)
+                    Me.Text = Me.PGNFile.FileName
+                    Cursor = Cursors.Default
+                    gRecentFiles.Add(Dialog.FileName)
+                End If
+            End Using
+            gJournal.Clear()
 
         Catch pException As Exception
             Cursor = Cursors.Default
@@ -246,10 +285,24 @@ Public Class frmMainForm
         End Try
     End Sub
 
-    Private Sub mnuExport_Click(pSender As Object, pArgs As EventArgs) Handles mnuExport.Click
+    Private Sub mnuExportDiagrams_Click(pSender As Object, pArgs As EventArgs) Handles mnuExportDiagrams.Click
         Try
-            Dim ExportForm As New frmExport
-            ExportForm.ShowDialog(PGNFile)
+            Using frmExportDiagrams = New frmExportDiagrams
+                frmExportDiagrams.ShowDialog(PGNFile)
+            End Using
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
+    End Sub
+
+    Private Sub mnuExportGames_Click(pSender As Object, pArgs As EventArgs) Handles mnuExportGames.Click
+        Try
+            Using frmExportGames = New frmExportGames
+                frmExportGames.ShowDialog(PGNFile)
+            End Using
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
@@ -257,17 +310,24 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuExit_Click(pSender As Object, pArgs As EventArgs) Handles mnuExit.Click
-        If PGNFileModified() = True Then
-            If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
-                mnuSave_Click(Nothing, Nothing)
+        Try
+            If gJournal.PGNFileModified() = True Then
+                If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
+                    mnuSave_Click(Nothing, Nothing)
+                End If
             End If
-        End If
-        End
+            End 'Closes All
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuGame_DropDownOpening(pSender As Object, pArgs As EventArgs) Handles mnuGame.DropDownOpening
         Try
             mnuSelectGame.Enabled = (Me.PGNFile.PGNGames.Count > 1)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -276,6 +336,7 @@ Public Class frmMainForm
     Private Sub mnuCopyGamePGN_Click(pSender As Object, pArgs As EventArgs) Handles mnuCopyGamePGN.Click
         Try
             Clipboard.SetData(DataFormats.Text, CType(Me.PGNGame.PGNString, Object))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -284,6 +345,7 @@ Public Class frmMainForm
     Private Sub mnuCopyGameXPGN_Click(pSender As Object, pArgs As EventArgs) Handles mnuCopyGameXPGN.Click
         Try
             Clipboard.SetData(DataFormats.Text, CType(Me.PGNGame.XPGNString, Object))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -292,14 +354,15 @@ Public Class frmMainForm
     Private Sub mnuPasteGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuPasteGame.Click
         Try
             Dim XPGN As String
-            Dim BeforeImage As String = CStr(gPGNGame.Index)
+            Dim BeforeImage As String = CStr(PGNGame.Index)
             XPGN = Clipboard.GetData(DataFormats.Text)
             If XPGN Like "*[[]* [""]*[""][]]*" Then
-                Dim Game = New PGNGame(XPGN)
+                Dim Game As New PGNGame(XPGN)
                 Me.PGNFile.PGNGames.Insert(PGNGame.Index + 1, Game)
-                gJournaling.SaveImage("PasteGame", BeforeImage, XPGN)
+                gJournal.SaveImage("PasteGame", BeforeImage, XPGN)
                 Me.PGNGame = Game
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -311,15 +374,19 @@ Public Class frmMainForm
             If Me.PGNFile.PGNGames.Count < 2 Then Exit Sub
             BeforeImage = If(Me.PGNGame Is Nothing, "", CStr(Me.PGNGame.Index))
 
-            frmSelectGame.ShowDialog(Me.PGNFile)
-            If frmSelectGame.SelectedGame Is Nothing Then Exit Sub
-            Cursor = Cursors.WaitCursor
-            Application.DoEvents()
-            Me.PGNGame = frmSelectGame.SelectedGame
+            Using frmSelectGame = New frmSelectGame()
+                frmSelectGame.ShowDialog(Me.PGNFile)
+                If frmSelectGame.SelectedGame Is Nothing Then Exit Sub
+
+                Cursor = Cursors.WaitCursor
+                Application.DoEvents()
+                Me.PGNGame = frmSelectGame.SelectedGame
+            End Using
 
             AfterImage = CStr(Me.PGNGame.Index)
-            gJournaling.SaveImage("PGNGame.Index", BeforeImage, AfterImage)
+            gJournal.SaveImage("PGNGame.Index", BeforeImage, AfterImage)
             Cursor = Cursors.Default
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
@@ -331,78 +398,109 @@ Public Class frmMainForm
             Dim BeforeImage As String = If(Me.PGNGame Is Nothing, "", CStr(Me.PGNGame.Index))
 
             Me.PGNGame = Me.PGNFile.PGNGames.Add()
+            mnuSelectGame.Enabled = (Me.PGNFile.PGNGames.Count > 1)
 
-            gJournaling.SaveImage("PGNGame.New", BeforeImage, "New")
+            gJournal.SaveImage("PGNGame.New", BeforeImage, "New")
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub mnuEditGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuEditGame.Click
-        If Me.PGNGame Is Nothing Then Exit Sub
-        Dim BeforeImage As String = Journaling.Serialize(Me.PGNGame)
-        gfrmEditGame = New frmEditGame()
-        gfrmEditGame.ShowDialog(Me.PGNGame)
-        If gfrmEditGame.OKPressed Then
+        Try
+            If Me.PGNGame Is Nothing Then Exit Sub
+            Dim BeforeImage As String = gJournal.Serialize(Me.PGNGame)
+            Using frmEditGame = New frmEditGame()
+                frmEditGame.ShowDialog(Me.PGNGame)
+                If frmEditGame.OKPressed Then
 
-            Dim AfterImage As String = Journaling.Serialize(Me.PGNGame)
-            gJournaling.SaveImage("PGNGame", BeforeImage, AfterImage)
+                    Dim AfterImage As String = gJournal.Serialize(Me.PGNGame)
+                    gJournal.SaveImage("PGNGame", BeforeImage, AfterImage)
 
-            RaiseEvent GameChanged(Me.PGNGame)
-        End If
+                    RaiseEvent GameChanged(Me.PGNGame)
+                End If
+            End Using
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuGameAnalysis_Click(pSender As Object, pArgs As EventArgs) Handles mnuGameAnalysis.Click
         Try
-            Application.UseWaitCursor = True
-            ChessCoach.AnaLyze(PGNGame)
-            Application.UseWaitCursor = False
+            If Me.PGNGame Is Nothing Then Exit Sub
+            Dim BeforeImage As String = gJournal.Serialize(Me.PGNGame)
+
+            Using frmAnalysis = New frmAnalysis()
+                frmAnalysis.ShowDialog(Me.PGNGame)
+            End Using
+
+            Dim AfterImage As String = gJournal.Serialize(Me.PGNGame)
+            gJournal.SaveImage("PGNGame", BeforeImage, AfterImage)
+
+            RaiseEvent GameChanged(Me.PGNGame)
+
         Catch pException As Exception
-            Application.UseWaitCursor = False
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub mnuDeleteGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuDeleteGame.Click
         Try
-            Dim BeforeImage As String = Journaling.Serialize(PGNGame)
+            Dim BeforeImage As String = gJournal.Serialize(PGNGame)
 
             Me.PGNGame = Me.PGNFile.PGNGames.Remove(Me.PGNGame)
 
-            gJournaling.SaveImage("PGNGame", BeforeImage, "")
+            gJournal.SaveImage("PGNGame", BeforeImage, "")
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub mnuEditTitleAndMemo_Click(pSender As Object, pArgs As EventArgs) Handles mnuEditTitleAndMemo.Click
-        If Me.PGNGame Is Nothing Then Exit Sub
-        Dim BeforeImage As String = Journaling.Serialize(Me.PGNGame)
-        gfrmEditTitleAndMemo = New frmEditTitleAndMemo()
-        gfrmEditTitleAndMemo.ShowDialog(Me.PGNGame)
-        If gfrmEditTitleAndMemo.OKPressed Then
+        Try
+            If Me.PGNGame Is Nothing Then Exit Sub
+            Dim BeforeImage As String = gJournal.Serialize(Me.PGNGame)
 
-            Dim AfterImage As String = Journaling.Serialize(Me.PGNGame)
-            gJournaling.SaveImage("PGNGame", BeforeImage, AfterImage)
+            Using frmEditTitleAndMemo = New frmEditTitleAndMemo()
+                frmEditTitleAndMemo.ShowDialog(Me.PGNGame)
+                If frmEditTitleAndMemo.OKPressed Then
 
-            RaiseEvent GameChanged(Me.PGNGame)
-        End If
+                    Dim AfterImage As String = gJournal.Serialize(Me.PGNGame)
+                    gJournal.SaveImage("PGNGame", BeforeImage, AfterImage)
+
+                    RaiseEvent GameChanged(Me.PGNGame)
+                End If
+            End Using
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuPreviousGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuPreviousGame.Click
         Try
-            Dim BeforeImage As String, AfterImage As String
             If Me.PGNGame Is Nothing Then Exit Sub
             If Me.PGNGame.Index < 1 Then Exit Sub
-            BeforeImage = CStr(Me.PGNGame.Index)
+
+            Dim BeforeImage As New XElement("Before")
+            BeforeImage.Add(New XElement("GameIndex"), CStr(Me.PGNGame.Index))
+            BeforeImage.Add(New XElement("MoveIndex", PGNGame.HalfMoves.CurrentHalfMoveIndex))
 
             Cursor = Cursors.WaitCursor
             Application.DoEvents()
             Me.PGNGame = Me.PGNFile.PGNGames(Me.PGNGame.Index - 1)
 
-            AfterImage = CStr(Me.PGNGame.Index)
-            gJournaling.SaveImage("PGNGame.Index", BeforeImage, AfterImage)
+            Dim AfterImage As New XElement("After")
+            AfterImage.Add(New XElement("GameIndex"), CStr(Me.PGNGame.Index))
+            AfterImage.Add(New XElement("MoveIndex", PGNGame.HalfMoves.CurrentHalfMoveIndex))
+            gJournal.SaveImage("PGNGame.Index", BeforeImage.ToString, AfterImage.ToString)
             Cursor = Cursors.Default
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
@@ -411,18 +509,23 @@ Public Class frmMainForm
 
     Private Sub mnuNextGame_Click(pSender As Object, pArgs As EventArgs) Handles mnuNextGame.Click
         Try
-            Dim BeforeImage As String, AfterImage As String
             If Me.PGNGame Is Nothing Then Exit Sub
             If Me.PGNGame.Index >= Me.PGNFile.PGNGames.Count - 1 Then Exit Sub
-            BeforeImage = CStr(Me.PGNGame.Index)
+
+            Dim BeforeImage As New XElement("Before")
+            BeforeImage.Add(New XElement("GameIndex", CStr(Me.PGNGame.Index)))
+            BeforeImage.Add(New XElement("MoveIndex", PGNGame.HalfMoves.CurrentHalfMoveIndex))
 
             Cursor = Cursors.WaitCursor
             Application.DoEvents()
             Me.PGNGame = Me.PGNFile.PGNGames(Me.PGNGame.Index + 1)
 
-            AfterImage = CStr(Me.PGNGame.Index)
-            gJournaling.SaveImage("PGNGame.Index", BeforeImage, AfterImage)
+            Dim AfterImage As New XElement("After")
+            AfterImage.Add(New XElement("GameIndex", CStr(Me.PGNGame.Index)))
+            AfterImage.Add(New XElement("MoveIndex", PGNGame.HalfMoves.CurrentHalfMoveIndex))
+            gJournal.SaveImage("PGNGame.Index", BeforeImage.ToString, AfterImage.ToString)
             Cursor = Cursors.Default
+
         Catch pException As Exception
             Cursor = Cursors.Default
             frmErrorMessageBox.Show(pException)
@@ -430,20 +533,32 @@ Public Class frmMainForm
     End Sub
 
     Private Sub mnuMode_Click(pSender As Object, pArgs As EventArgs) Handles mnuMode.Click
-        Dim BeforeImage As String = mnuMode.Text
-        If Mode = SETUP Then
-            Mode = PLAY
-        ElseIf Mode = PLAY Then
-            Mode = TRAINING
-        Else
-            Mode = SETUP
-        End If
-        gJournaling.SaveImage("Mode", BeforeImage, mnuMode.Text)
+        Try
+            Dim BeforeImage As String = mnuMode.Text
+            If Mode = SETUP Then
+                Mode = PLAY
+            ElseIf Mode = PLAY Then
+                Dim TrainingHalfMove As PGNHalfMove = PGNGame.NextHalfMoveWithTrainingQuestion()
+                If TrainingHalfMove IsNot Nothing Then
+                    Mode = TRAINING
+                Else
+                    Mode = SETUP
+                End If
+            ElseIf Mode = TRAINING Then
+                Mode = SETUP
+            End If
+            gJournal.SaveImage("Mode", BeforeImage, mnuMode.Text)
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuCopyDiagram_Click(pSender As Object, pArgs As EventArgs) Handles mnuCopyDiagram.Click
         Try
             Clipboard.SetData(DataFormats.Text, CType(gfrmBoard.FEN, Object))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -452,14 +567,15 @@ Public Class frmMainForm
     Private Sub mnuPasteDiagram_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuPasteDiagram.Click
         Try
             Dim FEN As String
-            Dim BeforeImage As String = CStr(gPGNGame.Index)
+            Dim BeforeImage As String = CStr(PGNGame.Index)
             FEN = Clipboard.GetData(DataFormats.Text)
             If FEN Like "*/*/*/*/*/*/*/* [bw] *" Then
                 Dim Game As New PGNGame(FEN)
                 Me.PGNFile.PGNGames.Insert(PGNGame.Index + 1, Game)
-                gJournaling.SaveImage("PasteGame", BeforeImage, FEN)
+                gJournal.SaveImage("PasteGame", BeforeImage, FEN)
                 Me.PGNGame = Game
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -467,11 +583,12 @@ Public Class frmMainForm
 
     Private Sub mnuDiagramClear_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuDiagramClear.Click
         Try
-            Dim BeforeImage As String = Journaling.Serialize(Me.PGNGame)
-            Me.PGNGame.Clear()
+            Dim BeforeImage As String = gJournal.Serialize(Me.PGNGame)
+            Me.PGNGame.ClearDiagram()
 
-            gJournaling.SaveImage("ClearDiagram", BeforeImage, Me.PGNGame.Tags.GetPGNTag("FEN"))
+            gJournal.SaveImage("ClearDiagram", BeforeImage, Me.PGNGame.Tags("FEN").Value)
             RaiseEvent GameChanged(Me.PGNGame)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -479,29 +596,39 @@ Public Class frmMainForm
 
     Private Sub mnuDiagramInitial_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuDiagramInitial.Click
         Try
-            Dim BeforeImage As String = Journaling.Serialize(Me.PGNGame)
-            Me.PGNGame.Initial()
+            Dim BeforeImage As String = gJournal.Serialize(Me.PGNGame)
+            Me.PGNGame.Clear()
 
-            gJournaling.SaveImage("InitialDiagram", BeforeImage, Me.PGNGame.Tags.GetPGNTag("FEN"))
+            gJournal.SaveImage("InitialDiagram", BeforeImage, Me.PGNGame.Tags("FEN").Value)
             RaiseEvent GameChanged(Me.PGNGame)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub mnuSwitchSides_Click(pSender As Object, pArgs As EventArgs) Handles mnuSwitchSides.Click
-        gfrmBoard.SwitchSides = Not gfrmBoard.SwitchSides
+        Try
+            gfrmBoard.SwitchSides = Not gfrmBoard.SwitchSides
+
+        Catch pException As Exception
+            Cursor = Cursors.Default
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuDiagramSaveAsJPG_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuDiagramSaveAsJPG.Click
         Try
-            dlgSaveFile.CheckFileExists = False
-            dlgSaveFile.CheckPathExists = True
-            dlgSaveFile.DefaultExt = ".jpg"
-            dlgSaveFile.Filter = "JPG Image (*.jpg)|*.jpg"
-            dlgSaveFile.ShowDialog()
-            If dlgSaveFile.FileName = "" Then Exit Sub
-            gfrmBoard.SaveAsJPG(dlgSaveFile.FileName)
+            Using Dialog As New SaveFileDialog
+                Dialog.CheckFileExists = False
+                Dialog.CheckPathExists = True
+                Dialog.DefaultExt = ".jpg"
+                Dialog.Filter = "JPG Image (*.jpg)|*.jpg"
+                If Dialog.ShowDialog() = DialogResult.OK Then
+                    gfrmBoard.SaveAsJPG(Dialog.FileName)
+                End If
+            End Using
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -545,39 +672,35 @@ Public Class frmMainForm
         Try
             If TypeOf pArgs.ClickedItem.Tag Is Marker Then
                 Dim BeforeImage As String = gfrmBoard.MarkerString
-                Dim MarkerList = New PGNMarkerList(gfrmBoard.MarkerString)
+                Dim MarkerList As New PGNMarkerList(gfrmBoard.MarkerString)
                 MarkerList.Remove(pArgs.ClickedItem.Tag)
                 gfrmBoard.MarkerString = MarkerList.ListString
                 'Store at PGNHalfMove
-                Me.PGNGame.HalfMoves.MarkerListString(gfrmBoard.gCurrentHalfMove) = gfrmBoard.MarkerString
-                gJournaling.SaveImage("FieldMarkerList", If(gfrmBoard.gCurrentHalfMove Is Nothing, "", CStr(gfrmBoard.gCurrentHalfMove.Index)), BeforeImage, gfrmBoard.MarkerString)
+                Me.PGNGame.HalfMoves.MarkerListString(gfrmBoard.CurrentHalfMove) = gfrmBoard.MarkerString
+                gJournal.SaveImage("FieldMarkerList", If(gfrmBoard.CurrentHalfMove Is Nothing, "", CStr(gfrmBoard.CurrentHalfMove.Index)), BeforeImage, gfrmBoard.MarkerString)
 
             ElseIf TypeOf pArgs.ClickedItem.Tag Is Arrow Then
                 Dim BeforeImage As String = gfrmBoard.ArrowString
-                Dim ArrowList = New PGNArrowList(gfrmBoard.ArrowString)
+                Dim ArrowList As New PGNArrowList(gfrmBoard.ArrowString)
                 ArrowList.Remove(pArgs.ClickedItem.Tag)
                 gfrmBoard.ArrowString = ArrowList.ListString
                 'Store at PGNHalfMove
-                Me.PGNGame.HalfMoves.ArrowListString(gfrmBoard.gCurrentHalfMove) = gfrmBoard.ArrowString
-                gJournaling.SaveImage("ArrowList", If(gfrmBoard.gCurrentHalfMove Is Nothing, "", CStr(gfrmBoard.gCurrentHalfMove.Index)), BeforeImage, gfrmBoard.ArrowString)
+                Me.PGNGame.HalfMoves.ArrowListString(gfrmBoard.CurrentHalfMove) = gfrmBoard.ArrowString
+                gJournal.SaveImage("ArrowList", If(gfrmBoard.CurrentHalfMove Is Nothing, "", CStr(gfrmBoard.CurrentHalfMove.Index)), BeforeImage, gfrmBoard.ArrowString)
 
             ElseIf TypeOf pArgs.ClickedItem.Tag Is Text Then
                 Dim BeforeImage As String = gfrmBoard.TextString
-                Dim TextList = New PGNTextList(gfrmBoard.TextString)
+                Dim TextList As New PGNTextList(gfrmBoard.TextString)
                 TextList.Remove(pArgs.ClickedItem.Tag)
                 gfrmBoard.TextString = TextList.ListString
                 'Store at PGNHalfMove
-                Me.PGNGame.HalfMoves.TextListString(gfrmBoard.gCurrentHalfMove) = gfrmBoard.TextString
-                gJournaling.SaveImage("TextList", If(gfrmBoard.gCurrentHalfMove Is Nothing, "", CStr(gfrmBoard.gCurrentHalfMove.Index)), BeforeImage, gfrmBoard.TextString)
+                Me.PGNGame.HalfMoves.TextListString(gfrmBoard.CurrentHalfMove) = gfrmBoard.TextString
+                gJournal.SaveImage("TextList", If(gfrmBoard.CurrentHalfMove Is Nothing, "", CStr(gfrmBoard.CurrentHalfMove.Index)), BeforeImage, gfrmBoard.TextString)
             End If
 
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
-    End Sub
-
-    Private Sub mnuView_DropDownOpening(pSender As Object, pArgs As EventArgs) Handles mnuView.DropDownOpening
-        ' Stop
     End Sub
 
     Private Sub mnuStatusBar_Click(pSender As Object, pArgs As EventArgs) Handles mnuStatusBar.Click
@@ -587,7 +710,8 @@ Public Class frmMainForm
             stsStatusStrip.Visible = mnuStatusBar.Checked
             frmMainForm_SizeChanged(Nothing, Nothing)
 
-            gJournaling.SaveImage("StatusBar.Visible", BeforeImage, CStr(stsStatusStrip.Visible))
+            gJournal.SaveImage("StatusBar.Visible", BeforeImage, CStr(stsStatusStrip.Visible))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -597,7 +721,8 @@ Public Class frmMainForm
         Try
             Dim BeforeImage As String = CStr(Not mnuBoard.Checked)
             Call UpdateBoardSubForm()
-            gJournaling.SaveImage("mnuBoard.Checked", BeforeImage, CStr(mnuBoard.Checked))
+            gJournal.SaveImage("mnuBoard.Checked", BeforeImage, CStr(mnuBoard.Checked))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -607,7 +732,8 @@ Public Class frmMainForm
         Try
             Dim BeforeImage As String = CStr(gfrmBoard.SetupToolbarVisible)
             gfrmBoard.SetupToolbarVisible = mnuSetupToolbar.Checked
-            gJournaling.SaveImage("SetupToolbar.Visible", BeforeImage, CStr(gfrmBoard.SetupToolbarVisible))
+            gJournal.SaveImage("SetupToolbar.Visible", BeforeImage, CStr(gfrmBoard.SetupToolbarVisible))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -617,7 +743,8 @@ Public Class frmMainForm
         Try
             Dim BeforeImage As String = CStr(Not mnuMoveList.Checked)
             Call UpdateMoveListSubForm()
-            gJournaling.SaveImage("mnuMoveList.Checked", BeforeImage, CStr(mnuMoveList.Checked))
+            gJournal.SaveImage("mnuMoveList.Checked", BeforeImage, CStr(mnuMoveList.Checked))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -627,7 +754,8 @@ Public Class frmMainForm
         Try
             Dim BeforeImage As String = CStr(Not mnuGameDetails.Checked)
             Call UpdateGameDetailsSubForm()
-            gJournaling.SaveImage("mnuGameDetails.Checked", BeforeImage, CStr(mnuGameDetails.Checked))
+            gJournal.SaveImage("mnuGameDetails.Checked", BeforeImage, CStr(mnuGameDetails.Checked))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -637,7 +765,8 @@ Public Class frmMainForm
         Try
             Dim BeforeImage As String = CStr(Not mnuValidMoves.Checked)
             Call UpdateValidMovesSubForm()
-            gJournaling.SaveImage("mnuValidMoves.Checked", BeforeImage, CStr(mnuValidMoves.Checked))
+            gJournal.SaveImage("mnuValidMoves.Checked", BeforeImage, CStr(mnuValidMoves.Checked))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -647,29 +776,30 @@ Public Class frmMainForm
         Try
             Dim BeforeImage As String = CStr(Not mnuTitleAndMemo.Checked)
             Call UpdateTitleAndMemoSubForm()
-            gJournaling.SaveImage("mnuTitleAndMemo.Checked", BeforeImage, CStr(mnuTitleAndMemo.Checked))
+            gJournal.SaveImage("mnuTitleAndMemo.Checked", BeforeImage, CStr(mnuTitleAndMemo.Checked))
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub mnuStockfish_Click(pSender As Object, pArgs As EventArgs) Handles mnuStockfish.Click
-        ' Try
-        Dim BeforeImage As String = CStr(Not mnuStockfish.Checked)
-        Call UpdateStockfishSubForm()
-        gJournaling.SaveImage("mnuStockfish.Checked", BeforeImage, CStr(mnuStockfish.Checked))
-        ' Catch pException As Exception
-        'frmErrorMessageBox.Show(pException)
-        'End Try
+        Try
+            Dim BeforeImage As String = CStr(Not mnuStockfish.Checked)
+            Call UpdateStockfishSubForm()
+            gJournal.SaveImage("mnuStockfish.Checked", BeforeImage, CStr(mnuStockfish.Checked))
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuColorBoard_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuColorBoard.Click
         Try
             Dim BeforeImage As String = CStr(Not mnuColorBoard.Checked)
-
             Call SetColorBoard(True)
+            gJournal.SaveImage("ColorBoard.Checked", BeforeImage, CStr(mnuColorBoard.Checked))
 
-            gJournaling.SaveImage("ColorBoard.Checked", BeforeImage, CStr(mnuColorBoard.Checked))
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -678,30 +808,35 @@ Public Class frmMainForm
     Private Sub mnuBlackAndWhiteBoard_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuBlackAndWhiteBoard.Click
         Try
             Dim BeforeImage As String = CStr(mnuColorBoard.Checked)
-
             Call SetColorBoard(False)
+            gJournal.SaveImage("ColorBoard.Checked", BeforeImage, CStr(mnuColorBoard.Checked))
 
-            gJournaling.SaveImage("ColorBoard.Checked", BeforeImage, CStr(mnuColorBoard.Checked))
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub SetColorBoard(pChecked As Boolean)
-        mnuColorBoard.Checked = pChecked
-        mnuBlackAndWhiteBoard.Checked = Not pChecked
-        RaiseEvent ColorBoardChanged(mnuColorBoard.Checked)
+        Try
+            mnuColorBoard.Checked = pChecked
+            mnuBlackAndWhiteBoard.Checked = Not pChecked
+            RaiseEvent ColorBoardChanged(mnuColorBoard.Checked)
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuLanguage_DropDownOpening(pSender As Object, pArgs As System.EventArgs) Handles mnuLanguage.DropDownOpening
         Try
-            If GetLanguage() = NEDERLANDS Then
+            If CurrentLanguage = NEDERLANDS Then
                 mnuNederlands.Checked = True
                 mnuEnglish.Checked = False
             Else
                 mnuNederlands.Checked = False
                 mnuEnglish.Checked = True
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -710,12 +845,13 @@ Public Class frmMainForm
     Private Sub mnuEnglish_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuEnglish.Click
         Try
             Dim BeforeImage As String = CStr(CurrentLanguage)
-
             mnuNederlands.Checked = False
-            Call SetLanguage(ENGLISH, Me)
+            CurrentLanguage = ENGLISH
+            Call ApplyLanguageToCurrentForm(Me)
+            gJournal.SaveImage("CurrentLanguage", BeforeImage, CStr(CurrentLanguage))
 
-            gJournaling.SaveImage("CurrentLanguage", BeforeImage, CStr(CurrentLanguage))
             RaiseEvent LanguageChanged(CurrentLanguage)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -724,12 +860,13 @@ Public Class frmMainForm
     Private Sub mnuNederlands_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuNederlands.Click
         Try
             Dim BeforeImage As String = CStr(CurrentLanguage)
-
             mnuEnglish.Checked = False
-            Call SetLanguage(NEDERLANDS, Me)
+            CurrentLanguage = NEDERLANDS
+            Call ApplyLanguageToCurrentForm(Me)
+            gJournal.SaveImage("CurrentLanguage", BeforeImage, CStr(CurrentLanguage))
 
-            gJournaling.SaveImage("CurrentLanguage", BeforeImage, CStr(CurrentLanguage))
             RaiseEvent LanguageChanged(CurrentLanguage)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -744,6 +881,7 @@ Public Class frmMainForm
                 mnuMenuTop.Checked = False
                 mnuMenuBottom.Checked = True
             End If
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -752,11 +890,10 @@ Public Class frmMainForm
     Private Sub mnuMenuTop_Click(pSender As Object, pArgs As EventArgs) Handles mnuMenuTop.Click
         Try
             Dim BeforeImage As String = CStr(Me.MenuLocation)
-
             mnuMenuBottom.Checked = False
             Me.MenuLocation = DockStyle.Top
+            gJournal.SaveImage("MenuLocation", BeforeImage, CStr(Me.MenuLocation))
 
-            gJournaling.SaveImage("MenuLocation", BeforeImage, CStr(Me.MenuLocation))
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -765,36 +902,46 @@ Public Class frmMainForm
     Private Sub mnuMenuBottom_Click(pSender As Object, pArgs As EventArgs) Handles mnuMenuBottom.Click
         Try
             Dim BeforeImage As String = CStr(Me.MenuLocation)
-
             mnuMenuTop.Checked = False
             Me.MenuLocation = DockStyle.Bottom
+            gJournal.SaveImage("MenuLocation", BeforeImage, CStr(Me.MenuLocation))
 
-            gJournaling.SaveImage("MenuLocation", BeforeImage, CStr(Me.MenuLocation))
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
-    Private Sub mnuLessonsFolder_Click(pSender As Object, pArgs As EventArgs) Handles mnuLessonsFolder.Click
-        Try
-            Dim OldFolder As String = CurrentLessonsFolder
-            Dim NewFolder As String = ""
-            With dlgLessonsFolder
-                .RootFolder = Environment.SpecialFolder.Desktop
-                .SelectedPath = OldFolder
-                .ShowNewFolderButton = True
-                If .ShowDialog() <> DialogResult.OK Then
-                    Exit Sub
-                End If
-                NewFolder = .SelectedPath
-                If IO.Directory.Exists(NewFolder) = False Then
-                    IO.Directory.CreateDirectory(NewFolder)
-                End If
-                CurrentLessonsFolder = NewFolder
+    Private Sub mnuUseLastUsedFolder_CheckedChanged(pSender As Object, pArgs As EventArgs) Handles mnuUseLastUsedFolder.CheckedChanged
+        UseLastUsedLessonsFolder = mnuUseLastUsedFolder.Checked
+        If mnuUseLastUsedFolder.Checked = True Then
+            mnuChooseDefautlLocation.Enabled = False
+        Else
+            mnuChooseDefautlLocation.Enabled = True
+            'Let user choose new Default location
+            mnuChooseDefautlLocation.Select()
+            mnuSettings.ShowDropDown()
+            mnuLessonsFolder.ShowDropDown()
+        End If
+    End Sub
 
-                'Copy Lessons to new directory
-                CopyLessons(OldFolder, NewFolder)
-            End With
+    Private Sub mnuChooseDefautlLocation_Click(pSender As Object, pArgs As EventArgs) Handles mnuChooseDefautlLocation.Click
+        Try
+            mnuUseLastUsedFolder.Checked = False
+
+            Dim OldFolder As String = CurrentLessonsFolder
+            Using Dialog As New FolderBrowserDialog
+                Dialog.RootFolder = Environment.SpecialFolder.Desktop
+                Dialog.SelectedPath = OldFolder
+                Dialog.ShowNewFolderButton = True
+                If Dialog.ShowDialog() = DialogResult.OK Then
+                    If IO.Directory.Exists(Dialog.SelectedPath) = False Then
+                        IO.Directory.CreateDirectory(Dialog.SelectedPath)
+                    End If
+                    CurrentLessonsFolder = Dialog.SelectedPath
+                    CopyLessons(OldFolder, Dialog.SelectedPath)      'Copy Lessons to new directory
+                End If
+            End Using
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -818,12 +965,12 @@ Public Class frmMainForm
         Try
             Dim MenuItem As ToolStripItem
             mnuLoadLayout.DropDownItems.Clear()
-
             Dim Files As String() = IO.Directory.GetFiles(RootFolder() & "Settings")
             For Index As Integer = 0 To Files.Count - 1
                 MenuItem = mnuLoadLayout.DropDownItems.Add("Load " & IO.Path.GetFileName(Files(Index)).Replace(".xml", ""))
                 MenuItem.Tag = Files(Index)
             Next Index
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -831,9 +978,13 @@ Public Class frmMainForm
 
     Private Sub mnuLoadLayout_DropDownItemClicked(pSender As Object, pArgs As ToolStripItemClickedEventArgs) Handles mnuLoadLayout.DropDownItemClicked
         Try
-            Dim BeforeImage As String = SerializeLayout()
-            Me.DeSerializeLayout(pArgs.ClickedItem.Tag)
-            gJournaling.SaveImage("Layout", BeforeImage, SerializeLayout())
+            Dim BeforeImage As String = gLayoutSerializer.SerializeLayout()
+            Dim Index As String = PGNGame.HalfMoves.CurrentHalfMoveIndex
+            gLayoutSerializer.DeSerializeLayout(pArgs.ClickedItem.Tag)
+            RaiseEvent GameChanged(PGNGame)
+            PGNGame.HalfMoves.CurrentHalfMoveIndex = Index
+            gJournal.SaveImage("Layout", BeforeImage, gLayoutSerializer.SerializeLayout())
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -841,77 +992,93 @@ Public Class frmMainForm
 
     Private Sub mnuSaveLayout_Click(pSender As Object, pArgs As EventArgs) Handles mnuSaveLayout.Click
         Try
-            dlgSaveFile.CheckFileExists = False
-            dlgSaveFile.CheckPathExists = True
-            dlgSaveFile.InitialDirectory = RootFolder() & "Settings"
-            dlgSaveFile.RestoreDirectory = False
-            dlgSaveFile.DefaultExt = ".xml"
-            dlgSaveFile.Filter = "Layout Settings (*.xml)|*.xml"
-            dlgSaveFile.ShowDialog()
-            If dlgSaveFile.FileName = "" Then Exit Sub
-            SerializeLayout(dlgSaveFile.FileName)
+            Using Dialog As New SaveFileDialog
+                Dialog.CheckFileExists = False
+                Dialog.CheckPathExists = True
+                Dialog.InitialDirectory = RootFolder() & "Settings"
+                Dialog.RestoreDirectory = False
+                Dialog.DefaultExt = ".xml"
+                Dialog.Filter = "Layout Settings (*.xml)|*.xml"
+                If Dialog.ShowDialog() = DialogResult.OK Then
+                    gLayoutSerializer.SerializeLayout(Dialog.FileName)
+                End If
+            End Using
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub mnuHelpContents_Click(pSender As Object, pArgs As EventArgs) Handles mnuHelpContents.Click
-        Dim Position As Point = Me.PointToClient(MousePosition)
-        Dim HelpFile As String = Application.StartupPath & If(CurrentLanguage = NEDERLANDS, "\DemoBoard NL.chm", "\DemoBoard EN.chm")
-        If mnuFile.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "File Menu.htm")
-        ElseIf mnuGame.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "Game Menu.htm")
-        ElseIf mnuPreviousGame.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "Navigation.htm")
-        ElseIf mnuDiagram.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "Diagram Menu.htm")
-        ElseIf mnuGraphicals.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "Graphicals Menu.htm")
-        ElseIf mnuView.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "View Menu.htm")
-        ElseIf mnuSettings.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "Settings Menu.htm")
-        ElseIf mnuHelp.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "Help Menu.htm")
-        ElseIf mnuMenuStrip.Bounds.Contains(Position) Then
-            Help.ShowHelp(Me, HelpFile, "Menu Bar.htm")
-        ElseIf gfrmBoard.Visible = True _
+        Try
+            Dim Position As Point = Me.PointToClient(MousePosition)
+            Dim HelpFile As String = Application.StartupPath & If(CurrentLanguage = NEDERLANDS, "\DemoBoard NL.chm", "\DemoBoard EN.chm")
+            If mnuFile.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "File Menu.htm")
+            ElseIf mnuGame.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "Game Menu.htm")
+            ElseIf mnuPreviousGame.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "Navigation.htm")
+            ElseIf mnuDiagram.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "Diagram Menu.htm")
+            ElseIf mnuGraphicals.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "Graphicals Menu.htm")
+            ElseIf mnuView.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "View Menu.htm")
+            ElseIf mnuSettings.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "Settings Menu.htm")
+            ElseIf mnuHelp.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "Help Menu.htm")
+            ElseIf mnuMenuStrip.Bounds.Contains(Position) Then
+                Help.ShowHelp(Me, HelpFile, "Menu Bar.htm")
+            ElseIf gfrmBoard.Visible = True _
             And gfrmBoard.RectangleToScreen(gfrmBoard.ctlBoard.SetupToolbar.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Setup Toolbar.htm")
-        ElseIf gfrmBoard.Visible = True _
+                Help.ShowHelp(Me, HelpFile, "Setup Toolbar.htm")
+            ElseIf gfrmBoard.Visible = True _
             And gfrmBoard.RectangleToScreen(gfrmBoard.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Chess Board.htm")
-        ElseIf gfrmStockfish.Visible = True _
+                Help.ShowHelp(Me, HelpFile, "Chess Board.htm")
+            ElseIf gfrmStockfish.Visible = True _
             And gfrmStockfish.RectangleToScreen(gfrmStockfish.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Stockfish.htm")
-        ElseIf gfrmGameDetails.Visible = True _
+                Help.ShowHelp(Me, HelpFile, "Stockfish.htm")
+            ElseIf gfrmGameDetails.Visible = True _
             And gfrmGameDetails.RectangleToScreen(gfrmGameDetails.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Game Details.htm")
-        ElseIf gfrmMoveList.Visible = True _
+                Help.ShowHelp(Me, HelpFile, "Game Details.htm")
+            ElseIf gfrmMoveList.Visible = True _
             And gfrmMoveList.RectangleToScreen(gfrmMoveList.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Move List.htm")
-        ElseIf gfrmValidMoves.Visible = True _
+                Help.ShowHelp(Me, HelpFile, "Move List.htm")
+            ElseIf gfrmValidMoves.Visible = True _
             And gfrmValidMoves.RectangleToScreen(gfrmValidMoves.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Valid Moves.htm")
-        ElseIf gfrmTitleAndMemo.Visible = True _
+                Help.ShowHelp(Me, HelpFile, "Valid Moves.htm")
+            ElseIf gfrmTitleAndMemo.Visible = True _
             And gfrmTitleAndMemo.RectangleToScreen(gfrmTitleAndMemo.Bounds).Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Title and Memo.htm")
-        ElseIf Me.Bounds.Contains(MousePosition) Then
-            Help.ShowHelp(Me, HelpFile, "Main Form.htm")
-        Else
-            Help.ShowHelp(Me, HelpFile)
-        End If
+                Help.ShowHelp(Me, HelpFile, "Title and Memo.htm")
+            ElseIf Me.Bounds.Contains(MousePosition) Then
+                Help.ShowHelp(Me, HelpFile, "Main Form.htm")
+            Else
+                Help.ShowHelp(Me, HelpFile)
+            End If
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuHelpIndex_Click(pSender As Object, pArgs As EventArgs) Handles mnuHelpIndex.Click
-        Dim HelpFile As String = If(CurrentLanguage = NEDERLANDS, "DemoBoard EN.chm", "DemoBoard EN.chm")
-        Help.ShowHelpIndex(Me, HelpFile)
+        Try
+            Dim HelpFile As String = If(CurrentLanguage = NEDERLANDS, "DemoBoard EN.chm", "DemoBoard EN.chm")
+            Help.ShowHelpIndex(Me, HelpFile)
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub mnuAbout_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuAbout.Click
         Try
-            frmAbout.ShowDialog()
+            Using frmAbout = New frmAbout()
+                frmAbout.ShowDialog()
+            End Using
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -926,11 +1093,11 @@ Public Class frmMainForm
         gfrmStockfish = New frmStockfish(Me)
         gfrmMoveList = New frmMoveList(Me)
         gfrmValidMoves = New frmValidMoves(Me)
-        gfrmGameDetails = New frmGameDetails(Me)
+        gfrmGameDetails = New frmGameDetails(Me, PGNGame)
         gfrmTitleAndMemo = New frmTitleAndMemo(Me)
     End Sub
 
-    Private Sub DisconnectSubForms()
+    Public Sub DisconnectSubForms()
         gfrmBoard.Parent = Nothing
         gfrmStockfish.Parent = Nothing
         gfrmMoveList.Parent = Nothing
@@ -941,28 +1108,36 @@ Public Class frmMainForm
 
     Private Sub frmMainForm_Load(pSender As Object, pArgs As EventArgs) Handles Me.Load
         Try
-            CurrentLanguage = GetLanguage()
-            SetLanguage(CurrentLanguage, Me)
+            Application.UseWaitCursor = True
+            CurrentLanguage = LoadLanguage()
+            Call ApplyLanguageToCurrentForm(Me)
+
+            'Set choice for 'Use last Used Folder' from Settings
+            mnuUseLastUsedFolder.Checked = UseLastUsedLessonsFolder
 
             'For opening by doubleclicking file with associated extension
             Dim Arguments() As String = Environment.GetCommandLineArgs()
             If Arguments.Count > 1 Then
-                Cursor = Cursors.WaitCursor
-                Application.DoEvents()
-                If Arguments(1) Like "*.cps" Then
-                    Dim CPSFile As New CPSFile(Arguments(1))
-                    Me.Text = CPSFile.FileName
-                    Me.PGNFile = New PGNFile() With {.PGNGames = CPSFile.ConvertToPGN()}
-                    If Me.PGNFile.PGNGames.Count > 0 Then
-                        Me.PGNGame = Me.PGNFile.PGNGames(0)
-                    End If
-                Else
-                    Me.PGNFile = New PGNFile(Arguments(1))
-                    Me.Text = Me.PGNFile.FileName
-                End If
-                Cursor = Cursors.Default
+                OpenFile(Arguments(1))
+
             Else
-                Me.PGNFile = New PGNFile()
+                'Show Recent Files Form 
+                Using frmRecentFiles = New frmRecentFiles()
+                    Application.UseWaitCursor = False
+                    frmRecentFiles.ShowDialog(Me, gRecentFiles)
+                    Application.UseWaitCursor = True
+                    If frmRecentFiles.NewGame = True Then
+                        mnuNew_Click(Nothing, Nothing)
+                    ElseIf frmRecentFiles.OpenGame = True Then
+                        mnuOpen_Click(Nothing, Nothing)
+                    ElseIf frmRecentFiles.SelectedFile <> "" Then
+                        OpenFile(frmRecentFiles.SelectedFile)
+                    Else
+                        'Probably closed frmRecentFiles
+                        mnuNew_Click(Nothing, Nothing)
+                    End If
+                    frmRecentFiles.Close()
+                End Using
             End If
 
             Call InitSubForms()
@@ -970,7 +1145,9 @@ Public Class frmMainForm
             'Load Default.xml settings
             Dim DefaultFile As String = RootFolder() & "Settings\Default.xml"
             If IO.File.Exists(DefaultFile) Then
-                DeSerializeLayout(DefaultFile)
+                Dim Index As String = PGNGame.HalfMoves.CurrentHalfMoveIndex
+                gLayoutSerializer.DeSerializeLayout(DefaultFile)
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = Index
             Else
                 gfrmMoveList.TopLevel = False
                 gfrmMoveList.Visible = True : gfrmMoveList.FormBorderStyle = FormBorderStyle.None
@@ -987,11 +1164,9 @@ Public Class frmMainForm
                 gfrmGameDetails.Dock = DockStyle.Fill
                 ctlTabControl.AddTabPage(gfrmGameDetails)
             End If
+            Application.UseWaitCursor = False
 
-            'Show Recent Files
-            Dim frmRecentFiles = New frmRecentFiles
-            frmRecentFiles.ShowDialog(Me)
-            frmRecentFiles = Nothing
+            RaiseEvent GameChanged(PGNGame)
 
         Catch pException As Exception
             Cursor = Cursors.Default
@@ -999,7 +1174,7 @@ Public Class frmMainForm
         End Try
     End Sub
 
-    Private Sub frmMainForm_SizeChanged(pSender As Object, pArgs As EventArgs) Handles Me.SizeChanged
+    Public Sub frmMainForm_SizeChanged(pSender As Object, pArgs As EventArgs) Handles Me.SizeChanged
         If Me.MenuLocation = DockStyle.Top Then
             pnlMainPanel.Top = mnuMenuStrip.Height + 4
         Else
@@ -1009,46 +1184,22 @@ Public Class frmMainForm
                             - If(mnuStatusBar.Checked, stsStatusStrip.Height, 0) - 7
     End Sub
 
+    ''' <summary>Catches keys entered</summary>
     Protected Overrides Function ProcessCmdKey(ByRef pMsg As Message, pKeyData As Keys) As Boolean
         Select Case pKeyData
             Case Keys.Left
-                mnuPreviousGame_Click(Nothing, Nothing)
+                If gfrmMoveList.Visible = False Then
+                    mnuPreviousGame_Click(Nothing, Nothing)
+                End If
             Case Keys.Right
-                mnuNextGame_Click(Nothing, Nothing)
+                If gfrmMoveList.Visible = False Then
+                    mnuNextGame_Click(Nothing, Nothing)
+                End If
             Case Else
                 RaiseEvent BoardKeyDown(pMsg, pKeyData)
         End Select
         Return MyBase.ProcessCmdKey(pMsg, pKeyData)
     End Function
-
-    Private Sub frmMainForm_KeyDown(pSender As Object, pArgs As KeyEventArgs) Handles Me.KeyDown
-        pArgs.Handled = False 'To forward the event also to other controls
-    End Sub
-
-    Private Sub gfrmMoveList_PositionChanged(pBeforeHalfMove As PGNHalfMove, pAfterHalfMove As PGNHalfMove) Handles gfrmMoveList.PositionChanged
-        Try
-            Dim BeforeImage As String = "", AfterImage As String = ""
-            If pBeforeHalfMove IsNot Nothing Then
-                BeforeImage = CStr(pBeforeHalfMove.Index)
-            End If
-            If pAfterHalfMove IsNot Nothing Then
-                AfterImage = CStr(pAfterHalfMove.Index)
-            End If
-            gJournaling.SaveImage("HalfMove.Index", BeforeImage, AfterImage)
-
-            RaiseEvent MoveListPositionChanged(Me.PGNGame, pAfterHalfMove)
-        Catch pException As Exception
-            frmErrorMessageBox.Show(pException)
-        End Try
-    End Sub
-
-    Private Sub gfrmMoveList_HalfMoveChanged(pBeforeImage As String, pAfterImage As String) Handles gfrmMoveList.HalfMoveChanged
-        gJournaling.SaveImage("HalfMove.Changed", gfrmMoveList.CurrentHalfMoveIndex, pBeforeImage, pAfterImage)
-    End Sub
-
-    Private Sub gfrmMoveList_MoveListChanged(pBeforeImage As String, pAfterImage As String) Handles gfrmMoveList.MoveListChanged
-        gJournaling.SaveImage("MoveList.Changed", pBeforeImage, pAfterImage)
-    End Sub
 
     Private Sub frmMainForm_MouseMove(pSender As Object, pArgs As MouseEventArgs) Handles Me.MouseMove
         'Dragging Panel
@@ -1066,6 +1217,32 @@ Public Class frmMainForm
         StopDragging()
     End Sub
 
+    Private Sub frmMainForm_Closing(pSender As Object, pArgs As CancelEventArgs) Handles Me.Closing
+        If gJournal.PGNFileModified() = True Then
+            If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
+                mnuSave_Click(Nothing, Nothing)
+            End If
+        End If
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        gfrmBoard = Nothing
+        gfrmStockfish = Nothing
+        gfrmMoveList = Nothing
+        gfrmValidMoves = Nothing
+        gfrmGameDetails = Nothing
+        gfrmTitleAndMemo = Nothing
+        gfrmDockCross = Nothing
+        gfrmTrainingQuestion = Nothing
+
+        gLayoutSerializer = Nothing
+        gJournal = Nothing
+        gPGNFile = Nothing
+        gPGNGame = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
 #End Region
 
 #Region "Events from Subforms"
@@ -1076,40 +1253,44 @@ Public Class frmMainForm
     End Sub
 
     Private Sub gfrmBoard_ChessPieceMoved(pPiece As ChessPiece, pFromFieldName As String, pToFieldName As String,
-                                       pChessBoard As ChessBoard, pCaptured As Boolean, pPromotionPiece As ChessPiece, pFEN As String, pFENBeforeDragging As String) Handles gfrmBoard.ChessPieceMoved
+                                          pChessBoard As ChessBoard, pCaptured As Boolean, pPromotionPiece As ChessPiece,
+                                          pFEN As String, pFENBeforeDragging As String) Handles gfrmBoard.ChessPieceMoved
         Dim BeforeImage As New XElement("Before"), AfterImage As New XElement("After")
         Dim HalfMove As PGNHalfMove, MoveNr As Long
 
         lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Klaar", "Ready")
 
         If Me.Mode = TRAINING Then
-            If gfrmTrainingQuestion Is Nothing Then Exit Sub
-            gfrmTrainingQuestion.CheckAnswer(pPiece.MoveName, pFromFieldName, pToFieldName, If(pPromotionPiece Is Nothing, "", pPromotionPiece.MoveName))
-            Exit Sub
+            If gfrmTrainingQuestion IsNot Nothing Then
+                gfrmTrainingQuestion.CheckAnswer(pPiece.MoveName, pFromFieldName, pToFieldName, If(pPromotionPiece Is Nothing, "", pPromotionPiece.MoveName))
+                Exit Sub
+            End If
         End If
 
         BeforeImage.Add(New XElement("FEN", pFENBeforeDragging))
         BeforeImage.Add(New XElement("XPGN", Me.PGNGame.HalfMoves.XPGNString))
-        BeforeImage.Add(New XElement("Index", gfrmMoveList.CurrentHalfMoveIndex))
+        BeforeImage.Add(New XElement("Index", PGNGame.HalfMoves.CurrentHalfMoveIndex))
 
         If Me.Mode = SETUP Then
             Me.PGNGame.Tags.Add("FEN", pFEN)
             Me.PGNGame.HalfMoves.Clear()
+
             AfterImage.Add(New XElement("FEN", pFEN))
             AfterImage.Add(New XElement("XPGN", Me.PGNGame.HalfMoves.XPGNString))
             AfterImage.Add(New XElement("Index", ""))
-            gJournaling.SaveImage("ChessPiece.Moved", BeforeImage.ToString, AfterImage.ToString)
+            gJournal.SaveImage("ChessPiece.Moved", BeforeImage.ToString, AfterImage.ToString)
+
             RaiseEvent FENChanged(pFEN) 'To Update frmValidMoves
             Exit Sub
         End If
 
-        If gfrmMoveList.CurrentHalfMove Is Nothing Then
+        If PGNGame.HalfMoves.CurrentHalfMove Is Nothing Then
             MoveNr = Me.PGNGame.FirstMoveNr()
         Else
             If pPiece.Color = BLACK Then
-                MoveNr = gfrmMoveList.CurrentHalfMove.MoveNr
+                MoveNr = PGNGame.HalfMoves.CurrentHalfMove.MoveNr
             Else
-                MoveNr = gfrmMoveList.CurrentHalfMove.MoveNr + 1
+                MoveNr = PGNGame.HalfMoves.CurrentHalfMove.MoveNr + 1
             End If
         End If
 
@@ -1117,31 +1298,24 @@ Public Class frmMainForm
                                    MoveNr, pPiece, pFromFieldName, pToFieldName,
                                    pCaptured, pPromotionPiece, pFENBeforeDragging)
 
-        If Me.PGNGame.HalfMoves.Insert(HalfMove, gfrmMoveList.CurrentHalfMove) = False Then
+        If Me.PGNGame.HalfMoves.Insert(HalfMove, PGNGame.HalfMoves.CurrentHalfMove) = False Then
             'HalfMove Not Inserted; Restore ChessBoard  
             gfrmBoard.FEN = pFENBeforeDragging
             Exit Sub
         End If
 
-        gfrmMoveList.CurrentHalfMove = HalfMove
-        RaiseEvent MoveListPositionChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+        PGNGame.HalfMoves.CurrentHalfMoveIndex = HalfMove.Index
+        RaiseEvent GameChanged(PGNGame) 'To Update frmMoveList and frmValidMoves
 
         AfterImage.Add(New XElement("FEN", pFEN))
         AfterImage.Add(New XElement("XPGN", Me.PGNGame.HalfMoves.XPGNString))
         AfterImage.Add(New XElement("Index", Str(HalfMove.Index)))
-        gJournaling.SaveImage("ChessPiece.Moved", BeforeImage.ToString, AfterImage.ToString)
+        gJournal.SaveImage("ChessPiece.Moved", BeforeImage.ToString, AfterImage.ToString)
 
         'Update Statusbar with Check, Checkmate or Stalemate
         Dim PossibleMoves As List(Of BoardMove)
         If pChessBoard.InCheck(pChessBoard.ActiveColor) Then
             PossibleMoves = pChessBoard.AllPossibleMoves(pChessBoard.ActiveColor)
-            'While PossibleMoves.Count > 0 'Remove castling moves
-            '    If PossibleMoves(0).Castle = True Then
-            '        PossibleMoves.RemoveAt(0)
-            '    Else
-            '        Exit While
-            '    End If
-            'End While
             If PossibleMoves.Count = 0 Then
                 lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Mat !", "Checkmate !")
             Else
@@ -1154,50 +1328,92 @@ Public Class frmMainForm
             End If
         End If
 
-        RaiseEvent ChessPieceMoved(pPiece, pFromFieldName, pToFieldName, pChessBoard, pCaptured, pPromotionPiece)
+        RaiseEvent ChessPieceMoved(pPiece, pFromFieldName, pToFieldName, pChessBoard, pCaptured, pPromotionPiece, HalfMove)
     End Sub
 
     Private Sub gfrmBoard_FENChanged(pFEN As String) Handles gfrmBoard.FENChanged
-        Dim KeyValue As String, BeforeImage As New XElement("Before"), AfterImage As New XElement("After")
         lblStatusText.Text = If(CurrentLanguage = NEDERLANDS, "Klaar", "Ready")
-        If Me.Mode <> ChessMode.SETUP Then
+        If Me.Mode <> SETUP Then
             If Me.PGNGame.HalfMoves.Count > 0 Then
                 If MsgBox(MessageText("UpdateFEN"), MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo) <> MsgBoxResult.Yes Then
+                    gfrmBoard.FEN = PGNGame.FEN(PGNGame.HalfMoves.CurrentHalfMove)
                     Exit Sub
                 End If
             End If
         End If
-        KeyValue = gfrmMoveList.CurrentHalfMoveIndex
-        BeforeImage.Add(New XElement("FEN", Me.PGNGame.Tags.GetPGNTag("FEN")))
+
+        Dim KeyValue As String, BeforeImage As New XElement("Before"), AfterImage As New XElement("After")
+        KeyValue = PGNGame.HalfMoves.CurrentHalfMoveIndex
+        BeforeImage.Add(New XElement("FEN", Me.PGNGame.Tags("FEN").Value))
         BeforeImage.Add(New XElement("XPGN", Me.PGNGame.HalfMoves.XPGNString))
+
         Me.PGNGame.Tags.Add("FEN", pFEN)
         Me.PGNGame.HalfMoves.Clear()
+
         AfterImage.Add(New XElement("FEN", pFEN))
         AfterImage.Add(New XElement("XPGN", ""))
-        gJournaling.SaveImage("FEN", KeyValue, BeforeImage.ToString, AfterImage.ToString)
-        RaiseEvent FENChanged(pFEN) 'To Update frmValidMoves
+        gJournal.SaveImage("FEN", KeyValue, BeforeImage.ToString, AfterImage.ToString)
+
+        RaiseEvent FENChanged(pFEN) 'To Update frmMoveList and frmValidMoves
     End Sub
 
     Private Sub gfrmBoard_FieldMarkerListChanged(pHalfMove As PGNHalfMove, pMarkerString As String) Handles gfrmBoard.FieldMarkerListChanged
         Dim BeforeImage As String = Me.PGNGame.HalfMoves.MarkerListString(pHalfMove)
         Me.PGNGame.HalfMoves.MarkerListString(pHalfMove) = pMarkerString
-        gJournaling.SaveImage("FieldMarkerList", If(pHalfMove Is Nothing, "", CStr(pHalfMove.Index)), BeforeImage, pMarkerString)
+        gJournal.SaveImage("FieldMarkerList", If(pHalfMove Is Nothing, "", CStr(pHalfMove.Index)), BeforeImage, pMarkerString)
+
+        RaiseEvent HalfMoveChanged(PGNGame, pHalfMove)
     End Sub
 
     Private Sub gfrmBoard_ArrowListChanged(pHalfMove As PGNHalfMove, pArrowString As String) Handles gfrmBoard.ArrowListChanged
         Dim BeforeImage As String = Me.PGNGame.HalfMoves.ArrowListString(pHalfMove)
         Me.PGNGame.HalfMoves.ArrowListString(pHalfMove) = pArrowString
-        gJournaling.SaveImage("ArrowList", If(pHalfMove Is Nothing, "", CStr(pHalfMove.Index)), BeforeImage, pArrowString)
+        gJournal.SaveImage("ArrowList", If(pHalfMove Is Nothing, "", CStr(pHalfMove.Index)), BeforeImage, pArrowString)
+
+        RaiseEvent HalfMoveChanged(PGNGame, pHalfMove)
     End Sub
 
     Private Sub gfrmBoard_TextListChanged(pHalfMove As PGNHalfMove, pTextString As String) Handles gfrmBoard.TextListChanged
         Dim BeforeImage As String = Me.PGNGame.HalfMoves.TextListString(pHalfMove)
         Me.PGNGame.HalfMoves.TextListString(pHalfMove) = pTextString
-        gJournaling.SaveImage("TextList", If(pHalfMove Is Nothing, "", CStr(pHalfMove.Index)), BeforeImage, pTextString)
+        gJournal.SaveImage("TextList", If(pHalfMove Is Nothing, "", CStr(pHalfMove.Index)), BeforeImage, pTextString)
+
+        RaiseEvent HalfMoveChanged(PGNGame, pHalfMove)
     End Sub
 
     Private Sub gfrmBoard_MovePlayed(pHalfMove As PGNHalfMove) Handles gfrmBoard.MovePlayed
         RaiseEvent MovePlayed(pHalfMove)
+    End Sub
+
+    Private Sub gfrmBoard_BoardShown(pFEN As String) Handles gfrmBoard.BoardShown
+        RaiseEvent BoardShown(pFEN)
+    End Sub
+
+    Private Sub gfrmMoveList_PositionChanged(pBeforeHalfMove As PGNHalfMove, pAfterHalfMove As PGNHalfMove) Handles gfrmMoveList.PositionChanged
+        Dim BeforeImage As String = "", AfterImage As String = ""
+        If pBeforeHalfMove IsNot Nothing Then
+            BeforeImage = CStr(pBeforeHalfMove.Index)
+        End If
+        If pAfterHalfMove IsNot Nothing Then
+            AfterImage = CStr(pAfterHalfMove.Index)
+        End If
+        gJournal.SaveImage("HalfMove.Index", BeforeImage, AfterImage)
+
+        PGNGame.HalfMoves.CurrentHalfMoveIndex = If(pAfterHalfMove Is Nothing, "", pAfterHalfMove.Index)
+
+        RaiseEvent MoveListPositionChanged(Me.PGNGame, pAfterHalfMove)
+    End Sub
+
+    Private Sub gfrmMoveList_HalfMoveChanged(pHalfMove As PGNHalfMove, pBeforeImage As String, pAfterImage As String) Handles gfrmMoveList.HalfMoveChanged
+        'Graficals at the CommentAfter might be changed too
+
+        gJournal.SaveImage("HalfMove.Changed", PGNGame.HalfMoves.CurrentHalfMoveIndex, pBeforeImage, pAfterImage)
+
+        RaiseEvent HalfMoveChanged(PGNGame, pHalfMove)
+    End Sub
+
+    Private Sub gfrmMoveList_MoveListChanged(pBeforeImage As String, pAfterImage As String) Handles gfrmMoveList.MoveListChanged
+        gJournal.SaveImage("MoveList.Changed", pBeforeImage, pAfterImage)
     End Sub
 
     Private Sub gfrmMoveList_TrainingQuestionFound(pHalfMove As PGNHalfMove, pNextMoves As List(Of PGNHalfMove)) Handles gfrmMoveList.TrainingQuestionFound
@@ -1217,12 +1433,15 @@ Public Class frmMainForm
         RaiseEvent ValidMovesSelectionChanged(pSender, pMove)
     End Sub
 
+    Private Sub gfrmValidMoves_ValidMovesDoubleClick(pSender As Object, pMove As BoardMove) Handles gfrmValidMoves.ValidMovesDoubleClick
+        gfrmBoard.PerformMove(pMove)
+    End Sub
+
 #End Region
 
 #Region "Training Question"
     Private Sub StartTraining(pTrainingHalfMove As PGNHalfMove)
         RaiseEvent GameChanged(Me.PGNGame)
-        RaiseEvent MoveListPositionChanged(Me.PGNGame, Nothing)
 
         Me.PlayMoves(Nothing, pTrainingHalfMove.PreviousHalfMove)
         Me.AskQuestion(pTrainingHalfMove)
@@ -1241,10 +1460,10 @@ Public Class frmMainForm
     End Sub
 
     Private Sub AskQuestion(pTrainingHalfMove As PGNHalfMove)
-        'gdgfdgdf    gfrmMoveList.ctlMoveList.Visible = False
         'Make sure the right position is visible at the board
         RaiseEvent MoveListPositionChanged(Me.PGNGame, pTrainingHalfMove?.PreviousHalfMove)
         Application.DoEvents()
+
         If gfrmTrainingQuestion Is Nothing Then
             gfrmTrainingQuestion = New frmTrainingQuestion
         End If
@@ -1273,7 +1492,6 @@ Public Class frmMainForm
         Me.PlayMoves(pIncorrectSubVariant.NextHalfMoves(0))
         Wait(3000)
         RaiseEvent MoveListPositionChanged(Me.PGNGame, pIncorrectSubVariant)
-        Application.DoEvents()
     End Sub
 
     Private Sub gfrmTrainingQuestion_SolutionPressed(pTrainingHalfMove As PGNHalfMove, pCorrectAnswer As PGNTrainingAnswer) Handles gfrmTrainingQuestion.SolutionPressed
@@ -1294,9 +1512,10 @@ Public Class frmMainForm
 
     'Variables =====================================
 
-    Public Event ForwardedMouseUp(pDragPanel As Panel, pDockStyle As DockStyle, pMouseLocation As Point)
-    Public Event ForwardedMousePanelLeave(pMouseLocation As Point)
-    Public gTabControlWithDockingCross As ctlTabControl
+    Public Event PanelMouseUp(pDragPanel As Panel, pDockStyle As DockStyle, pMouseLocation As Point)
+    Public Event PanelMouseLeave(pMouseLocation As Point)
+    Public Property TabControlWithDockingCross As ctlTabControl
+
     Private gPanelCloseIconLocation As New Point(-18, 5)
     Private DragPanelOffset As Point = Nothing
 
@@ -1354,9 +1573,10 @@ Public Class frmMainForm
             RaiseEvent RemoveForm(gfrmStockfish)
             Exit Sub
         End If
+
         If gfrmMoveList.Parent Is Nothing _
-            OrElse gfrmMoveList.Parent.Parent Is Nothing _
-            OrElse gfrmMoveList.Parent.Parent.Parent Is Nothing Then
+        OrElse gfrmMoveList.Parent.Parent Is Nothing _
+        OrElse gfrmMoveList.Parent.Parent.Parent Is Nothing Then
             'Movelist parent Tabcontrol not found
             'Insert left in MainPanel; new split with Board on the Left and rest on the right 
             InsertPanel(gfrmStockfish, Orientation.Horizontal, 2)
@@ -1365,7 +1585,7 @@ Public Class frmMainForm
 
         'Insert at the bottom of frmMoveList
         Dim TabControl As ctlTabControl = gfrmMoveList.Parent.Parent.Parent
-        Dim ctlSplitContainer = New ctlSplitContainer(Orientation.Horizontal)
+        Dim ctlSplitContainer As New ctlSplitContainer(Orientation.Horizontal)
         TabControl.Parent.Controls.Add(ctlSplitContainer)
 
         Dim NewTabControl As New ctlTabControl()
@@ -1378,8 +1598,6 @@ Public Class frmMainForm
         NewTabControl.Select()
     End Sub
 
-    'Public Methods and Functions ====================================
-
     Public Sub AddHandlers(pctlTabControl As ctlTabControl)
         AddHandler pctlTabControl.TabPageStartDragging, AddressOf ctlTabControl_TabPageStartDragging
         AddHandler pctlTabControl.TabPageDragging, AddressOf ctlTabControl_TabPageDragging
@@ -1387,6 +1605,8 @@ Public Class frmMainForm
         AddHandler pctlTabControl.TabPageDropped, AddressOf ctlTabControl_TabPageDropped
         AddHandler pctlTabControl.TabPageRemoved, AddressOf ctlTabControl_TabPageRemoved
         AddHandler pctlTabControl.MouseEnter, AddressOf ctlTabControl_MouseEnter
+        AddHandler pctlTabControl.TabPageChanged, AddressOf ctlTabControl_TabPageChanged
+        AddHandler pctlTabControl.TabPageDisposed, AddressOf ctlTabControl_TabPageDisposed
     End Sub
 
     Public Sub RemoveHandlers(pctlTabControl As ctlTabControl)
@@ -1396,20 +1616,21 @@ Public Class frmMainForm
         RemoveHandler pctlTabControl.TabPageDropped, AddressOf ctlTabControl_TabPageDropped
         RemoveHandler pctlTabControl.TabPageRemoved, AddressOf ctlTabControl_TabPageRemoved
         RemoveHandler pctlTabControl.MouseEnter, AddressOf ctlTabControl_MouseEnter
+        RemoveHandler pctlTabControl.TabPageChanged, AddressOf ctlTabControl_TabPageChanged
+        RemoveHandler pctlTabControl.TabPageDisposed, AddressOf ctlTabControl_TabPageDisposed
     End Sub
-    'Private Methods and Functions =======================
 
-    Public Sub InsertPanel(pForm As Form, pOrientation As Orientation, pPanelNumber As Integer)
+    Private Sub InsertPanel(pForm As Form, pOrientation As Orientation, pPanelNumber As Integer)
         Dim MainPanelControl = GetMainPanelControl()
         If MainPanelControl Is Nothing Then
             Exit Sub
         End If
 
         Me.pnlMainPanel.Controls.Clear()
-        Dim ctlSplitContainer = New ctlSplitContainer(pOrientation)
+        Dim ctlSplitContainer As New ctlSplitContainer(pOrientation)
         Me.pnlMainPanel.Controls.Add(ctlSplitContainer)
 
-        Dim NewTabControl = New ctlTabControl()
+        Dim NewTabControl As New ctlTabControl()
         AddHandlers(NewTabControl)
         NewTabControl.AddTabPage(pForm)
         If pPanelNumber = 1 Then
@@ -1441,11 +1662,10 @@ Public Class frmMainForm
         End Select
     End Sub
 
-    Dim BeforeLayout As String = ""
+    Dim gBeforeLayout As String = ""
 
     Private Sub ctlTabControl_TabPageStartDragging(pctlTabControl As ctlTabControl, pMouseLocation As Point) Handles ctlTabControl.TabPageStartDragging
-        BeforeLayout = SerializeLayout()
-        'Debug.Print("Start Dragging")
+        gBeforeLayout = gLayoutSerializer.SerializeLayout()
         StartDragging(pctlTabControl, pMouseLocation)
     End Sub
 
@@ -1459,19 +1679,27 @@ Public Class frmMainForm
         CheckViewMenu(pForm, True)
         StopDragging()
 
-        Dim AfterLayout As String = SerializeLayout()
-        gJournaling.SaveImage("TabPage.Dropped", BeforeLayout, AfterLayout)
+        Dim AfterLayout As String = gLayoutSerializer.SerializeLayout()
+        gJournal.SaveImage("TabPage.Dropped", gBeforeLayout, AfterLayout)
     End Sub
 
     Private Sub ctlTabControl_TabPageRemoved(pForm As Form) Handles ctlTabControl.TabPageRemoved
         CheckViewMenu(pForm, False)
     End Sub
 
+    Private Sub ctlTabControl_TabPageDisposed(pctlTabControl As Object) Handles ctlTabControl.TabPageDisposed
+        RemoveHandlers(pctlTabControl)
+    End Sub
+
     Private Sub ctlTabControl_MouseEnter(pctlTabControl As Object) Handles ctlTabControl.MouseEnter
         If pnlDragPanel.Visible = True Then
-            gTabControlWithDockingCross = pctlTabControl
+            TabControlWithDockingCross = pctlTabControl
             gfrmDockCross.CenterForm(pctlTabControl)
         End If
+    End Sub
+
+    Private Sub ctlTabControl_TabPageChanged(pBeforeImage As String, pAfterImage As String) Handles ctlTabControl.TabPageChanged
+        gJournal.SaveImage("Layout", pBeforeImage, gLayoutSerializer.SerializeLayout())
     End Sub
 
     'This MouseUp event is generated by the original ctlTabControl where the MouseDown took place
@@ -1484,60 +1712,58 @@ Public Class frmMainForm
             Select Case gfrmDockCross.DockStyle
                 Case DockStyle.Left
                     ctlSplitContainer = New ctlSplitContainer(Orientation.Vertical)
-                    gTabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
+                    TabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
                     NewTabControl = New ctlTabControl()
                     AddHandlers(NewTabControl)
                     NewTabControl.AddTabPage(Me.pnlDragPanel)
                     ctlSplitContainer.Panel1 = NewTabControl
-                    ctlSplitContainer.Panel2 = gTabControlWithDockingCross
+                    ctlSplitContainer.Panel2 = TabControlWithDockingCross
                     NewTabControl.Select()
                     StopDragging()
                 Case DockStyle.Right
                     ctlSplitContainer = New ctlSplitContainer(Orientation.Vertical)
-                    gTabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
+                    TabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
                     NewTabControl = New ctlTabControl()
                     AddHandlers(NewTabControl)
                     NewTabControl.AddTabPage(Me.pnlDragPanel)
-                    ctlSplitContainer.Panel1 = gTabControlWithDockingCross
+                    ctlSplitContainer.Panel1 = TabControlWithDockingCross
                     ctlSplitContainer.Panel2 = NewTabControl
                     NewTabControl.Select()
                     StopDragging()
                 Case DockStyle.Top
                     ctlSplitContainer = New ctlSplitContainer(Orientation.Horizontal)
-                    gTabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
+                    TabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
                     NewTabControl = New ctlTabControl()
                     AddHandlers(NewTabControl)
                     NewTabControl.AddTabPage(Me.pnlDragPanel)
                     ctlSplitContainer.Panel1 = NewTabControl
-                    ctlSplitContainer.Panel2 = gTabControlWithDockingCross
+                    ctlSplitContainer.Panel2 = TabControlWithDockingCross
                     NewTabControl.Select()
                     StopDragging()
                 Case DockStyle.Bottom
                     ctlSplitContainer = New ctlSplitContainer(Orientation.Horizontal)
-                    gTabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
+                    TabControlWithDockingCross.Parent.Controls.Add(ctlSplitContainer)
                     NewTabControl = New ctlTabControl()
                     AddHandlers(NewTabControl)
                     NewTabControl.AddTabPage(Me.pnlDragPanel)
-                    ctlSplitContainer.Panel1 = gTabControlWithDockingCross
+                    ctlSplitContainer.Panel1 = TabControlWithDockingCross
                     ctlSplitContainer.Panel2 = NewTabControl
                     NewTabControl.Select()
                     StopDragging()
                 Case DockStyle.Fill
-                    gTabControlWithDockingCross.AddTabPage(Me.pnlDragPanel) 'Drop Back at previous TabControl
+                    TabControlWithDockingCross.AddTabPage(Me.pnlDragPanel) 'Drop Back at previous TabControl
                     StopDragging()
                 Case Else
                     'So Dropping at one of the ctlTabControls listening to this event
-                    RaiseEvent ForwardedMouseUp(pnlDragPanel, gfrmDockCross.DockStyle, pMouseLocation)
+                    RaiseEvent PanelMouseUp(pnlDragPanel, gfrmDockCross.DockStyle, pMouseLocation)
             End Select
             StopDragging()
             Application.DoEvents()
 
-            Dim AfterLayout As String = SerializeLayout()
-            gJournaling.SaveImage("Layout", BeforeLayout, AfterLayout)
+            Dim AfterLayout As String = gLayoutSerializer.SerializeLayout()
+            gJournal.SaveImage("Layout", gBeforeLayout, AfterLayout)
         End If
     End Sub
-
-    'Private Subs And Functions =================== 
 
     Private Sub StartDragging(pctlTabControl As ctlTabControl, pMouseLocation As Point)
         Try
@@ -1546,7 +1772,7 @@ Public Class frmMainForm
                 gfrmDockCross.CenterForm(pctlTabControl)
             End If
 
-            gTabControlWithDockingCross = pctlTabControl
+            TabControlWithDockingCross = pctlTabControl
 
             Dim Form As Form = pctlTabControl.SubForm(pctlTabControl.SelectedIndex)
             CheckViewMenu(Form, False)
@@ -1556,8 +1782,6 @@ Public Class frmMainForm
             DragPanelOffset = New Point(pctlTabControl.Parent.Location.X - pnlDragPanel.Location.X, pctlTabControl.Parent.Location.Y + TabRectangle.Height - pnlDragPanel.Location.Y)
             pnlDragPanel.Location.Offset(DragPanelOffset)
 
-            'Debug.Print(pctlTabControl.SelectedTab.Size.Width)
-            'Debug.Print(pctlTabControl.SelectedTab.Size.Height)
             pnlDragPanel.Size = New Point(pctlTabControl.SelectedTab.Size.Width * 0.7, pctlTabControl.SelectedTab.Size.Height * 0.7)
             pnlDragPanel.BringToFront()
             pnlDragPanel.Visible = True
@@ -1572,19 +1796,19 @@ Public Class frmMainForm
             pnlDragPanel.Location = Me.PointToClient(pMouseLocation)
             pnlDragPanel.Location.Offset(DragPanelOffset)
 
-            If gTabControlWithDockingCross Is Nothing Then
+            If TabControlWithDockingCross Is Nothing Then
                 'Determine where position belongs to...
-                RaiseEvent ForwardedMousePanelLeave(pMouseLocation)
-            ElseIf gTabControlWithDockingCross.IsDisposed() = True Then
+                RaiseEvent PanelMouseLeave(pMouseLocation)
+            ElseIf TabControlWithDockingCross.IsDisposed() = True Then
                 'Determine where position belongs to...
-                RaiseEvent ForwardedMousePanelLeave(pMouseLocation)
+                RaiseEvent PanelMouseLeave(pMouseLocation)
             Else
-                Dim DockingCrossTabControlScreenRectangle = gTabControlWithDockingCross.RectangleToScreen(gTabControlWithDockingCross.DisplayRectangle)
+                Dim DockingCrossTabControlScreenRectangle = TabControlWithDockingCross.RectangleToScreen(TabControlWithDockingCross.DisplayRectangle)
                 If DockingCrossTabControlScreenRectangle.Contains(pMouseLocation) Then
                 Else
-                    gTabControlWithDockingCross = Nothing
+                    TabControlWithDockingCross = Nothing
                     'Determine where position belongs to...
-                    RaiseEvent ForwardedMousePanelLeave(pMouseLocation)
+                    RaiseEvent PanelMouseLeave(pMouseLocation)
                 End If
             End If
             gfrmDockCross.UpdateAppearance(gfrmDockCross.PointToClient(Cursor.Position))
@@ -1601,107 +1825,16 @@ Public Class frmMainForm
                 gfrmDockCross = Nothing
             End If
 
-            gTabControlWithDockingCross = Nothing
+            TabControlWithDockingCross = Nothing
             Me.Activate()
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
-#End Region
-
-#Region "Serializing and Deserializing Panel Layout"
-
-    Public Function SerializeLayout() As String
-        Dim Writer As New IO.StringWriter()
-        SerializeLayout(Writer)
-        Return Writer.ToString()
-    End Function
-
-    Public Sub SerializeLayout(pFileName As String)
-        Dim Writer = New System.IO.StreamWriter(pFileName) With {.AutoFlush = True}
-        Me.SerializeLayout(Writer)
-    End Sub
-
-    Private Sub SerializeLayout(pWriter As IO.TextWriter)
-        pWriter.WriteLine("<MainForm Width=""" & Strings.Format(Me.Width) & """ Height=""" & Strings.Format(Me.Height) &
-                                  """ WindowState=""" & Strings.Format(Me.WindowState) &
-                                  """ StatusBar=""" & Strings.Format(Me.mnuStatusBar.Checked) &
-                                  """ MenuLocation=""" & Strings.Format(Me.MenuLocation) &
-                                  """>")
-        Dim Control = GetMainPanelControl()
-        Select Case TypeName(Control)
-            Case "ctlTabControl"
-                CType(Control, ctlTabControl).Serialize(pWriter, 1)
-            Case "ctlSplitContainer"
-                CType(Control, ctlSplitContainer).Serialize(pWriter, 1)
-        End Select
-        pWriter.WriteLine("</MainForm>")
-        pWriter.Close()
-    End Sub
-
-    Private Sub DeSerializeLayoutFromString(pXMLText As String)
-        If pXMLText = "" Then Exit Sub
-        DeSerializeLayout(XDocument.Parse(pXMLText))
-    End Sub
-
-    Public Sub DeSerializeLayout(pFileName As String)
-        Dim Reader As New IO.StreamReader(pFileName)
-        Dim XMLText As String = Reader.ReadToEnd()
-
-        mnuBoard.Checked = False
-        mnuStockfish.Checked = False
-        mnuMoveList.Checked = False
-        mnuValidMoves.Checked = False
-        mnuTitleAndMemo.Checked = False
-        mnuGameDetails.Checked = False
-
-        DeSerializeLayout(XDocument.Parse(XMLText))
-
-        Reader.Close()
-    End Sub
-
-    Private Sub DeSerializeLayout(pXMLDocument As XDocument)
-        If pXMLDocument.Root.Name = "MainForm" Then
-            For Each Attrib As XAttribute In pXMLDocument.Root.Attributes()
-                Select Case Attrib.Name
-                    Case "Width" : Me.Width = Val(Attrib.Value)
-                    Case "Height" : Me.Height = Val(Attrib.Value)
-                    Case "WindowState" : Me.WindowState = Attrib.Value
-                    Case "StatusBar" : Me.mnuStatusBar.Checked = Val(Attrib.Value)
-                        Me.stsStatusStrip.Visible = Me.mnuStatusBar.Checked
-                    Case "MenuLocation" : Me.MenuLocation = Val(Attrib.Value)
-                End Select
-                Me.frmMainForm_SizeChanged(Nothing, Nothing) 'To Update visibility of the Tool and Status-Bar
-            Next Attrib
-        End If
-
-        Dim Index As String = gfrmMoveList.CurrentHalfMoveIndex
-
-        Call DisconnectSubForms() 'To prevent them from being disposed too
-        Me.pnlMainPanel.Controls(0).Dispose()
-        Me.pnlMainPanel.Controls.Clear()
-
-        RaiseEvent GameChanged(Me.PGNGame)
-        gfrmMoveList.CurrentHalfMoveIndex = Index
-
-        For Each Element As XElement In pXMLDocument.Root.Elements()
-            Select Case Element.Name
-                Case "ctlSplitContainer"
-                    Dim SplitContainer As New ctlSplitContainer(Val(Element.Attribute("Orientation").Value))
-                    pnlMainPanel.Controls.Add(SplitContainer)
-                    SplitContainer.DeSerialize(Element)
-                Case "ctlTabControl"
-                    Dim ctlTabControl As New ctlTabControl()
-                    AddHandlers(ctlTabControl)
-                    pnlMainPanel.Controls.Add(ctlTabControl)
-                    ctlTabControl.DeSerialize(Element)
-            End Select
-        Next Element
-    End Sub
-
-    Private Function GetMainPanelControl() As Control
-        For Each Control As Control In Me.pnlMainPanel.Controls
+    ''' <summary>Returns the Main Panel (TabControl or SplitContainer)</summary>
+    Public Function GetMainPanelControl() As Control
+        For Each Control As Control In pnlMainPanel.Controls
             Select Case TypeName(Control)
                 Case "ctlTabControl", "ctlSplitContainer"
                     Return Control
@@ -1710,43 +1843,44 @@ Public Class frmMainForm
         Return Nothing
     End Function
 
-    'Private Function GetPanelControl(pSplitContainer As ctlSplitContainer, pForm As Form) As Control
-    '    If pSplitContainer.Panel1.Controls(0) Is pForm Then Return pSplitContainer.Panel1
-    '    If pSplitContainer.Panel2.Controls(0) Is pForm Then Return pSplitContainer.Panel2
-
-    'End Function
-
 #End Region
 
 #Region "Journaling"
 
-    Private Sub gJournaling_PointerUpdated(pCount As Integer, pPointer As Integer, pUndoToolTip As String, pRedoToolTip As String) Handles gJournaling.PointerUpdated
+    Private Sub gJournal_PointerUpdated(pCount As Integer, pPointer As Integer, pUndoToolTip As String, pRedoToolTip As String) Handles gJournal.PointerUpdated
+
         mnuUndo.Enabled = (pPointer > -1)
         mnuUndo.ToolTipText = pUndoToolTip
         mnuRedo.Enabled = ((pPointer + 1) > -1) And ((pPointer + 1) < pCount)
         mnuRedo.ToolTipText = pRedoToolTip
     End Sub
 
-    Private Sub gJournaling_UpdateRequested(pClassName As String, pKeyValue As String, pOldValue As String, pNewValue As String) Handles gJournaling.UpdateRequested
+    Private Sub gJournal_UpdateRequested(pClassName As String, pKeyValue As String, pOldValue As String, pNewValue As String) Handles gJournal.UpdateRequested
         Select Case pClassName
             Case "PGNGame.Index"           '(No Key) Select, First, Next, Previous, Last Game
                 If pNewValue = "" Then Exit Sub
-                Me.PGNGame = Me.PGNFile.PGNGames(Val(pNewValue))
+                Dim NewValue As XElement = XElement.Parse(pNewValue)
+                Dim GameIndex As String = NewValue.Element("GameIndex").Value
+                Dim MoveIndex As String = NewValue.Element("MoveIndex").Value
+                Me.PGNGame = Me.PGNFile.PGNGames(Val(GameIndex))  'First set Current Game to the right one
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = MoveIndex
+                RaiseEvent GameChanged(Me.PGNGame)
 
             Case "PGNGame"                 '(No Key) Edit, Delete Game
                 If pNewValue = "" Then 'Delete
                     Me.PGNGame = Me.PGNFile.PGNGames.Remove(Me.PGNGame)
                 ElseIf pOldValue = "" Then 'New Game
-                    Dim Game As PGNGame = Journaling.DeSerialize(pNewValue, PGNGame.GetType())
+                    Dim Game As PGNGame = gJournal.DeSerialize(pNewValue, PGNGame.GetType())
                     Game.HalfMoves.ReNumber()
                     Me.PGNFile.PGNGames.Insert(Game.Index, Game) 'Insert at the original position
                     Me.PGNGame = Game
                 Else 'Edits to Tags and/or FENComment
-                    Dim Game As PGNGame = Journaling.DeSerialize(pNewValue, PGNGame.GetType())
+                    Dim Game As PGNGame = gJournal.DeSerialize(pNewValue, PGNGame.GetType())
                     Game.HalfMoves.ReNumber()
                     Me.PGNFile.PGNGames(Game.Index) = Game 'Replace at the original position
                     Me.PGNGame = Game
                 End If
+                RaiseEvent GameChanged(Me.PGNGame)
 
             Case "PGNGame.New"                 '(No Key) New
                 If pNewValue = "New" Then
@@ -1757,16 +1891,18 @@ Public Class frmMainForm
                         Me.PGNGame = Me.PGNFile.PGNGames(Val(pNewValue))
                     End If
                 End If
+                mnuSelectGame.Enabled = (Me.PGNFile.PGNGames.Count > 1)
+                RaiseEvent GameChanged(Me.PGNGame)
 
             Case "PasteGame"               '(No Key) Paste of PGNGame 
                 If pNewValue Like "*[[]* [""]*[""][]]*" Then
-                    Dim Game = New PGNGame()
-                    Game.XPGNString = pNewValue
+                    Dim Game As New PGNGame(pNewValue)
                     Me.PGNFile.PGNGames.Insert(PGNGame.Index + 1, Game)
-                    PGNGame = Game
+                    Me.PGNGame = Game
                 Else
                     Me.PGNGame = PGNFile.PGNGames.Remove(Me.PGNGame)
                 End If
+                RaiseEvent GameChanged(Me.PGNGame)
 
             Case "Mode"                    '(No Key) Change of Mode 
                 mnuMode.Text = pNewValue
@@ -1775,58 +1911,61 @@ Public Class frmMainForm
                 If pNewValue Like "*/*/*/*/*/*/*/* [bw] *" Then
                     Dim Game As New PGNGame(pNewValue)
                     Me.PGNFile.PGNGames.Insert(PGNGame.Index + 1, Game)
-                    PGNGame = Game
+                    Me.PGNGame = Game
                 Else
                     Me.PGNGame = PGNFile.PGNGames.Remove(Me.PGNGame)
                 End If
+                RaiseEvent GameChanged(Me.PGNGame)
 
             Case "ClearDiagram"            '(No Key) Clear of Diagram 
                 If pNewValue Like "<[?]xml *" Then 'Serialized object
-                    Dim Game As PGNGame = Journaling.DeSerialize(pNewValue, PGNGame.GetType())
+                    Dim Game As PGNGame = gJournal.DeSerialize(pNewValue, PGNGame.GetType())
+                    Game.HalfMoves.ReNumber()
+                    Me.PGNFile.PGNGames(Game.Index) = Game 'Replace at the original position
+                    Me.PGNGame = Game
+                Else
+                    Me.PGNGame.ClearDiagram()
+                End If
+                RaiseEvent GameChanged(Me.PGNGame)
+
+            Case "InitialDiagram"          '(No Key) Clear of Diagram 
+                If pNewValue Like "<[?]xml *" Then 'Serialized object
+                    Dim Game As PGNGame = gJournal.DeSerialize(pNewValue, PGNGame.GetType())
                     Game.HalfMoves.ReNumber()
                     Me.PGNFile.PGNGames(Game.Index) = Game 'Replace at the original position
                     Me.PGNGame = Game
                 Else
                     Me.PGNGame.Clear()
                 End If
-
-            Case "InitialDiagram"          '(No Key) Clear of Diagram 
-                If pNewValue Like "<[?]xml *" Then 'Serialized object
-                    Dim Game As PGNGame = Journaling.DeSerialize(pNewValue, PGNGame.GetType())
-                    Game.HalfMoves.ReNumber()
-                    Me.PGNFile.PGNGames(Game.Index) = Game 'Replace at the original position
-                    Me.PGNGame = Game
-                Else
-                    Me.PGNGame.Initial()
-                End If
+                RaiseEvent GameChanged(Me.PGNGame)
 
             Case "HalfMove.Changed"        '(With Key) Edit HalfMove
-                gfrmMoveList.CurrentHalfMoveIndex = pKeyValue
-                gfrmMoveList.CurrentHalfMove.JournalImage = pNewValue
-                RaiseEvent HalfMoveChanged(Me.PGNGame, gfrmBoard.gCurrentHalfMove)
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = pKeyValue
+                PGNGame.HalfMoves.CurrentHalfMove.JournalImage = pNewValue
+                RaiseEvent HalfMoveChanged(Me.PGNGame, gfrmBoard.CurrentHalfMove)
 
             Case "HalfMove.Index"          '(No Key) First, Next, Previous, Last Move
-                gfrmMoveList.CurrentHalfMoveIndex = pNewValue
-                RaiseEvent MoveListPositionChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = pNewValue
+                RaiseEvent MoveListPositionChanged(Me.PGNGame, PGNGame.HalfMoves.CurrentHalfMove)
 
             Case "MoveList.Changed"        '(With Key) Delete Halfmove
                 Dim NewValue As XElement = XElement.Parse(pNewValue)
                 Me.PGNGame.HalfMoves.XPGNString = NewValue.Element("HalfMoves").Value
-                gfrmMoveList.CurrentHalfMoveIndex = NewValue.Element("Index").Value
-                RaiseEvent MoveListPositionChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = NewValue.Element("Index").Value
+                RaiseEvent MoveListPositionChanged(Me.PGNGame, PGNGame.HalfMoves.CurrentHalfMove)
 
             Case "ChessPiece.Moved"        '(No Key) 
                 Dim NewValue As XElement = XElement.Parse(pNewValue)
-                If Me.Mode = ChessMode.SETUP Then
-                    Dim FEN = NewValue.Element("FEN").Value
+                If Me.Mode = SETUP Then
+                    Dim FEN As String = NewValue.Element("FEN").Value
                     Me.PGNGame.Tags.Add("FEN", FEN)
-                    gfrmMoveList.CurrentHalfMoveIndex = ""
+                    PGNGame.HalfMoves.CurrentHalfMoveIndex = ""
                 Else 'PLAY and TRAINING Mode
-                    Dim HalfMoves = NewValue.Element("XPGN").Value
+                    Dim HalfMoves As String = NewValue.Element("XPGN").Value
                     Me.PGNGame.HalfMoves.XPGNString = HalfMoves
-                    gfrmMoveList.CurrentHalfMoveIndex = NewValue.Element("Index").Value
+                    PGNGame.HalfMoves.CurrentHalfMoveIndex = NewValue.Element("Index").Value
                 End If
-                RaiseEvent MoveListPositionChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+                RaiseEvent MoveListPositionChanged(Me.PGNGame, PGNGame.HalfMoves.CurrentHalfMove)
 
             Case "FEN"                     '(No Key)
                 Dim NewValue As XElement = XElement.Parse(pNewValue)
@@ -1834,8 +1973,8 @@ Public Class frmMainForm
                 Dim HalfMoves = NewValue.Element("XPGN").Value
                 Me.PGNGame.Tags.Add("FEN", FEN)
                 Me.PGNGame.HalfMoves.XPGNString = HalfMoves
-                gfrmMoveList.CurrentHalfMoveIndex = pKeyValue
-                RaiseEvent MoveListPositionChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = pKeyValue
+                RaiseEvent MoveListPositionChanged(Me.PGNGame, PGNGame.HalfMoves.CurrentHalfMove)
 
             Case "FieldMarkerList"         '(With Key)
                 If pKeyValue = "" Then
@@ -1844,7 +1983,7 @@ Public Class frmMainForm
                     Me.PGNGame.HalfMoves.MarkerListString(Me.PGNGame.HalfMoves(Val(pKeyValue))) = pNewValue
                 End If
                 'gfrmBoard.MarkerString = pNewValue
-                RaiseEvent HalfMoveChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+                RaiseEvent HalfMoveChanged(Me.PGNGame, PGNGame.HalfMoves.CurrentHalfMove)
 
             Case "ArrowList"               '(With Key)
                 If pKeyValue = "" Then
@@ -1852,7 +1991,7 @@ Public Class frmMainForm
                 Else
                     Me.PGNGame.HalfMoves.ArrowListString(Me.PGNGame.HalfMoves(Val(pKeyValue))) = pNewValue
                 End If
-                RaiseEvent HalfMoveChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+                RaiseEvent HalfMoveChanged(Me.PGNGame, PGNGame.HalfMoves.CurrentHalfMove)
 
             Case "TextList"                '(With Key)
                 If pKeyValue = "" Then
@@ -1860,7 +1999,7 @@ Public Class frmMainForm
                 Else
                     Me.PGNGame.HalfMoves.TextListString(Me.PGNGame.HalfMoves(Val(pKeyValue))) = pNewValue
                 End If
-                RaiseEvent HalfMoveChanged(Me.PGNGame, gfrmMoveList.CurrentHalfMove)
+                RaiseEvent HalfMoveChanged(Me.PGNGame, PGNGame.HalfMoves.CurrentHalfMove)
 
             Case "SetupToolbar.Visible"    '(No Key) 
                 gfrmBoard.SetupToolbarVisible = (pNewValue = "True")
@@ -1868,14 +2007,14 @@ Public Class frmMainForm
             Case "StatusBar.Visible"       '(No Key) 
                 mnuStatusBar.Checked = (pNewValue = "True")
                 stsStatusStrip.Visible = mnuStatusBar.Checked
-                frmMainForm_SizeChanged(Nothing, Nothing)
+                Call frmMainForm_SizeChanged(Nothing, Nothing)
 
             Case "ColorBoard.Checked"      '(No Key) 
                 Call SetColorBoard(pNewValue = "True")
 
             Case "CurrentLanguage"         '(No Key) 
                 CurrentLanguage = Val(pNewValue)
-                Call SetLanguage(CurrentLanguage, Me)
+                Call ApplyLanguageToCurrentForm(Me)
                 RaiseEvent LanguageChanged(CurrentLanguage)
 
             Case "MenuLocation"            '(No Key) 
@@ -1883,77 +2022,40 @@ Public Class frmMainForm
 
             Case "mnuBoard.Checked"        '(No Key) 
                 mnuBoard.Checked = (pNewValue = "True")
-                UpdateBoardSubForm()
+                Call UpdateBoardSubForm()
 
             Case "mnuMoveList.Checked"     '(No Key) 
                 mnuMoveList.Checked = (pNewValue = "True")
-                UpdateMoveListSubForm()
+                Call UpdateMoveListSubForm()
 
             Case "mnuValidMoves.Checked"   '(No Key) 
                 mnuValidMoves.Checked = (pNewValue = "True")
-                UpdateValidMovesSubForm()
+                Call UpdateValidMovesSubForm()
 
             Case "mnuTitleAndMemo.Checked" '(No Key) 
                 mnuTitleAndMemo.Checked = (pNewValue = "True")
-                UpdateTitleAndMemoSubForm()
+                Call UpdateTitleAndMemoSubForm()
 
             Case "mnuGameDetails.Checked"   '(No Key) 
                 mnuGameDetails.Checked = (pNewValue = "True")
-                UpdateGameDetailsSubForm()
+                Call UpdateGameDetailsSubForm()
 
             Case "TabPage.Dropped"         '(No Key) 
-                Me.DeSerializeLayoutFromString(pNewValue)
+                Dim Index As String = PGNGame.HalfMoves.CurrentHalfMoveIndex
+                Call gLayoutSerializer.DeSerializeLayoutFromString(pNewValue)
+                RaiseEvent GameChanged(PGNGame)
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = Index
 
             Case "Layout"                  '(No Key) Changes to Panel settings
-                Me.DeSerializeLayoutFromString(pNewValue)
+                Dim Index As String = PGNGame.HalfMoves.CurrentHalfMoveIndex
+                Call gLayoutSerializer.DeSerializeLayoutFromString(pNewValue)
+                RaiseEvent GameChanged(PGNGame)
+                PGNGame.HalfMoves.CurrentHalfMoveIndex = Index
         End Select
     End Sub
 
-    Private Function PGNFileModified() As Boolean
-        'Test to see if PGN was modified using the Journal-entries
-        For Each Entry As JournalEntry In gJournaling.Journal
-            If Entry.ClassName Like "*.Index" _
-            OrElse Entry.ClassName Like "*.Visible" _
-            OrElse Entry.ClassName Like "*.Checked" Then
-                Continue For
-            End If
-            Select Case Entry.ClassName
-                Case "Mode", "CurrentLanguage", "TabPage.Dropped", "Layout"
-                    Continue For
-                Case Else 'Entry referring to PGNFile being modified
-                    Return True
-            End Select
-        Next Entry
-
-        'No entry referring to PGNFile; Not being modified
-        Return False
-    End Function
-
-    Private Sub frmMainForm_Closing(pSender As Object, pArgs As CancelEventArgs) Handles Me.Closing
-        If PGNFileModified() = True Then
-            If MsgBox(MessageText("SaveChanges"), MessageBoxButtons.YesNo + MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
-                mnuSave_Click(Nothing, Nothing)
-            End If
-        End If
-
-    End Sub
-
-    Protected Overrides Sub Finalize()
-        Me.gfrmBoard = Nothing
-        Me.gfrmStockfish = Nothing
-        Me.gfrmMoveList = Nothing
-        Me.gfrmValidMoves = Nothing
-        Me.gfrmGameDetails = Nothing
-        Me.gfrmTitleAndMemo = Nothing
-        Me.gfrmDockCross = Nothing
-        Me.gfrmEditGame = Nothing
-        Me.gfrmEditTitleAndMemo = Nothing
-        Me.gfrmTrainingQuestion = Nothing
-        Me.gJournaling = Nothing
-        Me.gPGNFile = Nothing
-        Me.gPGNGame = Nothing
-
-        MyBase.Finalize()
+    Private Sub gJournal_ErrorOccured(pException As Exception) Handles gJournal.ErrorOccured
+        frmErrorMessageBox.Show(pException)
     End Sub
 
 #End Region

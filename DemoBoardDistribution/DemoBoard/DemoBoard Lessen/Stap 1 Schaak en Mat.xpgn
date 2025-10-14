@@ -31,7 +31,7 @@
 [Result ""]
 [Title "Schaak opheffen"]
 [Memo "Zwart staat schaak. Zwart kan schaak opheffen door weg te gaan of door te slaan"]
-[FEN "R4k2/8/8/3b4/8/8/8/8 w KQkq - 0 0"]
+[FEN "R4k2/8/8/3b4/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -43,7 +43,7 @@
 [Result ""]
 [Title "Schaak ophefen"]
 [Memo "Zwart kan het schaak opheffen door de dame te slaan"]
-[FEN "8/8/3Q4/1pk5/2p5/8/8/8 w KQkq - 0 0"]
+[FEN "8/8/3Q4/1pk5/2p5/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -55,7 +55,7 @@
 [Result ""]
 [Title "Schaak opheffen"]
 [Memo "Zwart staat schaak. Zwart kan hier het schaak opheffen door de loper er tussen te zetten. Dit noemen we tussen plaatsen."]
-[FEN "kb6/1p6/8/8/Q7/8/8/8 w KQkq - 0 0"]
+[FEN "kb6/1p6/8/8/Q7/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -79,7 +79,7 @@
 [Result ""]
 [Title "Mat"]
 [Memo "De zwarte koning staat schaak. Hij kan niet Weggaan, niet Slaan en niet Tussen plaatsen. Het is dan Mat."]
-[FEN "R3k3/1R6/8/8/8/8/8/8 w KQkq - 0 0"]
+[FEN "R3k3/1R6/8/8/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -91,7 +91,7 @@
 [Result ""]
 [Title "Mat"]
 [Memo "De zwarte koning staat schaak. Hij kan niet Weggaan, niet Slaan en niet Tussen plaatsen "]
-[FEN "4k3/4Q3/8/8/1B6/8/8/8 w KQkq - 0 0"]
+[FEN "4k3/4Q3/8/8/1B6/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -103,7 +103,7 @@
 [Result ""]
 [Title "Mat"]
 [Memo "Dit heet mat achter de paaltjes"]
-[FEN "2R3k1/5ppp/8/8/8/8/8/8 w KQkq - 0 0"]
+[FEN "2R3k1/5ppp/8/8/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -115,6 +115,6 @@
 [Result ""]
 [Title "Mat"]
 [Memo "Dit mat heet stikmat. Zwart stikt in zijn eigen stukken."]
-[FEN "6rk/5Npp/8/8/8/8/8/8 w KQkq - 0 0"]
+[FEN "6rk/5Npp/8/8/8/8/8/8 b KQkq - 0 0"]
 
 

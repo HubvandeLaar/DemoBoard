@@ -85,67 +85,28 @@ Public Class Rook
         End Get
     End Property
 
+    ''' <summary>Returns all valid possible moves</summary>
     Public Overrides Function PossibleMoves(pFromFieldName As String, pChessBoard As ChessBoard) As List(Of BoardMove)
-        Dim Moves As New List(Of BoardMove)
-        Dim Move As BoardMove
-        Dim Row As Long, Column As Long
+        Dim Moves As New List(Of BoardMove), Move As BoardMove
         Dim FromField As ChessField = pChessBoard(pFromFieldName)
 
-        'Straight upward
-        For Row = FromField.Row + 1 To 8 Step 1
-            If pChessBoard(FromField.Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard(FromField.Column, Row).Name)
-                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
-            Else
-                If pChessBoard(FromField.Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(FromField.Column, Row).Name)
+        For Each Direction As Direction In New Directions(Me.Type)
+            For Distance As Long = 1 To 8
+                Dim Column As Long = FromField.Column + (Distance * Direction.ColumnIncrement)
+                Dim Row As Long = FromField.Row + (Distance * Direction.RowIncrement)
+                If pChessBoard.Exists(Column, Row) = False Then Exit For
+                If pChessBoard(Column, Row).Piece Is Nothing Then
+                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
                     If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+                Else
+                    If pChessBoard(Column, Row).Piece.Color <> Me.Color Then  'Capture piece
+                        Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, Row).Name)
+                        If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
+                    End If
+                    Exit For 'No more Moves in this line
                 End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Row
-
-        'Straight downward
-        For Row = FromField.Row - 1 To 1 Step -1
-            If pChessBoard(FromField.Column, Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard(FromField.Column, Row).Name)
-                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
-            Else
-                If pChessBoard(FromField.Column, Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(FromField.Column, Row).Name)
-                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Row
-
-        'To the Right
-        For Column = FromField.Column + 1 To 8 Step 1
-            If pChessBoard(Column, FromField.Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, FromField.Row).Name)
-                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
-            Else
-                If pChessBoard(Column, FromField.Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, FromField.Row).Name)
-                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Column
-
-        'To the Left
-        For Column = FromField.Column - 1 To 1 Step -1
-            If pChessBoard(Column, FromField.Row).Piece Is Nothing Then
-                Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, FromField.Row).Name)
-                If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
-            Else
-                If pChessBoard(Column, FromField.Row).Piece.Color <> Me.Color Then  'Capture piece
-                    Move = New BoardMove(Me, pFromFieldName, pChessBoard(Column, FromField.Row).Name)
-                    If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
-                End If
-                Exit For 'No more Moves in this line
-            End If
-        Next Column
+            Next Distance
+        Next Direction
 
         Return Moves
     End Function

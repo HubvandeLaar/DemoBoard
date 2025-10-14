@@ -32,6 +32,9 @@ DemoBoard
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="M:DemoBoard.ctlAnswerList.Shuffle``1(System.Collections.Generic.List{``0})">
+ <summary>Shuffle the possible answers</summary>
+</member>
 <member name="E:DemoBoard.ctlBoard.NewChessPiece">
  <summary>When a piece has been moved from the SetupToolBar on to the board</summary>
 </member>
@@ -42,20 +45,62 @@ DemoBoard
 <member name="P:DemoBoard.ctlBoard.FENBeforeDragging">
  <summary>FEN as it was before the move registered</summary>
 </member>
+<member name="M:DemoBoard.ctlBoard.getBitMap(System.Boolean)">
+ <summary>Returns a bitmap of the current position</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.getPiece(System.String)">
+ <summary>Returns the Piece on the requested Field when present or Nothing</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+ <summary>Catching keys entered to setup </summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.LeftPos(System.Int64)">
+ <summary>Returns the Left position of as given Column</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.TopPos(System.Int64)">
+ <summary>Returns the Top position of a given Row </summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.Column(System.Int64)">
+ <summary>Returns the Column of a given X-position</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.Row(System.Int64)">
+ <summary>Returns the Row of a given Y-position</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.PieceOffset(System.Drawing.Image)">
+ <summary>Returns the X-Offset of a Piece at a Field</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.PieceOffset(System.Drawing.Icon)">
+ <summary>Returns the X-Offset of a Piece at a Field</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.PieceSize(System.Drawing.Icon)">
+ <summary>Returns the Width of a Piece</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.PieceSize(System.Drawing.Image)">
+ <summary>Returns the Width of a Piece</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.CloseToCenterOfField(System.Int64,System.Int64,System.Windows.Forms.MouseEventArgs)">
+ <summary>To see if border or center area of a field was clicked</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.Column(System.String)">
+ <summary>Returns the ColumnNumber of a Field</summary>
+</member>
+<member name="M:DemoBoard.ctlBoard.Row(System.String)">
+ <summary>Returns the RowNumber of a Field</summary>
+</member>
 <member name="M:DemoBoard.ctlTabControl.TabControl_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
  <summary>
- MousUp event is forwarded to frmMainForm to Raise an ForwardedMousUp event to ALL ctlTabControls
+ MousUp event is forwarded to frmMainForm to Raise an PanelMousUp event to ALL ctlTabControls
  </summary>
 </member>
-<member name="M:DemoBoard.ctlTabControl.gParentForm_ForwardedMouseUp(System.Windows.Forms.Panel,System.Windows.Forms.DockStyle,System.Drawing.Point)">
+<member name="M:DemoBoard.ctlTabControl.gParentForm_PanelMouseUp(System.Windows.Forms.Panel,System.Windows.Forms.DockStyle,System.Drawing.Point)">
  <summary>
  A MouseUp event is only detected by the control with the previous MouseDown.
  To solve this, The control with the previous MouseDown fires a MouseUp event.
- The frmMainForm catches this event and raises a ForwardedMouseUp to all ctlTabControls.
+ The frmMainForm catches this event and raises a PanelMouseUp to all ctlTabControls.
  Each ctlTabControl checks to see if this event was intended for him.
  </summary>
 </member>
-<member name="M:DemoBoard.ctlTabControl.gParentForm_ForwardedMousePanelLeave(System.Drawing.Point)">
+<member name="M:DemoBoard.ctlTabControl.gParentForm_PanelMouseLeave(System.Drawing.Point)">
  <summary>
  A MouseUp event is only detected by to control with the previous MouseDown.
  To solve this, The control with the previous MouseDown fires a MouseLeave event
@@ -63,10 +108,76 @@ DemoBoard
  Each ctlTabControl checks to see if this event was intended for him.
  </summary>
 </member>
+<member name="M:DemoBoard.ctlTabControl.Distance(System.Drawing.Point,System.Drawing.Point)">
+ <summary>Returns the distance between two points according to Pythagoras</summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.TabCloseIconRectangle(System.Int32)">
+ <summary>Returns the rectangle of the close icon</summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.TabTitleRectangle(System.Int32)">
+ <summary>Returns the rectangle of the Tab Title</summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.EndOfTabAreaRectangle">
+ <summary>Returns the rectangle of the free area after the tabs</summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.FormRectangle">
+ <summary>Returns the rectangle of the Form</summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.TabRectangle(System.Int32)">
+ <summary>Returns the rectangle of tab</summary>
+</member>
+<member name="M:DemoBoard.ctlTabControl.GetTabRect(System.Int32)">
+ <summary>Returns the retangle of the tab</summary>
+</member>
+<member name="M:DemoBoard.ctlMoveList.AddNew(PGNLibrary.PGNHalfMove)">
+ <summary>Adds a New MoveListRow to the MoveList</summary>
+</member>
+<member name="M:DemoBoard.ctlMoveList.FindMoveListRow(PGNLibrary.PGNHalfMove)">
+ <summary>returns the found PGNHalfMove or Nothing when not found </summary>
+</member>
+<member name="M:DemoBoard.ctlMoveList.LastViewRowBottom">
+ <summary>Returns the Bottom position of the Last ViewRow</summary>
+</member>
 <member name="P:DemoBoard.ctlMoveListRow.Perceptable">
  <summary> Perceptable replaces Visible.  
  Because Visible is set to False when Form is hidden.
  To determine what was originally Visible is difficult </summary>
+</member>
+<member name="M:DemoBoard.ctlMoveListRow.BlackMoveFits(PGNLibrary.PGNHalfMove)">
+ <summary>Determines if the Black HalfMove fits at the right half area of a MoveListRow</summary>
+</member>
+<member name="M:DemoBoard.ctlMoveListRow.RichTextBoxHeight(System.Windows.Forms.RichTextBox)">
+ <summary>Returns the Heigth needed for a Text in a RichTextBox with a given Width</summary>
+</member>
+<member name="M:DemoBoard.frmDockCross.WithinBoundary(System.Windows.Forms.Control,System.Drawing.Point)">
+ <summary>Returns True when Point lies within the Boudaries of the Control</summary>
+</member>
+<member name="M:DemoBoard.frmEditGame.GetRowValue(System.String)">
+ <summary>Returns the Value from the grdTags-Grid of a specific TAG-Key</summary>
+</member>
+<member name="M:DemoBoard.frmEditTrainingQuestion.GetLocalizedQuestion(System.String)">
+ <summary>Returns the Question for the specified Language or Nothing when not found</summary>
+</member>
+<member name="M:DemoBoard.frmExportGames.IsOneSimpleSubVariant(PGNLibrary.PGNGame,PGNLibrary.PGNHalfMove)">
+ <summary>Returns True when it's only one variant with not any other subvariant</summary>
+</member>
+<member name="M:DemoBoard.frmImages.getImage(System.String)">
+ <summary>Returns an Image with specified Name</summary>
+</member>
+<member name="M:DemoBoard.frmImages.getIcon(System.String)">
+ <summary>Returns an Icon with specified Name</summary>
+</member>
+<member name="M:DemoBoard.frmImages.BitMapToIcon(System.Drawing.Image)">
+ <summary>Returns a Bitmat from an Image</summary>
+</member>
+<member name="M:DemoBoard.frmMainForm.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+ <summary>Catches keys entered</summary>
+</member>
+<member name="M:DemoBoard.frmMainForm.GetMainPanelControl">
+ <summary>Returns the Main Panel (TabControl or SplitContainer)</summary>
+</member>
+<member name="M:DemoBoard.frmBoard.getBitMap">
+ <summary>Return the BitMap created by ctlBoard</summary>
 </member>
 <member name="M:DemoBoard.frmBoard.ctlBoard_NewChessPiece(ChessMaterials.ChessPiece,System.String,ChessMaterials.ChessBoard)">
  <summary>When a piece has been moved from the SetupToolBar on to the board</summary>
@@ -83,6 +194,39 @@ DemoBoard
 </member>
 <member name="M:DemoBoard.frmBoard.AddPieceMenuItem(System.Windows.Forms.ContextMenuStrip,ChessMaterials.ChessPiece,System.String)">
  <summary>Called from mnuFieldMenuUpdate</summary>
+</member>
+<member name="M:DemoBoard.frmTrainingQuestion.Compare(PGNLibrary.PGNHalfMove,System.String,System.String,System.String,System.String)">
+ <summary>Returns True when a HalfMove matches the performed move (Piece, From, To, Promotion)</summary>
+</member>
+<member name="M:DemoBoard.frmTrainingQuestion.FindSubVariant(System.String,System.String,System.String,System.String)">
+ <summary>Return the Subvariant matching the performed move (Piece, From, To, Promotion)</summary>
+</member>
+<member name="M:DemoBoard.frmSelectVariant.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+ <summary>Catches the Keys Entered</summary>
+</member>
+<member name="M:DemoBoard.frmTitleAndMemo.TitleHeight">
+ <summary>Returns the Height needed for the Title to fit in a TextBox with a given Width</summary>
+</member>
+<member name="M:DemoBoard.LayoutSerializer.#ctor(DemoBoard.frmMainForm)">
+ <summary>Initializes a new instance of the LayoutSerializer class.</summary>    
+</member>
+<member name="M:DemoBoard.LayoutSerializer.SerializeLayout">
+ <summary>Returns the Serialized Layout of panels and forms</summary>
+</member>
+<member name="M:DemoBoard.RecentFiles.LastFolder">
+ <summary>Returns the Name of the last used Folder</summary>
+</member>
+<member name="M:DemoBoard.SetupToolbar.LeftPos(System.Int64)">
+ <summary>Returns the Left position of a specified Column</summary>
+</member>
+<member name="M:DemoBoard.SetupToolbar.Column(System.Int64)">
+ <summary>Returns the Column number of a specified X-position</summary>
+</member>
+<member name="M:DemoBoard.SetupToolbar.TopPos(System.Int64)">
+ <summary>Returns the Top position of a specified Row</summary>
+</member>
+<member name="M:DemoBoard.SetupToolbar.Row(System.Int64)">
+ <summary>Returns the Row of a specified Y-position</summary>
 </member>
 </members>
 </doc>

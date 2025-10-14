@@ -22,9 +22,8 @@ Dat is jammer, want Zwart kan makkelijk winnen !"]
 [Result ""]
 [Title "Pat"]
 [Memo "Als Zwart de pion op g6 slaat of blokkeert met Kg7 is het Pat. "]
-[FEN "K7/P1q4k/6P1/8/8/8/8/8 w KQkq - 0 0"]
+[FEN "K7/P1q4k/6P1/8/8/8/8/8 b KQkq - 0 0"]
 
-1... Kh6 2. g7+ Qc7-c8#
 
 [Event ""]
 [Site ""]
@@ -37,9 +36,8 @@ Dat is jammer, want Zwart kan makkelijk winnen !"]
 [Memo "Zwart staat een stuk sterker.
 Maar f2 en h2 leiden alletwee tot Pat !
 Beter om de h-pion weg te geven en de f-pion te laten promoveren. "]
-[FEN "8/8/8/8/8/5pkp/8/7K w KQkq - 0 0"]
+[FEN "8/8/8/8/8/5pkp/8/7K b KQkq - 0 0"]
 
-1... Kf2 2. Kh2 Ke2 3. Kxh3
 
 [Event ""]
 [Site ""]

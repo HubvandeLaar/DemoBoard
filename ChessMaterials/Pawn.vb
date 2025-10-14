@@ -77,6 +77,7 @@ Public Class Pawn
         End Get
     End Property
 
+    ''' <summary>Returns all valid possible moves</summary>
     Public Overrides Function PossibleMoves(pFromFieldName As String, pChessBoard As ChessBoard) As List(Of BoardMove)
         Dim Moves As New List(Of BoardMove), ToField As ChessField
         Dim Move As BoardMove
@@ -180,7 +181,7 @@ Public Class Pawn
         If pChessBoard.EpFieldName <> "" Then
             ToField = pChessBoard(pChessBoard.EpFieldName)
             If Math.Abs(FromField.Column - ToField.Column) = 1 _
-            And FromField.Row + If(Me.Color = WHITE, 1, -1) = ToField.Column Then
+            And FromField.Row + If(Me.Color = WHITE, 1, -1) = ToField.Row Then
                 Move = New BoardMove(Me, pFromFieldName, ToField.Name, pEnPassant:=True)
                 If pChessBoard.InCheckAfterMove(Move, Me.Color) = False Then Moves.Add(Move)
             End If

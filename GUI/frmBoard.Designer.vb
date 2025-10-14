@@ -47,6 +47,7 @@ Partial Class frmBoard
         Me.ctlBoard.MarkerString = ""
         Me.ctlBoard.Name = "ctlBoard"
         Me.ctlBoard.SetupToolbarVisible = True
+        Me.ctlBoard.SwitchedSides = False
         Me.ctlBoard.TextString = ""
         '
         'frmBoard

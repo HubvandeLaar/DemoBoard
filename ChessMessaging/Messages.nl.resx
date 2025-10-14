@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddNewSubVariant" xml:space="preserve">
+    <value>Zet "%1" toevoegen als subvariant nummer %2</value>
+  </data>
+  <data name="AddPiece" xml:space="preserve">
+    <value>%1 toevoegen</value>
+  </data>
+  <data name="AddText" xml:space="preserve">
+    <value>Tekst toevoegen</value>
+  </data>
+  <data name="AlreadyExists" xml:space="preserve">
+    <value>Het bestand  "%1" bestaat al in "%2" !  Wilt u het bestaande bestand overschrijven ?</value>
+  </data>
+  <data name="Are You Sure" xml:space="preserve">
+    <value>Bent u zeker ?</value>
+  </data>
+  <data name="CheckMateIn2" xml:space="preserve">
+    <value>Met %1 en %2 was het mat in 2 geweest</value>
+  </data>
+  <data name="CheckMateOpponent" xml:space="preserve">
+    <value>Tegenstand kan mat zetten met %1</value>
+  </data>
+  <data name="ColumnRowRange" xml:space="preserve">
+    <value>Kolom "%1", of Rij "%2" is ongeldig (moet 1 t/m 8 zijn)</value>
+  </data>
+  <data name="CommentAfter" xml:space="preserve">
+    <value>Commentaar (achteraf)</value>
+  </data>
+  <data name="CommentBefore" xml:space="preserve">
+    <value>Commentaar (vooraf)</value>
+  </data>
+  <data name="CommentNotEmpty" xml:space="preserve">
+    <value>Commentaar-achteraf is niet leeg "%1"</value>
+  </data>
+  <data name="CorrectAnswer" xml:space="preserve">
+    <value>Goed zo !  Het antwoord %1 is juist</value>
+  </data>
+  <data name="DefendAgainstPinning" xml:space="preserve">
+    <value>De penning van %1 kon worden opgelost met %2</value>
+  </data>
+  <data name="DeleteAllMoves" xml:space="preserve">
+    <value>Alle zetten verwijderen en zet "%1" toevoegen ?</value>
+  </data>
+  <data name="DeleteArrow" xml:space="preserve">
+    <value>Verwijder pijl van %1 naar %2</value>
+  </data>
+  <data name="DeleteMarker" xml:space="preserve">
+    <value>Verwijder markering op %1</value>
+  </data>
+  <data name="DeleteMove" xml:space="preserve">
+    <value>Zet "%1" en opvolgende zetten verwijderen ?</value>
+  </data>
+  <data name="DeletePiece" xml:space="preserve">
+    <value>%1 verwijderen</value>
+  </data>
+  <data name="DeleteText" xml:space="preserve">
+    <value>Verwijder tekst "%1" van %2</value>
+  </data>
+  <data name="EliminateDefence" xml:space="preserve">
+    <value>Met %1 kon verdediger %2 van %3 worden uitgeschakeld</value>
+  </data>
+  <data name="InCheckAfterMove" xml:space="preserve">
+    <value>%1 staat (nog) schaak na de zet</value>
+  </data>
+  <data name="IncorrectAnswer" xml:space="preserve">
+    <value>Het antwoord %1 is niet juist. Probeer het nog eens</value>
+  </data>
+  <data name="IncorrectAnswer2" xml:space="preserve">
+    <value>Het antwoord %1 is niet helemaal juist.  Probeer het nog eens.  Totaal score is verhoogd met %2 punten</value>
+  </data>
+  <data name="IncorrectInitPos" xml:space="preserve">
+    <value>Start positie van %1 is niet helemaal goed</value>
+  </data>
+  <data name="InsertMove" xml:space="preserve">
+    <value>Zet "%1" toevoegen en volgende zetten verwijderen ?</value>
+  </data>
+  <data name="InsertSubVariant" xml:space="preserve">
+    <value>Zet "%1" toevoegen als nieuwe subvariant ?</value>
+  </data>
+  <data name="IntendedCastling" xml:space="preserve">
+    <value>De koning werd 2 plaatsen verplaatst; Aangenomen dat een rokade bedoeld werd</value>
+  </data>
+  <data name="InvalidArrowList" xml:space="preserve">
+    <value>Ongeldige indeling voor een pijlenlijst in PGN</value>
+  </data>
+  <data name="InvalidCastling1" xml:space="preserve">
+    <value>Ongeldige rokade; Koning staat schaak voor of na de zet</value>
+  </data>
+  <data name="InvalidCastling2" xml:space="preserve">
+    <value>Ongeldige rokade; Koning staat even schaak tijdens de zet</value>
+  </data>
+  <data name="InvalidCastling3" xml:space="preserve">
+    <value>Ongeldige rokade; Er stond een stuk in de weg op %1</value>
+  </data>
+  <data name="InvalidCastling4" xml:space="preserve">
+    <value>Ongeldige rokade; Koning stond niet op start positie</value>
+  </data>
+  <data name="InvalidCastling5" xml:space="preserve">
+    <value>Ongeldige korte rokade; Er stond al een stuk op %1</value>
+  </data>
+  <data name="InvalidCastling6" xml:space="preserve">
+    <value>Ongeldige lange rokade; Er stond al een stuk op %1</value>
+  </data>
+  <data name="InvalidCastling6b" xml:space="preserve">
+    <value>Ongeldige lange rokade; Koning gaat niet naar het goede veld</value>
+  </data>
+  <data name="InvalidCastling7" xml:space="preserve">
+    <value>Ongeldige rokade; Koning gaat niet naar het goede veld</value>
+  </data>
+  <data name="InvalidCastling8" xml:space="preserve">
+    <value>Ongeldige korte rokade; Stukken zijn verzet</value>
+  </data>
+  <data name="InvalidCastling9" xml:space="preserve">
+    <value>Ongeldige lange rokade; Stukken zijn verzet</value>
+  </data>
+  <data name="InvalidColor" xml:space="preserve">
+    <value>De kleur "%1" is ongeldig. De waarde zou "R", "G", "Y", "B", "C" of "O" moeten zijn</value>
+  </data>
+  <data name="InvalidFENPiece" xml:space="preserve">
+    <value>Ongeldig stuk "%1" in FEN</value>
+  </data>
+  <data name="InvalidFieldName" xml:space="preserve">
+    <value>Veldnaam "%1" is ongeldig. De waarde zou tussen "a1" en "h8" moeten liggen</value>
+  </data>
+  <data name="InvalidIconName" xml:space="preserve">
+    <value>De opgegeven naam "%1" is onbekend als standaard Icon</value>
+  </data>
+  <data name="InvalidImageName" xml:space="preserve">
+    <value>De opgegeven naam "%1" is onbekend als standaard Image</value>
+  </data>
+  <data name="InvalidMarerkList" xml:space="preserve">
+    <value>Ongeldige indeling voor een markeringlijst in PGN</value>
+  </data>
+  <data name="InvalidMove" xml:space="preserve">
+    <value>Ongeldige zet voor een %1</value>
+  </data>
+  <data name="InvalidNAGCode" xml:space="preserve">
+    <value>De code "%1" is ongeldig. De waarde moet een "$" gevolgd door een geldig NAG-nummer zijn</value>
+  </data>
+  <data name="InvalidPiece" xml:space="preserve">
+    <value>Ongeldig stuk "%1"</value>
+  </data>
+  <data name="InvalidQuestion" xml:space="preserve">
+    <value>Ongeldige indeling voor een Trainingsvraag in PGN</value>
+  </data>
+  <data name="InvalidSymbol" xml:space="preserve">
+    <value>Het symbool "%1" is ongeldig. De waarde zou "R", "G", "Y", "B", "C", "O", "+", "-", "0", "#", "." of "*" moeten zijn</value>
+  </data>
+  <data name="InvalidTextList" xml:space="preserve">
+    <value>Ongeldige indeling voor een tekstlijst in PGN</value>
+  </data>
+  <data name="InvalidTQUMove" xml:space="preserve">
+    <value>De zet "%1" is niet juist. Het formaat zou "x9x9" moeten zijn, met Van en Naar veld</value>
+  </data>
+  <data name="InvalidVariantMove" xml:space="preserve">
+    <value>De huidige zet is geen onderdeel van een variant</value>
+  </data>
+  <data name="KingNotSafe" xml:space="preserve">
+    <value>De koning staat nog niet veilig</value>
+  </data>
+  <data name="MessageNotFound" xml:space="preserve">
+    <value>Bericht-tekst voor sleutel "%1" niet gevonden</value>
+  </data>
+  <data name="MissedAttackOnPinnedPiece" xml:space="preserve">
+    <value>Aanval op gepend stuk %1 gemis</value>
+  </data>
+  <data name="MissedDiscoverdAttack" xml:space="preserve">
+    <value>Aftrekaaval %1 gemist. Kopstuk %2 met aanvalsdoel %3 en staartstuk %4 met doel %5</value>
+  </data>
+  <data name="MissedDiscoveredCheck" xml:space="preserve">
+    <value>Aftrekschaak %1 gemist</value>
+  </data>
+  <data name="MissedDoubleAttack" xml:space="preserve">
+    <value>Dubble aanval met %1 op %2 en %3 gemist</value>
+  </data>
+  <data name="MissedDoubleCheck" xml:space="preserve">
+    <value>Dubbelschaak met %1 was beter</value>
+  </data>
+  <data name="MissedMateIn1" xml:space="preserve">
+    <value>Met %1 was het mat geweest</value>
+  </data>
+  <data name="MissedMultiAttack" xml:space="preserve">
+    <value>Meervoudige aanval met %1 op %2, %3, %4,... gemist</value>
+  </data>
+  <data name="MissedPinnedPieceIsBadDefender" xml:space="preserve">
+    <value>Het gepende stuk op %1 is een slechte verdediger, waardoor %2 mogelijk werd</value>
+  </data>
+  <data name="MissedPinning" xml:space="preserve">
+    <value>Kon stuk op %1 pennen met de zet %2</value>
+  </data>
+  <data name="MissedTripleAttack" xml:space="preserve">
+    <value>Driedubbele aanval met %1 op %2, %3 en %4 gemist</value>
+  </data>
+  <data name="MissingSpace" xml:space="preserve">
+    <value>Geen spatie gevonden om "%1" op te splitsen in delen !</value>
+  </data>
+  <data name="NAGBeforeOrAfter" xml:space="preserve">
+    <value>Voor of Na niet kunnen vaststellen: "%1"</value>
+  </data>
+  <data name="NoPawnAtCenter" xml:space="preserve">
+    <value>Nog geen pion in het centrum</value>
+  </data>
+  <data name="NoSpaceFound" xml:space="preserve">
+    <value>Geen spatie gevonden in "%1"</value>
+  </data>
+  <data name="NotCoverded" xml:space="preserve">
+    <value>Ongedekt stuk op %1</value>
+  </data>
+  <data name="OpenPGNFile" xml:space="preserve">
+    <value>Open PGN Bestand</value>
+  </data>
+  <data name="PGNMoveInvalid" xml:space="preserve">
+    <value>PGN was niet specifiek genoeg voor stuk "%1" met doel "%2"</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>Spelen</value>
+  </data>
+  <data name="Position After" xml:space="preserve">
+    <value>Stelling na : %1</value>
+  </data>
+  <data name="MissedProfitExchange" xml:space="preserve">
+    <value>Voordelige ruil op %1</value>
+  </data>
+  <data name="ReallyWrong" xml:space="preserve">
+    <value>Het spijt me, maar er gaat iets goed fout...</value>
+  </data>
+  <data name="RedoEmpty" xml:space="preserve">
+    <value>Niets om opnieuw te doen</value>
+  </data>
+  <data name="RedoTooltipText" xml:space="preserve">
+    <value>Opnieuw wijzigen: "%1"</value>
+  </data>
+  <data name="RooksNotConnected" xml:space="preserve">
+    <value>De torens zijn nog niet verbonden</value>
+  </data>
+  <data name="SameColor" xml:space="preserve">
+    <value>Twee keer achter elkaar dezelfde kleure gezet; Toch opslaan ?</value>
+  </data>
+  <data name="SameColorTwice" xml:space="preserve">
+    <value>%1 heeft twee keer gezet</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Het huidige (PGN/XPGN)-bestand is aangepast !  Het huidige bestand eerst opslaan ?</value>
+  </data>
+  <data name="Setup" xml:space="preserve">
+    <value>Opzetten</value>
+  </data>
+  <data name="Starting Position" xml:space="preserve">
+    <value>Beginstelling</value>
+  </data>
+  <data name="StrangePiece" xml:space="preserve">
+    <value>Onvoorziene situatie met het stuk : "%1"</value>
+  </data>
+  <data name="SwitchToTraining" xml:space="preserve">
+    <value>De partij bevat een of meerdere trainingsvragen.  Overschakelen naar modus TRAINING ?</value>
+  </data>
+  <data name="Training" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="TrainingQuestion" xml:space="preserve">
+    <value>Wat is de beste zet ?</value>
+  </data>
+  <data name="MissedTwoFoldAttack" xml:space="preserve">
+    <value>Kon tweevoudig aangevallen stuk op %1 slaan</value>
+  </data>
+  <data name="TwoFoldAttacked" xml:space="preserve">
+    <value>Tweevoudig aangevallen stuk op %1</value>
+  </data>
+  <data name="MissedUncoverdedPiece" xml:space="preserve">
+    <value>Kon een ongedekt stuk op %1 slaan</value>
+  </data>
+  <data name="UndevelopedPieces" xml:space="preserve">
+    <value>Er zijn nog %1 stuk(ken) niet ontwikkeld</value>
+  </data>
+  <data name="UndoEmpty" xml:space="preserve">
+    <value>Niets om ongedaan te maken</value>
+  </data>
+  <data name="UndoTooltipText" xml:space="preserve">
+    <value>Ongedaan maken van wijzigingen: "%1"</value>
+  </data>
+  <data name="UnknownNAG" xml:space="preserve">
+    <value>Onbekende NAG: "%1"</value>
+  </data>
+  <data name="UnkownLanguage" xml:space="preserve">
+    <value>Onbekende taal opgegeven</value>
+  </data>
+  <data name="UnprofitExchange" xml:space="preserve">
+    <value>Onvoordelige ruil op %1</value>
+  </data>
+  <data name="UpdateFEN" xml:space="preserve">
+    <value>Alle zetten verwijderen en de beginstelling aanpassen ?</value>
+  </data>
+  <data name="UnprofitTwoFoldCapture" xml:space="preserve">
+    <value>Onvoordelige ruil op %2. De %1 op %2 wordt %3 keer aangevallen, maar wordt ook %4 keer verdedigd</value>
+  </data>
+  <data name="ThreatUnprofitExchange" xml:space="preserve">
+    <value>Er dreigt een onvoordelige ruil op %1</value>
+  </data>
+  <data name="OfferingPieces" xml:space="preserve">
+    <value>De tegenstander heeft met zijn %2 een voordelige ruil op %1</value>
+  </data>
+  <data name="OfferingPieces2" xml:space="preserve">
+    <value>De tegenstander kan onvoldoende verdedigd %2 op %1 slaan</value>
+  </data>
+  <data name="CaptureWithLowerPiece" xml:space="preserve">
+    <value>Het is beter om het tweevoudig-aangevallen-stuk op %1 met %2 op %3 te slaan</value>
+  </data>
+  <data name="Position Before" xml:space="preserve">
+    <value>Stelling voor: %1</value>
+  </data>
+</root>

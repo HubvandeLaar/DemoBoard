@@ -1,64 +1,31 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
-Imports ChessGlobals.ChessColor
-Imports ChessGlobals.ChessLanguage
-Imports ChessMaterials
-Imports PGNLibrary
-Imports System.Windows.Forms
-Imports DemoBoard
 Imports System.ComponentModel
 Imports System.Threading
+Imports ChessGlobals
+Imports ChessMaterials
+Imports ChessMessaging
+Imports ChessMessaging.Messages
+Imports DemoBoard.frmMainForm
+Imports DemoBoard.frmMainForm.ChessMode
+Imports PGNLibrary
 
 Public Class frmMoveList
     Private WithEvents gfrmMainForm As frmMainForm
-    Private WithEvents gPGNHalfMoves As PGNHalfMoves
+    Private WithEvents gfrmEditHalfMove As New frmEditHalfMove()
+
+    Private gHalfMoves As PGNHalfMoves
+    Private gBeforeImage As String
 
     Public Event PositionChanged(pBeforeHalfMove As PGNHalfMove, pAfterHalfMove As PGNHalfMove)
-    Public Event HalfMoveChanged(pBeforeImage As String, pAfterImage As String)
+    Public Event HalfMoveChanged(pHalfMove As PGNHalfMove, pBeforeImage As String, pAfterImage As String)
     Public Event MoveListChanged(pBeforeImage As String, pAfterImage As String)
-    ' Public Event LanguageChanged(pCurrentMoveListRow As ctlMoveListRow)
     Public Event TrainingQuestionFound(pHalfMove As PGNHalfMove, pNextMoves As List(Of PGNHalfMove))
-
-    Public Property CurrentHalfMove As PGNHalfMove
-        Set(pCurrentHalfMove As PGNHalfMove)
-            ctlMoveList.SelectedHalfMove = pCurrentHalfMove
-        End Set
-        Get
-            If ctlMoveList.SelectedHalfMove Is Nothing Then
-                Return Nothing
-            Else
-                Return ctlMoveList.SelectedHalfMove
-            End If
-        End Get
-    End Property
-
-    Public Property CurrentHalfMoveIndex As String
-        Set(pCurrentHalfMoveIndex As String)
-            If gPGNHalfMoves.Count = 0 _
-            Or pCurrentHalfMoveIndex = "" Then
-                Me.ctlMoveList.SelectedHalfMove = Nothing
-            Else
-                Me.ctlMoveList.SelectedHalfMove = gPGNHalfMoves(Val(pCurrentHalfMoveIndex))
-            End If
-        End Set
-        Get
-            If Me.CurrentHalfMove Is Nothing Then
-                Return ""
-            Else
-                Return Str(CurrentHalfMove.Index)
-            End If
-        End Get
-    End Property
 
     Public Sub New(pfrmMainForm As frmMainForm)
         InitializeComponent()
 
         gfrmMainForm = pfrmMainForm
-    End Sub
-
-    Public Sub NextMove()
-        Me.cmdNext_Click(Nothing, Nothing)
     End Sub
 
     Private Sub frmMoveList_SizeChanged(pSender As Object, pArgs As System.EventArgs) Handles Me.SizeChanged
@@ -68,36 +35,54 @@ Public Class frmMoveList
             cmdPrevious.Left = Center - 4 - cmdPrevious.Width
             cmdNext.Left = Center + 4
             cmdLast.Left = Center + 4 + cmdNext.Width + 8
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
     Private Sub ctlMoveList_Clicked(pMoveListRow As ctlMoveListRow, pHalfMove As PGNHalfMove, pPreviousHalfMove As PGNHalfMove) Handles ctlMoveList.Clicked
-        If pMoveListRow Is Nothing Then
-            RaiseEvent PositionChanged(pPreviousHalfMove, pHalfMove)
-        Else
-            If gfrmMainForm.Mode = ChessMode.TRAINING _
-            AndAlso pMoveListRow.WhiteHalfMove.TrainingQuestion IsNot Nothing Then
-                RaiseEvent TrainingQuestionFound(pMoveListRow.WhiteHalfMove, pMoveListRow.WhiteHalfMove.SubVariants)
-                Exit Sub
+        Try
+            If pMoveListRow IsNot Nothing Then
+                If gfrmMainForm.Mode = TRAINING _
+                AndAlso pMoveListRow.WhiteHalfMove.HasTrainingQuestion Then
+                    RaiseEvent TrainingQuestionFound(pMoveListRow.WhiteHalfMove, pMoveListRow.WhiteHalfMove.SubVariants)
+                    Exit Sub
+                End If
             End If
-        End If
-        RaiseEvent PositionChanged(pPreviousHalfMove, pHalfMove)
+
+            RaiseEvent PositionChanged(pPreviousHalfMove, pHalfMove)
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
-    Private Sub gPGNHalfMoves_Changed(pPGNHalfMove As PGNHalfMove) Handles gPGNHalfMoves.Changed
-        ctlMoveList.UpdateMoveList(gPGNHalfMoves)
-        ctlMoveList.SelectedHalfMove = pPGNHalfMove
+    Private Sub ctlMoveList_DoubleClicked(pMoveListRow As ctlMoveListRow, pHalfMove As PGNHalfMove, pPreviousHalfMove As PGNHalfMove) Handles ctlMoveList.DoubleClicked
+        Try
+            RaiseEvent PositionChanged(pPreviousHalfMove, pHalfMove)
+            Application.DoEvents()
+
+            gBeforeImage = pHalfMove.JournalImage
+            'NB Show() is used because closing a ShowDialog() within a ShowDialog() closes both forms
+            gfrmEditHalfMove.Show(pHalfMove, gfrmMainForm)
+
+        Catch pException As Exception
+            frmErrorMessageBox.Show(pException)
+        End Try
     End Sub
 
     Private Sub gfrmMainForm_GameChanged(pPGNGame As PGNLibrary.PGNGame) Handles gfrmMainForm.GameChanged
-        gPGNHalfMoves = pPGNGame.HalfMoves
-        Me.ctlMoveList.UpdateMoveList(gPGNHalfMoves)
+        gHalfMoves = pPGNGame.HalfMoves
+
+        If Me.Visible = True Then
+            ctlMoveList.UpdateMoveList(gHalfMoves)
+            ctlMoveList.SelectedHalfMove = gHalfMoves.CurrentHalfMove
+        End If
     End Sub
 
     Private Sub gfrmMainForm_LanguageChanged(pLanguage As ChessLanguage) Handles gfrmMainForm.LanguageChanged
-        Call ChangeLanguageCurrentForm(Me)
+        Call ApplyLanguageToCurrentForm(Me)
 
         'ContextMenuStrip is not in Form.Controls, but in private Form.components property
         Dim Resources As ComponentResourceManager
@@ -106,16 +91,28 @@ Public Class frmMoveList
             Resources.ApplyResources(MenuItem, MenuItem.Name, Thread.CurrentThread.CurrentUICulture)
         Next MenuItem
 
-        Me.ctlMoveList.UpdateMoveList(gPGNHalfMoves)
+        If Me.Visible = True Then
+            ctlMoveList.UpdateMoveList(gHalfMoves)
+            ctlMoveList.SelectedHalfMove = gHalfMoves.CurrentHalfMove
+        End If
+
+        'Debug.Print("frmMoveList: Event PositionChanged")
+        'RaiseEvent PositionChanged(Nothing, ctlMoveList.SelectedHalfMove)
     End Sub
 
-    Private Sub gfrmMainForm_BoardKeyDown(pMsg As Message, pKeyData As Keys) Handles gfrmMainForm.BoardKeyDown
-        Select Case pKeyData
-            Case Keys.Left : cmdPrevious_Click(Nothing, Nothing)
-            Case Keys.Right : cmdNext_Click(Nothing, Nothing)
-            Case Keys.PageUp : cmdStart_Click(Nothing, Nothing)
-            Case Keys.PageDown : cmdLast_Click(Nothing, Nothing)
-        End Select
+    Private Sub gfrmMainForm_KeyDown(pSender As Object, pArgs As KeyEventArgs) Handles gfrmMainForm.KeyDown
+        If Me.Visible = True Then
+            Select Case pArgs.KeyCode
+                Case Keys.Left : cmdPrevious_Click(Nothing, Nothing)
+                Case Keys.Right : cmdNext_Click(Nothing, Nothing)
+                Case Keys.PageUp, Keys.Home : cmdStart_Click(Nothing, Nothing)
+                Case Keys.PageDown, Keys.End : cmdLast_Click(Nothing, Nothing)
+                Case Else : Exit Sub
+            End Select
+
+            'To avoid TabControl to jump to next tab
+            pArgs.Handled = True
+        End If
     End Sub
 
     'Buttons
@@ -123,6 +120,7 @@ Public Class frmMoveList
         Dim PreviousHalfMove As PGNHalfMove = ctlMoveList.SelectedHalfMove
         Try
             ctlMoveList.SelectedHalfMove = Nothing
+
             RaiseEvent PositionChanged(PreviousHalfMove, Nothing)
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
@@ -139,13 +137,14 @@ Public Class frmMoveList
 
                 'Question or Multiple Choice ?
                 If PreviousHalfMove IsNot Nothing _
-                AndAlso gfrmMainForm.Mode = ChessMode.TRAINING _
-                AndAlso PreviousHalfMove.TrainingQuestion IsNot Nothing Then
+                AndAlso gfrmMainForm.Mode = TRAINING _
+                AndAlso PreviousHalfMove.HasTrainingQuestion Then
                     RaiseEvent TrainingQuestionFound(PreviousHalfMove, PreviousHalfMove.SubVariants)
                     Exit Sub
                 End If
 
                 ctlMoveList.SelectedHalfMove = PreviousHalfMove
+
                 RaiseEvent PositionChanged(PreviousHalfMove, ctlMoveList.SelectedHalfMove)
             End If
         Catch pException As Exception
@@ -157,28 +156,30 @@ Public Class frmMoveList
         Dim PreviousHalfMove As PGNHalfMove = ctlMoveList.SelectedHalfMove
         Dim NextMoves As List(Of PGNHalfMove)
         Try
-            NextMoves = gPGNHalfMoves.NextHalfMoves(ctlMoveList.SelectedHalfMove)
+            NextMoves = gHalfMoves.NextHalfMoves(ctlMoveList.SelectedHalfMove)
             If NextMoves Is Nothing Then Exit Sub
 
             'Question or Multiple Choice ?
-            If gfrmMainForm.Mode = ChessMode.TRAINING _
-            AndAlso NextMoves(0).TrainingQuestion IsNot Nothing Then
+            If gfrmMainForm.Mode = TRAINING _
+            AndAlso NextMoves(0).HasTrainingQuestion Then
                 RaiseEvent TrainingQuestionFound(NextMoves(0), NextMoves)
                 Exit Sub
             End If
 
             If NextMoves.Count = 1 Then
                 ctlMoveList.SelectedHalfMove = NextMoves(0)
+
                 RaiseEvent PositionChanged(PreviousHalfMove, ctlMoveList.SelectedHalfMove)
             Else
-                With frmSelectVariant
-                    .ShowDialog(NextMoves)
-                    .Hide()
-                    If .ChoosenVariant IsNot Nothing Then
-                        ctlMoveList.SelectedHalfMove = .ChoosenVariant
+                Using frmSelectVariant = New frmSelectVariant()
+                    frmSelectVariant.ShowDialog(NextMoves)
+                    frmSelectVariant.Hide()
+                    If frmSelectVariant.ChoosenVariant IsNot Nothing Then
+                        ctlMoveList.SelectedHalfMove = frmSelectVariant.ChoosenVariant
+
                         RaiseEvent PositionChanged(PreviousHalfMove, ctlMoveList.SelectedHalfMove)
                     End If
-                End With
+                End Using
             End If
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
@@ -188,15 +189,16 @@ Public Class frmMoveList
     Private Sub cmdLast_Click(pSender As System.Object, pArgs As System.EventArgs) Handles cmdLast.Click
         Dim PreviousHalfMove As PGNHalfMove = ctlMoveList.SelectedHalfMove
         Try
-            Dim LastHalfMove As PGNHalfMove = gPGNHalfMoves.LastHalfMove
+            Dim LastHalfMove As PGNHalfMove = gHalfMoves.LastHalfMove
             If LastHalfMove IsNot Nothing _
-            AndAlso gfrmMainForm.Mode = ChessMode.TRAINING _
-            AndAlso LastHalfMove.TrainingQuestion IsNot Nothing Then
+            AndAlso gfrmMainForm.Mode = TRAINING _
+            AndAlso LastHalfMove.HasTrainingQuestion Then
                 RaiseEvent TrainingQuestionFound(LastHalfMove, LastHalfMove.SubVariants)
                 Exit Sub
             End If
 
             ctlMoveList.SelectedHalfMove = LastHalfMove
+
             RaiseEvent PositionChanged(PreviousHalfMove, ctlMoveList.SelectedHalfMove)
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
@@ -207,7 +209,9 @@ Public Class frmMoveList
     Private Sub ctlMoveList_RightClicked(pMoveListRow As ctlMoveListRow, pHalfMove As PGNHalfMove, pPreviousHalfMove As PGNHalfMove) Handles ctlMoveList.RightClicked
         Try
             mnuMoveMenu.Show(MousePosition)
-            RaiseEvent PositionChanged(pPreviousHalfMove, pHalfMove)
+
+            'Debug.Print("frmMoveList: Event PositionChanged")
+            'RaiseEvent PositionChanged(pPreviousHalfMove, pHalfMove)
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -218,15 +222,16 @@ Public Class frmMoveList
             Dim PreviousHalfMove As PGNHalfMove = ctlMoveList.SelectedHalfMove.PreviousHalfMove
             If MsgBox(MessageText("DeleteMove", ctlMoveList.SelectedHalfMove.MoveNrString(True) & ctlMoveList.SelectedHalfMove.MoveText()), MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                 Dim BeforeImage As New XElement("Change")
-                BeforeImage.Add(New XElement("Index", CurrentHalfMoveIndex))
-                BeforeImage.Add(New XElement("HalfMoves", gPGNHalfMoves.XPGNString))
+                BeforeImage.Add(New XElement("Index", gHalfMoves.CurrentHalfMoveIndex))
+                BeforeImage.Add(New XElement("HalfMoves", gHalfMoves.XPGNString))
 
-                gPGNHalfMoves.DeleteVariantFrom(ctlMoveList.SelectedHalfMove)
+                gHalfMoves.DeleteVariantFrom(ctlMoveList.SelectedHalfMove)
+                ctlMoveList.UpdateMoveList(gHalfMoves)
                 ctlMoveList.SelectedHalfMove = PreviousHalfMove
 
                 Dim AfterImage As New XElement("Change")
-                AfterImage.Add(New XElement("Index", CurrentHalfMoveIndex))
-                AfterImage.Add(New XElement("HalfMoves", gPGNHalfMoves.XPGNString))
+                AfterImage.Add(New XElement("Index", gHalfMoves.CurrentHalfMoveIndex))
+                AfterImage.Add(New XElement("HalfMoves", gHalfMoves.XPGNString))
                 RaiseEvent MoveListChanged(BeforeImage.ToString(), AfterImage.ToString())
             End If
         Catch pException As Exception
@@ -236,36 +241,40 @@ Public Class frmMoveList
 
     Private Sub mnuEditMove_Click(pSender As System.Object, pArgs As System.EventArgs) Handles mnuEditMove.Click
         Try
-            Dim HalfMove As PGNHalfMove = ctlMoveList.SelectedHalfMove
-            Dim BeforeImage As String = ctlMoveList.SelectedHalfMove.JournalImage
-            Dim frmEditHalfMove As New frmEditHalfMove
-            frmEditHalfMove.ShowDialog(ctlMoveList.SelectedHalfMove, gfrmMainForm)
-            Dim AfterImage As String = ctlMoveList.SelectedHalfMove.JournalImage
-            If AfterImage <> BeforeImage Then
-                RaiseEvent HalfMoveChanged(BeforeImage, AfterImage)
-                ctlMoveList.UpdateMoveList(gfrmMainForm.PGNGame.HalfMoves)
-                ctlMoveList.SelectedHalfMove = HalfMove
-            End If
+            gBeforeImage = ctlMoveList.SelectedHalfMove.JournalImage
+            'NB Show() is used because closing a ShowDialog() within a ShowDialog() closes both forms
+            gfrmEditHalfMove.Show(ctlMoveList.SelectedHalfMove, gfrmMainForm)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
+    Private Sub gfrmEditHalfMove_HalfMoveChanged(pHalfMove As PGNHalfMove) Handles gfrmEditHalfMove.HalfMoveChanged
+        Dim AfterImage As String = pHalfMove.JournalImage
+        If AfterImage <> gBeforeImage Then
+            RaiseEvent HalfMoveChanged(pHalfMove, gBeforeImage, AfterImage)
+
+            ctlMoveList.UpdateMoveList(gHalfMoves)
+            ctlMoveList.SelectedHalfMove = gHalfMoves.CurrentHalfMove
+        End If
+    End Sub
+
     Private Sub mnuPromoteVariant_Click(pSender As Object, pArgs As EventArgs) Handles mnuPromoteVariant.Click
         Try
             Dim BeforeImage As New XElement("Change")
-            BeforeImage.Add(New XElement("Index", CurrentHalfMoveIndex))
-            BeforeImage.Add(New XElement("HalfMoves", gPGNHalfMoves.XPGNString))
+            BeforeImage.Add(New XElement("Index", gHalfMoves.CurrentHalfMoveIndex))
+            BeforeImage.Add(New XElement("HalfMoves", gHalfMoves.XPGNString))
 
-            Dim PGNVariants As New PGNVariants(CurrentHalfMoveIndex, gPGNHalfMoves)
+            Dim PGNVariants As New PGNVariants(gHalfMoves.CurrentHalfMoveIndex, gHalfMoves)
             PGNVariants.Promote()
 
-            Me.ctlMoveList.UpdateMoveList(gPGNHalfMoves)
-            CurrentHalfMoveIndex = PGNVariants.CurrentMoveIndex
+            ctlMoveList.UpdateMoveList(gHalfMoves)
+            gHalfMoves.CurrentHalfMoveIndex = PGNVariants.CurrentMoveIndex
 
             Dim AfterImage As New XElement("Change")
-            AfterImage.Add(New XElement("Index", CurrentHalfMoveIndex))
-            AfterImage.Add(New XElement("HalfMoves", gPGNHalfMoves.XPGNString))
+            AfterImage.Add(New XElement("Index", gHalfMoves.CurrentHalfMoveIndex))
+            AfterImage.Add(New XElement("HalfMoves", gHalfMoves.XPGNString))
             RaiseEvent MoveListChanged(BeforeImage.ToString(), AfterImage.ToString())
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
@@ -275,35 +284,54 @@ Public Class frmMoveList
     Private Sub mnuDemoteVariant_Click(pSender As Object, pArgs As EventArgs) Handles mnuDemoteVariant.Click
         Try
             Dim BeforeImage As New XElement("Change")
-            BeforeImage.Add(New XElement("Index", CurrentHalfMoveIndex))
-            BeforeImage.Add(New XElement("HalfMoves", gPGNHalfMoves.XPGNString))
+            BeforeImage.Add(New XElement("Index", gHalfMoves.CurrentHalfMoveIndex))
+            BeforeImage.Add(New XElement("HalfMoves", gHalfMoves.XPGNString))
 
-            Dim PGNVariants As New PGNVariants(CurrentHalfMoveIndex, gPGNHalfMoves, True)
+            Dim PGNVariants As New PGNVariants(gHalfMoves.CurrentHalfMoveIndex, gHalfMoves, True)
             PGNVariants.Demote()
 
-            Me.ctlMoveList.UpdateMoveList(gPGNHalfMoves)
-            CurrentHalfMoveIndex = PGNVariants.CurrentMoveIndex
+            ctlMoveList.UpdateMoveList(gHalfMoves)
+            gHalfMoves.CurrentHalfMoveIndex = PGNVariants.CurrentMoveIndex
+            ctlMoveList.SelectedHalfMove = gHalfMoves.CurrentHalfMove
 
             Dim AfterImage As New XElement("Change")
-            AfterImage.Add(New XElement("Index", CurrentHalfMoveIndex))
-            AfterImage.Add(New XElement("HalfMoves", gPGNHalfMoves.XPGNString))
+            AfterImage.Add(New XElement("Index", gHalfMoves.CurrentHalfMoveIndex))
+            AfterImage.Add(New XElement("HalfMoves", gHalfMoves.XPGNString))
+
             RaiseEvent MoveListChanged(BeforeImage.ToString(), AfterImage.ToString())
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
 
+    Private Sub frmMoveList_VisibleChanged(pSender As Object, pArgs As EventArgs) Handles Me.VisibleChanged
+        If Me.Visible = True _
+        And gHalfMoves IsNot Nothing Then
+            ctlMoveList.UpdateMoveList(gHalfMoves)
+            ctlMoveList.SelectedHalfMove = gHalfMoves.CurrentHalfMove
+        End If
+    End Sub
+
     Private Sub frmMoveList__Disposed(pSender As Object, pArgs As EventArgs) Handles Me.Disposed
         gfrmMainForm = Nothing
     End Sub
 
+    Private Sub gfrmMainForm_FENChanged(pFEN As String) Handles gfrmMainForm.FENChanged
+        If Me.Visible = True Then
+            ctlMoveList.UpdateMoveList(gHalfMoves)
+            ctlMoveList.SelectedHalfMove = gHalfMoves.CurrentHalfMove
+        End If
+    End Sub
+
     Private Sub gfrmMainForm_MoveListPositionChanged(pPGNGame As PGNGame, pCurrentHalfMove As PGNHalfMove) Handles gfrmMainForm.MoveListPositionChanged
-        ctlMoveList.SelectedHalfMove = pCurrentHalfMove
-        ctlMoveList.ShowMoveList()
+        If Me.Visible = True Then
+            ctlMoveList.SelectedHalfMove = pCurrentHalfMove
+            ctlMoveList.ShowMoveList()
+        End If
     End Sub
 
     Private Sub gfrmMainForm_ModeChanged(pMode As ChessMode) Handles gfrmMainForm.ModeChanged
-        If pMode = ChessMode.TRAINING Then
+        If pMode = TRAINING Then
             ctlMoveList.HideAfterSelectedHalfMove = True
         Else
             ctlMoveList.HideAfterSelectedHalfMove = False
@@ -311,14 +339,24 @@ Public Class frmMoveList
     End Sub
 
     Private Sub gfrmMainForm_MovePlayed(pHalfMove As PGNHalfMove) Handles gfrmMainForm.MovePlayed
-        ctlMoveList.SelectedHalfMove = pHalfMove
-        ctlMoveList.ShowMoveList()
+        If Me.Visible = True Then
+            ctlMoveList.SelectedHalfMove = pHalfMove
+            ctlMoveList.ShowMoveList()
+        End If
+    End Sub
+
+    Private Sub gfrmMainForm_ChessPieceMoved(pPiece As ChessPiece, pFromFieldName As String, pToFieldName As String, pChessBoard As ChessBoard, pCaptured As Boolean, pPromotionPiece As ChessPiece, pHalfMove As PGNHalfMove) Handles gfrmMainForm.ChessPieceMoved
+        If Me.Visible = True Then
+            ctlMoveList.SelectedHalfMove = pHalfMove
+            ctlMoveList.ShowMoveList()
+        End If
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.gfrmMainForm = Nothing
-        Me.gPGNHalfMoves = Nothing
+        gfrmMainForm = Nothing
+        gHalfMoves = Nothing
 
         MyBase.Finalize()
     End Sub
+
 End Class

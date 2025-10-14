@@ -1,19 +1,21 @@
-﻿Imports System.ComponentModel
-Imports ChessGlobals
+﻿Option Explicit On
+
+Imports ChessMessaging
 Imports PGNLibrary
 
 Public Class frmEditTitleAndMemo
 
-    Public PGNGame As PGNGame
-    Public OKPressed As Boolean
+    Private gPGNGame As PGNGame
+
+    Public Property OKPressed As Boolean
 
     Public Overloads Sub ShowDialog(pPGNGame As PGNGame)
         Try
-            PGNGame = pPGNGame
+            gPGNGame = pPGNGame
             OKPressed = False
 
-            txtTitle.Text = PGNGame.Tags.GetPGNTag("Title")
-            txtMemo.Text = PGNGame.Tags.GetPGNTag("Memo")
+            txtTitle.Text = gPGNGame.Tags("Title").Value
+            txtMemo.Text = gPGNGame.Tags("Memo").Value
 
             Application.DoEvents()
             Call MyBase.ShowDialog()
@@ -27,8 +29,8 @@ Public Class frmEditTitleAndMemo
         Try
             OKPressed = True
 
-            PGNGame.Tags.Add("Title", txtTitle.Text)
-            PGNGame.Tags.Add("Memo", txtMemo.Text)
+            gPGNGame.Tags.Add("Title", txtTitle.Text)
+            gPGNGame.Tags.Add("Memo", txtMemo.Text)
 
             Me.Hide()
 
@@ -43,7 +45,7 @@ Public Class frmEditTitleAndMemo
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.PGNGame = Nothing
+        gPGNGame = Nothing
 
         MyBase.Finalize()
     End Sub

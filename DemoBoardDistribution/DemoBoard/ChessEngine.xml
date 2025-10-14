@@ -22,5 +22,14 @@ ChessEngine
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:ChessEngine.EngineMove.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:ChessEngine.Engine.CheckMate(System.Object)">
+ <summary>Returns True if StockFish found Mate in #x</summary>
+</member>
+<member name="M:ChessEngine.EngineResult.ToString">
+ <summary>For debugging purposes</summary>
+</member>
 </members>
 </doc>

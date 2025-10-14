@@ -1,25 +1,26 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
 Imports System.Xml.Serialization
 
 <XmlType()>
 Public Class PGNGames
     Inherits List(Of PGNGame)
 
+    ''' <summary>Adds a New empty PGNGame and returns the added PGNGame</summary>
     Public Overloads Function Add() As PGNGame
-        Dim PGNGame As New PGNGame(True)
+        Dim PGNGame As New PGNGame()
         MyBase.Add(PGNGame)
         PGNGame.Index = Me.Count - 1
         Return PGNGame
     End Function
 
+    ''' <summary>Inserts the given Game at the specified position</summary>
     Public Overloads Sub Insert(pIndex As Long, pPGNGame As PGNGame)
         MyBase.Insert(pIndex, pPGNGame)
         Me.Renumber()
     End Sub
 
-    ''' <summary>Returns New Current PGNGame</summary>
+    ''' <summary>Removes the specified PGNGame and returns the New Current PGNGame</summary>
     Public Overloads Function Remove(pPGNGame As PGNGame) As PGNGame
         Dim Index As Long
         Index = pPGNGame.Index - 1
@@ -54,6 +55,7 @@ Public Class PGNGames
         End If
     End Sub
 
+    ''' <summary>Returns the index of the specified PGNGame</summary>
     Private Function Index(pPGNGame As PGNGame)
         Dim G As Integer
         For G = 0 To Me.Count - 1

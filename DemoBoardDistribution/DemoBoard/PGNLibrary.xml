@@ -22,8 +22,62 @@ PGNLibrary
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:PGNLibrary.PGNArrowList.ContainsArrowList(System.String)">
+ <summary>Returns True when a given comment contains an ArrowList</summary>
+</member>
+<member name="M:PGNLibrary.PGNArrowList.GetArrowList(System.String)">
+ <summary>Returns the Arrowlist string out of a given comment</summary>
+</member>
+<member name="M:PGNLibrary.PGNArrowList.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNComment.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNComment.RemoveDiagramString">
+ <summary>Returns the Comment String without Diagram request</summary>
+</member>
+<member name="M:PGNLibrary.PGNComment.DiagramPosition">
+ <summary>Returns the position of the Diagram request</summary>
+</member>
+<member name="M:PGNLibrary.PGNComment.DiagramText">
+ <summary>Returns the Diagram request</summary>
+</member>
+<member name="M:PGNLibrary.PGNComment.CommentBeforeDiagram">
+ <summary>Returns the Comment string before the Diagram request</summary>
+</member>
+<member name="M:PGNLibrary.PGNComment.CommentAfterDiagram">
+ <summary>Returns the Comment string after the Diagram request</summary>
+</member>
+<member name="M:PGNLibrary.PGNFile.IsPGNFile(System.String)">
+ <summary>Returns True when the FileName is a PGN of XPGN file</summary>
+</member>
+<member name="M:PGNLibrary.PGNGame.FEN(PGNLibrary.PGNHalfMove)">
+ <returns>FEN string representing the position after the specified half-move.</returns>
+</member>
+<member name="M:PGNLibrary.PGNGames.Add">
+ <summary>Adds a New empty PGNGame and returns the added PGNGame</summary>
+</member>
+<member name="M:PGNLibrary.PGNGames.Insert(System.Int64,PGNLibrary.PGNGame)">
+ <summary>Inserts the given Game at the specified position</summary>
+</member>
 <member name="M:PGNLibrary.PGNGames.Remove(PGNLibrary.PGNGame)">
- <summary>Returns New Current PGNGame</summary>
+ <summary>Removes the specified PGNGame and returns the New Current PGNGame</summary>
+</member>
+<member name="M:PGNLibrary.PGNGames.Index(PGNLibrary.PGNGame)">
+ <summary>Returns the index of the specified PGNGame</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMove.BoardMove(ChessMaterials.ChessBoard)">
+ <summary>Returns this HalfMove as a BoardMove</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMove.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.NextHalfMoves(PGNLibrary.PGNHalfMove)">
+ <summary>Returns a List of possible HalfMoves (NB Given HalfMove can be Nothing)</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.PreviousHalfMove(PGNLibrary.PGNHalfMove)">
+ <summary>Returns the Previous HalfMove of a specified HalfMove</summary>
 </member>
 <member name="M:PGNLibrary.PGNHalfMoves.FindNextHalfMove(PGNLibrary.PGNHalfMove,System.Int64,System.Int64)">
  <summary>Returns next HalfMove matching pVariantLevel and pVariantNumber</summary>
@@ -31,24 +85,129 @@ PGNLibrary
 <member name="M:PGNLibrary.PGNHalfMoves.FindPreviousHalfMove(PGNLibrary.PGNHalfMove,System.Int64,System.Int64)">
  <summary>Returns the index of the next move matching these criteria</summary>
 </member>
+<member name="M:PGNLibrary.PGNHalfMoves.CollectMoves(PGNLibrary.PGNHalfMove)">
+ <summary>Collects Moves to Play From a specified HalfMove</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.CollectMoves(PGNLibrary.PGNHalfMove,PGNLibrary.PGNHalfMove)">
+ <summary>Collect Moves to Play From a specified HalfMove To a specified HalfMove</summary>
+</member>
 <member name="M:PGNLibrary.PGNHalfMoves.FirstMoveInVariant(PGNLibrary.PGNHalfMove)">
  <summary>Determine FirstMove within a specific Variant</summary>
 </member>
-<member name="M:PGNLibrary.PGNHalfMoves.Insert(PGNLibrary.PGNHalfMove@,PGNLibrary.PGNHalfMove)">
+<member name="M:PGNLibrary.PGNHalfMoves.Add(System.String,System.String,System.String,ChessGlobals.modChessColor.ChessColor,System.Int64,System.Int64,System.Boolean)">
+ <summary>Adds a New HalfMove with specified attributed</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.Add(PGNLibrary.PGNHalfMove,System.Boolean)">
+ <summary>Adds a given HalfMove</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.Insert(PGNLibrary.PGNHalfMove,PGNLibrary.PGNHalfMove)">
  <summary>Insert a new move into the MoveList</summary>
  <returns>Returns True when move was added</returns>
 </member>
+<member name="M:PGNLibrary.PGNHalfMoves.InsertBefore(System.Int64,PGNLibrary.PGNHalfMove)">
+ <summary>Inserts a given HalfMove at the specified Index</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.InsertAfter(System.Int64,PGNLibrary.PGNHalfMove)">
+ <summary>Inserts a given HalfMove after a specified Index</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.RemoveResult">
+ <summary>Removes the Result Move at the end of the list</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.UpdateResult(System.String)">
+ <summary>Creates a New Result Move</summary>
+</member>
 <member name="M:PGNLibrary.PGNHalfMoves.ReNumber">
- <summary>Update indexes stored at Halfmove</summary>
+ <summary>Update Indexes stored at Halfmove</summary>
 </member>
 <member name="M:PGNLibrary.PGNHalfMoves.DeleteVariantFrom(PGNLibrary.PGNHalfMove)">
- <summary> Delete this and remaining moves in Variant starting with pHalfMove </summary>
+ <summary>Delete specified and subsequent HalfMoves in a Variant</summary>
 </member>
 <member name="M:PGNLibrary.PGNHalfMoves.DeleteVariantAfter(PGNLibrary.PGNHalfMove)">
  <summary>Remove remaining moves from current (sub-) variant</summary>
 </member>
-<member name="P:PGNLibrary.PGNNAG.PGNString">
- <summary>First position contains "$"</summary>
+<member name="M:PGNLibrary.PGNHalfMoves.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.FirstNonNumeric(System.Int64,System.String)">
+ <summary>Returns the First NonNumeric position within the MoveList starting with a given StartPos </summary>
+</member>
+<member name="M:PGNLibrary.PGNHalfMoves.FirstSpaceOrBracket(System.Int64,System.String)">
+ <summary>Returns the First Space or Bracket within the MoveList starting at StartPos</summary>
+</member>
+<member name="M:PGNLibrary.PGNMarkerList.ContainsMarkerList(System.String)">
+ <summary>Returns True when the given Comment contains a MarkerList</summary>
+</member>
+<member name="M:PGNLibrary.PGNMarkerList.GetMarkerList(System.String)">
+ <summary>Returns the MarkerList from the given Comment</summary>
+</member>
+<member name="M:PGNLibrary.PGNMarkerList.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNNAG.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNNAGs.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNTag.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNTags.Add(System.String)">
+ <summary>Adds a New (or updates matching) PGNTag from a PGNString</summary>
+</member>
+<member name="M:PGNLibrary.PGNTags.Add(System.String,System.String)">
+ <summary>Adds a New (or updates matching) PGNTag from given Key and Value</summary>
+</member>
+<member name="M:PGNLibrary.PGNTags.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNTextList.ContainsTextList(System.String)">
+ <summary>Returns True when given Comment contains a TextList</summary>
+</member>
+<member name="M:PGNLibrary.PGNTextList.GetTextList(System.String)">
+ <summary>Returns the TextList-string from a given Comment</summary>
+</member>
+<member name="M:PGNLibrary.PGNTextList.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingAnswer.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingLocalizedQuestion.SplitCSV(System.Object)">
+ <summary>Splits a CSV-string into a List of strings</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingLocalizedQuestion.TrimQuotes(System.String)">
+ <summary>Removes the Qoutes from a string</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingLocalizedQuestion.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingQuestion.ContainsTrainingQuestion(System.String)">
+ <summary>Returns True when given Comment contains a TrainingQuestion</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingQuestion.GetPGNQuestion(System.String)">
+ <summary>Returns the TrainingQuestion from a given Comment</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingQuestion.GetLocalizedQuestion(System.String)">
+ <summary>Returns the Question matching the given or Current Language</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingQuestion.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNTrainingQuestion.TrimCommasAndSpaces(System.String)">
+ <summary>Removes starting or trailing spaces and commas from a given Text</summary>
+</member>
+<member name="M:PGNLibrary.PGNVariant.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNVariants.ToString">
+ <summary>For debugging purposes</summary>
+</member>
+<member name="M:PGNLibrary.PGNVariants.FindLastMoveOfVariant(System.Int32)">
+ <summary>Returns the Index of the Last Move within a Variant of specified Move-Index</summary>
+</member>
+<member name="M:PGNLibrary.PGNVariants.FindFirstMoveOfParentVariant(System.Object)">
+ <summary>Returns the HalfMoveIndex of the Parent Variant's First Move</summary>
 </member>
 </members>
 </doc>

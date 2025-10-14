@@ -1,19 +1,22 @@
 ﻿Option Explicit On
 
+Imports System.ComponentModel
 Imports ChessGlobals
+Imports ChessMessaging
 Imports PGNLibrary
-Imports ChessMaterials
 
 Public Class frmEditHalfMove
 
-    Public PGNHalfMove As PGNHalfMove
+    Public Property HalfMove As PGNHalfMove
 
     Private gfrmMainForm As frmMainForm
 
-    Public Overloads Sub ShowDialog(pPGNHalfMove As PGNHalfMove, pfrmMainForm As frmMainForm)
+    Public Event HalfMoveChanged(pPGNHalfMove As PGNHalfMove)
+
+    Public Overloads Sub Show(pPGNHalfMove As PGNHalfMove, pfrmMainForm As frmMainForm)
         Try
             gfrmMainForm = pfrmMainForm
-            PGNHalfMove = pPGNHalfMove
+            HalfMove = pPGNHalfMove
 
             lblMoveNr.Text = pPGNHalfMove.MoveNrString
             lblMoveText.Text = pPGNHalfMove.MoveText(CurrentLanguage)
@@ -28,10 +31,10 @@ Public Class frmEditHalfMove
                 lblTrainingQuestion.Text = ""
             Else
                 txtCommentBefore.Text = pPGNHalfMove.CommentBefore.Text
-                If PGNHalfMove.TrainingQuestion Is Nothing Then
+                If HalfMove.HasTrainingQuestion Then
                     lblTrainingQuestion.Text = ""
                 Else
-                    lblTrainingQuestion.Text = PGNHalfMove.TrainingQuestion.PGNString
+                    lblTrainingQuestion.Text = HalfMove.TrainingQuestion.PGNString
                 End If
             End If
             If pPGNHalfMove.CommentAfter Is Nothing Then
@@ -41,17 +44,20 @@ Public Class frmEditHalfMove
                 lblTexts.Text = ""
             Else
                 txtCommentAfter.Text = pPGNHalfMove.CommentAfter.Text
-                lblMarkers.Text = pPGNHalfMove.MarkerListString
+                lblMarkers.Text = pPGNHalfMove.CommentAfter.MarkerList.XPGNString
                 If pPGNHalfMove.CommentAfter Is Nothing _
                 OrElse pPGNHalfMove.CommentAfter.ArrowList Is Nothing Then
                     lblArrows.Text = ""
                 Else
                     lblArrows.Text = pPGNHalfMove.CommentAfter.ArrowList.XPGNString
                 End If
-                lblTexts.Text = pPGNHalfMove.TextListString
+                lblTexts.Text = pPGNHalfMove.CommentAfter.TextList.XPGNString
             End If
 
-            MyBase.ShowDialog()
+            MyBase.Show(gfrmMainForm)
+            Me.Left = gfrmMainForm.Left + (gfrmMainForm.Width - Me.Width) / 2
+            Me.Top = gfrmMainForm.Top + (gfrmMainForm.Height - Me.Height) / 2
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -59,9 +65,11 @@ Public Class frmEditHalfMove
 
     Private Sub cmdEditNAGs_Click(pSender As Object, pArgs As EventArgs) Handles cmdEditNAGs.Click
         Try
-            Dim EditNAGs = New frmEditNAGs()
-            EditNAGs.ShowDialog(lblNAGs.Text)
-            lblNAGs.Text = EditNAGs.NAGList.PGNString
+            Using frmEditNAGs = New frmEditNAGs()
+                frmEditNAGs.ShowDialog(lblNAGs.Text)
+                lblNAGs.Text = frmEditNAGs.NAGList.PGNString
+            End Using
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -69,15 +77,16 @@ Public Class frmEditHalfMove
 
     Private Sub cmdEditTrainingQuestion_Click(pSender As Object, pArgs As EventArgs) Handles cmdEditTrainingQuestion.Click
         Try
-            If Me.PGNHalfMove IsNot Nothing Then
-                Dim frmEditTrainingQuestion As New frmEditTrainingQuestion
-                frmEditTrainingQuestion.ShowDialog(Me.PGNHalfMove.TrainingQuestion)
+            If Me.HalfMove IsNot Nothing Then
+                Using frmEditTrainingQuestion = New frmEditTrainingQuestion
+                    frmEditTrainingQuestion.ShowDialog(Me.HalfMove.TrainingQuestion)
 
-                If frmEditTrainingQuestion.TrainingQuestion Is Nothing Then
-                    lblTrainingQuestion.Text = ""
-                Else
-                    lblTrainingQuestion.Text = frmEditTrainingQuestion.TrainingQuestion.PGNString
-                End If
+                    If frmEditTrainingQuestion.TrainingQuestion Is Nothing Then
+                        lblTrainingQuestion.Text = ""
+                    Else
+                        lblTrainingQuestion.Text = frmEditTrainingQuestion.TrainingQuestion.PGNString
+                    End If
+                End Using
             End If
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
@@ -86,9 +95,10 @@ Public Class frmEditHalfMove
 
     Private Sub cmdEditMarkerList_Click(pSender As Object, pArgs As EventArgs) Handles cmdEditMarkerList.Click
         Try
-            Dim EditMarkers = New frmEditMarkers()
-            EditMarkers.ShowDialog(lblMarkers.Text)
-            lblMarkers.Text = EditMarkers.MarkerList.PGNString
+            Using frmEditMarkers = New frmEditMarkers()
+                frmEditMarkers.ShowDialog(lblMarkers.Text)
+                lblMarkers.Text = frmEditMarkers.MarkerList.XPGNString
+            End Using
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -96,9 +106,10 @@ Public Class frmEditHalfMove
 
     Private Sub cmdEditArrowList_Click(pSender As Object, pArgs As EventArgs) Handles cmdEditArrowList.Click
         Try
-            Dim EditArrows = New frmEditArrows()
-            EditArrows.ShowDialog(lblArrows.Text)
-            lblArrows.Text = EditArrows.ArrowList.PGNString
+            Using frmEditArrows = New frmEditArrows()
+                frmEditArrows.ShowDialog(lblArrows.Text)
+                lblArrows.Text = frmEditArrows.ArrowList.XPGNString
+            End Using
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -106,9 +117,10 @@ Public Class frmEditHalfMove
 
     Private Sub cmdEditTextList_Click(pSender As Object, pArgs As EventArgs) Handles cmdEditTextList.Click
         Try
-            Dim EditTexts = New frmEditTexts()
-            EditTexts.ShowDialog(lblTexts.Text)
-            lblTexts.Text = EditTexts.TextList.XPGNString
+            Using frmEditTexts = New frmEditTexts()
+                frmEditTexts.ShowDialog(lblTexts.Text)
+                lblTexts.Text = frmEditTexts.TextList.XPGNString
+            End Using
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -116,21 +128,21 @@ Public Class frmEditHalfMove
 
     Private Sub cmdOK_Click(pSender As System.Object, pArgs As System.EventArgs) Handles cmdOK.Click
         Try
-            PGNHalfMove.NAGs.PGNString = lblNAGs.Text
+            HalfMove.NAGs.PGNString = lblNAGs.Text
 
             If txtCommentBefore.Text = "" _
             And lblTrainingQuestion.Text = "" Then
-                PGNHalfMove.CommentBefore = Nothing 'Zet eventuele Training vraag ook op Nothing !!!!
+                HalfMove.CommentBefore = Nothing 'Zet eventuele Training vraag ook op Nothing !!!!
             Else
-                If PGNHalfMove.CommentBefore Is Nothing Then
-                    PGNHalfMove.CommentBefore = New PGNComment(txtCommentBefore.Text)
+                If HalfMove.CommentBefore Is Nothing Then
+                    HalfMove.CommentBefore = New PGNComment(txtCommentBefore.Text)
                 Else
-                    PGNHalfMove.CommentBefore.Text = txtCommentBefore.Text
+                    HalfMove.CommentBefore.Text = txtCommentBefore.Text
                 End If
                 If lblTrainingQuestion.Text = "" Then
-                    PGNHalfMove.TrainingQuestion = Nothing
+                    HalfMove.TrainingQuestion = Nothing
                 Else
-                    PGNHalfMove.TrainingQuestion = New PGNTrainingQuestion(lblTrainingQuestion.Text)
+                    HalfMove.TrainingQuestion = New PGNTrainingQuestion(lblTrainingQuestion.Text)
                 End If
             End If
 
@@ -138,19 +150,21 @@ Public Class frmEditHalfMove
             And lblMarkers.Text = "" _
             And lblArrows.Text = "" _
             And lblTexts.Text = "" Then
-                PGNHalfMove.CommentAfter = Nothing
+                HalfMove.CommentAfter = Nothing
             Else
-                If PGNHalfMove.CommentAfter Is Nothing Then
-                    PGNHalfMove.CommentAfter = New PGNComment(txtCommentAfter.Text)
+                If HalfMove.CommentAfter Is Nothing Then
+                    HalfMove.CommentAfter = New PGNComment(txtCommentAfter.Text)
                 Else
-                    PGNHalfMove.CommentAfter.Text = txtCommentAfter.Text
+                    HalfMove.CommentAfter.Text = txtCommentAfter.Text
                 End If
-                PGNHalfMove.MarkerListString = lblMarkers.Text
-                PGNHalfMove.ArrowListString = lblArrows.Text
-                PGNHalfMove.TextListString = lblTexts.Text
+                HalfMove.MarkerListString = lblMarkers.Text
+                HalfMove.ArrowListString = lblArrows.Text
+                HalfMove.TextListString = lblTexts.Text
             End If
 
             Me.Hide()
+            RaiseEvent HalfMoveChanged(HalfMove)
+
         Catch pException As Exception
             frmErrorMessageBox.Show(pException)
         End Try
@@ -161,10 +175,14 @@ Public Class frmEditHalfMove
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.PGNHalfMove = Nothing
-        Me.gfrmMainForm = Nothing
+        Me.HalfMove = Nothing
+        gfrmMainForm = Nothing
 
         MyBase.Finalize()
     End Sub
 
+    Private Sub frmEditHalfMove_Closing(pSender As Object, pArgs As CancelEventArgs) Handles Me.Closing
+        Me.Hide()
+        pArgs.Cancel = True
+    End Sub
 End Class

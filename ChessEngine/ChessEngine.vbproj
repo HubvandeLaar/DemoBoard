@@ -92,6 +92,7 @@
     <Compile Include="EngineMove.vb" />
     <Compile Include="Engine.vb" />
     <Compile Include="EngineResult.vb" />
+    <Compile Include="EngineVariant.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

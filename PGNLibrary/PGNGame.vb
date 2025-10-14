@@ -1,11 +1,10 @@
 ﻿Option Explicit On
 
 Imports ChessGlobals
-Imports ChessMaterials
-Imports ChessGlobals.ChessLanguage
 Imports ChessGlobals.ChessColor
+Imports ChessMessaging.Messages
+Imports ChessMaterials
 Imports System.Xml.Serialization
-Imports PGNLibrary
 Imports System.Text
 Imports System.Text.RegularExpressions
 
@@ -13,13 +12,11 @@ Imports System.Text.RegularExpressions
 Public Class PGNGame
 
     <XmlElement()>
-    Public Tags As PGNTags
+    Public Property HalfMoves As PGNHalfMoves
     <XmlElement()>
-    Public WithEvents HalfMoves As PGNHalfMoves
+    Public Property Tags As PGNTags
     <XmlAttribute()>
-    Public Index As Long '0-Based index within PGNGames
-
-    'Public Event HalfMovesChanged(pPGNHalfMove As PGNHalfMove, pBeforeImage As String, pAfterImage As String)
+    Public Property Index As Long '0-Based index within PGNGames
 
     <XmlIgnore>
     Public Property XPGNString() As String
@@ -40,7 +37,7 @@ Public Class PGNGame
                 MoveList = Replace(MoveList, vbCr, " ")
                 MoveList = Replace(MoveList, vbLf, " ")
                 MoveList = MoveList.TrimStart()
-                Me.HalfMoves.XPGNString = MoveList
+                HalfMoves.XPGNString = MoveList
             End If
         End Set
         Get
@@ -54,7 +51,7 @@ Public Class PGNGame
             Next TAG
             XPGNBuilder.Append("" & vbCrLf)
 
-            Dim MoveList As String = Me.HalfMoves.XPGNString
+            Dim MoveList As String = HalfMoves.XPGNString
             While (MoveList.Length > 80)
                 P = InStrRev(Left(MoveList, 80), " ")
                 If P = 0 Then Throw New DataMisalignedException(MessageText("MissingSpace", Left(MoveList, 80)))
@@ -92,7 +89,7 @@ Public Class PGNGame
             Next TAG
             PGNBuilder.Append("" & vbCrLf)
 
-            Dim MoveList As String = Me.HalfMoves.PGNString
+            Dim MoveList As String = HalfMoves.PGNString
             While (MoveList.Length > 80)
                 P = InStrRev(Left(MoveList, 80), " ")
                 If P = 0 Then Throw New DataMisalignedException(MessageText("MissingSpace", Left(MoveList, 80)))
@@ -112,11 +109,10 @@ Public Class PGNGame
     <XmlIgnore>
     Public ReadOnly Property FirstMoveNr() As Long
         Get
-            Dim FEN As String, P As Long, Nr As Long
-            FEN = Me.Tags.GetPGNTag("FEN")
+            Dim FEN As String = Me.Tags("FEN").Value
             If FEN = "" Then Return 1
-            P = InStrRev(FEN, " ")
-            Nr = Val(Mid(FEN, P))
+            Dim P As Long = InStrRev(FEN, " ")
+            Dim Nr As Long = Val(Mid(FEN, P))
             If Nr = 0 Then Return 1
             Return Nr
         End Get
@@ -125,40 +121,50 @@ Public Class PGNGame
     <XmlElement()> 'Included property only for serialization 
     Public Property FENComment As PGNComment
         Set(pFENComment As PGNComment)
-            Me.HalfMoves.FENComment = pFENComment
+            HalfMoves.FENComment = pFENComment
         End Set
         Get
-            Return Me.HalfMoves.FENComment
+            Return HalfMoves.FENComment
         End Get
     End Property
 
-    Public ReadOnly Property ContainsTrainingQuestions As Boolean
+    Public ReadOnly Property ContainsTrainingQuestion As Boolean
         Get
-            Dim HalfMove As PGNHalfMove
-            For Each HalfMove In Me.HalfMoves
-                If HalfMove.TrainingQuestion IsNot Nothing Then
-                    Return True
+            Return NextHalfMoveWithTrainingQuestion() IsNot Nothing
+        End Get
+    End Property
+
+    <XmlIgnore>
+    Public ReadOnly Property NextHalfMoveWithTrainingQuestion(Optional pHalfMove As PGNHalfMove = Nothing) As PGNHalfMove
+        Get
+            For Each HalfMove As PGNHalfMove In HalfMoves
+                If pHalfMove IsNot Nothing _
+                AndAlso HalfMove.Index <= pHalfMove.Index Then
+                    Continue For
+                End If
+                If HalfMove.HasTrainingQuestion Then
+                    Return HalfMove
                 End If
             Next HalfMove
-            Return False
+            Return Nothing
         End Get
     End Property
 
+    ''' <returns>FEN string representing the position after the specified half-move.</returns>
     Function FEN(Optional pLastMove As PGNHalfMove = Nothing) As String
-        Dim Max As Long, PreviousHalfMove() As PGNHalfMove = Nothing  'In reversed order
+        Dim PreviousHalfMove() As PGNHalfMove = Nothing  'NB In reversed order
         Dim FENstring As String
-        Dim I As Long, Move As PGNHalfMove
 
         'Find last move before the Movelist position
         If pLastMove Is Nothing Then
-            FENstring = Me.Tags.GetPGNTag("FEN")
+            FENstring = Me.Tags("FEN").Value
             If FENstring = "" Then FENstring = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
             Return FENstring
         End If
 
         'Collect the last move and Moves leading to this postion
-        Max = 0
-        Move = pLastMove
+        Dim Max As Long = 0
+        Dim Move As PGNHalfMove = pLastMove
         While Move IsNot Nothing
             Max += 1
             ReDim Preserve PreviousHalfMove(Max)
@@ -168,13 +174,13 @@ Public Class PGNGame
 
         'Perform all Moves on an initial board
         Dim TempBoard As New ChessBoard()
-        FENstring = Tags.GetPGNTag("FEN")
+        FENstring = Tags("FEN").Value
         If FENstring <> "" Then
             TempBoard.FEN = FENstring  'Set-up position in game specified
         Else
             TempBoard.InitialPosition()  'Initial Position
         End If
-        For I = Max To 1 Step -1
+        For I As Long = Max To 1 Step -1
             If PreviousHalfMove(I).Color <> UNKNOWN Then
                 TempBoard.PerformMove(PreviousHalfMove(I).BoardMove(TempBoard))
                 TempBoard.ActiveColor = PreviousHalfMove(I).Color.Opponent
@@ -185,45 +191,27 @@ Public Class PGNGame
         Return TempBoard.FEN
     End Function
 
-    <XmlIgnore>
-    Public ReadOnly Property NextHalfMoveWithTrainingQuestion(Optional pHalfMove As PGNHalfMove = Nothing) As PGNHalfMove
-        Get
-            For Each HalfMove As PGNHalfMove In Me.HalfMoves
-                If pHalfMove IsNot Nothing _
-                AndAlso HalfMove.Index <= pHalfMove.Index Then
-                    Continue For
-                End If
-                If HalfMove.TrainingQuestion IsNot Nothing Then
-                    Return HalfMove
-                End If
-            Next HalfMove
-            Return Nothing
-        End Get
-    End Property
+    Public Sub ClearDiagram()
+        ' Me.Tags.Clear() 'Don't clear the Tags, only the Diagram
+        Me.FENComment = Nothing
+        Me.Tags.Add("[FEN ""8/8/8/8/8/8/8/8 w - - 0 1""]")
+        HalfMoves.Clear()
+    End Sub
 
     Public Sub Clear()
         Me.Tags.Clear()
         Me.FENComment = Nothing
-        Me.Tags.Add("[FEN ""8/8/8/8/8/8/8/8 w - - 0 1""]")
-        Me.HalfMoves.Clear()
+        HalfMoves.Clear()
     End Sub
 
-    Public Sub Initial()
-        Me.Tags.Clear()
-        Me.FENComment = Nothing
-        Me.Tags.Add("[FEN ""rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1""]")
-        Me.HalfMoves.Clear()
-    End Sub
-
-    Public Sub New(pInitial As Boolean)
-        Me.New()
-        If pInitial = True Then
-            Me.Initial()
-        End If
+    Public Sub New()
+        Me.Tags = New PGNTags()
+        HalfMoves = New PGNHalfMoves()
     End Sub
 
     Public Sub New(pFENOrXPGN As String)
-        Me.New()
+        Me.Tags = New PGNTags()
+        HalfMoves = New PGNHalfMoves()
         Me.Tags.Clear()
         If pFENOrXPGN Like "*[[]* [""]*[""][]]*" Then 'PGN or XPGN
             Me.XPGNString = pFENOrXPGN
@@ -232,14 +220,9 @@ Public Class PGNGame
         End If
     End Sub
 
-    Public Sub New()
-        Me.Tags = New PGNTags()
-        Me.HalfMoves = New PGNHalfMoves()
-    End Sub
-
     Protected Overrides Sub Finalize()
         Me.Tags = Nothing
-        Me.HalfMoves = Nothing
+        HalfMoves = Nothing
 
         MyBase.Finalize()
     End Sub

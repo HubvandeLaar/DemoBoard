@@ -22,5 +22,14 @@ ChessCoach
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:ChessCoach.Feedback.Fixed(System.String,System.Int32)">
+ <summary>Needed to Debug.print movelist a bit properly</summary>
+</member>
+<member name="M:ChessCoach.Feedback.GetEngineResult(System.String)">
+ <summary>Returns the results from StockFish</summary>
+</member>
+<member name="M:ChessCoach.Feedback.GetFeedback(ChessMaterials.ChessBoard,ChessMaterials.BoardMove,ChessMaterials.ChessBoard,ChessEngine.EngineResults)">
+ <summary>Returns a string containing the feedback on pMove</summary>
+</member>
 </members>
 </doc>

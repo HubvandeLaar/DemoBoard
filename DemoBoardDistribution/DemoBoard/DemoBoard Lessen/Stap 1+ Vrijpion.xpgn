@@ -95,7 +95,7 @@ Sometimes a helper has to intervene with chess. "]
 
 The Passed Pawn
 Capturing the queen is tempting, but then the passed pawn is lost. "]
-[FEN "8/8/8/8/8/1p4P1/8/2rQK3 w KQkq - 0 0"]
+[FEN "8/8/8/8/8/1p4P1/8/2rQK3 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -207,7 +207,7 @@ Waar kan de zwarte toren beter gaan staan ?
 Defend against Passed Pawn
 After 1. ... Rh2-h8 follows 2. Rg7-g8 and White promotes.
 What is a better place for the black rook ? "]
-[FEN "8/5PR1/8/8/8/8/7r/8 w KQkq - 0 0"]
+[FEN "8/5PR1/8/8/8/8/7r/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -227,7 +227,7 @@ Defend against Passed Pawn
 The black king wants to capture the white pawn.
 After 1. ... Kc7-d6, 2.f6-f7 follows and the king can no longer get to it.
 Better is 1. ... e6-e5, and the white pawn cannot continue. "]
-[FEN "8/2k5/4pP2/2Bb4/8/8/8/8 b KQkq - 0 0"]
+[FEN "8/2k5/4pP2/1B1b4/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]
@@ -247,7 +247,7 @@ Defend against Passed Pawn
 Black cannot capture the white rook.
 Black can still cover that rook with X-ray defend 1. ... Re6-Re8.
 1. ... Re6xh6 is also possible. After 2. Rf8xg8 comes Th6-g6 and guards the promotion field. "]
-[FEN "5Rr1/k5Pp/4r2P/8/8/8/8/8 w KQkq - 0 0"]
+[FEN "5Rr1/k5Pp/4r2P/8/8/8/8/8 b KQkq - 0 0"]
 
 
 [Event ""]

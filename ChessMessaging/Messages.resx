@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddNewSubVariant" xml:space="preserve">
+    <value>Insert move: "%1", as %2th subvariant ?</value>
+  </data>
+  <data name="AddPiece" xml:space="preserve">
+    <value>Add %1</value>
+  </data>
+  <data name="AddText" xml:space="preserve">
+    <value>Add text</value>
+  </data>
+  <data name="AlreadyExists" xml:space="preserve">
+    <value>File "%1" already exists in "%2" !  Do you want to overwrite the existing file ?</value>
+  </data>
+  <data name="Are You Sure" xml:space="preserve">
+    <value>Are You Sure ?</value>
+  </data>
+  <data name="CheckMateIn2" xml:space="preserve">
+    <value>Missed checkmate in 2 by %1 and %2</value>
+  </data>
+  <data name="CheckMateOpponent" xml:space="preserve">
+    <value>Opponent can checkmate using %1</value>
+  </data>
+  <data name="ColumnRowRange" xml:space="preserve">
+    <value>Column "%1", or Row "%2" out of range (Has to be be 1 to 8)</value>
+  </data>
+  <data name="CommentAfter" xml:space="preserve">
+    <value>Comment (after)</value>
+  </data>
+  <data name="CommentBefore" xml:space="preserve">
+    <value>Comment (before)</value>
+  </data>
+  <data name="CommentNotEmpty" xml:space="preserve">
+    <value>CommentAfter is not empty"%1"</value>
+  </data>
+  <data name="CorrectAnswer" xml:space="preserve">
+    <value>Well done !  The answer %1 is correct</value>
+  </data>
+  <data name="DefendAgainstPinning" xml:space="preserve">
+    <value>Pinning of %1 could hav been solved by %2</value>
+  </data>
+  <data name="DeleteAllMoves" xml:space="preserve">
+    <value>Delete all moves and add move "%1" ?</value>
+  </data>
+  <data name="DeleteArrow" xml:space="preserve">
+    <value>Delete arrow from %1 to %2</value>
+  </data>
+  <data name="DeleteMarker" xml:space="preserve">
+    <value>Delete marker at %1</value>
+  </data>
+  <data name="DeleteMove" xml:space="preserve">
+    <value>Delete move "%1" and subsequent moves ?</value>
+  </data>
+  <data name="DeletePiece" xml:space="preserve">
+    <value>Delete %1</value>
+  </data>
+  <data name="DeleteText" xml:space="preserve">
+    <value>Delete text "%1" from %2</value>
+  </data>
+  <data name="EliminateDefence" xml:space="preserve">
+    <value>Using %1 defender %2 of %3 could be eliminated</value>
+  </data>
+  <data name="InCheckAfterMove" xml:space="preserve">
+    <value>%1 is (still) in check after the move</value>
+  </data>
+  <data name="IncorrectAnswer" xml:space="preserve">
+    <value>The answer %1 is incorrect. Please try again</value>
+  </data>
+  <data name="IncorrectAnswer2" xml:space="preserve">
+    <value>The answer %1 isn't quite correct.  Please try again.  Total score increased by %2 points</value>
+  </data>
+  <data name="IncorrectInitPos" xml:space="preserve">
+    <value>Initial position of %1 is incorrect</value>
+  </data>
+  <data name="InsertMove" xml:space="preserve">
+    <value>Insert move "%1", and delete all subsequent moves ?</value>
+  </data>
+  <data name="InsertSubVariant" xml:space="preserve">
+    <value>Insert move "%1", as a new subvariant ?</value>
+  </data>
+  <data name="IntendedCastling" xml:space="preserve">
+    <value>King was moved 2 places; Assumed castling is intended</value>
+  </data>
+  <data name="InvalidArrowList" xml:space="preserve">
+    <value>Invalid arrow list format at PGN</value>
+  </data>
+  <data name="InvalidCastling1" xml:space="preserve">
+    <value>Invalid castling; King in check before or after move</value>
+  </data>
+  <data name="InvalidCastling2" xml:space="preserve">
+    <value>Invalid castling; King in check during the move</value>
+  </data>
+  <data name="InvalidCastling3" xml:space="preserve">
+    <value>Invalid castling; A piece was standing at %1</value>
+  </data>
+  <data name="InvalidCastling4" xml:space="preserve">
+    <value>Invalid castling; King was not at intial position</value>
+  </data>
+  <data name="InvalidCastling5" xml:space="preserve">
+    <value>Invalid castling on the King's side; A piece was standing at %1</value>
+  </data>
+  <data name="InvalidCastling6" xml:space="preserve">
+    <value>Invalid castling on the Queen's side; A piece was standing at %1</value>
+  </data>
+  <data name="InvalidCastling6b" xml:space="preserve">
+    <value>Invalid castling on the Queen's side; King doesn't go to the right field</value>
+  </data>
+  <data name="InvalidCastling7" xml:space="preserve">
+    <value>Invalid castling; King doesn't go to the right field</value>
+  </data>
+  <data name="InvalidCastling8" xml:space="preserve">
+    <value>Invalid castling on the King's side; Pieces were moved</value>
+  </data>
+  <data name="InvalidCastling9" xml:space="preserve">
+    <value>Invalid castling on the Queen's side; Pieces were moved</value>
+  </data>
+  <data name="InvalidColor" xml:space="preserve">
+    <value>Color "%1" is invalid. Should be "R", "G", "Y", "B", "C" or "O"</value>
+  </data>
+  <data name="InvalidFENPiece" xml:space="preserve">
+    <value>Invalid Piece "%1" in FEN</value>
+  </data>
+  <data name="InvalidFieldName" xml:space="preserve">
+    <value>Field name "%1" is invalid. Should be "a1" thru "h8"</value>
+  </data>
+  <data name="InvalidIconName" xml:space="preserve">
+    <value>The specified name "%1" is not defined as a standard Icon</value>
+  </data>
+  <data name="InvalidImageName" xml:space="preserve">
+    <value>The specified name "%1" is not defined as a standard Image</value>
+  </data>
+  <data name="InvalidMarerkList" xml:space="preserve">
+    <value>Invalid marker list format at PGN</value>
+  </data>
+  <data name="InvalidMove" xml:space="preserve">
+    <value>Invalid move for a %1</value>
+  </data>
+  <data name="InvalidNAGCode" xml:space="preserve">
+    <value>Code "%1" is invalid. Should be a "$" with valid NAG number</value>
+  </data>
+  <data name="InvalidPiece" xml:space="preserve">
+    <value>Invalid Piece "%1"</value>
+  </data>
+  <data name="InvalidQuestion" xml:space="preserve">
+    <value>Invalid training question format at PGN</value>
+  </data>
+  <data name="InvalidSymbol" xml:space="preserve">
+    <value>Symbol "%1" is invalid. Should be "R", "G", "Y", "B", "C", "O", "+", "-", "0", "#", "." or "*"</value>
+  </data>
+  <data name="InvalidTextList" xml:space="preserve">
+    <value>Invalid text list format at PGN</value>
+  </data>
+  <data name="InvalidTQUMove" xml:space="preserve">
+    <value>The move "%1" is invalid. Should be in the format "x9x9" specifying from field and to field</value>
+  </data>
+  <data name="InvalidVariantMove" xml:space="preserve">
+    <value>Current move is not part of a variant</value>
+  </data>
+  <data name="KingNotSafe" xml:space="preserve">
+    <value>King not yet at a safe position</value>
+  </data>
+  <data name="MessageNotFound" xml:space="preserve">
+    <value>Message text with key "%1"  not found</value>
+  </data>
+  <data name="MissedAttackOnPinnedPiece" xml:space="preserve">
+    <value>Missed attack on a pinned piece %1</value>
+  </data>
+  <data name="MissedDiscoverdAttack" xml:space="preserve">
+    <value>Missed discovered attack %1. Head-piece %2 could attack %3 and tail-piece &amp;4 could attack %5</value>
+  </data>
+  <data name="MissedDiscoveredCheck" xml:space="preserve">
+    <value>Missed discovered check by %1</value>
+  </data>
+  <data name="MissedDoubleAttack" xml:space="preserve">
+    <value>Missed double attack on %2 and %3 after %1</value>
+  </data>
+  <data name="MissedDoubleCheck" xml:space="preserve">
+    <value>Double check by %1 would have been better</value>
+  </data>
+  <data name="MissedMateIn1" xml:space="preserve">
+    <value>%1 would have been checkmate</value>
+  </data>
+  <data name="MissedMultiAttack" xml:space="preserve">
+    <value>Missed multiple attack on %2, %3, %4,... after %1</value>
+  </data>
+  <data name="MissedPinnedPieceIsBadDefender" xml:space="preserve">
+    <value>Pinned piece at %1 is a bad defender, so %2 would have been possible</value>
+  </data>
+  <data name="MissedPinning" xml:space="preserve">
+    <value>Could pin piece at %1 with move %2</value>
+  </data>
+  <data name="MissedTripleAttack" xml:space="preserve">
+    <value>Missed triple attack on %2, %3 and %4 after %1</value>
+  </data>
+  <data name="MissingSpace" xml:space="preserve">
+    <value>Missing space to divide "%1" into parts !</value>
+  </data>
+  <data name="NAGBeforeOrAfter" xml:space="preserve">
+    <value>Before Or After not recoginized: "%1"</value>
+  </data>
+  <data name="NoPawnAtCenter" xml:space="preserve">
+    <value>No pawn at the center</value>
+  </data>
+  <data name="NoSpaceFound" xml:space="preserve">
+    <value>No Space found at "%1"</value>
+  </data>
+  <data name="NotCoverded" xml:space="preserve">
+    <value>Uncovered piece at %1</value>
+  </data>
+  <data name="OpenPGNFile" xml:space="preserve">
+    <value>Open PGN File</value>
+  </data>
+  <data name="PGNMoveInvalid" xml:space="preserve">
+    <value>PGN was not specific enough for Piece "%1" moving to "%2"</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="Position After" xml:space="preserve">
+    <value>Position after: %1</value>
+  </data>
+  <data name="MissedProfitExchange" xml:space="preserve">
+    <value>Profitable exchange at %1</value>
+  </data>
+  <data name="ReallyWrong" xml:space="preserve">
+    <value>Sorry, but something went really wrong...</value>
+  </data>
+  <data name="RedoEmpty" xml:space="preserve">
+    <value>Redo empty</value>
+  </data>
+  <data name="RedoTooltipText" xml:space="preserve">
+    <value>Redo of changes:"%1"</value>
+  </data>
+  <data name="RooksNotConnected" xml:space="preserve">
+    <value>Rooks not yet connected</value>
+  </data>
+  <data name="SameColor" xml:space="preserve">
+    <value>Twice or more moves of the same color; Save anyhow ?</value>
+  </data>
+  <data name="SameColorTwice" xml:space="preserve">
+    <value>%1 has moved twice</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Current (PGN/XPGN)-file has been changed !  Save current file first ?</value>
+  </data>
+  <data name="Setup" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="Starting Position" xml:space="preserve">
+    <value>Starting position</value>
+  </data>
+  <data name="StrangePiece" xml:space="preserve">
+    <value>Unforseen condition with a piece named: "%1"</value>
+  </data>
+  <data name="SwitchToTraining" xml:space="preserve">
+    <value>The game contains one or more training questions.  Switch to TRAINING mode ?</value>
+  </data>
+  <data name="Training" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="TrainingQuestion" xml:space="preserve">
+    <value>What is the best move ?</value>
+  </data>
+  <data name="MissedTwoFoldAttack" xml:space="preserve">
+    <value>Could capture a twice attacked piece at %1</value>
+  </data>
+  <data name="TwoFoldAttacked" xml:space="preserve">
+    <value>Twice attacked piece at %1</value>
+  </data>
+  <data name="MissedUncoverdedPiece" xml:space="preserve">
+    <value>Could capture an uncovered piece at %1</value>
+  </data>
+  <data name="UndevelopedPieces" xml:space="preserve">
+    <value>%1 Pieces are not yet developed</value>
+  </data>
+  <data name="UndoEmpty" xml:space="preserve">
+    <value>Undo empty</value>
+  </data>
+  <data name="UndoTooltipText" xml:space="preserve">
+    <value>Undo of changes: "%1"</value>
+  </data>
+  <data name="UnknownNAG" xml:space="preserve">
+    <value>Unknown NAG: "%1"</value>
+  </data>
+  <data name="UnkownLanguage" xml:space="preserve">
+    <value>Unkown Language specified to store</value>
+  </data>
+  <data name="UnprofitExchange" xml:space="preserve">
+    <value>Unprofitable exchange at %1</value>
+  </data>
+  <data name="UpdateFEN" xml:space="preserve">
+    <value>Delete all moves and update the initial position ?</value>
+  </data>
+  <data name="UnprofitTwoFoldCapture" xml:space="preserve">
+    <value>Unprofitable capture at %2. The %1 at %2 is %3 times attacked, but also %4 times defended</value>
+  </data>
+  <data name="ThreatUnprofitExchange" xml:space="preserve">
+    <value>There is a threat of an unprofitable exchange at %1</value>
+  </data>
+  <data name="OfferingPieces" xml:space="preserve">
+    <value>Opponent now has a profitable exchange at %1 with the %2</value>
+  </data>
+  <data name="OfferingPieces2" xml:space="preserve">
+    <value>Opponent can capture the isufficiently defended %2 at %1</value>
+  </data>
+  <data name="CaptureWithLowerPiece" xml:space="preserve">
+    <value>Better capture two-fold-attacked-piece at %1 with %2 at %3</value>
+  </data>
+  <data name="Position Before" xml:space="preserve">
+    <value>Position before: %1</value>
+  </data>
+</root>

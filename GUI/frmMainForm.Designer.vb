@@ -26,7 +26,6 @@ Partial Class frmMainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMainForm))
         Me.pnlDragPanel = New System.Windows.Forms.Panel()
         Me.pnlMainPanel = New System.Windows.Forms.Panel()
-        Me.ctlTabControl = New DemoBoard.ctlTabControl()
         Me.stsStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.lblStatusText = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
@@ -40,7 +39,8 @@ Partial Class frmMainForm
         Me.mnuSave = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuExport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExportDiagrams = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExportGames = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuGame = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuCopyGame = New System.Windows.Forms.ToolStripMenuItem()
@@ -82,6 +82,8 @@ Partial Class frmMainForm
         Me.mnuEnglish = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuNederlands = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuLessonsFolder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuUseLastUsedFolder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuChooseDefautlLocation = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMenuLocation = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMenuTop = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMenuBottom = New System.Windows.Forms.ToolStripMenuItem()
@@ -92,8 +94,7 @@ Partial Class frmMainForm
         Me.mnuHelpIndex = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuAbout = New System.Windows.Forms.ToolStripMenuItem()
-        Me.dlgSaveFile = New System.Windows.Forms.SaveFileDialog()
-        Me.dlgLessonsFolder = New System.Windows.Forms.FolderBrowserDialog()
+        Me.ctlTabControl = New DemoBoard.ctlTabControl()
         Me.pnlMainPanel.SuspendLayout()
         Me.stsStatusStrip.SuspendLayout()
         Me.mnuMenuStrip.SuspendLayout()
@@ -112,13 +113,6 @@ Partial Class frmMainForm
         Me.pnlMainPanel.BackColor = System.Drawing.Color.MidnightBlue
         Me.pnlMainPanel.Controls.Add(Me.ctlTabControl)
         Me.pnlMainPanel.Name = "pnlMainPanel"
-        '
-        'ctlTabControl
-        '
-        resources.ApplyResources(Me.ctlTabControl, "ctlTabControl")
-        Me.ctlTabControl.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ctlTabControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.ctlTabControl.Name = "ctlTabControl"
         '
         'stsStatusStrip
         '
@@ -155,7 +149,7 @@ Partial Class frmMainForm
         '
         'mnuFile
         '
-        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNew, Me.mnuOpen, Me.ToolStripSeparator3, Me.mnuSave, Me.ToolStripSeparator4, Me.ToolStripSeparator5, Me.mnuExport, Me.mnuExit})
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNew, Me.mnuOpen, Me.ToolStripSeparator3, Me.mnuSave, Me.ToolStripSeparator4, Me.ToolStripSeparator5, Me.mnuExportDiagrams, Me.mnuExportGames, Me.mnuExit})
         resources.ApplyResources(Me.mnuFile, "mnuFile")
         Me.mnuFile.Name = "mnuFile"
         '
@@ -189,10 +183,15 @@ Partial Class frmMainForm
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         resources.ApplyResources(Me.ToolStripSeparator5, "ToolStripSeparator5")
         '
-        'mnuExport
+        'mnuExportDiagrams
         '
-        resources.ApplyResources(Me.mnuExport, "mnuExport")
-        Me.mnuExport.Name = "mnuExport"
+        resources.ApplyResources(Me.mnuExportDiagrams, "mnuExportDiagrams")
+        Me.mnuExportDiagrams.Name = "mnuExportDiagrams"
+        '
+        'mnuExportGames
+        '
+        resources.ApplyResources(Me.mnuExportGames, "mnuExportGames")
+        Me.mnuExportGames.Name = "mnuExportGames"
         '
         'mnuExit
         '
@@ -433,8 +432,21 @@ Partial Class frmMainForm
         '
         'mnuLessonsFolder
         '
+        Me.mnuLessonsFolder.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuUseLastUsedFolder, Me.mnuChooseDefautlLocation})
         resources.ApplyResources(Me.mnuLessonsFolder, "mnuLessonsFolder")
         Me.mnuLessonsFolder.Name = "mnuLessonsFolder"
+        '
+        'mnuUseLastUsedFolder
+        '
+        Me.mnuUseLastUsedFolder.CheckOnClick = True
+        Me.mnuUseLastUsedFolder.Name = "mnuUseLastUsedFolder"
+        resources.ApplyResources(Me.mnuUseLastUsedFolder, "mnuUseLastUsedFolder")
+        '
+        'mnuChooseDefautlLocation
+        '
+        Me.mnuChooseDefautlLocation.Image = Global.DemoBoard.My.Resources.Resources.LessonsFolder
+        Me.mnuChooseDefautlLocation.Name = "mnuChooseDefautlLocation"
+        resources.ApplyResources(Me.mnuChooseDefautlLocation, "mnuChooseDefautlLocation")
         '
         'mnuMenuLocation
         '
@@ -492,9 +504,12 @@ Partial Class frmMainForm
         resources.ApplyResources(Me.mnuAbout, "mnuAbout")
         Me.mnuAbout.Name = "mnuAbout"
         '
-        'dlgLessonsFolder
+        'ctlTabControl
         '
-        resources.ApplyResources(Me.dlgLessonsFolder, "dlgLessonsFolder")
+        resources.ApplyResources(Me.ctlTabControl, "ctlTabControl")
+        Me.ctlTabControl.BackColor = System.Drawing.Color.MidnightBlue
+        Me.ctlTabControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.ctlTabControl.Name = "ctlTabControl"
         '
         'frmMainForm
         '
@@ -559,7 +574,6 @@ Partial Class frmMainForm
     Friend WithEvents mnuDiagramClear As ToolStripMenuItem
     Friend WithEvents mnuDiagramInitial As ToolStripMenuItem
     Friend WithEvents mnuDiagramSaveAsJPG As ToolStripMenuItem
-    Friend WithEvents dlgSaveFile As SaveFileDialog
     Friend WithEvents mnuSelectGame As ToolStripMenuItem
     Friend WithEvents mnuEditGame As ToolStripMenuItem
     Friend WithEvents mnuDeleteGame As ToolStripMenuItem
@@ -573,7 +587,7 @@ Partial Class frmMainForm
     Friend WithEvents mnuPreviousGame As ToolStripMenuItem
     Friend WithEvents mnuNextGame As ToolStripMenuItem
     Friend WithEvents mnuEditTitleAndMemo As ToolStripMenuItem
-    Friend WithEvents mnuExport As ToolStripMenuItem
+    Friend WithEvents mnuExportDiagrams As ToolStripMenuItem
     Friend WithEvents mnuStockfish As ToolStripMenuItem
     Friend WithEvents mnuSwitchSides As ToolStripMenuItem
     Friend WithEvents mnuCopyGame As ToolStripMenuItem
@@ -581,9 +595,11 @@ Partial Class frmMainForm
     Friend WithEvents mnuCopyGamePGN As ToolStripMenuItem
     Friend WithEvents mnuCopyGameXPGN As ToolStripMenuItem
     Friend WithEvents mnuLessonsFolder As ToolStripMenuItem
-    Friend WithEvents dlgLessonsFolder As FolderBrowserDialog
     Friend WithEvents mnuMenuLocation As ToolStripMenuItem
     Friend WithEvents mnuMenuTop As ToolStripMenuItem
     Friend WithEvents mnuMenuBottom As ToolStripMenuItem
     Friend WithEvents mnuGameAnalysis As ToolStripMenuItem
+    Friend WithEvents mnuExportGames As ToolStripMenuItem
+    Friend WithEvents mnuUseLastUsedFolder As ToolStripMenuItem
+    Friend WithEvents mnuChooseDefautlLocation As ToolStripMenuItem
 End Class

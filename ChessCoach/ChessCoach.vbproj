@@ -72,10 +72,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="modFeedback.vb" />
-    <Compile Include="modStep1.vb" />
-    <Compile Include="modStep2.vb" />
-    <Compile Include="modStep3.vb" />
+    <Compile Include="Feedback.vb" />
+    <Compile Include="Step1Feedback.vb" />
+    <Compile Include="Step2Feedback.vb" />
+    <Compile Include="Step3Feedback.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -92,6 +92,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="StepXFeedback.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -125,6 +126,10 @@
     <ProjectReference Include="..\ChessMaterials\ChessMaterials.vbproj">
       <Project>{125547ef-ad43-4039-b2da-c673ee249202}</Project>
       <Name>ChessMaterials</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChessMessaging\ChessMessaging.vbproj">
+      <Project>{768f03aa-e6d9-40eb-8ae6-f5c41dc800cf}</Project>
+      <Name>ChessMessaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGNLibrary\PGNLibrary.vbproj">
       <Project>{e5a1534f-f344-447c-8245-70e44327c5a0}</Project>

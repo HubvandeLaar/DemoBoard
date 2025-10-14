@@ -1,11 +1,13 @@
 ﻿Option Explicit On
 
-Imports ChessGlobals
+Imports ChessMessaging
 Imports PGNLibrary
 
 Public Class frmSelectGame
-    Private CurrentFile As PGNFile
-    Public SelectedGame As PGNGame
+
+    Private gCurrentFile As PGNFile
+
+    Public Property SelectedGame As PGNGame
 
     Public Overloads Sub ShowDialog(pPgnFile As PGNFile)
         Me.ListGames(pPgnFile)
@@ -14,21 +16,21 @@ Public Class frmSelectGame
     End Sub
 
     Sub ListGames(pPGNFile As PGNFile)
-        Dim GameIndex As Long, GameText(5) As String '6 Columns
+        Dim GameText(5) As String '6 Columns
         Try
             Me.Text = pPGNFile.FullFileName
 
-            CurrentFile = pPGNFile
+            gCurrentFile = pPGNFile
             lstGames.Items.Clear()
 
-            For GameIndex = 0 To pPGNFile.PGNGames.Count - 1
+            For GameIndex As Long = 0 To pPGNFile.PGNGames.Count - 1
                 With pPGNFile.PGNGames(GameIndex)
                     GameText(0) = Str(GameIndex + 1)
-                    GameText(1) = .Tags.GetPGNTag("White")
-                    GameText(2) = .Tags.GetPGNTag("Black")
-                    GameText(3) = .Tags.GetPGNTag("Result")
-                    GameText(4) = .Tags.GetPGNTag("Date")
-                    GameText(5) = .Tags.GetPGNTag("Title")
+                    GameText(1) = .Tags("White").Value
+                    GameText(2) = .Tags("Black").Value
+                    GameText(3) = .Tags("Result").Value
+                    GameText(4) = .Tags("Date").Value
+                    GameText(5) = .Tags("Title").Value
 
                     lstGames.Items.Add(New ListViewItem(GameText))
                 End With
@@ -46,7 +48,7 @@ Public Class frmSelectGame
     Private Sub Games_MouseDoubleClick(pSender As Object, pArgs As System.Windows.Forms.MouseEventArgs) Handles lstGames.MouseDoubleClick
         Try
             If lstGames.SelectedItems.Count > 0 Then
-                SelectedGame = CurrentFile.PGNGames(lstGames.SelectedItems(0).Index)
+                SelectedGame = gCurrentFile.PGNGames(lstGames.SelectedItems(0).Index)
                 Me.Hide()
             Else
                 SelectedGame = Nothing
@@ -62,9 +64,9 @@ Public Class frmSelectGame
             If lstGames.SelectedItems.Count = 0 Then Exit Sub
             Index = lstGames.SelectedItems(0).Index
             If Index > 0 Then
-                PGNGame = CurrentFile.PGNGames(Index)
-                CurrentFile.PGNGames.MoveUp(PGNGame)
-                ListGames(CurrentFile)
+                PGNGame = gCurrentFile.PGNGames(Index)
+                gCurrentFile.PGNGames.MoveUp(PGNGame)
+                ListGames(gCurrentFile)
                 lstGames.Items(Index - 1).Selected = True
                 lstGames.Items(Index - 1).EnsureVisible()
                 lstGames.Refresh() : lstGames.Focus()
@@ -81,9 +83,9 @@ Public Class frmSelectGame
             If lstGames.SelectedItems.Count = 0 Then Exit Sub
             Index = lstGames.SelectedItems(0).Index
             If Index < lstGames.Items.Count - 1 Then
-                PGNGame = CurrentFile.PGNGames(Index)
-                CurrentFile.PGNGames.MoveDown(PGNGame)
-                ListGames(CurrentFile)
+                PGNGame = gCurrentFile.PGNGames(Index)
+                gCurrentFile.PGNGames.MoveDown(PGNGame)
+                ListGames(gCurrentFile)
                 lstGames.Items(Index + 1).Selected = True
                 lstGames.Items(Index + 1).EnsureVisible()
                 lstGames.Refresh() : lstGames.Focus()
@@ -93,10 +95,10 @@ Public Class frmSelectGame
         End Try
     End Sub
 
-    Private Sub cmdOK_Click1(pSender As Object, pArgs As System.EventArgs) Handles cmdOK.Click
+    Private Sub cmdOK_Click(pSender As Object, pArgs As System.EventArgs) Handles cmdOK.Click
         Try
             If lstGames.SelectedItems.Count > 0 Then
-                SelectedGame = CurrentFile.PGNGames(lstGames.SelectedItems(0).Index)
+                SelectedGame = gCurrentFile.PGNGames(lstGames.SelectedItems(0).Index)
                 Me.Hide()
             Else
                 SelectedGame = Nothing
@@ -106,7 +108,7 @@ Public Class frmSelectGame
         End Try
     End Sub
 
-    Private Sub cmdCancel_Click1(pSender As Object, pArgs As System.EventArgs) Handles cmdCancel.Click
+    Private Sub cmdCancel_Click(pSender As Object, pArgs As System.EventArgs) Handles cmdCancel.Click
         Try
             SelectedGame = Nothing
             Me.Hide()
@@ -116,13 +118,10 @@ Public Class frmSelectGame
     End Sub
 
     Protected Overrides Sub Finalize()
-        Me.CurrentFile = Nothing
+        gCurrentFile = Nothing
         Me.SelectedGame = Nothing
 
         MyBase.Finalize()
     End Sub
 
-    Private Sub lstGames_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstGames.SelectedIndexChanged
-
-    End Sub
 End Class
