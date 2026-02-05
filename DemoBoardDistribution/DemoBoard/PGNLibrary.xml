@@ -94,7 +94,7 @@ PGNLibrary
 <member name="M:PGNLibrary.PGNHalfMoves.FirstMoveInVariant(PGNLibrary.PGNHalfMove)">
  <summary>Determine FirstMove within a specific Variant</summary>
 </member>
-<member name="M:PGNLibrary.PGNHalfMoves.Add(System.String,System.String,System.String,ChessGlobals.modChessColor.ChessColor,System.Int64,System.Int64,System.Boolean)">
+<member name="M:PGNLibrary.PGNHalfMoves.Add(System.String,System.String,System.String,ChessGlobals.modChessColor.ChessColor,System.Int64,System.Int64)">
  <summary>Adds a New HalfMove with specified attributed</summary>
 </member>
 <member name="M:PGNLibrary.PGNHalfMoves.Add(PGNLibrary.PGNHalfMove,System.Boolean)">

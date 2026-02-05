@@ -31,24 +31,24 @@ ChessGlobals
 <member name="M:ChessGlobals.modChessLanguage.LoadLanguage">
  <summary>Returns the Laguage stored at the Registry or CurrentCulture</summary>
 </member>
-<member name="M:ChessGlobals.modGlobals.RootFolder">
+<member name="M:ChessGlobals.modChessGlobals.RootFolder">
  <summary>Returns the folder of the current Assembly</summary>
 </member>
-<member name="M:ChessGlobals.modGlobals.KNSBFigurine(System.Int32)">
+<member name="M:ChessGlobals.modChessGlobals.KNSBFigurine(System.Int32)">
  <summary>Adds the KNSBFigurine from fontfile to the PrivateFontCollection.
  And returns the KNSBFigurine as a Font.</summary>
 </member>
-<member name="M:ChessGlobals.modGlobals.KNSB(System.Int32)">
+<member name="M:ChessGlobals.modChessGlobals.KNSB(System.Int32)">
  <summary>Adds the KNSB from fontfile to the PrivateFontCollection.
  And returns the KNSB as a Font.</summary>
 </member>
-<member name="M:ChessGlobals.modGlobals.WithoutExtention(System.String)">
+<member name="M:ChessGlobals.modChessGlobals.WithoutExtention(System.String)">
  <summary>Returns the FileName without the Extension</summary>
 </member>
-<member name="M:ChessGlobals.modGlobals.FolderName(System.String)">
+<member name="M:ChessGlobals.modChessGlobals.FolderName(System.String)">
  <summary>Returns the FolderName of a FullName file</summary>
 </member>
-<member name="M:ChessGlobals.modGlobals.Centimeters(System.Int32)">
+<member name="M:ChessGlobals.modChessGlobals.Centimeters(System.Int32)">
  <summary>Returns a distance in Centimeters for a specified distance in Pixels</summary>
 </member>
 </members>

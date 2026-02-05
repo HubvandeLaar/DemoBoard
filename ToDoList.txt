@@ -1,7 +1,7 @@
 To Do Lijstje
 
 Aanpassingen
-	Bij afwezigheid van Stockfish.DLL gaat er vanalles mis
+V	Bij afwezigheid van Stockfish.DLL gaat er vanalles mis
 V	ExportDiagrams, zowel PreviewDocument als PDFDiagramsDocument misten laatste diagram, en begon met diagram 13 op de volgende pagina
 V	Pierre Buys nieuwe USB geven
 V	Debug.Prints weer verwijderen	

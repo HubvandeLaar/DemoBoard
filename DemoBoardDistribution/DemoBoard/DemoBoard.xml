@@ -173,7 +173,7 @@ DemoBoard
 <member name="M:DemoBoard.frmMainForm.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
  <summary>Catches keys entered</summary>
 </member>
-<member name="M:DemoBoard.frmMainForm.GetMainPanelControl">
+<member name="P:DemoBoard.frmMainForm.MainPanelControl">
  <summary>Returns the Main Panel (TabControl or SplitContainer)</summary>
 </member>
 <member name="M:DemoBoard.frmBoard.getBitMap">
