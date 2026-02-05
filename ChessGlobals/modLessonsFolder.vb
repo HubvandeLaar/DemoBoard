@@ -33,15 +33,4 @@ Public Module modLessonsFolder
         End Get
     End Property
 
-    'Unused Method
-    Private Sub AssociateXPGN()
-        If Registry.ClassesRoot.OpenSubKey(".xpgn") Is Nothing Then
-            Exit Sub
-        End If
-        Registry.ClassesRoot.CreateSubKey(".xpgn").SetValue _
-            ("", "xpgn", RegistryValueKind.String)
-        Registry.ClassesRoot.CreateSubKey("xpgn\shell\open\command").SetValue _
-            ("", Application.ExecutablePath & " ""%l"" ", RegistryValueKind.String)
-    End Sub
-
 End Module

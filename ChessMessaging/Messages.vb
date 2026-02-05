@@ -27,4 +27,8 @@ Public Class Messages
         Return Text
     End Function
 
+    Private Sub New()
+        'To prevent instantiation
+    End Sub
+
 End Class

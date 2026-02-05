@@ -32,7 +32,8 @@ Public Class PreviewDocument
     Public ReadOnly Property ExerciseRect(pPageBounds As Rectangle, pGameIndex As Long) As Rectangle
         Get
             Dim PageIndex As Long = pGameIndex Mod DiagramsPerPage 'Could be on second page
-            Dim PageRow = 1 + Int((PageIndex - 1) / NumberOfColumns(DiagramsPerPage))
+            If PageIndex = 0 Then PageIndex = DiagramsPerPage
+            Dim PageRow = 1 + Int((PageIndex - 1) / NumberOfRows(DiagramsPerPage))
             Dim PageCol = 1 + ((PageIndex - 1) Mod NumberOfColumns(DiagramsPerPage))
             Dim Left As Long = PageMarge + ((ExerciseWidth(pPageBounds.Width) + ColumnMarge) * (PageCol - 1))
             Dim Top As Long = PageMarge + HeaderHeight + ((ExerciseHeight(pPageBounds.Height) + ColumnMarge) * (PageRow - 1))

@@ -17,10 +17,10 @@ Public Class frmTrainingQuestion
 
     Dim WithEvents gfrmMainform As frmMainForm
 
-    Public Event RetryPressed(pTrainingHalfMove As PGNHalfMove)
-    Public Event NextPressed(pTrainingHalfMove As PGNHalfMove)
-    Public Event DetailsPressed(pIncorrectSubVariant As PGNHalfMove)
-    Public Event SolutionPressed(pTrainingHalfMove As PGNHalfMove, pCorrectAnswer As PGNTrainingAnswer)
+    Friend Event RetryPressed(pTrainingHalfMove As PGNHalfMove)
+    Friend Event NextPressed(pTrainingHalfMove As PGNHalfMove)
+    Friend Event DetailsPressed(pIncorrectSubVariant As PGNHalfMove)
+    Friend Event SolutionPressed(pTrainingHalfMove As PGNHalfMove, pCorrectAnswer As PGNTrainingAnswer)
 
     Private Property Score As Integer
         Set(pScore As Integer)

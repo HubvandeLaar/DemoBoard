@@ -14,7 +14,7 @@ Public Class ctlTabControl
     Public Event TabPageDisposed(pctlTabControl As ctlTabControl)
 
     'Needed to enable PanelMouseUp and PanelMouseLeave
-    Public WithEvents gfrmMainForm As frmMainForm
+    Private WithEvents gfrmMainForm As frmMainForm
 
     Private gLayoutSerializer As LayoutSerializer
     Private gMouseDownLocation As Point = Nothing

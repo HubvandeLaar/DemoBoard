@@ -143,7 +143,7 @@ Public Class PGNHalfMoves
                 Dim Color As ChessColor
 
                 CurrentHalfMove = Nothing
-                Me.Clear(pRaiseEvent:=False)
+                Me.Clear()
                 Me.FENComment = Nothing
                 VariantLevel = 0 : ReDim VariantNumber(0) : VariantNumber(0) = 0
                 SavedComment = "" : MoveNr(VariantLevel) = "" : MoveText = "" : NAG = "" : Color = ChessColor.UNKNOWN
@@ -254,8 +254,7 @@ Public Class PGNHalfMoves
                         MoveText = Mid$(pXPGNString, P, Q - P)
                         'Store Result as move
                         CurrentHalfMove = Me.Add(SavedComment, "", MoveText, ChessColor.UNKNOWN,
-                                                 VariantLevel, VariantNumber(VariantLevel),
-                                                 pRaiseEvent:=False)
+                                                 VariantLevel, VariantNumber(VariantLevel))
                         CurrentHalfMove.Index = Me.Count
                         SavedComment = "" : MoveText = "" : Color = UNKNOWN
                         P = Q
@@ -265,8 +264,7 @@ Public Class PGNHalfMoves
                         MoveText = Mid(pXPGNString, P, Q - P)
                         'Store Move
                         CurrentHalfMove = Me.Add(SavedComment, MoveNr(VariantLevel), MoveText, Color,
-                                                 VariantLevel, VariantNumber(VariantLevel),
-                                                 pRaiseEvent:=False)
+                                                 VariantLevel, VariantNumber(VariantLevel))
                         CurrentHalfMove.Index = Me.Count
                         SavedComment = "" : MoveText = "" : Color = Color.Opponent
                         If UBound(VariantNumber) <> VariantLevel Then ReDim Preserve VariantNumber(VariantLevel) 'Causes reset of the lower levels when a move at higher level is found
@@ -534,26 +532,18 @@ Public Class PGNHalfMoves
         Return FirstMove
     End Function
 
-    Public Overloads Sub Clear(Optional pRaiseEvent As Boolean = True)
+    Public Overloads Sub Clear()
         MyBase.Clear()
         Me.CurrentHalfMoveIndex = ""
-
-        'If pRaiseEvent Then
-        '    RaiseEvent Changed(Nothing)
-        'End If
     End Sub
 
     ''' <summary>Adds a New HalfMove with specified attributed</summary>
     Public Overloads Function Add(pCommentBefore As String, pMoveNr As String, pMoveText As String, pColor As ChessColor,
-                                  Optional pVariantLevel As Long = 0, Optional pVariantNumber As Long = 0,
-                                  Optional pRaiseEvent As Boolean = True) As PGNHalfMove
+                                  Optional pVariantLevel As Long = 0, Optional pVariantNumber As Long = 0) As PGNHalfMove
         Dim HalfMove As New PGNHalfMove(Me, pCommentBefore, pMoveNr, pMoveText, pColor, pVariantLevel, pVariantNumber)
         Me.Add(HalfMove, pRaiseEvent:=False)
         Me.ReNumber()
 
-        'If pRaiseEvent Then
-        '    RaiseEvent Changed(HalfMove)
-        'End If
         Return HalfMove
     End Function
 
@@ -921,7 +911,7 @@ Public Class PGNHalfMoves
     End Function
 
     Public Sub New()
-        Me.Clear(pRaiseEvent:=False)
+        Me.Clear()
         Me.FENComment = Nothing
     End Sub
 

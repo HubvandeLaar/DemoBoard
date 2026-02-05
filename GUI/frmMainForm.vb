@@ -1510,6 +1510,19 @@ Public Class frmMainForm
 
 #Region "Dragging And Dropping Panels"
 
+    ''' <summary>Returns the Main Panel (TabControl or SplitContainer)</summary>
+    Public ReadOnly Property MainPanelControl() As Control
+        Get
+            For Each Control As Control In pnlMainPanel.Controls
+                Select Case TypeName(Control)
+                    Case "ctlTabControl", "ctlSplitContainer"
+                        Return Control
+                End Select
+            Next Control
+            Return Nothing
+        End Get
+    End Property
+
     'Variables =====================================
 
     Public Event PanelMouseUp(pDragPanel As Panel, pDockStyle As DockStyle, pMouseLocation As Point)
@@ -1621,7 +1634,7 @@ Public Class frmMainForm
     End Sub
 
     Private Sub InsertPanel(pForm As Form, pOrientation As Orientation, pPanelNumber As Integer)
-        Dim MainPanelControl = GetMainPanelControl()
+        Dim MainPanelControl = Me.MainPanelControl()
         If MainPanelControl Is Nothing Then
             Exit Sub
         End If
@@ -1831,17 +1844,6 @@ Public Class frmMainForm
             frmErrorMessageBox.Show(pException)
         End Try
     End Sub
-
-    ''' <summary>Returns the Main Panel (TabControl or SplitContainer)</summary>
-    Public Function GetMainPanelControl() As Control
-        For Each Control As Control In pnlMainPanel.Controls
-            Select Case TypeName(Control)
-                Case "ctlTabControl", "ctlSplitContainer"
-                    Return Control
-            End Select
-        Next Control
-        Return Nothing
-    End Function
 
 #End Region
 

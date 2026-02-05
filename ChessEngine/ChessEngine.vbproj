@@ -131,9 +131,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <Content Include="stockfish_12_32bit.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="stockfish_12_32bit.exe" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

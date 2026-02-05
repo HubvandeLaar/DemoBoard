@@ -19,7 +19,6 @@ Public Class PDFGameDocument
     Public Property CurrentCol As Integer = 1
     Public Property Indent As Long
 
-
     Public Column(2) As Rectangle
     Public Cursor As New Point(0, 0)
 
@@ -268,7 +267,7 @@ Public Class PDFGameDocument
         End If
 
         'HeaderText
-        Dim HeaderText As String = "Diagram " & pDiagramIndex.ToString()
+        Dim HeaderText As String = "Diagram " & Format(pDiagramIndex)
         Dim HeaderLength As Double = WordLength(HeaderText)
         Cursor.X = Column(CurrentCol).Left + Indent + (Column(CurrentCol).Width - HeaderLength) / 2 'Center the header text
         InsertWord(HeaderText)

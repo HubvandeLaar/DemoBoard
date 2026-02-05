@@ -33,7 +33,7 @@ Public Class LayoutSerializer
                                   """ StatusBar=""" & Strings.Format(gfrmMainForm.mnuStatusBar.Checked) &
                                   """ MenuLocation=""" & Strings.Format(gfrmMainForm.MenuLocation) &
                                   """>")
-        Dim MainPanelControl = gfrmMainForm.GetMainPanelControl()
+        Dim MainPanelControl = gfrmMainForm.MainPanelControl()
         Select Case TypeName(MainPanelControl)
             Case "ctlTabControl"
                 CType(MainPanelControl, ctlTabControl).Serialize(pWriter, 1)

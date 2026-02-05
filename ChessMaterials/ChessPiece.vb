@@ -40,7 +40,7 @@ Public Class ChessPiece
     End Property
 
     <XmlAttribute()>
-    Public Color As ChessColor
+    Public Overridable Property Color As ChessColor
 
     <XmlIgnore>
     Public Overridable ReadOnly Property Name(Optional pLanguage As ChessLanguage = ENGLISH) As String

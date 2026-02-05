@@ -1,7 +1,9 @@
 To Do Lijstje
-	Pierre Buys nieuwe USB geven
 
 Aanpassingen
+	Bij afwezigheid van Stockfish.DLL gaat er vanalles mis
+V	ExportDiagrams, zowel PreviewDocument als PDFDiagramsDocument misten laatste diagram, en begon met diagram 13 op de volgende pagina
+V	Pierre Buys nieuwe USB geven
 V	Debug.Prints weer verwijderen	
 V	In de Update en ShowMoveList, etc.. Debug.Print gebruiken en testen of ze 2x gebruikt worden
 V	Nieuwe Variant wordt aangemaakt, die geopend wordt en daardoor 2e ShowMoveList

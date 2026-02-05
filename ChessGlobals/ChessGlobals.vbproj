@@ -79,7 +79,7 @@
   <ItemGroup>
     <Compile Include="modChessColor.vb" />
     <Compile Include="modChessLanguage.vb" />
-    <Compile Include="modGlobals.vb" />
+    <Compile Include="modChessGlobals.vb" />
     <Compile Include="modLessonsFolder.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

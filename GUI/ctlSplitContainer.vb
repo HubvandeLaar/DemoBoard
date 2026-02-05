@@ -2,7 +2,7 @@
 
 Public Class ctlSplitContainer
 
-    Public gParentForm As frmMainForm
+    Private gParentForm As frmMainForm
 
     Public Property Panel1 As Control
         Set(pControl As Control)

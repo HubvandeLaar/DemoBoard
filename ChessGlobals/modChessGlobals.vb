@@ -4,7 +4,7 @@ Imports System.Drawing
 Imports System.Runtime.CompilerServices
 Imports System.Windows.Forms
 
-Public Module modGlobals
+Public Module modChessGlobals
 
     ''' <summary>Returns the folder of the current Assembly</summary>
     Public Function RootFolder() As String

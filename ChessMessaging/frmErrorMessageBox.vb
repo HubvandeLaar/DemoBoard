@@ -5,7 +5,7 @@ Imports ChessGlobals.ChessLanguage
 
 Public Class frmErrorMessageBox
 
-    Public WriteOnly Property Exception As Exception
+    Private WriteOnly Property Exception As Exception
         Set(pException As Exception)
 
             Me.rtbMessage.Text = ""

@@ -721,8 +721,7 @@ Public Class ctlBoard
 
             Case Keys.D0, Keys.NumPad0 'Cypher 0
                 If gInternalChessBoard(C, R).Marker Is Nothing Then
-                    gInternalChessBoard(C, R).Marker = New Marker("0")
-                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                    gInternalChessBoard(C, R).Marker = New Marker("0", gInternalChessBoard(C, R).Name)
                 ElseIf gInternalChessBoard(C, R).Marker.Symbol = "0" Then
                     gInternalChessBoard(C, R).Marker = Nothing
                 End If
@@ -731,8 +730,7 @@ Public Class ctlBoard
 
             Case 51 + Keys.Shift 'Hashtag #
                 If gInternalChessBoard(C, R).Marker Is Nothing Then
-                    gInternalChessBoard(C, R).Marker = New Marker("#")
-                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                    gInternalChessBoard(C, R).Marker = New Marker("#", gInternalChessBoard(C, R).Name)
                 ElseIf gInternalChessBoard(C, R).Marker.Symbol = "#" Then
                     gInternalChessBoard(C, R).Marker = Nothing
                 End If
@@ -741,8 +739,7 @@ Public Class ctlBoard
 
             Case 190, Keys.Decimal  'Dot .
                 If gInternalChessBoard(C, R).Marker Is Nothing Then
-                    gInternalChessBoard(C, R).Marker = New Marker(".")
-                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                    gInternalChessBoard(C, R).Marker = New Marker(".", gInternalChessBoard(C, R).Name)
                 ElseIf gInternalChessBoard(C, R).Marker.Symbol = "." Then
                     gInternalChessBoard(C, R).Marker = Nothing
                 End If
@@ -751,8 +748,7 @@ Public Class ctlBoard
 
             Case 187 + Keys.Shift, 107 'Plus +
                 If gInternalChessBoard(C, R).Marker Is Nothing Then
-                    gInternalChessBoard(C, R).Marker = New Marker("+")
-                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                    gInternalChessBoard(C, R).Marker = New Marker("+", gInternalChessBoard(C, R).Name)
                 ElseIf gInternalChessBoard(C, R).Marker.Symbol = "+" Then
                     gInternalChessBoard(C, R).Marker = Nothing
                 End If
@@ -761,8 +757,7 @@ Public Class ctlBoard
 
             Case 189, 109 'Minus -
                 If gInternalChessBoard(C, R).Marker Is Nothing Then
-                    gInternalChessBoard(C, R).Marker = New Marker("-")
-                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                    gInternalChessBoard(C, R).Marker = New Marker("-", gInternalChessBoard(C, R).Name)
                 ElseIf gInternalChessBoard(C, R).Marker.Symbol = "-" Then
                     gInternalChessBoard(C, R).Marker = Nothing
                 End If
@@ -771,8 +766,7 @@ Public Class ctlBoard
 
             Case 56 + Keys.Shift 'Star *
                 If gInternalChessBoard(C, R).Marker Is Nothing Then
-                    gInternalChessBoard(C, R).Marker = New Marker("*")
-                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                    gInternalChessBoard(C, R).Marker = New Marker("*", gInternalChessBoard(C, R).Name)
                 ElseIf gInternalChessBoard(C, R).Marker.Symbol = "*" Then
                     gInternalChessBoard(C, R).Marker = Nothing
                 End If
@@ -781,8 +775,7 @@ Public Class ctlBoard
 
             Case Keys.O, Keys.O + Keys.Shift 'Character o or O
                 If gInternalChessBoard(C, R).Marker Is Nothing Then
-                    gInternalChessBoard(C, R).Marker = New Marker(gSetupToolbar.MarkerColor)
-                    gInternalChessBoard(C, R).Marker.FieldName = gInternalChessBoard(C, R).Name
+                    gInternalChessBoard(C, R).Marker = New Marker(gSetupToolbar.MarkerColor, gInternalChessBoard(C, R).Name)
                 Else
                     gInternalChessBoard(C, R).Marker = Nothing
                 End If

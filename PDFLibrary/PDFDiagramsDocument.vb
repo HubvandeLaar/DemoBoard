@@ -43,7 +43,8 @@ Public Class PDFDiagramsDocument
     Private ReadOnly Property ExerciseRect(pPDFPage As PdfPage, pGameIndex As Long) As XRect
         Get
             Dim PageIndex As Long = pGameIndex Mod DiagramsPerPage 'Could be on second page
-            Dim PageRow = 1 + Int((PageIndex - 1) / NumberOfColumns(DiagramsPerPage))
+            If PageIndex = 0 Then PageIndex = DiagramsPerPage
+            Dim PageRow = 1 + Int((PageIndex - 1) / NumberOfRows(DiagramsPerPage))
             Dim PageCol = 1 + ((PageIndex - 1) Mod NumberOfColumns(DiagramsPerPage))
             Dim Left As Long = PageMarge + ((ExerciseWidth(pPDFPage) + ColumnMarge) * (PageCol - 1))
             Dim Top As Long = PageMarge + HeaderHeight + ((ExerciseHeight(pPDFPage) + ColumnMarge) * (PageRow - 1))
@@ -81,7 +82,7 @@ Public Class PDFDiagramsDocument
             Graphics = XGraphics.FromPdfPage(CurPage)
         End If
 
-        Dim Exercise As XRect = ExerciseRect(CurPage, ((pGameIndex - 1) Mod 12) + 1)
+        Dim Exercise As XRect = ExerciseRect(CurPage, ((pGameIndex - 1) Mod DiagramsPerPage) + 1)
 
         'Create Bitmap Stream
         Dim Stream As New MemoryStream()
